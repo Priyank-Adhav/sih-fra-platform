@@ -1,0 +1,59 @@
+# --- Node / React ---
+node_modules/
+dist/
+build/
+.npm/
+.pnpm-store/
+yarn.lock
+package-lock.json
+
+# --- Python / FastAPI ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.venv/
+env/
+venv/
+*.egg-info/
+
+# --- Data (large files should not go into git) ---
+data/raw/*
+data/processed/*
+!data/.gitkeep
+
+# --- Logs & caches ---
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+.cache/
+coverage/
+pytest_cache/
+
+# --- IDE / editor files ---
+.vscode/
+.idea/
+*.iml
+
+# --- Docker ---
+*.pid
+*.seed
+*.bak
+docker-compose.override.yml
+
+# --- Environment & secrets ---
+.env
+.env.*
+secrets.json
+config.local.*
+
+# --- Build artifacts ---
+*.tar
+*.gz
+*.zip
+*.egg
+*.whl
