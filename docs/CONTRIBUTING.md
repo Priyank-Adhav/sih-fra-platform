@@ -97,7 +97,7 @@ git push origin feature/<name>
 
 ### Step 6: Open a Pull Request
 
-* Go to the repository on GitHub.
+* Go to the repository on GitLab.
 * Open a PR from your branch → `develop`.
 * Provide:
 
@@ -120,7 +120,7 @@ git push origin feature/<name>
 
 ### Step 9: Cleanup
 
-* Delete the feature/fix branch (GitHub UI provides an option).
+* Delete the feature/fix branch (GitLab UI provides an option).
 * Update your local `develop`:
 
 ```bash
