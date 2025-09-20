@@ -7,6 +7,7 @@
 * **One branch = one logical unit of work** (feature, bug fix, documentation update).
 * **All code must be reviewed** before being merged.
 * **No secrets, or `.env` files** should ever be committed.
+* **Always follow the "One Purpose Per Commit" principle.** Each commit should accomplish **exactly one thing**. Avoid combining unrelated changes into a single commit. Break down your changes into multiple commits if required.
 
 ---
 
