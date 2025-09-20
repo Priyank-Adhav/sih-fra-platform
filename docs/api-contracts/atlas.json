@@ -1,0 +1,99 @@
+{
+    "info": {
+      "title": "FRA Atlas API",
+      "version": "0.1.0",
+      "description": "API contract for serving FRA claim polygons and village boundaries"
+    },
+    "endpoints": [
+      {
+        "path": "/api/polygons",
+        "method": "GET",
+        "description": "Fetch all polygons with metadata",
+        "response": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "id": "claim-123",
+              "properties": {
+                "village": "Example Village",
+                "state": "Madhya Pradesh",
+                "claimType": "IFR",
+                "status": "granted"
+              },
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [82.123, 22.456],
+                    [82.125, 22.456],
+                    [82.125, 22.459],
+                    [82.123, 22.459],
+                    [82.123, 22.456]
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "path": "/api/polygons",
+        "method": "POST",
+        "description": "Create a new polygon (submitted from frontend editor)",
+        "request": {
+          "type": "Feature",
+          "properties": {
+            "village": "Example Village",
+            "state": "Odisha",
+            "claimType": "CFR",
+            "status": "pending"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [84.101, 20.205],
+                [84.104, 20.207],
+                [84.102, 20.210],
+                [84.099, 20.209],
+                [84.101, 20.205]
+              ]
+            ]
+          }
+        },
+        "response": {
+          "message": "Polygon created",
+          "id": "claim-124"
+        }
+      },
+      {
+        "path": "/api/polygons/{id}",
+        "method": "GET",
+        "description": "Fetch a single polygon by ID",
+        "response": {
+          "type": "Feature",
+          "id": "claim-123",
+          "properties": {
+            "village": "Example Village",
+            "state": "Madhya Pradesh",
+            "claimType": "IFR",
+            "status": "granted"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [82.123, 22.456],
+                [82.125, 22.456],
+                [82.125, 22.459],
+                [82.123, 22.459],
+                [82.123, 22.456]
+              ]
+            ]
+          }
+        }
+      }
+    ]
+  }
+  
