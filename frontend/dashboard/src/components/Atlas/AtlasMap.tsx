@@ -13,6 +13,8 @@ import "leaflet-draw/dist/leaflet.draw.css";
 import atlasService from "../../services/atlasService";
 import type { PolygonData } from "../../services/atlasService";
 import html2canvas from "html2canvas";
+import AtlasSidebar from "./AtlasSidebar";
+import type { ClaimDetails } from "./AtlasSidebar";
 
 /* react-leaflet-draw has weak/absent types — silence TS for the import */
  // @ts-ignore
@@ -35,6 +37,7 @@ function MapInitializer({ onReady }: { onReady: (m: LeafletMap) => void }) {
 export default function AtlasMap() {
   const [mapInstance, setMapInstance] = useState<LeafletMap | null>(null);
   const [polygons, setPolygons] = useState<PolygonData[]>([]);
+  const [selectedPolygon, setSelectedPolygon] = useState<PolygonData | null>(null);
   const fgRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -143,49 +146,84 @@ export default function AtlasMap() {
     a.click();
   };
 
+  // Handler for sidebar location change
+  const handleLocationChange = (state: string, district: string) => {
+    // TODO: Implement map focus logic based on state/district
+    // For now, just log
+    console.log("Location changed:", state, district);
+  };
+
+  // Handler for sidebar layer change
+  const handleLayerChange = (base: string, overlays: string[]) => {
+    // TODO: Implement layer toggling logic
+    // For now, just log
+    console.log("Layer changed:", base, overlays);
+  };
+
+  // Convert PolygonData to ClaimDetails for sidebar
+  const getClaimDetails = (poly: PolygonData | null): ClaimDetails | null => {
+    if (!poly) return null;
+    return {
+      id: poly.id,
+      claimant: poly.properties?.claimant,
+      type: poly.type,
+      area: poly.properties?.area,
+      status: poly.properties?.status,
+      ...poly.properties,
+    };
+  };
+
   return (
-    <div ref={containerRef} className="h-[calc(100vh-64px)] rounded shadow overflow-hidden">
-      <div className="flex items-center gap-2 mb-2">
-        <button onClick={handleExportPNG} className="px-3 py-1 bg-white rounded border">
-          Export PNG
-        </button>
-      </div>
-
-      <MapContainer center={[21.02, 81.02]} zoom={12} className="h-full w-full">
-        <MapInitializer onReady={(m) => setMapInstance(m)} />
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <FeatureGroup ref={fgRef}>
-          <EditControl
-            position="topright"
-            onCreated={onCreated}
-            onEdited={onEdited}
-            onDeleted={onDeleted}
-            draw={{
-              rectangle: false,
-              circle: false,
-              circlemarker: false,
-              marker: false,
-              polyline: false,
-            }}
-            edit={{
-              remove: true,
-            }}
-          />
-
-          {polygons.map((p) => (
-            <Polygon
-              key={p.id}
-              positions={p.coords as LatLngExpression[]}
-              pathOptions={{
-                color: p.type === "IFR" || p.type === "forest" ? "#1f7a1f" : "#2b6cb0",
-                weight: 2,
-                opacity: 0.8,
-                fillOpacity: 0.2,
+    <div className="flex h-[calc(100vh-64px)]">
+      <AtlasSidebar
+        selectedClaim={getClaimDetails(selectedPolygon)}
+        onLocationChange={handleLocationChange}
+        onLayerChange={handleLayerChange}
+      />
+      <div ref={containerRef} className="flex-1 rounded shadow overflow-hidden">
+        <div className="flex items-center gap-2 mb-2">
+          <button onClick={handleExportPNG} className="px-3 py-1 bg-white rounded border">
+            Export PNG
+          </button>
+        </div>
+        <MapContainer center={[21.02, 81.02]} zoom={12} className="h-full w-full">
+          <MapInitializer onReady={(m) => setMapInstance(m)} />
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <FeatureGroup ref={fgRef}>
+            <EditControl
+              position="topright"
+              onCreated={onCreated}
+              onEdited={onEdited}
+              onDeleted={onDeleted}
+              draw={{
+                rectangle: false,
+                circle: false,
+                circlemarker: false,
+                marker: false,
+                polyline: false,
+              }}
+              edit={{
+                remove: true,
               }}
             />
-          ))}
-        </FeatureGroup>
-      </MapContainer>
+            {polygons.map((p) => (
+              <Polygon
+                key={p.id}
+                positions={p.coords as LatLngExpression[]}
+                pathOptions={{
+                  color: p.type === "IFR" || p.type === "forest" ? "#1f7a1f" : "#2b6cb0",
+                  weight: 2,
+                  opacity: 0.8,
+                  fillOpacity: 0.2,
+                }}
+                eventHandlers={{
+                  click: () => setSelectedPolygon(p),
+                }}
+              />
+            ))}
+          </FeatureGroup>
+        </MapContainer>
+      </div>
     </div>
   );
 }
