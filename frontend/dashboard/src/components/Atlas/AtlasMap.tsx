@@ -16,6 +16,7 @@ import html2canvas from "html2canvas";
 import AtlasSidebar from "./AtlasSidebar";
 import type { ClaimDetails } from "./AtlasSidebar";
 import { LOCATION_FOCUS } from "./AtlasSidebar";
+import ClaimForm, { type ClaimFormData } from "./ClaimForm";
 
 /* react-leaflet-draw has weak/absent types — silence TS for the import */
  // @ts-ignore
@@ -43,6 +44,13 @@ export default function AtlasMap() {
   const [activeOverlays, setActiveOverlays] = useState<string[]>(["claims"]);
   const fgRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  
+  // Drawing and editing state
+  const [isDrawingMode, setIsDrawingMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [showClaimForm, setShowClaimForm] = useState(false);
+  const [pendingPolygon, setPendingPolygon] = useState<PolygonData | null>(null);
+  const [editingPolygon, setEditingPolygon] = useState<PolygonData | null>(null);
 
   useEffect(() => {
     const base = (import.meta as any).env?.VITE_API_BASE ?? "";
@@ -67,35 +75,28 @@ export default function AtlasMap() {
     // layer.getLatLngs() -> nested arrays. We assume single ring polygons
     const latlngs: LatLngExpression[] = layer.getLatLngs()[0].map((p: any) => [p.lat, p.lng]);
 
-    // create local object (optimistic UI)
+    // Calculate area (rough approximation)
+    const area = calculatePolygonArea(latlngs);
+
+    // create local object for new claim
     const newPoly: PolygonData = {
-      id: `local-${Date.now()}`,
+      id: `temp-${Date.now()}`,
       coords: latlngs,
-      type: "IFR", // pick default; ideally user chooses
-      properties: { source: "editor" },
+      type: "IFR", // default type
+      properties: { 
+        source: "editor",
+        area: area,
+        status: "pending"
+      },
     };
 
-    // Optimistically add to UI
-    setPolygons((s) => [...s, newPoly]);
-
-    // Attach id to layer so edits/deletes can find it
-    if (layer && layer.options) layer.options._id = newPoly.id;
-
-    // Try to persist to API; fallback to mock if API call fails
-    try {
-      const base = (import.meta as any).env?.VITE_API_BASE ?? "";
-      const res = await atlasService.createPolygonToApi(newPoly, base);
-      // If API responds with id, update local polygon id
-      const returnedId = res?.id ?? (res?.feature?.id ?? null);
-      if (returnedId) {
-        setPolygons((s) => s.map((p) => (p.id === newPoly.id ? { ...p, id: returnedId } : p)));
-        // update attached layer id (if layer still exists)
-        if (layer && layer.options) layer.options._id = returnedId;
-      }
-    } catch (err) {
-      console.warn("Create to API failed; saved only locally (mock).", err);
-      // Optionally persist to local mock store as well
-      await atlasService.createPolygonMock(newPoly);
+    // Store the pending polygon and show form
+    setPendingPolygon(newPoly);
+    setShowClaimForm(true);
+    
+    // Remove the temporary polygon from map until form is submitted
+    if (fgRef.current) {
+      fgRef.current.removeLayer(layer);
     }
   };
 
@@ -105,7 +106,15 @@ export default function AtlasMap() {
     layers.eachLayer((l: any) => {
       const id = l.options && l.options._id;
       const latlngs = l.getLatLngs()[0].map((p: any) => [p.lat, p.lng]);
-      if (id) updated.push({ id, coords: latlngs, type: "IFR", properties: {} });
+      if (id) {
+        const area = calculatePolygonArea(latlngs);
+        updated.push({ 
+          id, 
+          coords: latlngs, 
+          type: "IFR", 
+          properties: { area, source: "editor" } 
+        });
+      }
     });
 
     for (const u of updated) {
@@ -147,6 +156,135 @@ export default function AtlasMap() {
     a.href = data;
     a.download = "atlas_snapshot.png";
     a.click();
+  };
+
+  // Calculate polygon area using the shoelace formula (rough approximation)
+  const calculatePolygonArea = (coords: LatLngExpression[]): number => {
+    if (coords.length < 3) return 0;
+    
+    let area = 0;
+    const n = coords.length;
+    
+    for (let i = 0; i < n; i++) {
+      const j = (i + 1) % n;
+      const lat1 = (coords[i] as [number, number])[0];
+      const lng1 = (coords[i] as [number, number])[1];
+      const lat2 = (coords[j] as [number, number])[0];
+      const lng2 = (coords[j] as [number, number])[1];
+      
+      area += lng1 * lat2 - lng2 * lat1;
+    }
+    
+    // Convert to hectares (rough approximation)
+    return Math.abs(area) * 111000 * 111000 / 10000 / 2;
+  };
+
+  // Handle drawing mode toggle
+  const toggleDrawingMode = () => {
+    setIsDrawingMode(!isDrawingMode);
+    setIsEditMode(false);
+    setSelectedPolygon(null);
+  };
+
+  // Handle edit mode toggle
+  const toggleEditMode = () => {
+    setIsEditMode(!isEditMode);
+    setIsDrawingMode(false);
+  };
+
+  // Handle claim form submission
+  const handleClaimFormSubmit = async (formData: ClaimFormData) => {
+    console.log('Claim form submitted:', formData);
+    if (!pendingPolygon) return;
+
+    // Create the final polygon with form data
+    const finalPolygon: PolygonData = {
+      ...pendingPolygon,
+      id: `claim-${Date.now()}`,
+      type: formData.type,
+      properties: {
+        ...pendingPolygon.properties,
+        claimant: formData.claimant,
+        claimantId: formData.claimantId,
+        area: formData.area,
+        village: formData.village,
+        block: formData.block,
+        district: formData.district,
+        state: formData.state,
+        status: formData.status,
+        submissionDate: formData.submissionDate,
+        description: formData.description,
+        contactNumber: formData.contactNumber,
+        email: formData.email,
+        source: "user_created"
+      }
+    };
+
+    // Add to polygons list
+    setPolygons(prev => [...prev, finalPolygon]);
+
+    // Try to save to API
+    try {
+      const base = (import.meta as any).env?.VITE_API_BASE ?? "";
+      const res = await atlasService.createPolygonToApi(finalPolygon, base);
+      const returnedId = res?.id ?? (res?.feature?.id ?? null);
+      if (returnedId) {
+        setPolygons(prev => prev.map(p => p.id === finalPolygon.id ? { ...p, id: returnedId } : p));
+      }
+    } catch (err) {
+      console.warn("Create to API failed; saved locally.", err);
+      await atlasService.createPolygonMock(finalPolygon);
+    }
+
+    // Reset state
+    setPendingPolygon(null);
+    setShowClaimForm(false);
+    setIsDrawingMode(false);
+  };
+
+  // Handle edit claim
+  const handleEditClaim = (polygon: PolygonData) => {
+    setEditingPolygon(polygon);
+    setShowClaimForm(true);
+  };
+
+  // Handle claim form update
+  const handleClaimFormUpdate = async (formData: ClaimFormData) => {
+    if (!editingPolygon) return;
+
+    const updatedPolygon: PolygonData = {
+      ...editingPolygon,
+      type: formData.type,
+      properties: {
+        ...editingPolygon.properties,
+        claimant: formData.claimant,
+        claimantId: formData.claimantId,
+        area: formData.area,
+        village: formData.village,
+        block: formData.block,
+        district: formData.district,
+        state: formData.state,
+        status: formData.status,
+        submissionDate: formData.submissionDate,
+        description: formData.description,
+        contactNumber: formData.contactNumber,
+        email: formData.email,
+      }
+    };
+
+    // Update polygons list
+    setPolygons(prev => prev.map(p => p.id === editingPolygon.id ? updatedPolygon : p));
+
+    // Try to save to API
+    try {
+      await atlasService.updatePolygonMock(updatedPolygon);
+    } catch (err) {
+      console.warn("Update failed:", err);
+    }
+
+    // Reset state
+    setEditingPolygon(null);
+    setShowClaimForm(false);
   };
 
   // Handler for sidebar location change
@@ -202,6 +340,12 @@ export default function AtlasMap() {
         selectedClaim={getClaimDetails(selectedPolygon)}
         onLocationChange={handleLocationChange}
         onLayerChange={handleLayerChange}
+        onEditClaim={(claim) => {
+          const polygon = polygons.find(p => p.id === claim.id);
+          if (polygon) {
+            handleEditClaim(polygon);
+          }
+        }}
       />
       <div ref={containerRef} className="flex-1 flex flex-col p-4">
         {/* Enhanced Map Controls */}
@@ -216,8 +360,42 @@ export default function AtlasMap() {
             <div className="text-sm text-base-content/70">
               {polygons.length} claims loaded
             </div>
+            {isDrawingMode && (
+              <div className="badge badge-warning badge-sm">
+                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                </svg>
+                Drawing Mode
+              </div>
+            )}
+            {isEditMode && (
+              <div className="badge badge-info badge-sm">
+                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                </svg>
+                Edit Mode
+              </div>
+            )}
           </div>
           <div className="flex items-center gap-2">
+            <button 
+              onClick={toggleDrawingMode}
+              className={`btn btn-sm ${isDrawingMode ? 'btn-primary' : 'btn-outline btn-primary'}`}
+            >
+              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+              </svg>
+              {isDrawingMode ? 'Exit Drawing' : 'Draw Claim'}
+            </button>
+            <button 
+              onClick={toggleEditMode}
+              className={`btn btn-sm ${isEditMode ? 'btn-secondary' : 'btn-outline btn-secondary'}`}
+            >
+              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+              </svg>
+              {isEditMode ? 'Exit Edit' : 'Edit Claims'}
+            </button>
             <button 
               onClick={handleExportPNG} 
               className="btn btn-outline btn-primary btn-sm"
@@ -254,10 +432,12 @@ export default function AtlasMap() {
                     circlemarker: false,
                     marker: false,
                     polyline: false,
+                    polygon: isDrawingMode,
                   }}
-                  edit={{
+                  edit={isEditMode ? {
                     remove: true,
-                  }}
+                    edit: {},
+                  } : undefined}
                 />
                 {/* Claims overlay */}
                 {activeOverlays.includes("claims") &&
@@ -272,7 +452,12 @@ export default function AtlasMap() {
                         fillOpacity: 0.2,
                       }}
                       eventHandlers={{
-                        click: () => setSelectedPolygon(p),
+                        click: () => {
+                          setSelectedPolygon(p);
+                          if (isEditMode) {
+                            handleEditClaim(p);
+                          }
+                        },
                       }}
                     />
                   ))}
@@ -296,6 +481,33 @@ export default function AtlasMap() {
           </div>
         </div>
       </div>
+      
+      {/* Claim Form Modal */}
+      <ClaimForm
+        isOpen={showClaimForm}
+        onClose={() => {
+          setShowClaimForm(false);
+          setPendingPolygon(null);
+          setEditingPolygon(null);
+        }}
+        onSubmit={editingPolygon ? handleClaimFormUpdate : handleClaimFormSubmit}
+        initialData={editingPolygon ? {
+          claimant: editingPolygon.properties?.claimant || "",
+          claimantId: editingPolygon.properties?.claimantId || "",
+          type: editingPolygon.type as any,
+          area: editingPolygon.properties?.area || 0,
+          village: editingPolygon.properties?.village || "",
+          block: editingPolygon.properties?.block || "",
+          district: editingPolygon.properties?.district || "",
+          state: editingPolygon.properties?.state || "",
+          status: editingPolygon.properties?.status as any || "pending",
+          submissionDate: editingPolygon.properties?.submissionDate || new Date().toISOString().split('T')[0],
+          description: editingPolygon.properties?.description || "",
+          contactNumber: editingPolygon.properties?.contactNumber || "",
+          email: editingPolygon.properties?.email || "",
+        } : undefined}
+        mode={editingPolygon ? "edit" : "create"}
+      />
     </div>
   );
 }
