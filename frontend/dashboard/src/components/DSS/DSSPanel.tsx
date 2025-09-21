@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function DSSPanel() {
   return (
     <div className="h-full bg-base-100 p-6">

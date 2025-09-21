@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Sidebar({
   active,
   setActive,
@@ -14,11 +12,12 @@ export default function Sidebar({
         <ul className="menu menu-lg w-full p-0">
           <li>
             <button
-              className={`btn btn-ghost justify-start w-full text-left ${
-                active === "atlas" 
-                  ? "btn-active bg-primary text-primary-content shadow-sm" 
-                  : "hover:bg-base-200"
-              }`}
+              className={`w-full text-left rounded-lg px-2 py-1.5 transition shadow-sm
+                ${active === "atlas"
+                  ? "bg-primary text-primary-content"
+                  : "hover:bg-base-200 text-base-content"
+                }`}
+
               onClick={() => setActive("atlas")}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -32,11 +31,11 @@ export default function Sidebar({
           </li>
           <li>
             <button
-              className={`btn btn-ghost justify-start w-full text-left ${
-                active === "dss" 
-                  ? "btn-active bg-primary text-primary-content shadow-sm" 
-                  : "hover:bg-base-200"
-              }`}
+              className={`w-full text-left rounded-lg px-2 py-1.5 transition shadow-sm
+                ${active === "dss"
+                  ? "bg-primary text-primary-content"
+                  : "hover:bg-base-200 text-base-content"
+                }`}
               onClick={() => setActive("dss")}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

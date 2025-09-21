@@ -29,8 +29,8 @@ export default function DashboardShell() {
           <div className="flex items-center gap-2">
             <div className="badge badge-success badge-sm">Online</div>
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                <div className="w-8 rounded-full bg-primary text-primary-content flex items-center justify-center">
+              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                <div className="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center">
                   <span className="text-sm font-semibold">A</span>
                 </div>
               </div>

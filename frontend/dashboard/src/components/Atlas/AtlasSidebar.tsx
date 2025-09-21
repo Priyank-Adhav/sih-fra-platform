@@ -240,7 +240,7 @@ export default function AtlasSidebar({
             </h3>
             {selectedClaim ? (
               <div className="space-y-3">
-                <div className="stats stats-vertical shadow-sm">
+                <div className="stats shadow-sm">
                   <div className="stat py-2 px-3">
                     <div className="stat-title text-xs">ID</div>
                     <div className="stat-value text-sm">{selectedClaim.id}</div>
