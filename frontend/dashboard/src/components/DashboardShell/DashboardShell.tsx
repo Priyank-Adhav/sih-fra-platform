@@ -9,15 +9,53 @@ export default function DashboardShell() {
   const [active, setActive] = useState<"atlas" | "dss">("atlas");
 
   return (
-    <div className="h-screen flex flex-col">
-      <header className="h-14 bg-white shadow flex items-center px-4">
-        <h1 className="text-lg font-semibold">FRA Dashboard</h1>
-      </header>
+    <div className="min-h-screen bg-base-200">
+      {/* Enhanced Navigation Bar */}
+      <nav className="navbar bg-base-100 shadow-lg border-b border-base-300">
+        <div className="navbar-start">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+              <svg className="w-6 h-6 text-primary-content" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-primary">FRA Atlas Dashboard</h1>
+              <p className="text-xs text-base-content/70">Forest Rights Act Monitoring System</p>
+            </div>
+          </div>
+        </div>
+        <div className="navbar-end">
+          <div className="flex items-center gap-2">
+            <div className="badge badge-success badge-sm">Online</div>
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                <div className="w-8 rounded-full bg-primary text-primary-content flex items-center justify-center">
+                  <span className="text-sm font-semibold">A</span>
+                </div>
+              </div>
+              <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                <li><a>Profile</a></li>
+                <li><a>Settings</a></li>
+                <li><a>Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-      <div className="flex flex-1">
+      {/* Main Content Area */}
+      <div className="flex h-[calc(100vh-80px)]">
         <Sidebar active={active} setActive={setActive} />
-        <main className="flex-1 bg-gray-50 p-4 overflow-hidden">
-          <Suspense fallback={<div>Loading module…</div>}>
+        <main className="flex-1 overflow-hidden">
+          <Suspense fallback={
+            <div className="flex justify-center items-center h-full bg-base-100">
+              <div className="text-center">
+                <span className="loading loading-spinner loading-lg text-primary mb-4"></span>
+                <p className="text-base-content/70">Loading {active === "atlas" ? "Atlas" : "DSS"}...</p>
+              </div>
+            </div>
+          }>
             {active === "atlas" && <Atlas />}
             {active === "dss" && <DSS />}
           </Suspense>
