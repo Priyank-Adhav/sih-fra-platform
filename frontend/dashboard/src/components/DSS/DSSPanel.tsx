@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { VillageSelector } from './VillageSelector';
 import { RecommendationsList } from './RecommendationsList';
 import { DSSStats } from './DSSStats';
