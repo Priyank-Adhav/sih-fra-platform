@@ -2,8 +2,8 @@ export default function Sidebar({
   active,
   setActive,
 }: {
-  active: "atlas" | "dss";
-  setActive: (a: "atlas" | "dss") => void;
+  active: "atlas" | "dss" | "docs";
+  setActive: (a: "atlas" | "dss" | "docs") => void;
 }) {
   return (
     <aside className="w-64 bg-base-100 border-r border-base-300 shadow-sm">
@@ -17,7 +17,6 @@ export default function Sidebar({
                   ? "bg-primary text-primary-content"
                   : "hover:bg-base-200 text-base-content"
                 }`}
-
               onClick={() => setActive("atlas")}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -47,6 +46,24 @@ export default function Sidebar({
               </div>
             </button>
           </li>
+          <li>
+            <button
+              className={`w-full text-left rounded-lg px-2 py-1.5 transition shadow-sm
+                ${active === "docs"
+                  ? "bg-primary text-primary-content"
+                  : "hover:bg-base-200 text-base-content"
+                }`}
+              onClick={() => setActive("docs")}
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+              </svg>
+              <div className="flex flex-col items-start">
+                <span className="font-medium">Documents</span>
+                <span className="text-xs opacity-70">OCR & Processing</span>
+              </div>
+            </button>
+          </li>
         </ul>
         
         {/* Additional navigation items */}
@@ -70,6 +87,27 @@ export default function Sidebar({
               </a>
             </li>
           </ul>
+        </div>
+
+        {/* Module Status Indicators */}
+        <div className="mt-8 pt-4 border-t border-base-300">
+          <h3 className="text-sm font-medium text-base-content/70 mb-3">API Status</h3>
+          <div className="space-y-2">
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-base-content/60">DSS Engine</span>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-green-600">Online</span>
+              </div>
+            </div>
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-base-content/60">Doc Processing</span>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-green-600">Online</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </aside>

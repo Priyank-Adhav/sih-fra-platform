@@ -4,9 +4,23 @@ import Sidebar from "./Sidebar";
 // lazy load "panels" (Atlas is the heavy one)
 const Atlas = React.lazy(() => import("../Atlas/AtlasMap"));
 const DSS = React.lazy(() => import("../DSS/DSSPanel"));
+const Documents = React.lazy(() => import("../Doc-Management/DocManagementPanel.tsx"));
 
 export default function DashboardShell() {
-  const [active, setActive] = useState<"atlas" | "dss">("atlas");
+  const [active, setActive] = useState<"atlas" | "dss" | "docs">("atlas");
+
+  const getActiveModuleName = () => {
+    switch (active) {
+      case "atlas":
+        return "Atlas";
+      case "dss":
+        return "DSS";
+      case "docs":
+        return "Documents";
+      default:
+        return "Module";
+    }
+  };
 
   return (
     <div className="min-h-screen bg-base-200">
@@ -23,6 +37,14 @@ export default function DashboardShell() {
               <h1 className="text-xl font-bold text-primary">FRA Atlas Dashboard</h1>
               <p className="text-xs text-base-content/70">Forest Rights Act Monitoring System</p>
             </div>
+          </div>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <div className="breadcrumbs text-sm">
+            <ul>
+              <li><span className="text-base-content/70">Dashboard</span></li>
+              <li><span className="text-primary font-medium">{getActiveModuleName()}</span></li>
+            </ul>
           </div>
         </div>
         <div className="navbar-end">
@@ -52,12 +74,13 @@ export default function DashboardShell() {
             <div className="flex justify-center items-center h-full bg-base-100">
               <div className="text-center">
                 <span className="loading loading-spinner loading-lg text-primary mb-4"></span>
-                <p className="text-base-content/70">Loading {active === "atlas" ? "Atlas" : "DSS"}...</p>
+                <p className="text-base-content/70">Loading {getActiveModuleName()}...</p>
               </div>
             </div>
           }>
             {active === "atlas" && <Atlas />}
             {active === "dss" && <DSS />}
+            {active === "docs" && <Documents />}
           </Suspense>
         </main>
       </div>
