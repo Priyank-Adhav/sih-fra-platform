@@ -42,6 +42,8 @@ export default function AtlasMap() {
   const [selectedPolygon, setSelectedPolygon] = useState<PolygonData | null>(null);
   const [baseLayer, setBaseLayer] = useState<string>("osm");
   const [activeOverlays, setActiveOverlays] = useState<string[]>(["claims"]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const fgRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   
@@ -53,14 +55,33 @@ export default function AtlasMap() {
   const [editingPolygon, setEditingPolygon] = useState<PolygonData | null>(null);
 
   useEffect(() => {
-    const base = (import.meta as any).env?.VITE_API_BASE ?? "";
-    atlasService
-      .fetchPolygonsFromApi(base)
-      .then((list) => setPolygons(list))
-      .catch((err) => {
+    const loadPolygons = async () => {
+      setLoading(true);
+      setError(null);
+      
+      try {
+        const base = (import.meta as any).env?.VITE_API_BASE ?? "";
+        console.log("Loading polygons with base URL:", base);
+        
+        const list = await atlasService.fetchPolygonsFromApi(base);
+        console.log("Successfully loaded polygons from API:", list.length);
+        setPolygons(list);
+      } catch (err) {
         console.warn("Fetching polygons from API failed, falling back to mock:", err);
-        atlasService.fetchPolygonsMock().then((m) => setPolygons(m));
-      });
+        setError("API connection failed, using local data");
+        try {
+          const mockList = await atlasService.fetchPolygonsMock();
+          setPolygons(mockList);
+        } catch (mockErr) {
+          console.error("Mock data also failed:", mockErr);
+          setError("Failed to load polygon data");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPolygons();
   }, []);
 
   useEffect(() => {
@@ -107,24 +128,35 @@ export default function AtlasMap() {
       const id = l.options && l.options._id;
       const latlngs = l.getLatLngs()[0].map((p: any) => [p.lat, p.lng]);
       if (id) {
-        const area = calculatePolygonArea(latlngs);
-        updated.push({ 
-          id, 
-          coords: latlngs, 
-          type: "IFR", 
-          properties: { area, source: "editor" } 
-        });
+        const existingPolygon = polygons.find(p => p.id === id);
+        if (existingPolygon) {
+          const area = calculatePolygonArea(latlngs);
+          updated.push({ 
+            ...existingPolygon,
+            coords: latlngs, 
+            properties: { 
+              ...existingPolygon.properties,
+              area, 
+              source: "editor" 
+            } 
+          });
+        }
       }
     });
 
     for (const u of updated) {
       setPolygons((s) => s.map((p) => (p.id === u.id ? u : p)));
-      // For MVP: call mock update; you can implement an API update if available
       try {
-        // TODO: implement API PUT /api/polygons/{id} if backend supports it
-        await atlasService.updatePolygonMock(u);
+        const base = (import.meta as any).env?.VITE_API_BASE ?? "";
+        await atlasService.updatePolygonToApi(u, base);
+        console.log("Successfully updated polygon via API:", u.id);
       } catch (err) {
-        console.warn("Update mock failed:", err);
+        console.warn("Update API failed, trying mock:", err);
+        try {
+          await atlasService.updatePolygonMock(u);
+        } catch (mockErr) {
+          console.warn("Update mock also failed:", mockErr);
+        }
       }
     }
   };
@@ -140,10 +172,16 @@ export default function AtlasMap() {
     for (const id of removedIds) {
       setPolygons((s) => s.filter((p) => p.id !== id));
       try {
-        // TODO: call API DELETE /api/polygons/{id} if backend exposes it
-        await atlasService.deletePolygonMock(id);
+        const base = (import.meta as any).env?.VITE_API_BASE ?? "";
+        await atlasService.deletePolygonFromApi(id, base);
+        console.log("Successfully deleted polygon via API:", id);
       } catch (err) {
-        console.warn("Delete mock failed:", err);
+        console.warn("Delete API failed, trying mock:", err);
+        try {
+          await atlasService.deletePolygonMock(id);
+        } catch (mockErr) {
+          console.warn("Delete mock also failed:", mockErr);
+        }
       }
     }
   };
@@ -220,7 +258,7 @@ export default function AtlasMap() {
       }
     };
 
-    // Add to polygons list
+    // Add to polygons list immediately for responsive UI
     setPolygons(prev => [...prev, finalPolygon]);
 
     // Try to save to API
@@ -229,11 +267,21 @@ export default function AtlasMap() {
       const res = await atlasService.createPolygonToApi(finalPolygon, base);
       const returnedId = res?.id ?? (res?.feature?.id ?? null);
       if (returnedId) {
-        setPolygons(prev => prev.map(p => p.id === finalPolygon.id ? { ...p, id: returnedId } : p));
+        // Update with the server-assigned ID
+        setPolygons(prev => prev.map(p => p.id === finalPolygon.id ? { ...p, id: returnedId.toString() } : p));
       }
+      console.log("Successfully created polygon via API:", returnedId);
     } catch (err) {
-      console.warn("Create to API failed; saved locally.", err);
-      await atlasService.createPolygonMock(finalPolygon);
+      console.warn("Create to API failed; saving locally.", err);
+      try {
+        await atlasService.createPolygonMock(finalPolygon);
+      } catch (mockErr) {
+        console.error("Mock create also failed:", mockErr);
+        // Remove from UI if both API and mock failed
+        setPolygons(prev => prev.filter(p => p.id !== finalPolygon.id));
+        alert("Failed to save polygon. Please try again.");
+        return;
+      }
     }
 
     // Reset state
@@ -272,14 +320,25 @@ export default function AtlasMap() {
       }
     };
 
-    // Update polygons list
+    // Update polygons list immediately
     setPolygons(prev => prev.map(p => p.id === editingPolygon.id ? updatedPolygon : p));
 
     // Try to save to API
     try {
-      await atlasService.updatePolygonMock(updatedPolygon);
+      const base = (import.meta as any).env?.VITE_API_BASE ?? "";
+      await atlasService.updatePolygonToApi(updatedPolygon, base);
+      console.log("Successfully updated polygon via API:", updatedPolygon.id);
     } catch (err) {
-      console.warn("Update failed:", err);
+      console.warn("Update API failed, trying mock:", err);
+      try {
+        await atlasService.updatePolygonMock(updatedPolygon);
+      } catch (mockErr) {
+        console.warn("Update mock also failed:", mockErr);
+        // Revert the UI change if both failed
+        setPolygons(prev => prev.map(p => p.id === editingPolygon.id ? editingPolygon : p));
+        alert("Failed to update polygon. Please try again.");
+        return;
+      }
     }
 
     // Reset state
@@ -334,6 +393,35 @@ export default function AtlasMap() {
     };
   };
 
+  // Get polygon style based on type
+  const getPolygonStyle = (type: string) => {
+    switch (type) {
+      case "IFR":
+      case "forest":
+      case "Community Forest Lands":
+        return {
+          color: "#228B22",
+          weight: 2,
+          opacity: 0.8,
+          fillOpacity: 0.3,
+        };
+      case "CFR":
+        return {
+          color: "#2b6cb0",
+          weight: 2,
+          opacity: 0.8,
+          fillOpacity: 0.3,
+        };
+      default:
+        return {
+          color: "#6B7280",
+          weight: 2,
+          opacity: 0.8,
+          fillOpacity: 0.2,
+        };
+    }
+  };
+
   return (
     <div className="flex h-full bg-base-100">
       <AtlasSidebar
@@ -358,8 +446,20 @@ export default function AtlasMap() {
               Interactive Atlas
             </div>
             <div className="text-sm text-base-content/70">
-              {polygons.length} claims loaded
+              {loading ? (
+                <span className="loading loading-dots loading-sm"></span>
+              ) : (
+                `${polygons.length} claims loaded`
+              )}
             </div>
+            {error && (
+              <div className="badge badge-warning badge-sm">
+                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                {error}
+              </div>
+            )}
             {isDrawingMode && (
               <div className="badge badge-warning badge-sm">
                 <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -381,6 +481,7 @@ export default function AtlasMap() {
             <button 
               onClick={toggleDrawingMode}
               className={`btn btn-sm ${isDrawingMode ? 'btn-primary' : 'btn-outline btn-primary'}`}
+              disabled={loading}
             >
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -390,6 +491,7 @@ export default function AtlasMap() {
             <button 
               onClick={toggleEditMode}
               className={`btn btn-sm ${isEditMode ? 'btn-secondary' : 'btn-outline btn-secondary'}`}
+              disabled={loading || polygons.length === 0}
             >
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
@@ -399,6 +501,7 @@ export default function AtlasMap() {
             <button 
               onClick={handleExportPNG} 
               className="btn btn-outline btn-primary btn-sm"
+              disabled={loading}
             >
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -411,6 +514,14 @@ export default function AtlasMap() {
         {/* Enhanced Map Container */}
         <div className="card bg-base-100 shadow-lg border border-base-300 flex-1">
           <div className="card-body p-0 h-full">
+            {loading && (
+              <div className="absolute inset-0 bg-base-100/80 z-50 flex items-center justify-center">
+                <div className="flex flex-col items-center gap-4">
+                  <span className="loading loading-spinner loading-lg"></span>
+                  <p className="text-sm text-base-content/70">Loading polygon data...</p>
+                </div>
+              </div>
+            )}
             <MapContainer center={[21.02, 81.02]} zoom={12} className="h-full w-full rounded-b-box">
               <MapInitializer onReady={(m) => setMapInstance(m)} />
               {/* Base Layers */}
@@ -445,12 +556,7 @@ export default function AtlasMap() {
                     <Polygon
                       key={p.id}
                       positions={p.coords as LatLngExpression[]}
-                      pathOptions={{
-                        color: p.type === "IFR" || p.type === "forest" ? "#228B22" : "#2b6cb0",
-                        weight: 2,
-                        opacity: 0.8,
-                        fillOpacity: 0.2,
-                      }}
+                      pathOptions={getPolygonStyle(p.type)}
                       eventHandlers={{
                         click: () => {
                           setSelectedPolygon(p);
