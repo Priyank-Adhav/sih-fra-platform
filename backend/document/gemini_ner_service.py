@@ -18,7 +18,7 @@ def extract_entities_gemini(text):
         }
     
     prompt = f"""
-You are an expert at extracting structured information from Forest Rights Act (FRA) documents. 
+You are an expert at extracting structured information from Forest Rights Act (FRA) documents. The document text may be in English, Hindi, or Oriya language.
 
 Extract the following fields from the provided text and return ONLY valid JSON format:
 
@@ -34,11 +34,13 @@ Extract the following fields from the provided text and return ONLY valid JSON f
 }}
 
 Instructions:
+- The text may be in English, Hindi, or Oriya language
 - Return null for fields where information is not found
 - Keep extracted text as close to original as possible
 - If multiple family members, list them separated by commas
 - For addresses, include the complete address information
 - For fees, include currency and amount if mentioned
+- If text is in Hindi/Oriya, extract the information as it appears in the document
 
 Text to process:
 \"\"\"{text}\"\"\"
