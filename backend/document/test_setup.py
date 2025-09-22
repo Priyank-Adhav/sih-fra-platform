@@ -40,6 +40,12 @@ def main():
     else:
         print("  ⚠️  Some issues found. Please fix them before starting the app.")
     
+    print("\n🌐 Supported Languages:")
+    print("  - English (eng)")
+    print("  - Hindi (hin)")
+    print("  - Oriya (ori)")
+    print("  - Automatic language detection enabled")
+    
     print("\n📚 Next Steps:")
     print("  1. Set GEMINI_API_KEY if not set")
     print("  2. Install dependencies: pip install -r requirements.txt")
@@ -48,6 +54,7 @@ def main():
     print("     - GET  http://localhost:5000/health")
     print("     - POST http://localhost:5000/process-document")
     print("     - POST http://localhost:5000/extract-text-only")
+    print("\n💡 The API will automatically detect the language of your documents!")
 
 if __name__ == "__main__":
     main()
