@@ -1,0 +1,29 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [77.5946, 12.9716],
+        [77.5956, 12.9716],
+        [77.5956, 12.9726],
+        [77.5946, 12.9726],
+        [77.5946, 12.9716]
+      ]
+    ]
+  },
+  "properties": {
+    "identity": "CURLTEST",
+    "name": "Sample Polygon",
+    "country": "India",
+    "category": "Indigenous Land",
+    "ethncty_1": "EthnicGroup1",
+    "populatn": 1500,
+    "pop_year": 2020,
+    "pop_source": "Census 2020",
+    "area_ofcl": 2.5,
+    "area_gis": 2.7,
+    "iso_code": "IN-KA"
+  }
+}
+
