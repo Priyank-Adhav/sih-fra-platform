@@ -30,7 +30,18 @@ def health_check():
     return jsonify({
         "status": "healthy",
         "message": "Document Processing API is running",
-        "supported_formats": list(ALLOWED_EXTENSIONS)
+        "supported_formats": list(ALLOWED_EXTENSIONS),
+        "supported_languages": {
+            "eng": "English",
+            "hin": "Hindi",
+            "ori": "Oriya"
+        },
+        "features": [
+            "Automatic language detection",
+            "OCR text extraction",
+            "AI entity extraction",
+            "Multilingual support"
+        ]
     })
 
 @app.route('/process-document', methods=['POST'])
@@ -71,14 +82,17 @@ def process_document():
         file.save(filepath)
         
         try:
-            # Step 1: Extract text using OCR
-            extracted_text = extract_text_from_file(filepath)
+            # Step 1: Extract text using OCR with language detection
+            ocr_result = extract_text_from_file(filepath)
+            extracted_text = ocr_result['text']
+            detected_language = ocr_result['language_name']
             
             if not extracted_text or extracted_text.strip() == '':
                 return jsonify({
                     "error": "No text extracted",
                     "message": "Could not extract any text from the document",
-                    "filename": filename
+                    "filename": filename,
+                    "detected_language": detected_language
                 }), 400
             
             # Step 2: Extract entities using Gemini AI
@@ -92,6 +106,7 @@ def process_document():
                 "success": True,
                 "filename": filename,
                 "extracted_text": extracted_text,
+                "detected_language": detected_language,
                 "entities": entities,
                 "ai_provider": "gemini"
             })
@@ -141,14 +156,17 @@ def extract_text_only():
         file.save(filepath)
         
         try:
-            extracted_text = extract_text_from_file(filepath)
+            ocr_result = extract_text_from_file(filepath)
+            extracted_text = ocr_result['text']
+            detected_language = ocr_result['language_name']
             
             os.remove(filepath)
             
             return jsonify({
                 "success": True,
                 "filename": filename,
-                "extracted_text": extracted_text
+                "extracted_text": extracted_text,
+                "detected_language": detected_language
             })
             
         except Exception as processing_error:
