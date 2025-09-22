@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cors import CORS 
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -16,5 +17,7 @@ def create_app():
     from .routes import bp
 
     app.register_blueprint(bp, url_prefix="/api")
+
+    CORS(app)
 
     return app
