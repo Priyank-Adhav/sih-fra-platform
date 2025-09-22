@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface Recommendation {
   scheme: string;
   reason: string;
