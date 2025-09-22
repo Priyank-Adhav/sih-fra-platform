@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
 from dotenv import load_dotenv
@@ -9,6 +10,7 @@ from gemini_ner_service import extract_entities_gemini
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app) 
 
 # Configure upload settings
 UPLOAD_FOLDER = 'uploads'
@@ -184,10 +186,10 @@ if __name__ == '__main__':
     print("🚀 Starting Document Processing API...")
     print("📁 Upload folder:", os.path.abspath(UPLOAD_FOLDER))
     print("🔑 API Key status:", "✓ Set" if os.getenv('GEMINI_API_KEY') else "✗ Not Set")
-    print("🌐 API will be available at: http://localhost:5000")
+    print("🌐 API will be available at: http://localhost:5001")
     print("📋 Endpoints:")
     print("  - GET  /health - Health check")
     print("  - POST /process-document - Full processing (OCR + NER)")
     print("  - POST /extract-text-only - OCR only")
     
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5001)
