@@ -21,6 +21,7 @@ def extract_entities_gemini(text):
 You are an expert at extracting structured information from Forest Rights Act (FRA) documents. The document text may be in English, Hindi, or Oriya language.
 
 Extract the following fields from the provided text and return ONLY valid JSON format:
+If a field is not explicitly mentioned, try to infer from nearby text.
 
 {{
     "Name of Right Holder": "string or null",
