@@ -1,0 +1,29 @@
+{
+  "polygons": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "claim-123",
+        "properties": {
+          "village": "Example Village",
+          "state": "Madhya Pradesh",
+          "claimType": "IFR",
+          "status": "granted"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [82.123, 22.456],
+              [82.125, 22.456],
+              [82.125, 22.459],
+              [82.123, 22.459],
+              [82.123, 22.456]
+            ]
+          ]
+        }
+      }
+    ]
+  }
+}

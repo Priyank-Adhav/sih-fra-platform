@@ -4,6 +4,34 @@ import os
 from dotenv import load_dotenv
 from ocr_service import extract_text_from_file
 from gemini_ner_service import extract_entities_gemini
+import re
+
+def fallback_extract_entities(text, entities):
+    """
+    Use regex to fill missing fields if Gemini returned null
+    """
+    def extract_field(pattern):
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            return match.group(1).strip()
+        return None
+
+    if not entities.get("Address") or entities["Address"] in [None, "Not Available"]:
+        entities["Address"] = extract_field(r'6\)\s*Address of Right Holders[:\s]*([\w\s,.-]+)')
+
+    if not entities.get("Status") or entities["Status"] in [None, "Not Available"]:
+        entities["Status"] = extract_field(r'7\)\s*The Status[:\s]*([\w\s,.-]+)')
+
+    if not entities.get("Specific Details") or entities["Specific Details"] in [None, "Not Available"]:
+        entities["Specific Details"] = extract_field(r'9\)\s*Specific Details as Any[:\s]*([\w\s,.-]+)')
+
+    # Ensure that fields still empty get placeholder
+    for key, value in entities.items():
+        if value in [None, ""]:
+            entities[key] = "Not Available"
+
+    return entities
+
 
 # Load environment variables
 load_dotenv()
