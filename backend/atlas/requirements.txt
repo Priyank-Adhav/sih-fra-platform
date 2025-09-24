@@ -14,6 +14,7 @@ MarkupSafe==3.0.2
 numpy==2.3.3
 packaging==25.0
 psycopg2-binary==2.9.10
+python-dotenv==1.1.1
 shapely==2.1.1
 SQLAlchemy==2.0.43
 typing_extensions==4.15.0
