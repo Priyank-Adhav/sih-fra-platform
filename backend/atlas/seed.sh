@@ -7,8 +7,10 @@ echo "Seeding database with polygons...."
 #   geojson-poly-4326-india-cleaned.json \
 #   -nln polygons
 
+#ogr2ogr -f "PostgreSQL" PG:"dbname=atlas user=$POSTGRES_USER password=changeme host=db port=5432" geojson-poly-4326-india-cleaned.json -nln polygons -append
+
 ogr2ogr -f "PostgreSQL" \
-  PG:"dbname=atlas user=$1 host=localhost" \
+  PG:"dbname=atlas user=$POSTGRES_USER host=db port=5432" \
   geojson-poly-4326-india-cleaned.json \
   -nln polygons \
   -lco FID=id \
