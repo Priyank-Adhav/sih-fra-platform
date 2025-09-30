@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ProcessedDocument {
   id: string;
   filename: string;
@@ -126,7 +124,7 @@ export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }
                 <div className="flex items-center gap-3 text-xs text-gray-500">
                   <div className="flex items-center gap-1">
                     <span>{getLanguageFlag(doc.detectedLanguage)}</span>
-                    <span>{doc.detectedLanguage.toUpperCase()}</span>
+                    <span>{doc.detectedLanguage}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
