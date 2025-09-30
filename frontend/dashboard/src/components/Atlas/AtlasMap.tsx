@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import {
   MapContainer,
   TileLayer,
-  Polygon,
   FeatureGroup,
   useMap,
 } from "react-leaflet";
@@ -33,6 +32,166 @@ function MapInitializer({ onReady }: { onReady: (m: LeafletMap) => void }) {
     const t = setTimeout(() => map.invalidateSize(), 150);
     return () => clearTimeout(t);
   }, [map, onReady]);
+  return null;
+}
+
+/**
+ * VectorTileLayer - Component to render polygons as vector tiles
+ */
+function VectorTileLayer({ 
+  polygons, 
+  onPolygonClick,
+  activeOverlays 
+}: { 
+  polygons: PolygonData[];
+  onPolygonClick: (polygon: PolygonData) => void;
+  activeOverlays: string[];
+}) {
+  const map = useMap();
+  const vectorGridRef = useRef<any>(null);
+
+  useEffect(() => {
+    // Load required scripts if not already loaded
+    const loadScripts = async () => {
+      // Load geojson-vt
+      if (!(window as any).geojsonvt) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://unpkg.com/geojson-vt@3.2.1/geojson-vt.js';
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+
+      // Load leaflet-vector-grid
+      if (!(window as any).L.vectorGrid) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://unpkg.com/leaflet.vectorgrid@1.3.0/dist/Leaflet.VectorGrid.bundled.js';
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+    };
+
+    const initVectorTiles = async () => {
+      if (!map || !activeOverlays.includes("claims") || polygons.length === 0) {
+        // Remove existing vector grid if conditions not met
+        if (vectorGridRef.current) {
+          map.removeLayer(vectorGridRef.current);
+          vectorGridRef.current = null;
+        }
+        return;
+      }
+
+      try {
+        await loadScripts();
+
+        const L = (window as any).L;
+        
+        // Convert polygons to GeoJSON
+        const geojsonData = {
+          type: 'FeatureCollection',
+          features: polygons.map(p => ({
+            type: 'Feature',
+            properties: {
+              id: p.id,
+              type: p.type,
+              ...p.properties
+            },
+            geometry: {
+              type: 'Polygon',
+              coordinates: [p.coords.map(coord => {
+                const [lat, lng] = coord as [number, number];
+                return [lng, lat]; // GeoJSON uses [lng, lat]
+              })]
+            }
+          }))
+        };
+
+        // Remove existing layer
+        if (vectorGridRef.current) {
+          map.removeLayer(vectorGridRef.current);
+        }
+
+        // Create vector tile options
+        const vectorTileOptions = {
+          rendererFactory: L.canvas.tile,
+          vectorTileLayerStyles: {
+            sliced: (properties: any) => {
+              const type = properties.type || 'default';
+              
+              // Color based on type
+              const getStyle = (type: string) => {
+                switch (type) {
+                  case "IFR":
+                  case "forest":
+                  case "Community Forest Lands":
+                    return {
+                      color: "#228B22",
+                      fillColor: "#228B22",
+                    };
+                  case "CFR":
+                    return {
+                      color: "#2b6cb0",
+                      fillColor: "#2b6cb0",
+                    };
+                  default:
+                    return {
+                      color: "#6B7280",
+                      fillColor: "#6B7280",
+                    };
+                }
+              };
+
+              const style = getStyle(type);
+              return {
+                weight: 2,
+                opacity: 0.8,
+                fillOpacity: 0.3,
+                fill: true,
+                ...style
+              };
+            }
+          },
+          interactive: true,
+          getFeatureId: (f: any) => f.properties.id
+        };
+
+        // Create vector grid layer
+        const vectorGrid = L.vectorGrid.slicer(geojsonData, vectorTileOptions);
+        
+        // Add click handler
+        vectorGrid.on('click', (e: any) => {
+          if (e.layer && e.layer.properties) {
+            const polygonId = e.layer.properties.id;
+            const polygon = polygons.find(p => p.id === polygonId);
+            if (polygon) {
+              onPolygonClick(polygon);
+            }
+          }
+        });
+
+        vectorGrid.addTo(map);
+        vectorGridRef.current = vectorGrid;
+
+      } catch (error) {
+        console.error('Error initializing vector tiles:', error);
+      }
+    };
+
+    initVectorTiles();
+
+    return () => {
+      if (vectorGridRef.current && map) {
+        map.removeLayer(vectorGridRef.current);
+        vectorGridRef.current = null;
+      }
+    };
+  }, [map, polygons, onPolygonClick, activeOverlays]);
+
   return null;
 }
 
@@ -393,35 +552,6 @@ export default function AtlasMap() {
     };
   };
 
-  // Get polygon style based on type
-  const getPolygonStyle = (type: string) => {
-    switch (type) {
-      case "IFR":
-      case "forest":
-      case "Community Forest Lands":
-        return {
-          color: "#228B22",
-          weight: 2,
-          opacity: 0.8,
-          fillOpacity: 0.3,
-        };
-      case "CFR":
-        return {
-          color: "#2b6cb0",
-          weight: 2,
-          opacity: 0.8,
-          fillOpacity: 0.3,
-        };
-      default:
-        return {
-          color: "#6B7280",
-          weight: 2,
-          opacity: 0.8,
-          fillOpacity: 0.2,
-        };
-    }
-  };
-
   return (
     <div className="flex h-full bg-base-100">
       <AtlasSidebar
@@ -531,6 +661,19 @@ export default function AtlasMap() {
               {baseLayer === "satellite" && (
                 <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
               )}
+              
+              {/* Vector Tile Layer for efficient rendering */}
+              <VectorTileLayer 
+                polygons={polygons}
+                onPolygonClick={(polygon) => {
+                  setSelectedPolygon(polygon);
+                  if (isEditMode) {
+                    handleEditClaim(polygon);
+                  }
+                }}
+                activeOverlays={activeOverlays}
+              />
+              
               <FeatureGroup ref={fgRef}>
                 <EditControl
                   position="topright"
@@ -550,38 +693,6 @@ export default function AtlasMap() {
                     edit: {},
                   } : undefined}
                 />
-                {/* Claims overlay */}
-                {activeOverlays.includes("claims") &&
-                  polygons.map((p) => (
-                    <Polygon
-                      key={p.id}
-                      positions={p.coords as LatLngExpression[]}
-                      pathOptions={getPolygonStyle(p.type)}
-                      eventHandlers={{
-                        click: () => {
-                          setSelectedPolygon(p);
-                          if (isEditMode) {
-                            handleEditClaim(p);
-                          }
-                        },
-                      }}
-                    />
-                  ))}
-                {/* Future overlays: forest, water, etc. */}
-                {activeOverlays.includes("forest") && (
-                  // Mock: draw a sample forest polygon (replace with real data)
-                  <Polygon
-                    positions={[[21.01, 81.01], [21.03, 81.01], [21.03, 81.03], [21.01, 81.03]] as LatLngExpression[]}
-                    pathOptions={{ color: "#228B22", weight: 1, fillOpacity: 0.1 }}
-                  />
-                )}
-                {activeOverlays.includes("water") && (
-                  // Mock: draw a sample water body polygon (replace with real data)
-                  <Polygon
-                    positions={[[21.015, 81.015], [21.025, 81.015], [21.025, 81.025], [21.015, 81.025]] as LatLngExpression[]}
-                    pathOptions={{ color: "#1E90FF", weight: 1, fillOpacity: 0.15 }}
-                  />
-                )}
               </FeatureGroup>
             </MapContainer>
           </div>
