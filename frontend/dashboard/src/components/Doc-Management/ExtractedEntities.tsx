@@ -49,7 +49,7 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
     }
   };
 
-  const renderEntityValue = (key: string, value: any): React.ReactNode => {
+  const renderEntityValue = (_key: string, value: any): React.ReactNode => {
     if (value === null || value === undefined || value === '') {
       return (
         <span className="text-gray-400 italic">Not found</span>
