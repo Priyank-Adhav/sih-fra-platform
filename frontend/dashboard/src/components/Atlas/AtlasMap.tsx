@@ -522,7 +522,7 @@ export default function AtlasMap() {
                 </div>
               </div>
             )}
-            <MapContainer center={[21.02, 81.02]} zoom={12} className="h-full w-full rounded-b-box">
+            <MapContainer center={[21.02, 81.02]} zoom={12} className="h-full w-full rounded-b-box" preferCanvas={true}>
               <MapInitializer onReady={(m) => setMapInstance(m)} />
               {/* Base Layers */}
               {baseLayer === "osm" && (
