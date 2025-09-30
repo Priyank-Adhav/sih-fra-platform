@@ -1,0 +1,232 @@
+{
+  "api_name": "DSS Engine API",
+  "version": "1.0.0",
+  "description": "Decision Support System API for FRA Patta and Village Scheme Recommendations",
+  "base_url": "http://localhost:8000",
+  "endpoints": {
+    "get_recommendations": {
+      "path": "/api/dss/recommend",
+      "method": "GET",
+      "description": "Get scheme recommendations for a specific village",
+      "parameters": {
+        "village_id": {
+          "type": "string",
+          "required": true,
+          "description": "Unique identifier for the village",
+          "example": "village_001"
+        }
+      },
+      "response": {
+        "status_code": 200,
+        "content_type": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "village_id": {
+              "type": "string",
+              "description": "The village ID that was queried"
+            },
+            "recommendations": {
+              "type": "array",
+              "description": "List of recommended schemes",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "scheme": {
+                    "type": "string",
+                    "description": "Name of the recommended scheme"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "description": "Explanation for why this scheme is recommended"
+                  },
+                  "score": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Priority score for the recommendation (0-1)"
+                  },
+                  "priority": {
+                    "type": "string",
+                    "enum": ["high", "medium", "low"],
+                    "description": "Priority level of the recommendation"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Detailed description of the scheme"
+                  },
+                  "estimated_cost": {
+                    "type": "number",
+                    "description": "Estimated cost per unit (household/person/etc.)"
+                  },
+                  "duration_months": {
+                    "type": "integer",
+                    "description": "Expected duration of the scheme in months"
+                  }
+                },
+                "required": ["scheme", "reason", "score", "priority"]
+              }
+            },
+            "total_schemes": {
+              "type": "integer",
+              "description": "Total number of recommended schemes"
+            },
+            "generated_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp when recommendations were generated"
+            }
+          },
+          "required": ["village_id", "recommendations", "total_schemes", "generated_at"]
+        }
+      },
+      "example_response": {
+        "village_id": "village_001",
+        "recommendations": [
+          {
+            "scheme": "Jal Jeevan Mission",
+            "reason": "Very low water index (0.20)",
+            "score": 0.9,
+            "priority": "high",
+            "description": "Providing tap water connection to every rural household",
+            "estimated_cost": 50000,
+            "duration_months": 24
+          },
+          {
+            "scheme": "MGNREGA",
+            "reason": "High poverty level (0.30); Low employment rate (0.35)",
+            "score": 0.8,
+            "priority": "high",
+            "description": "Mahatma Gandhi National Rural Employment Guarantee Act",
+            "estimated_cost": 20000,
+            "duration_months": 12
+          }
+        ],
+        "total_schemes": 2,
+        "generated_at": "2024-01-15T10:30:00Z"
+      }
+    },
+    "get_villages": {
+      "path": "/api/dss/villages",
+      "method": "GET",
+      "description": "Get list of available villages in the dataset",
+      "parameters": {},
+      "response": {
+        "status_code": 200,
+        "content_type": "application/json",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Village ID"
+          }
+        },
+        "example_response": [
+          "village_001",
+          "village_002",
+          "village_003"
+        ]
+      }
+    },
+    "get_schemes": {
+      "path": "/api/dss/schemes",
+      "method": "GET",
+      "description": "Get list of available schemes",
+      "parameters": {},
+      "response": {
+        "status_code": 200,
+        "content_type": "application/json",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "scheme_id": {
+                "type": "string",
+                "description": "Unique identifier for the scheme"
+              },
+              "name": {
+                "type": "string",
+                "description": "Name of the scheme"
+              },
+              "category": {
+                "type": "string",
+                "description": "Category of the scheme"
+              }
+            },
+            "required": ["scheme_id", "name", "category"]
+          }
+        },
+        "example_response": [
+          {
+            "scheme_id": "scheme_001",
+            "name": "Jal Jeevan Mission",
+            "category": "Water & Sanitation"
+          },
+          {
+            "scheme_id": "scheme_002",
+            "name": "MGNREGA",
+            "category": "Employment"
+          }
+        ]
+      }
+    }
+  },
+  "error_responses": {
+    "404": {
+      "description": "Village not found",
+      "content_type": "application/json",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string",
+            "description": "Error message"
+          }
+        },
+        "example": {
+          "detail": "Village with ID 'invalid_id' not found"
+        }
+      }
+    },
+    "500": {
+      "description": "Internal server error",
+      "content_type": "application/json",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string",
+            "description": "Error message"
+          }
+        },
+        "example": {
+          "detail": "Internal server error: Database connection failed"
+        }
+      }
+    }
+  },
+  "data_models": {
+    "VillageData": {
+      "description": "Village data structure",
+      "properties": {
+        "village_id": {"type": "string", "description": "Unique village identifier"},
+        "village_name": {"type": "string", "description": "Name of the village"},
+        "state": {"type": "string", "description": "State where village is located"},
+        "district": {"type": "string", "description": "District where village is located"},
+        "population": {"type": "integer", "description": "Total population of the village"},
+        "water_index": {"type": "number", "minimum": 0, "maximum": 1, "description": "Water availability index (0-1)"},
+        "literacy_rate": {"type": "number", "minimum": 0, "maximum": 1, "description": "Literacy rate (0-1)"},
+        "employment_rate": {"type": "number", "minimum": 0, "maximum": 1, "description": "Employment rate (0-1)"},
+        "infrastructure_score": {"type": "number", "minimum": 0, "maximum": 1, "description": "Infrastructure quality score (0-1)"},
+        "agricultural_land_percentage": {"type": "number", "minimum": 0, "maximum": 1, "description": "Percentage of agricultural land (0-1)"},
+        "forest_coverage": {"type": "number", "minimum": 0, "maximum": 1, "description": "Forest coverage percentage (0-1)"},
+        "poverty_index": {"type": "number", "minimum": 0, "maximum": 1, "description": "Poverty level index (0-1)"},
+        "connectivity_score": {"type": "number", "minimum": 0, "maximum": 1, "description": "Connectivity quality score (0-1)"},
+        "health_facilities": {"type": "integer", "description": "Number of health facilities"},
+        "education_facilities": {"type": "integer", "description": "Number of education facilities"},
+        "patta_count": {"type": "integer", "description": "Number of FRA pattas in the village"}
+      }
+    }
+  }
+}
