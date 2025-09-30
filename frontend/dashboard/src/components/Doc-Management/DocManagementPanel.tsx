@@ -51,18 +51,20 @@ export default function DocManagementPanel() {
   };
 
   const handleProcessingComplete = (result: any) => {
+    // Backend now returns camelCase fields directly
     const processedDoc: ProcessedDocument = {
-      id: Date.now().toString(),
+      id: result.id,
       filename: result.filename,
-      extractedText: result.extracted_text,
-      detectedLanguage: result.detected_language,
+      extractedText: result.extractedText,
+      detectedLanguage: result.detectedLanguage,
       entities: result.entities,
-      processedAt: new Date().toISOString(),
-      aiProvider: result.ai_provider || 'gemini'
+      processedAt: result.processedAt,
+      aiProvider: result.aiProvider
     };
 
     setCurrentDocument(processedDoc);
     setProcessingHistory(prev => [processedDoc, ...prev.slice(0, 9)]);
+    setProcessing(false); // CRITICAL: Stop the loading state
   };
 
   const handleProcessingError = (errorMessage: string) => {
@@ -83,8 +85,8 @@ export default function DocManagementPanel() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 p-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 p-6 overflow-y-auto">
+      <div className="max-w-7xl mx-auto pb-6">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
