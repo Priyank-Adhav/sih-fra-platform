@@ -69,7 +69,7 @@ export default function DashboardShell() {
       {/* Main Content Area */}
       <div className="flex h-[calc(100vh-80px)]">
         <Sidebar active={active} setActive={setActive} />
-        <main className="flex-1 overflow-hidden">
+        <main className="flex-1 overflow-y-auto">
           <Suspense fallback={
             <div className="flex justify-center items-center h-full bg-base-100">
               <div className="text-center">
