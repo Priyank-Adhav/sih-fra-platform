@@ -43,12 +43,6 @@ for service in backend/atlas backend/dss backend/document; do
     fi
 done
 
-# === Set environment variables for backends ===
-export DATABASE_URL=${DATABASE_URL:-"postgresql://priyank:password@localhost:5432/atlas"}
-export PGHOST=${PGHOST:-localhost}
-export PGPASSWORD=${PGPASSWORD:-changeme}
-export FLASK_ENV=${FLASK_ENV:-development}
-
 # === Start backend services and store PIDs ===
 echo "Starting backend services..."
 PIDS=()
