@@ -1,0 +1,103 @@
+services:
+  db:
+    image: postgis/postgis:15-3.3
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-priyank}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-atlas}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/docker/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-priyank} -d ${POSTGRES_DB:-atlas}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "5432:5432"
+
+  atlas:
+    build:
+      context: ./backend/atlas
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # SQLAlchemy/Flask app will read DATABASE_URL
+      DATABASE_URL: postgresql://${POSTGRES_USER:-priyank}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-atlas}
+      FLASK_ENV: ${FLASK_ENV:-development}
+      PGHOST: db
+      PGPASSWORD: ${POSTGRES_PASSWORD:-password}
+    volumes:
+      - ./backend/atlas:/app
+    ports:
+      - "5000:5000"
+    command: ["python", "run.py"]
+
+  dss:
+    build:
+      context: ./backend/dss
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-priyank}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-atlas}
+      PGHOST: db
+      PGPASSWORD: ${POSTGRES_PASSWORD:-password}
+    volumes:
+      - ./backend/dss:/app
+    ports:
+      - "8000:8000"
+
+  document:
+    build:
+      context: ./backend/document
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGHOST: db
+      PGPASSWORD: ${POSTGRES_PASSWORD:-password}
+    volumes:
+      - ./backend/document:/app
+    ports:
+      - "5001:5001"
+
+  frontend:
+    build:
+      context: ./frontend/dashboard
+      dockerfile: Dockerfile
+    depends_on:
+      - atlas
+    ports:
+      - "5173:5173"
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+
+  # Optional one-shot service to run seed.sh against the running DB
+  seed:
+    build:
+      context: ./backend/atlas
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGHOST: db
+      PGPASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_USER: ${POSTGRES_USER:-priyank}
+    volumes:
+      - ./backend/atlas:/app
+    entrypoint: ["/app/seed.sh", "${POSTGRES_USER:-priyank}"]
+    restart: "no"
+
+volumes:
+  postgres_data:
