@@ -3,6 +3,7 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 from ocr_service import extract_text_from_file
 from gemini_ner_service import extract_entities_gemini
 
@@ -87,14 +88,15 @@ def process_document():
             # Step 1: Extract text using OCR with language detection
             ocr_result = extract_text_from_file(filepath)
             extracted_text = ocr_result['text']
-            detected_language = ocr_result['language_name']
+            # Use the language code from OCR result
+            detected_language = ocr_result['detected_language']
             
             if not extracted_text or extracted_text.strip() == '':
                 return jsonify({
                     "error": "No text extracted",
                     "message": "Could not extract any text from the document",
                     "filename": filename,
-                    "detected_language": detected_language
+                    "detectedLanguage": detected_language
                 }), 400
             
             # Step 2: Extract entities using Gemini AI
@@ -103,14 +105,20 @@ def process_document():
             # Clean up temporary file
             os.remove(filepath)
             
-            # Return results
+            # Generate unique ID and timestamp
+            document_id = str(int(datetime.now().timestamp() * 1000))
+            processed_at = datetime.now().isoformat()
+            
+            # Return results with camelCase field names matching frontend
             return jsonify({
                 "success": True,
+                "id": document_id,
                 "filename": filename,
-                "extracted_text": extracted_text,
-                "detected_language": detected_language,
+                "extractedText": extracted_text,
+                "detectedLanguage": detected_language,
                 "entities": entities,
-                "ai_provider": "gemini"
+                "processedAt": processed_at,
+                "aiProvider": "gemini"
             })
             
         except Exception as processing_error:
@@ -160,15 +168,24 @@ def extract_text_only():
         try:
             ocr_result = extract_text_from_file(filepath)
             extracted_text = ocr_result['text']
-            detected_language = ocr_result['language_name']
+            # Use the language code from OCR result
+            detected_language = ocr_result['detected_language']
             
             os.remove(filepath)
             
+            # Generate unique ID and timestamp
+            document_id = str(int(datetime.now().timestamp() * 1000))
+            processed_at = datetime.now().isoformat()
+            
+            # Return with camelCase field names
             return jsonify({
                 "success": True,
+                "id": document_id,
                 "filename": filename,
-                "extracted_text": extracted_text,
-                "detected_language": detected_language
+                "extractedText": extracted_text,
+                "detectedLanguage": detected_language,
+                "processedAt": processed_at,
+                "aiProvider": "text-only"
             })
             
         except Exception as processing_error:

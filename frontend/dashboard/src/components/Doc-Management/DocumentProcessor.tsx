@@ -101,11 +101,8 @@ export function DocumentProcessor({
       
       setTimeout(() => {
         setProcessingStep('');
-        onProcessingComplete({
-          ...result,
-          entities: null,
-          ai_provider: 'text-only'
-        });
+        // Backend now returns aiProvider, so we just pass the result through
+        onProcessingComplete(result);
       }, 500);
 
     } catch (error) {
