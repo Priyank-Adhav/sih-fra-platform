@@ -17,6 +17,7 @@ import AtlasSidebar from "./AtlasSidebar";
 import type { ClaimDetails } from "./AtlasSidebar";
 import { LOCATION_FOCUS } from "./AtlasSidebar";
 import ClaimForm, { type ClaimFormData } from "./ClaimForm";
+import { useTranslation } from "react-i18next";
 
 /* react-leaflet-draw has weak/absent types — silence TS for the import */
  // @ts-ignore
@@ -53,6 +54,8 @@ export default function AtlasMap() {
   const [showClaimForm, setShowClaimForm] = useState(false);
   const [pendingPolygon, setPendingPolygon] = useState<PolygonData | null>(null);
   const [editingPolygon, setEditingPolygon] = useState<PolygonData | null>(null);
+  
+  const { t } = useTranslation();
 
   useEffect(() => {
     const loadPolygons = async () => {
@@ -68,13 +71,13 @@ export default function AtlasMap() {
         setPolygons(list);
       } catch (err) {
         console.warn("Fetching polygons from API failed, falling back to mock:", err);
-        setError("API connection failed, using local data");
+        setError(t('atlas_panel.errors.api_failed'));
         try {
           const mockList = await atlasService.fetchPolygonsMock();
           setPolygons(mockList);
         } catch (mockErr) {
           console.error("Mock data also failed:", mockErr);
-          setError("Failed to load polygon data");
+          setError(t('atlas_panel.errors.load_failed'));
         }
       } finally {
         setLoading(false);
@@ -82,7 +85,7 @@ export default function AtlasMap() {
     };
 
     loadPolygons();
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     if (!mapInstance) return;
@@ -279,7 +282,7 @@ export default function AtlasMap() {
         console.error("Mock create also failed:", mockErr);
         // Remove from UI if both API and mock failed
         setPolygons(prev => prev.filter(p => p.id !== finalPolygon.id));
-        alert("Failed to save polygon. Please try again.");
+        alert(t('atlas_panel.errors.save_failed'));
         return;
       }
     }
@@ -336,7 +339,7 @@ export default function AtlasMap() {
         console.warn("Update mock also failed:", mockErr);
         // Revert the UI change if both failed
         setPolygons(prev => prev.map(p => p.id === editingPolygon.id ? editingPolygon : p));
-        alert("Failed to update polygon. Please try again.");
+        alert(t('atlas_panel.errors.update_failed'));
         return;
       }
     }
@@ -443,13 +446,13 @@ export default function AtlasMap() {
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
-              Interactive Atlas
+              {t('atlas_panel.interactive_atlas')}
             </div>
             <div className="text-sm text-base-content/70">
               {loading ? (
                 <span className="loading loading-dots loading-sm"></span>
               ) : (
-                `${polygons.length} claims loaded`
+                t('atlas_panel.claims_loaded', { count: polygons.length })
               )}
             </div>
             {error && (
@@ -465,7 +468,7 @@ export default function AtlasMap() {
                 <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                 </svg>
-                Drawing Mode
+                {t('atlas_panel.controls.drawing_mode')}
               </div>
             )}
             {isEditMode && (
@@ -473,7 +476,7 @@ export default function AtlasMap() {
                 <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
                 </svg>
-                Edit Mode
+                {t('atlas_panel.controls.edit_mode')}
               </div>
             )}
           </div>
@@ -486,7 +489,7 @@ export default function AtlasMap() {
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
               </svg>
-              {isDrawingMode ? 'Exit Drawing' : 'Draw Claim'}
+              {isDrawingMode ? t('atlas_panel.controls.exit_drawing') : t('atlas_panel.controls.draw_claim')}
             </button>
             <button 
               onClick={toggleEditMode}
@@ -496,7 +499,7 @@ export default function AtlasMap() {
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
               </svg>
-              {isEditMode ? 'Exit Edit' : 'Edit Claims'}
+              {isEditMode ? t('atlas_panel.controls.exit_edit') : t('atlas_panel.controls.edit_claims')}
             </button>
             <button 
               onClick={handleExportPNG} 
@@ -506,7 +509,7 @@ export default function AtlasMap() {
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
-              Export PNG
+              {t('atlas_panel.controls.export_png')}
             </button>
           </div>
         </div>
@@ -518,7 +521,7 @@ export default function AtlasMap() {
               <div className="absolute inset-0 bg-base-100/80 z-50 flex items-center justify-center">
                 <div className="flex flex-col items-center gap-4">
                   <span className="loading loading-spinner loading-lg"></span>
-                  <p className="text-sm text-base-content/70">Loading polygon data...</p>
+                  <p className="text-sm text-base-content/70">{t('atlas_panel.loading_polygons')}</p>
                 </div>
               </div>
             )}

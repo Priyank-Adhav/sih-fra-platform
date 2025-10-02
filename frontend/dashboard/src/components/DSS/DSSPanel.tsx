@@ -3,6 +3,7 @@ import { VillageSelector } from './VillageSelector';
 import { RecommendationsList } from './RecommendationsList';
 import { DSSStats } from './DSSStats';
 import { QuickActions } from './QuickActions';
+import { useTranslation } from "react-i18next";
 
 interface Recommendation {
   scheme: string;
@@ -27,6 +28,7 @@ export default function DSSPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const fetchRecommendations = async (villageId: string) => {
     if (!villageId) return;
@@ -99,10 +101,10 @@ export default function DSSPanel() {
               </svg>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Decision Support System</h1>
-              <p className="text-gray-600">AI-powered scheme recommendations for villages</p>
+              <h1 className="text-3xl font-bold text-gray-900">{t('dss_panel.title')}</h1>
+              <p className="text-gray-600">{t('dss_panel.subtitle')}</p>
               {lastUpdated && (
-                <p className="text-sm text-gray-500 mt-1">Last updated: {lastUpdated}</p>
+                <p className="text-sm text-gray-500 mt-1">{t('dss_panel.last_updated')}: {lastUpdated}</p>
               )}
             </div>
           </div>
@@ -124,7 +126,7 @@ export default function DSSPanel() {
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
-              <span className="font-medium">Error: {error}</span>
+              <span className="font-medium">{t('dss_panel.error')}: {error}</span>
             </div>
           </div>
         )}
@@ -160,7 +162,7 @@ export default function DSSPanel() {
 
         {/* API Status Footer */}
         <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Connected to DSS Engine API • Real-time recommendations</p>
+          <p>{t('dss_panel.api_status')}</p>
         </div>
       </div>
     </div>

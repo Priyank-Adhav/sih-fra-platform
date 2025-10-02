@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 
 interface StatsData {
   total: number;
@@ -14,6 +15,8 @@ interface DSSStatsProps {
 }
 
 export function DSSStats({ stats, loading }: DSSStatsProps) {
+  const { t } = useTranslation();
+
   const StatCard = ({ 
     title, 
     value, 
@@ -71,9 +74,9 @@ export function DSSStats({ stats, loading }: DSSStatsProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
       <StatCard
-        title="Total Schemes"
+        title={t("dss_stats.total_schemes")}
         value={stats.total}
-        description="Recommended schemes"
+        description={t("dss_stats.recommended_schemes")}
         loading={loading}
         icon={
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
@@ -84,9 +87,9 @@ export function DSSStats({ stats, loading }: DSSStatsProps) {
       />
 
       <StatCard
-        title="High Priority"
+        title={t("dss_stats.high_priority")}
         value={stats.high}
-        description="Urgent recommendations"
+        description={t("dss_stats.urgent_recommendations")}
         loading={loading}
         icon={
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
@@ -97,9 +100,9 @@ export function DSSStats({ stats, loading }: DSSStatsProps) {
       />
 
       <StatCard
-        title="Medium Priority"
+        title={t("dss_stats.medium_priority")}
         value={stats.medium}
-        description="Standard recommendations"
+        description={t("dss_stats.standard_recommendations")}
         loading={loading}
         icon={
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
@@ -110,9 +113,9 @@ export function DSSStats({ stats, loading }: DSSStatsProps) {
       />
 
       <StatCard
-        title="Low Priority"
+        title={t("dss_stats.low_priority")}
         value={stats.low}
-        description="Optional schemes"
+        description={t("dss_stats.optional_schemes")}
         loading={loading}
         icon={
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
@@ -123,9 +126,9 @@ export function DSSStats({ stats, loading }: DSSStatsProps) {
       />
 
       <StatCard
-        title="Average Score"
+        title={t("dss_stats.average_score")}
         value={loading ? "-" : `${Math.round(stats.avgScore * 100)}%`}
-        description="Match confidence"
+        description={t("dss_stats.match_confidence")}
         loading={loading}
         icon={
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">

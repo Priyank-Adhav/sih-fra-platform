@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface Recommendation {
   scheme: string;
   reason: string;
@@ -15,6 +17,8 @@ interface RecommendationsListProps {
 }
 
 export function RecommendationsList({ recommendations, loading, selectedVillage }: RecommendationsListProps) {
+  const { t } = useTranslation();
+
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'HIGH':
@@ -59,6 +63,19 @@ export function RecommendationsList({ recommendations, loading, selectedVillage 
     }).format(amount);
   };
 
+  const getTranslatedPriority = (priority: string) => {
+    switch (priority) {
+      case 'HIGH':
+        return t('recommendations_list.priority.high');
+      case 'MEDIUM':
+        return t('recommendations_list.priority.medium');
+      case 'LOW':
+        return t('recommendations_list.priority.low');
+      default:
+        return priority;
+    }
+  };
+
   if (!selectedVillage) {
     return (
       <div className="bg-white rounded-xl shadow-lg p-8">
@@ -68,8 +85,8 @@ export function RecommendationsList({ recommendations, loading, selectedVillage 
               <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">Select a Village</h3>
-          <p className="text-gray-600">Choose a village from the selector above to get personalized scheme recommendations based on the village's characteristics and needs.</p>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">{t('recommendations_list.select_village.title')}</h3>
+          <p className="text-gray-600">{t('recommendations_list.select_village.message')}</p>
         </div>
       </div>
     );
@@ -86,8 +103,8 @@ export function RecommendationsList({ recommendations, loading, selectedVillage 
               </svg>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-gray-900">Scheme Recommendations</h2>
-              <p className="text-gray-600">For village: {selectedVillage}</p>
+              <h2 className="text-xl font-semibold text-gray-900">{t('recommendations_list.title')}</h2>
+              <p className="text-gray-600">{t('recommendations_list.for_village')}: {selectedVillage}</p>
             </div>
           </div>
           {loading && (
@@ -117,8 +134,8 @@ export function RecommendationsList({ recommendations, loading, selectedVillage 
                 <path fillRule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h12a1 1 0 001-1V7l-7-5zM10 12a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No Recommendations</h3>
-            <p className="text-gray-600">No suitable schemes found for this village based on current criteria.</p>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">{t('recommendations_list.no_recommendations.title')}</h3>
+            <p className="text-gray-600">{t('recommendations_list.no_recommendations.message')}</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -130,7 +147,7 @@ export function RecommendationsList({ recommendations, loading, selectedVillage 
                       <h3 className="text-lg font-semibold text-gray-900">{rec.scheme}</h3>
                       <div className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium border ${getPriorityColor(rec.priority)}`}>
                         {getPriorityIcon(rec.priority)}
-                        {rec.priority}
+                        {getTranslatedPriority(rec.priority)}
                       </div>
                     </div>
                     <p className="text-gray-700 mb-3">{rec.description}</p>
@@ -138,14 +155,14 @@ export function RecommendationsList({ recommendations, loading, selectedVillage 
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                       </svg>
-                      <span className="font-medium">Reason:</span> {rec.reason}
+                      <span className="font-medium">{t('recommendations_list.reason')}:</span> {rec.reason}
                     </div>
                   </div>
                   <div className="ml-4 text-right">
                     <div className="text-2xl font-bold text-indigo-600 mb-1">
                       {Math.round(rec.score * 100)}%
                     </div>
-                    <div className="text-xs text-gray-500">Match Score</div>
+                    <div className="text-xs text-gray-500">{t('recommendations_list.match_score')}</div>
                   </div>
                 </div>
                 
@@ -161,7 +178,7 @@ export function RecommendationsList({ recommendations, loading, selectedVillage 
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
-                    <span>{rec.duration_months} months</span>
+                    <span>{rec.duration_months} {t('recommendations_list.scheme_details.duration')}</span>
                   </div>
                 </div>
               </div>

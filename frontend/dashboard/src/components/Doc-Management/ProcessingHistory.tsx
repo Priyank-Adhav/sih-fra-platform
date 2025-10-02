@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface ProcessedDocument {
   id: string;
   filename: string;
@@ -15,6 +17,8 @@ interface ProcessingHistoryProps {
 }
 
 export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }: ProcessingHistoryProps) {
+  const { t } = useTranslation();
+
   const getLanguageFlag = (langCode: string) => {
     const flags = {
       'eng': '🇺🇸',
@@ -47,10 +51,10 @@ export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }
     const diffHours = Math.floor(diffMs / 3600000);
     const diffDays = Math.floor(diffMs / 86400000);
 
-    if (diffMins < 1) return 'Just now';
-    if (diffMins < 60) return `${diffMins}m ago`;
-    if (diffHours < 24) return `${diffHours}h ago`;
-    if (diffDays < 7) return `${diffDays}d ago`;
+    if (diffMins < 1) return t("processing_history.time_just_now");
+    if (diffMins < 60) return t("processing_history.time_minutes_ago", { count: diffMins });
+    if (diffHours < 24) return t("processing_history.time_hours_ago", { count: diffHours });
+    if (diffDays < 7) return t("processing_history.time_days_ago", { count: diffDays });
     return date.toLocaleDateString();
   };
 
@@ -64,8 +68,8 @@ export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }
             </svg>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-gray-900">Processing History</h2>
-            <p className="text-gray-600">Recent document processing results</p>
+            <h2 className="text-xl font-semibold text-gray-900">{t("processing_history.title")}</h2>
+            <p className="text-gray-600">{t("processing_history.subtitle")}</p>
           </div>
         </div>
 
@@ -75,8 +79,8 @@ export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
             </svg>
           </div>
-          <h3 className="text-sm font-medium text-gray-900 mb-1">No History Yet</h3>
-          <p className="text-sm text-gray-600">Processed documents will appear here</p>
+          <h3 className="text-sm font-medium text-gray-900 mb-1">{t("processing_history.no_history")}</h3>
+          <p className="text-sm text-gray-600">{t("processing_history.no_history_message")}</p>
         </div>
       </div>
     );
@@ -91,8 +95,8 @@ export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }
           </svg>
         </div>
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">Processing History</h2>
-          <p className="text-gray-600">{history.length} processed documents</p>
+          <h2 className="text-xl font-semibold text-gray-900">{t("processing_history.title")}</h2>
+          <p className="text-gray-600">{t("processing_history.documents_count", { count: history.length })}</p>
         </div>
       </div>
 
@@ -116,7 +120,7 @@ export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }
                   </h3>
                   {currentDocumentId === doc.id && (
                     <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-100 text-orange-800">
-                      Active
+                      {t("processing_history.active")}
                     </span>
                   )}
                 </div>
@@ -139,10 +143,10 @@ export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }
                     </svg>
                     <span>
                       {doc.aiProvider === 'text-only' 
-                        ? 'Text Only' 
+                        ? t("processing_history.text_only")
                         : doc.entities && !doc.entities.error
-                          ? `${Object.keys(doc.entities).length} entities`
-                          : 'Entities failed'
+                          ? t("processing_history.entities_count", { count: Object.keys(doc.entities).length })
+                          : t("processing_history.entities_failed")
                       }
                     </span>
                   </div>
@@ -150,7 +154,7 @@ export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }
 
                 {doc.entities && doc.entities.error && (
                   <div className="mt-2 text-xs text-red-600 bg-red-50 px-2 py-1 rounded">
-                    Entity extraction failed
+                    {t("processing_history.entity_extraction_failed")}
                   </div>
                 )}
               </div>
@@ -167,7 +171,7 @@ export function ProcessingHistory({ history, onLoadDocument, currentDocumentId }
 
       <div className="mt-4 pt-4 border-t border-gray-100">
         <div className="text-xs text-gray-500 text-center">
-          Click on any document to view its results
+          {t("processing_history.click_to_view")}
         </div>
       </div>
     </div>

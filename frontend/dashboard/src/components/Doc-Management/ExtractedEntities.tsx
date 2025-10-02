@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from "react-i18next";
 
 interface ExtractedEntitiesProps {
   document: {
@@ -16,6 +17,7 @@ interface ExtractedEntitiesProps {
 
 export function ExtractedEntities({ document, onClear, processing }: ExtractedEntitiesProps) {
   const [activeTab, setActiveTab] = useState<'entities' | 'text'>('entities');
+  const { t } = useTranslation();
 
   const exportAsJSON = () => {
     if (!document) return;
@@ -31,19 +33,18 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
 
     const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-    const a = window.document.createElement('a'); // Use window.document to avoid conflict
+    const a = window.document.createElement('a');
     a.href = url;
     a.download = `extracted-data-${document.id}.json`;
-    window.document.body.appendChild(a); // Use window.document to avoid conflict
+    window.document.body.appendChild(a);
     a.click();
-    window.document.body.removeChild(a); // Use window.document to avoid conflict
+    window.document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
   const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      // You could add a toast notification here
     } catch (err) {
       console.error('Failed to copy text: ', err);
     }
@@ -52,11 +53,10 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
   const renderEntityValue = (_key: string, value: any): React.ReactNode => {
     if (value === null || value === undefined || value === '') {
       return (
-        <span className="text-gray-400 italic">Not found</span>
+        <span className="text-gray-400 italic">{t('extracted_entities.entities.not_found')}</span>
       );
     }
 
-    // Handle arrays and objects
     if (Array.isArray(value)) {
       return (
         <span className="text-gray-900 font-medium">{value.join(', ')}</span>
@@ -113,7 +113,6 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
   };
 
   const formatEntityKey = (key: string) => {
-    // Convert camelCase or snake_case to readable format
     return key
       .replace(/([A-Z])/g, ' $1')
       .replace(/_/g, ' ')
@@ -127,8 +126,8 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
         <div className="flex items-center justify-center py-12">
           <div className="text-center">
             <div className="animate-spin h-8 w-8 border-4 border-emerald-200 border-t-emerald-600 rounded-full mx-auto mb-4"></div>
-            <h3 className="text-lg font-medium text-gray-900">Processing Document</h3>
-            <p className="text-gray-600">Please wait while we extract text and entities...</p>
+            <h3 className="text-lg font-medium text-gray-900">{t('extracted_entities.processing.title')}</h3>
+            <p className="text-gray-600">{t('extracted_entities.processing.message')}</p>
           </div>
         </div>
       </div>
@@ -144,8 +143,8 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
               <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
             </svg>
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">No Document Processed</h3>
-          <p className="text-gray-600">Upload and process a document to see extracted entities and text here.</p>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">{t('extracted_entities.no_document.title')}</h3>
+          <p className="text-gray-600">{t('extracted_entities.no_document.message')}</p>
         </div>
       </div>
     );
@@ -163,7 +162,7 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
               </svg>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-gray-900">Extraction Results</h2>
+              <h2 className="text-xl font-semibold text-gray-900">{t('extracted_entities.title')}</h2>
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-sm text-gray-600">{document.filename}</span>
                 <span className="text-gray-400">•</span>
@@ -183,7 +182,7 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
-              Export
+              {t('extracted_entities.actions.export')}
             </button>
             <button
               onClick={onClear}
@@ -192,7 +191,7 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
-              Clear
+              {t('extracted_entities.actions.clear')}
             </button>
           </div>
         </div>
@@ -213,7 +212,7 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
               </svg>
-              Extracted Entities
+              {t('extracted_entities.tabs.entities')}
             </div>
           </button>
           <button
@@ -228,7 +227,7 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
               </svg>
-              Extracted Text
+              {t('extracted_entities.tabs.text')}
             </div>
           </button>
         </nav>
@@ -253,7 +252,7 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
                         <button
                           onClick={() => copyToClipboard(getStringValue(value))}
                           className="ml-2 p-1 text-gray-400 hover:text-gray-600 transition-colors duration-200"
-                          title="Copy to clipboard"
+                          title={t('extracted_entities.actions.copy_to_clipboard')}
                         >
                           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
@@ -272,13 +271,15 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
                   <div>
-                    <h3 className="font-medium text-red-900">Entity Extraction Error</h3>
+                    <h3 className="font-medium text-red-900">{t('extracted_entities.entities.error.title')}</h3>
                     <p className="text-red-700 text-sm mt-1">
                       {document.entities.message || document.entities.error}
                     </p>
                     {document.entities.raw_output && (
                       <details className="mt-2">
-                        <summary className="text-red-700 text-sm cursor-pointer">Show raw output</summary>
+                        <summary className="text-red-700 text-sm cursor-pointer">
+                          {t('extracted_entities.entities.error.show_raw')}
+                        </summary>
                         <pre className="text-xs text-red-600 mt-1 whitespace-pre-wrap bg-red-100 p-2 rounded">
                           {document.entities.raw_output}
                         </pre>
@@ -294,11 +295,13 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
                     <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <h3 className="text-sm font-medium text-gray-900 mb-1">No Entities Available</h3>
+                <h3 className="text-sm font-medium text-gray-900 mb-1">
+                  {t('extracted_entities.entities.no_entities.title')}
+                </h3>
                 <p className="text-sm text-gray-600">
                   {document.aiProvider === 'text-only' 
-                    ? 'Text-only processing was used. Use full processing to extract entities.'
-                    : 'No entities were extracted from this document.'
+                    ? t('extracted_entities.entities.no_entities.text_only')
+                    : t('extracted_entities.entities.no_entities.no_extracted')
                   }
                 </p>
               </div>
@@ -307,7 +310,7 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
         ) : (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-medium text-gray-900">Extracted Text</h3>
+              <h3 className="text-lg font-medium text-gray-900">{t('extracted_entities.text.title')}</h3>
               <button
                 onClick={() => copyToClipboard(document.extractedText)}
                 className="flex items-center gap-2 px-3 py-1.5 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200"
@@ -316,13 +319,13 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
                   <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
                   <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
                 </svg>
-                Copy Text
+                {t('extracted_entities.actions.copy_text')}
               </button>
             </div>
             
             <div className="bg-gray-50 rounded-lg p-4 max-h-96 overflow-y-auto">
               <pre className="whitespace-pre-wrap text-sm text-gray-900 font-mono leading-relaxed">
-                {document.extractedText || 'No text extracted'}
+                {document.extractedText || t('extracted_entities.text.no_text')}
               </pre>
             </div>
           </div>
@@ -333,11 +336,11 @@ export function ExtractedEntities({ document, onClear, processing }: ExtractedEn
       <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
         <div className="flex items-center justify-between text-xs text-gray-500">
           <div>
-            Processed: {new Date(document.processedAt).toLocaleString()}
+            {t('extracted_entities.footer.processed')}: {new Date(document.processedAt).toLocaleString()}
           </div>
           <div className="flex items-center gap-4">
-            <span>Language: {getLanguageName(document.detectedLanguage)}</span>
-            <span>Provider: {document.aiProvider}</span>
+            <span>{t('extracted_entities.footer.language')}: {getLanguageName(document.detectedLanguage)}</span>
+            <span>{t('extracted_entities.footer.provider')}: {document.aiProvider}</span>
           </div>
         </div>
       </div>

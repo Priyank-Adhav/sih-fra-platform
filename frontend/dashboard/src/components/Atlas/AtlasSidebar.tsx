@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 // Mock data for states and districts
 const STATES = [
@@ -9,14 +10,14 @@ const STATES = [
 ];
 
 const BASE_LAYERS = [
-  { id: "osm", label: "OpenStreetMap" },
-  { id: "satellite", label: "Satellite" },
+  { id: "osm", labelKey: "openstreetmap" },
+  { id: "satellite", labelKey: "satellite" },
 ];
 
 const OVERLAYS = [
-  { id: "claims", label: "FRA Claims" },
-  { id: "forest", label: "Forest Cover" },
-  { id: "water", label: "Water Bodies" },
+  { id: "claims", labelKey: "fra_claims" },
+  { id: "forest", labelKey: "forest_cover" },
+  { id: "water", labelKey: "water_bodies" },
 ];
 
 // Mock bounding box/centroid for states and districts (for map focus)
@@ -87,6 +88,7 @@ export default function AtlasSidebar({
   onLayerChange,
   onEditClaim,
 }: AtlasSidebarProps) {
+  const { t } = useTranslation();
   const [state, setState] = useState("");
   const [district, setDistrict] = useState("");
   const [baseLayer, setBaseLayer] = useState("osm");
@@ -122,7 +124,7 @@ export default function AtlasSidebar({
           <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
           </svg>
-          Atlas Controls
+          {t("atlas_controls")}
         </h2>
       </div>
       
@@ -134,18 +136,18 @@ export default function AtlasSidebar({
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
-              Location
+              {t("location")}
             </h3>
             <div className="form-control mb-3">
               <label className="label">
-                <span className="label-text text-xs font-medium">State</span>
+                <span className="label-text text-xs font-medium">{t("state")}</span>
               </label>
               <select
                 className="select select-bordered select-sm w-full focus:select-primary"
                 value={state}
                 onChange={handleStateChange}
               >
-                <option value="">Select State</option>
+                <option value="">{t("select_state")}</option>
                 {STATES.map((s) => (
                   <option key={s.name} value={s.name}>
                     {s.name}
@@ -155,7 +157,7 @@ export default function AtlasSidebar({
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-xs font-medium">District</span>
+                <span className="label-text text-xs font-medium">{t("district")}</span>
               </label>
               <select
                 className="select select-bordered select-sm w-full focus:select-primary"
@@ -163,7 +165,7 @@ export default function AtlasSidebar({
                 onChange={handleDistrictChange}
                 disabled={!state}
               >
-                <option value="">Select District</option>
+                <option value="">{t("select_district")}</option>
                 {districts.map((d) => (
                   <option key={d} value={d}>
                     {d}
@@ -181,11 +183,11 @@ export default function AtlasSidebar({
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
               </svg>
-              Map Layers
+              {t("map_layers")}
             </h3>
             <div className="form-control mb-3">
               <label className="label">
-                <span className="label-text text-xs font-medium">Base Layer</span>
+                <span className="label-text text-xs font-medium">{t("base_layer")}</span>
               </label>
               <div className="flex flex-col gap-2">
                 {BASE_LAYERS.map((l) => (
@@ -198,14 +200,14 @@ export default function AtlasSidebar({
                       onChange={handleBaseLayerChange}
                       className="radio radio-primary radio-sm"
                     />
-                    <span className="text-sm">{l.label}</span>
+                    <span className="text-sm">{t(l.labelKey)}</span>
                   </label>
                 ))}
               </div>
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-xs font-medium">Overlays</span>
+                <span className="label-text text-xs font-medium">{t("overlays")}</span>
               </label>
               <div className="flex flex-col gap-2">
                 {OVERLAYS.map((o) => (
@@ -216,7 +218,7 @@ export default function AtlasSidebar({
                       onChange={() => handleOverlayToggle(o.id)}
                       className="checkbox checkbox-primary checkbox-sm"
                     />
-                    <span className="text-sm">{o.label}</span>
+                    <span className="text-sm">{t(o.labelKey)}</span>
                     <div className="ml-auto">
                       <div className={`w-3 h-3 rounded-full ${
                         o.id === 'claims' ? 'bg-primary' : 
@@ -238,12 +240,12 @@ export default function AtlasSidebar({
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
               </svg>
-              Claim Details
+              {t("claim_details")}
             </h3>
             {selectedClaim ? (
               <div className="space-y-3">
                 <div className="flex justify-between items-center mb-3">
-                  <h3 className="card-title text-sm font-semibold mb-0">Claim Details</h3>
+                  <h3 className="card-title text-sm font-semibold mb-0">{t("claim_details")}</h3>
                   {onEditClaim && (
                     <button
                       onClick={() => onEditClaim(selectedClaim)}
@@ -252,24 +254,24 @@ export default function AtlasSidebar({
                       <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
                       </svg>
-                      Edit
+                      {t("edit")}
                     </button>
                   )}
                 </div>
                 <div className="stats shadow-sm">
                   <div className="stat py-2 px-3">
-                    <div className="stat-title text-xs">ID</div>
+                    <div className="stat-title text-xs">{t("id")}</div>
                     <div className="stat-value text-sm">{selectedClaim.id}</div>
                   </div>
                   {selectedClaim.claimant && (
                     <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">Claimant</div>
+                      <div className="stat-title text-xs">{t("claimant")}</div>
                       <div className="stat-value text-sm">{selectedClaim.claimant}</div>
                     </div>
                   )}
                   {selectedClaim.type && (
                     <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">Type</div>
+                      <div className="stat-title text-xs">{t("type")}</div>
                       <div className="stat-value text-sm">
                         <div className="badge badge-primary badge-sm">{selectedClaim.type}</div>
                       </div>
@@ -277,20 +279,20 @@ export default function AtlasSidebar({
                   )}
                   {selectedClaim.area && (
                     <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">Area</div>
+                      <div className="stat-title text-xs">{t("area")}</div>
                       <div className="stat-value text-sm">{selectedClaim.area} ha</div>
                     </div>
                   )}
                   {selectedClaim.status && (
                     <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">Status</div>
+                      <div className="stat-title text-xs">{t("status")}</div>
                       <div className="stat-value text-sm">
                         <div className={`badge badge-sm ${
                           selectedClaim.status === 'approved' ? 'badge-success' :
                           selectedClaim.status === 'pending' ? 'badge-warning' :
                           'badge-error'
                         }`}>
-                          {selectedClaim.status}
+                          {t(selectedClaim.status)}
                         </div>
                       </div>
                     </div>
@@ -302,7 +304,7 @@ export default function AtlasSidebar({
                 <svg className="w-12 h-12 text-base-content/30 mb-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                 </svg>
-                <p className="text-base-content/50 text-sm">Select a polygon to view details</p>
+                <p className="text-base-content/50 text-sm">{t("select_polygon_to_view")}</p>
               </div>
             )}
           </div>
