@@ -125,7 +125,7 @@ export default function AtlasSidebar({
           Atlas Controls
         </h2>
       </div>
-      
+
       <div className="flex-1 overflow-auto p-4 space-y-4">
         {/* Location Selection */}
         <div className="card bg-base-200 shadow-sm">
@@ -218,11 +218,10 @@ export default function AtlasSidebar({
                     />
                     <span className="text-sm">{o.label}</span>
                     <div className="ml-auto">
-                      <div className={`w-3 h-3 rounded-full ${
-                        o.id === 'claims' ? 'bg-primary' : 
-                        o.id === 'forest' ? 'bg-success' : 
-                        'bg-info'
-                      }`}></div>
+                      <div className={`w-3 h-3 rounded-full ${o.id === 'claims' ? 'bg-primary' :
+                          o.id === 'forest' ? 'bg-success' :
+                            'bg-info'
+                        }`}></div>
                     </div>
                   </label>
                 ))}
@@ -241,68 +240,165 @@ export default function AtlasSidebar({
               Claim Details
             </h3>
             {selectedClaim ? (
-              <div className="space-y-3">
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="card-title text-sm font-semibold mb-0">Claim Details</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="card-title text-sm font-semibold mb-0 text-base-content/80">Claim Information</h3>
                   {onEditClaim && (
                     <button
                       onClick={() => onEditClaim(selectedClaim)}
-                      className="btn btn-sm btn-outline btn-primary"
+                      className="btn btn-sm btn-outline btn-primary gap-1.5"
                     >
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>
                       Edit
                     </button>
                   )}
                 </div>
-                <div className="stats shadow-sm">
-                  <div className="stat py-2 px-3">
-                    <div className="stat-title text-xs">ID</div>
-                    <div className="stat-value text-sm">{selectedClaim.id}</div>
-                  </div>
-                  {selectedClaim.claimant && (
-                    <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">Claimant</div>
-                      <div className="stat-value text-sm">{selectedClaim.claimant}</div>
-                    </div>
-                  )}
-                  {selectedClaim.type && (
-                    <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">Type</div>
-                      <div className="stat-value text-sm">
-                        <div className="badge badge-primary badge-sm">{selectedClaim.type}</div>
+
+                {/* Vertical Table with Enhanced Styling */}
+                <div className="space-y-3 bg-base-100 rounded-lg border border-base-300 p-4">
+                  {/* ID Row */}
+                  <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                    <div className="flex-1">
+                      <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                        Claim ID
+                      </label>
+                      <div className="text-sm font-mono font-semibold text-primary bg-primary/10 px-2 py-1 rounded inline-block">
+                        {selectedClaim.id}
                       </div>
                     </div>
-                  )}
-                  {selectedClaim.area && (
-                    <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">Area</div>
-                      <div className="stat-value text-sm">{selectedClaim.area} ha</div>
-                    </div>
-                  )}
-                  {selectedClaim.status && (
-                    <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">Status</div>
-                      <div className="stat-value text-sm">
-                        <div className={`badge badge-sm ${
-                          selectedClaim.status === 'approved' ? 'badge-success' :
-                          selectedClaim.status === 'pending' ? 'badge-warning' :
-                          'badge-error'
-                        }`}>
-                          {selectedClaim.status}
+                  </div>
+
+                  {/* Claimant Row */}
+                  {selectedClaim.claimant && (
+                    <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                      <div className="flex-1">
+                        <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                          Claimant
+                        </label>
+                        <div className="text-sm font-medium text-base-content flex items-center gap-2">
+                          <svg className="w-4 h-4 text-base-content/40" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                          </svg>
+                          {selectedClaim.claimant}
                         </div>
                       </div>
                     </div>
                   )}
+
+                  {/* Type Row */}
+                  {selectedClaim.type && (
+                    <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                      <div className="flex-1">
+                        <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                          Claim Type
+                        </label>
+                        <div className="text-sm">
+                          <div className="badge badge-primary badge-lg font-semibold px-3 py-8">
+                            {selectedClaim.type}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Area Row */}
+                  {selectedClaim.area && (
+                    <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                      <div className="flex-1">
+                        <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                          Area
+                        </label>
+                        <div className="text-sm font-medium text-base-content flex items-center gap-2">
+                          <svg className="w-4 h-4 text-base-content/40" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
+                          </svg>
+                          <span className="font-bold text-base-content">{selectedClaim.area}</span>
+                          <span className="text-base-content/60">hectares</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Status Row */}
+                  {selectedClaim.status && (
+                    <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                      <div className="flex-1">
+                        <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                          Status
+                        </label>
+                        <div className="text-sm">
+                          <div className={`badge badge-lg font-semibold px-3 py-2 capitalize ${selectedClaim.status === 'approved' ? 'badge-success text-success-content' :
+                              selectedClaim.status === 'pending' ? 'badge-warning text-warning-content' :
+                                'badge-error text-error-content'
+                            }`}>
+                            <div className={`w-2 h-2 rounded-full mr-2 ${selectedClaim.status === 'approved' ? 'bg-success-content' :
+                                selectedClaim.status === 'pending' ? 'bg-warning-content' :
+                                  'bg-error-content'
+                              }`}></div>
+                            {selectedClaim.status}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Additional Fields - Dynamic */}
+                  {Object.entries(selectedClaim).map(([key, value]) => {
+                    // Skip already displayed fields and null/undefined values
+                    if (['id', 'claimant', 'type', 'area', 'status'].includes(key) ||
+                      !value ||
+                      typeof value === 'object') {
+                      return null;
+                    }
+
+                    const formattedKey = key.replace(/([A-Z])/g, ' $1').trim().toLowerCase();
+                    const formattedLabel = formattedKey.charAt(0).toUpperCase() + formattedKey.slice(1);
+
+                    return (
+                      <div key={key} className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                        <div className="flex-1">
+                          <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                            {formattedLabel}
+                          </label>
+                          <div className="text-sm font-medium text-base-content">
+                            {String(value)}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Quick Actions */}
+                <div className="flex gap-2 pt-2">
+                  <button className="btn btn-sm btn-outline btn-accent flex-1 gap-2">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    View on Map
+                  </button>
+                  <button className="btn btn-sm btn-outline btn-info gap-2">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Report
+                  </button>
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center h-32 text-center">
-                <svg className="w-12 h-12 text-base-content/30 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                </svg>
-                <p className="text-base-content/50 text-sm">Select a polygon to view details</p>
+              <div className="flex flex-col items-center justify-center h-32 text-center p-6">
+                <div className="relative mb-3">
+                  <div className="w-16 h-16 bg-base-300 rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-base-content/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-base-content/50 text-sm font-medium">Select a claim on the map</p>
+                <p className="text-base-content/30 text-xs mt-1">to view detailed information</p>
               </div>
             )}
           </div>
