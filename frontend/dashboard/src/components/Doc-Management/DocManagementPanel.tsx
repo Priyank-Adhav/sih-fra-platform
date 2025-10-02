@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { DocumentUpload } from './DocumentUpload';
 import { DocumentProcessor } from './DocumentProcessor';
 import { ExtractedEntities } from './ExtractedEntities';
@@ -15,6 +16,7 @@ interface ProcessedDocument {
 }
 
 export default function DocManagementPanel() {
+  const { t } = useTranslation();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [currentDocument, setCurrentDocument] = useState<ProcessedDocument | null>(null);
   const [processing, setProcessing] = useState(false);
@@ -97,8 +99,8 @@ export default function DocManagementPanel() {
                 </svg>
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Document Management</h1>
-                <p className="text-gray-600">OCR processing and AI entity extraction for FRA documents</p>
+                <h1 className="text-3xl font-bold text-gray-900">{t("document_management")}</h1>
+                <p className="text-gray-600">{t("ocr_processing_desc")}</p>
               </div>
             </div>
 
@@ -110,14 +112,14 @@ export default function DocManagementPanel() {
                 'bg-red-500'
               }`} />
               <span className="text-sm text-gray-600">
-                {apiStatus === 'connected' ? 'API Connected' :
-                 apiStatus === 'checking' ? 'Connecting...' :
-                 'API Disconnected'}
+                {apiStatus === 'connected' ? t("api_connected") :
+                 apiStatus === 'checking' ? t("connecting") :
+                 t("api_disconnected")}
               </span>
               <button
                 onClick={checkApiHealth}
                 className="ml-2 p-1 text-gray-500 hover:text-gray-700 rounded"
-                title="Check API Status"
+                title={t("check_api_status")}
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
@@ -135,7 +137,7 @@ export default function DocManagementPanel() {
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
               <div className="flex-1">
-                <h3 className="font-medium text-red-900">Processing Error</h3>
+                <h3 className="font-medium text-red-900">{t("processing_error")}</h3>
                 <p className="text-red-700 text-sm mt-1">{error}</p>
               </div>
               <button
@@ -188,7 +190,7 @@ export default function DocManagementPanel() {
 
         {/* Footer Info */}
         <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Supports PDF, PNG, JPG, JPEG, TIFF, BMP • Multi-language OCR (English, Hindi, Oriya) • AI-powered entity extraction</p>
+          <p>{t("supports_formats")}</p>
         </div>
       </div>
     </div>

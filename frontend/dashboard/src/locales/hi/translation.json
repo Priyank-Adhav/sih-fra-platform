@@ -1,0 +1,324 @@
+{
+  "app_title": "FRA एटलस डैशबोर्ड",
+  "app_subtitle": "वन अधिकार अधिनियम निगरानी प्रणाली",
+  "dashboard": "डैशबोर्ड",
+  "atlas": "एटलस",
+  "dss": "DSS",
+  "documents": "दस्तावेज़",
+  "module": "मॉड्यूल",
+  "loading": "{{module}} लोड हो रहा है...",
+  "online": "ऑनलाइन",
+  "profile": "प्रोफ़ाइल",
+  "settings": "सेटिंग्स",
+  "logout": "लॉगआउट",
+  "navigation": "नेविगेशन",
+  "select_module": "शुरू करने के लिए एक मॉड्यूल चुनें",
+  "main_modules": "मुख्य मॉड्यूल",
+  "interactive_atlas": "इंटरैक्टिव एटलस",
+  "geospatial_analysis": "भू-स्थानिक विश्लेषण",
+  "decision_support": "निर्णय सहायता",
+  "ocr_processing": "OCR और प्रसंस्करण",
+  "quick_actions": "त्वरित कार्रवाई",
+  "export_data": "डेटा निर्यात करें",
+  "export_current_analysis": "वर्तमान विश्लेषण निर्यात करें",
+  "new_report": "नई रिपोर्ट",
+  "create_new_report": "नई रिपोर्ट बनाएं",
+  "help_center": "सहायता केंद्र",
+  "get_support": "सहायता प्राप्त करें",
+  "system_status": "सिस्टम स्थिति",
+  "all_systems": "सभी सिस्टम",
+  "operational": "चालू",
+  "dss_engine": "DSS इंजन",
+  "map_services": "मानचित्र सेवाएं",
+  "ocr_processing_status": "OCR प्रसंस्करण",
+  "database": "डेटाबेस",
+  "fra_platform_version": "FRA प्लेटफॉर्म v2.1",
+  "atlas_controls": "एटलस नियंत्रण",
+  "location": "स्थान",
+  "state": "राज्य",
+  "district": "जिला",
+  "select_state": "राज्य चुनें",
+  "select_district": "जिला चुनें",
+  "map_layers": "मानचित्र परतें",
+  "base_layer": "आधार परत",
+  "openstreetmap": "ओपनस्ट्रीटमैप",
+  "satellite": "उपग्रह",
+  "overlays": "ओवरले",
+  "fra_claims": "FRA दावे",
+  "forest_cover": "वन आवरण",
+  "water_bodies": "जल निकाय",
+  "claim_details": "दावा विवरण",
+  "edit": "संपादित करें",
+  "id": "आईडी",
+  "claimant": "दावेदार",
+  "type": "प्रकार",
+  "area": "क्षेत्रफल",
+  "status": "स्थिति",
+  "approved": "स्वीकृत",
+  "pending": "लंबित",
+  "rejected": "अस्वीकृत",
+  "select_polygon_to_view": "विवरण देखने के लिए एक बहुभुज चुनें",
+  "document_management": "दस्तावेज़ प्रबंधन",
+  "ocr_processing_desc": "FRA दस्तावेज़ों के लिए OCR प्रसंस्करण और AI इकाई निष्कर्षण",
+  "api_connected": "API कनेक्टेड",
+  "connecting": "कनेक्ट हो रहा है...",
+  "api_disconnected": "API डिस्कनेक्टेड",
+  "check_api_status": "API स्थिति जांचें",
+  "processing_error": "प्रसंस्करण त्रुटि",
+  "supports_formats": "PDF, PNG, JPG, JPEG, TIFF, BMP समर्थित • बहु-भाषा OCR (अंग्रेजी, हिंदी, ओड़िया) • AI-संचालित इकाई निष्कर्षण",
+  "process_document": "दस्तावेज़ प्रोसेस करें",
+  "ocr_ai_extraction": "OCR और AI इकाई निष्कर्षण",
+  "processing_document": "दस्तावेज़ प्रोसेस हो रहा है",
+  "uploading_document": "दस्तावेज़ अपलोड हो रहा है...",
+  "extracting_text_ocr": "OCR के साथ टेक्स्ट निकाला जा रहा है...",
+  "extracting_entities_ai": "AI के साथ इकाइयां निकाली जा रही हैं...",
+  "processing_complete": "प्रसंस्करण पूर्ण!",
+  "text_extraction_complete": "टेक्स्ट निष्कर्षण पूर्ण!",
+  "processing_steps": "प्रसंस्करण चरण:",
+  "step_language_detection": "1. स्वचालित भाषा पहचान",
+  "step_ocr_extraction": "2. OCR टेक्स्ट निष्कर्षण",
+  "step_entity_recognition": "3. AI इकाई पहचान",
+  "step_data_structuring": "4. डेटा संरचना",
+  "unknown_type": "अज्ञात प्रकार",
+  "no_document_selected": "कोई दस्तावेज़ नहीं चुना गया",
+  "select_document_to_process": "कृपया प्रोसेस करने के लिए एक दस्तावेज़ चुनें",
+  "api_connection_required": "API कनेक्शन आवश्यक",
+  "ensure_backend_running": "कृपया सुनिश्चित करें कि बैकएंड API चल रहा है और कनेक्टेड है।",
+  "full_processing": "पूर्ण प्रसंस्करण (OCR + AI इकाइयां)",
+  "text_only": "केवल टेक्स्ट (केवल OCR)",
+  "processing_options": "प्रसंस्करण विकल्प:",
+  "full_processing_desc": "पूर्ण प्रसंस्करण: OCR टेक्स्ट निष्कर्षण + AI इकाई पहचान",
+  "text_only_desc": "केवल टेक्स्ट: इकाई विश्लेषण के बिना OCR टेक्स्ट निष्कर्षण",
+  "document_upload": {
+      "title": "दस्तावेज़ अपलोड करें",
+      "subtitle": "प्रोसेस करने के लिए एक फ़ाइल चुनें या खींचें",
+      "file_selected": "फ़ाइल चुनी गई और प्रोसेस के लिए तैयार",
+      "choose_different": "दूसरी फ़ाइल चुनें",
+      "drop_here": "अपनी फ़ाइल यहां छोड़ें",
+      "or_click": "या ब्राउज़ करने के लिए क्लिक करें",
+      "api_not_connected": "API कनेक्टेड नहीं है",
+      "check_api": "कृपया API कनेक्शन जांचें",
+      "supported_formats": "समर्थित फॉर्मेट",
+      "max_file_size": "अधिकतम फ़ाइल आकार",
+      "languages": "भाषाएं",
+      "languages_list": "अंग्रेजी, हिंदी, ओड़िया (स्वतः पहचानी गई)",
+      "errors": {
+        "file_too_large": "फ़ाइल का आकार बहुत बड़ा है। अधिकतम अनुमत: {{maxSize}}MB",
+        "unsupported_format": "असमर्थित फ़ाइल फॉर्मेट। समर्थित फॉर्मेट: {{formats}}"
+      }
+    },
+  "extracted_entities": {
+      "title": "निष्कर्षण परिणाम",
+      "processing": {
+      "title": "दस्तावेज़ प्रोसेस हो रहा है",
+      "message": "कृपया प्रतीक्षा करें जबकि हम टेक्स्ट और इकाइयां निकालते हैं..."
+      },
+      "no_document": {
+      "title": "कोई दस्तावेज़ प्रोसेस नहीं किया गया",
+      "message": "निकाली गई इकाइयां और टेक्स्ट यहां देखने के लिए एक दस्तावेज़ अपलोड और प्रोसेस करें।"
+      },
+      "tabs": {
+      "entities": "निकाली गई इकाइयां",
+      "text": "निकाला गया टेक्स्ट"
+      },
+      "actions": {
+      "export": "निर्यात करें",
+      "clear": "साफ़ करें",
+      "copy_text": "टेक्स्ट कॉपी करें",
+      "copy_to_clipboard": "क्लिपबोर्ड पर कॉपी करें"
+      },
+      "entities": {
+      "not_found": "नहीं मिला",
+      "no_entities": {
+          "title": "कोई इकाइयां उपलब्ध नहीं",
+          "text_only": "केवल-टेक्स्ट प्रसंस्करण का उपयोग किया गया था। इकाइयां निकालने के लिए पूर्ण प्रसंस्करण का उपयोग करें।",
+          "no_extracted": "इस दस्तावेज़ से कोई इकाइयां नहीं निकाली गईं।"
+      },
+      "error": {
+          "title": "इकाई निष्कर्षण त्रुटि",
+          "show_raw": "कच्चा आउटपुट दिखाएं"
+      }
+      },
+      "text": {
+      "title": "निकाला गया टेक्स्ट",
+      "no_text": "कोई टेक्स्ट नहीं निकाला गया"
+      },
+      "footer": {
+      "processed": "प्रोसेस किया गया",
+      "language": "भाषा",
+      "provider": "प्रदाता"
+      }
+  },
+  "processing_history": {
+    "title": "प्रसंस्करण इतिहास",
+    "subtitle": "हाल के दस्तावेज़ प्रसंस्करण परिणाम",
+    "no_history": "अभी तक कोई इतिहास नहीं",
+    "no_history_message": "प्रोसेस किए गए दस्तावेज़ यहां दिखाई देंगे",
+    "documents_count": "{{count}} प्रोसेस किए गए दस्तावेज़",
+    "active": "सक्रिय",
+    "text_only": "केवल टेक्स्ट",
+    "entities_count": "{{count}} इकाइयां",
+    "entities_failed": "इकाइयां विफल",
+    "entity_extraction_failed": "इकाई निष्कर्षण विफल",
+    "click_to_view": "इसके परिणाम देखने के लिए किसी भी दस्तावेज़ पर क्लिक करें",
+    "time_just_now": "अभी",
+    "time_minutes_ago": "{{count}} मि॰ पहले",
+    "time_hours_ago": "{{count}} घं॰ पहले",
+    "time_days_ago": "{{count}} दिन पहले"
+  },
+  "dss_panel": {
+    "title": "निर्णय सहायता प्रणाली",
+    "subtitle": "गांवों के लिए AI-संचालित योजना सिफारिशें",
+    "last_updated": "अंतिम अपडेट",
+    "error": "त्रुटि",
+    "api_status": "DSS इंजन API से कनेक्टेड • रियल-टाइम सिफारिशें",
+    "stats": {
+      "total_schemes": "कुल योजनाएं",
+      "high_priority": "उच्च प्राथमिकता",
+      "medium_priority": "मध्यम प्राथमिकता",
+      "low_priority": "निम्न प्राथमिकता",
+      "avg_score": "औसत स्कोर"
+    },
+    "recommendations": {
+      "title": "सिफारिशें",
+      "no_village": "सिफारिशें देखने के लिए एक गांव चुनें",
+      "no_data": "इस गांव के लिए कोई सिफारिशें उपलब्ध नहीं हैं",
+      "loading": "सिफारिशें लोड हो रही हैं...",
+      "scheme": "योजना",
+      "reason": "कारण",
+      "score": "स्कोर",
+      "priority": "प्राथमिकता",
+      "description": "विवरण",
+      "estimated_cost": "अनुमानित लागत",
+      "duration_months": "अवधि",
+      "priority_high": "उच्च",
+      "priority_medium": "मध्यम",
+      "priority_low": "निम्न"
+    },
+    "quick_actions": {
+      "title": "त्वरित कार्रवाई",
+      "refresh": "डेटा रीफ्रेश करें",
+      "export": "रिपोर्ट निर्यात करें",
+      "compare": "गांवों की तुलना करें",
+      "refresh_tooltip": "चयनित गांव के लिए सिफारिशें रीफ्रेश करें",
+      "export_tooltip": "विस्तृत रिपोर्ट PDF के रूप में डाउनलोड करें",
+      "compare_tooltip": "अन्य गांवों के साथ तुलना करें",
+      "no_village": "कार्रवाई सक्षम करने के लिए एक गांव चुनें"
+    }
+  },
+  "dss_stats": {
+    "total_schemes": "कुल योजनाएं",
+    "high_priority": "उच्च प्राथमिकता",
+    "medium_priority": "मध्यम प्राथमिकता",
+    "low_priority": "निम्न प्राथमिकता",
+    "average_score": "औसत स्कोर",
+    "recommended_schemes": "सिफारिश की गई योजनाएं",
+    "urgent_recommendations": "तत्काल सिफारिशें",
+    "standard_recommendations": "मानक सिफारिशें",
+    "optional_schemes": "वैकल्पिक योजनाएं",
+    "match_confidence": "मिलान विश्वसनीयता"
+  },
+  "quick_actions_panel": {
+    "title": "त्वरित कार्रवाई",
+    "subtitle": "सिफारिशों का प्रबंधन और निर्यात करें",
+    "refresh_recommendations": "सिफारिशें रीफ्रेश करें",
+    "refreshing": "रीफ्रेश हो रहा है...",
+    "export_report": "रिपोर्ट निर्यात करें",
+    "generate_analysis": "विश्लेषण उत्पन्न करें",
+    "batch_process": "बैच प्रोसेस",
+    "help_support": "सहायता और समर्थन",
+    "available_schemes": "उपलब्ध योजनाएं",
+    "view_all_schemes": "सभी योजनाएं देखें",
+    "hide_schemes": "योजनाएं छिपाएं",
+    "api_status": "API स्थिति",
+    "connected_to_dss": "DSS इंजन से कनेक्टेड",
+    "base_url": "बेस URL",
+    "alerts": {
+      "no_data_export": "निर्यात करने के लिए कोई डेटा उपलब्ध नहीं है। कृपया पहले एक गांव चुनें।",
+      "no_data_analysis": "विश्लेषण के लिए कोई डेटा उपलब्ध नहीं है। कृपया पहले एक गांव चुनें।",
+      "failed_fetch_schemes": "योजनाएं लाने में विफल। कृपया जांचें कि API सर्वर चल रहा है या नहीं।",
+      "analysis_generation": "विश्लेषण उत्पन्न करने की सुविधा यहां लागू की जाएगी। यह चार्ट और अंतर्दृष्टि के साथ विस्तृत रिपोर्ट बनाएगा।",
+      "batch_processing": "बैच प्रोसेसिंग सुविधा एक साथ कई गांवों को प्रोसेस करने की अनुमति देगी। यह एक प्रीमियम सुविधा है।"
+    },
+    "help_text": {
+      "title": "DSS इंजन सहायता:",
+      "select_village": "1. गांव चुनें: सिफारिशें प्राप्त करने के लिए ड्रॉपडाउन से चुनें",
+      "view_recommendations": "2. सिफारिशें देखें: AI-संचालित योजना सुझाव देखें",
+      "export_report": "3. रिपोर्ट निर्यात करें: सिफारिशों को CSV के रूप में डाउनलोड करें",
+      "refresh": "4. रीफ्रेश करें: नवीनतम डेटा के साथ सिफारिशें अपडेट करें",
+      "api_endpoints": "API एंडपॉइंट्स:",
+      "get_recommendations": "- GET /api/dss/recommend?village_id=X",
+      "get_villages": "- GET /api/dss/villages",
+      "get_schemes": "- GET /api/dss/schemes",
+      "support_contact": "सहायता के लिए, विकास टीम से संपर्क करें।"
+    }
+  },
+  "recommendations_list": {
+    "title": "योजना सिफारिशें",
+    "for_village": "गांव के लिए",
+    "select_village": {
+      "title": "एक गांव चुनें",
+      "message": "गांव की विशेषताओं और जरूरतों के आधार पर व्यक्तिगत योजना सिफारिशें प्राप्त करने के लिए ऊपर चयनकर्ता से एक गांव चुनें।"
+    },
+    "no_recommendations": {
+      "title": "कोई सिफारिशें नहीं",
+      "message": "वर्तमान मानदंडों के आधार पर इस गांव के लिए कोई उपयुक्त योजनाएं नहीं मिलीं।"
+    },
+    "loading": "सिफारिशें लोड हो रही हैं...",
+    "reason": "कारण",
+    "match_score": "मिलान स्कोर",
+    "priority": {
+      "high": "उच्च",
+      "medium": "मध्यम",
+      "low": "निम्न"
+    },
+    "scheme_details": {
+      "estimated_cost": "अनुमानित लागत",
+      "duration": "अवधि"
+    }
+  },
+  "village_selector": {
+    "title": "गांव चुनें",
+    "subtitle": "योजना सिफारिशें प्राप्त करने के लिए एक गांव चुनें",
+    "village_id": "गांव आईडी",
+    "loading_villages": "गांव लोड हो रहे हैं...",
+    "select_village": "एक गांव चुनें",
+    "villages_available": "डेटाबेस में {{count}} गांव उपलब्ध हैं",
+    "error": {
+      "loading": "गांव लोड करने में त्रुटि: {{error}}",
+      "retry": "पुनः प्रयास करें"
+    }
+  },
+  "atlas_panel": {
+    "interactive_atlas": "इंटरैक्टिव एटलस",
+    "claims_loaded": "{{count}} दावे लोड किए गए",
+    "loading_polygons": "बहुभुज डेटा लोड हो रहा है...",
+    "controls": {
+      "drawing_mode": "ड्रॉइंग मोड",
+      "edit_mode": "संपादन मोड",
+      "draw_claim": "दावा बनाएं",
+      "exit_drawing": "ड्रॉइंग से बाहर निकलें",
+      "edit_claims": "दावे संपादित करें",
+      "exit_edit": "संपादन से बाहर निकलें",
+      "export_png": "PNG निर्यात करें"
+    },
+    "polygon_types": {
+      "IFR": "व्यक्तिगत वन अधिकार",
+      "CFR": "सामुदायिक वन अधिकार",
+      "forest": "वन क्षेत्र",
+      "Community Forest Lands": "सामुदायिक वन भूमि"
+    },
+    "status": {
+      "pending": "लंबित",
+      "approved": "स्वीकृत",
+      "rejected": "अस्वीकृत",
+      "under_review": "समीक्षाधीन"
+    },
+    "errors": {
+      "api_failed": "API कनेक्शन विफल, स्थानीय डेटा का उपयोग किया जा रहा है",
+      "load_failed": "बहुभुज डेटा लोड करने में विफल",
+      "save_failed": "बहुभुज सहेजने में विफल। कृपया पुनः प्रयास करें।",
+      "update_failed": "बहुभुज अपडेट करने में विफल। कृपया पुनः प्रयास करें।"
+    }
+  }
+}
