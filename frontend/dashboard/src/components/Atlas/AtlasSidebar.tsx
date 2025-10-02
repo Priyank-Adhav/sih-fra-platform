@@ -127,7 +127,7 @@ export default function AtlasSidebar({
           {t("atlas_controls")}
         </h2>
       </div>
-      
+
       <div className="flex-1 overflow-auto p-4 space-y-4">
         {/* Location Selection */}
         <div className="card bg-base-200 shadow-sm">
@@ -220,11 +220,10 @@ export default function AtlasSidebar({
                     />
                     <span className="text-sm">{t(o.labelKey)}</span>
                     <div className="ml-auto">
-                      <div className={`w-3 h-3 rounded-full ${
-                        o.id === 'claims' ? 'bg-primary' : 
-                        o.id === 'forest' ? 'bg-success' : 
-                        'bg-info'
-                      }`}></div>
+                      <div className={`w-3 h-3 rounded-full ${o.id === 'claims' ? 'bg-primary' :
+                          o.id === 'forest' ? 'bg-success' :
+                            'bg-info'
+                        }`}></div>
                     </div>
                   </label>
                 ))}
@@ -249,10 +248,10 @@ export default function AtlasSidebar({
                   {onEditClaim && (
                     <button
                       onClick={() => onEditClaim(selectedClaim)}
-                      className="btn btn-sm btn-outline btn-primary"
+                      className="btn btn-sm btn-outline btn-primary gap-1.5"
                     >
-                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>
                       {t("edit")}
                     </button>
@@ -263,12 +262,16 @@ export default function AtlasSidebar({
                     <div className="stat-title text-xs">{t("id")}</div>
                     <div className="stat-value text-sm">{selectedClaim.id}</div>
                   </div>
+
+                  {/* Claimant Row */}
                   {selectedClaim.claimant && (
                     <div className="stat py-2 px-3">
                       <div className="stat-title text-xs">{t("claimant")}</div>
                       <div className="stat-value text-sm">{selectedClaim.claimant}</div>
                     </div>
                   )}
+
+                  {/* Type Row */}
                   {selectedClaim.type && (
                     <div className="stat py-2 px-3">
                       <div className="stat-title text-xs">{t("type")}</div>
@@ -277,12 +280,16 @@ export default function AtlasSidebar({
                       </div>
                     </div>
                   )}
+
+                  {/* Area Row */}
                   {selectedClaim.area && (
                     <div className="stat py-2 px-3">
                       <div className="stat-title text-xs">{t("area")}</div>
                       <div className="stat-value text-sm">{selectedClaim.area} ha</div>
                     </div>
                   )}
+
+                  {/* Status Row */}
                   {selectedClaim.status && (
                     <div className="stat py-2 px-3">
                       <div className="stat-title text-xs">{t("status")}</div>
@@ -292,11 +299,54 @@ export default function AtlasSidebar({
                           selectedClaim.status === 'pending' ? 'badge-warning' :
                           'badge-error'
                         }`}>
-                          {t(selectedClaim.status)}
+                          {selectedClaim.status}
                         </div>
                       </div>
                     </div>
                   )}
+
+                  {/* Additional Fields - Dynamic */}
+                  {Object.entries(selectedClaim).map(([key, value]) => {
+                    // Skip already displayed fields and null/undefined values
+                    if (['id', 'claimant', 'type', 'area', 'status'].includes(key) ||
+                      !value ||
+                      typeof value === 'object') {
+                      return null;
+                    }
+
+                    const formattedKey = key.replace(/([A-Z])/g, ' $1').trim().toLowerCase();
+                    const formattedLabel = formattedKey.charAt(0).toUpperCase() + formattedKey.slice(1);
+
+                    return (
+                      <div key={key} className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                        <div className="flex-1">
+                          <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                            {formattedLabel}
+                          </label>
+                          <div className="text-sm font-medium text-base-content">
+                            {String(value)}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Quick Actions */}
+                <div className="flex gap-2 pt-2">
+                  <button className="btn btn-sm btn-outline btn-accent flex-1 gap-2">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    View on Map
+                  </button>
+                  <button className="btn btn-sm btn-outline btn-info gap-2">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Report
+                  </button>
                 </div>
               </div>
             ) : (
