@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from "react-i18next";
 
+interface Village {
+  village_id: string;
+  village_name: string;
+  state: string;
+  district: string;
+}
+
 interface VillageSelectorProps {
   selectedVillage: string;
   onVillageChange: (villageId: string) => void;
@@ -9,7 +16,7 @@ interface VillageSelectorProps {
 
 export function VillageSelector({ selectedVillage, onVillageChange, loading }: VillageSelectorProps) {
   const { t } = useTranslation();
-  const [villages, setVillages] = useState<string[]>([]);
+  const [villages, setVillages] = useState<Village[]>([]);
   const [loadingVillages, setLoadingVillages] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -20,7 +27,7 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
   const fetchVillages = async () => {
     try {
       setLoadingVillages(true);
-      const response = await fetch('http://localhost:8000/api/dss/villages');
+      const response = await fetch('http://localhost:8000/api/dss/villages/names');
       
       if (!response.ok) {
         throw new Error('Failed to fetch villages');
@@ -33,6 +40,11 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
     } finally {
       setLoadingVillages(false);
     }
+  };
+
+  // Helper function to format village display name
+  const formatVillageName = (village: Village) => {
+    return `${village.village_name}, ${village.district}, ${village.state}`;
   };
 
   if (error) {
@@ -69,10 +81,8 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
       </div>
 
       <div className="space-y-4">
-        <div>
-          <label htmlFor="village-select" className="block text-sm font-medium text-gray-700 mb-2">
-            {t("village_selector.village_id")}
-          </label>
+        <div> 
+
           <div className="relative">
             <select
               id="village-select"
@@ -84,9 +94,9 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
               <option value="">
                 {loadingVillages ? t("village_selector.loading_villages") : t("village_selector.select_village")}
               </option>
-              {villages.map((villageId) => (
-                <option key={villageId} value={villageId}>
-                  {villageId}
+              {villages.map((village) => (
+                <option key={village.village_id} value={village.village_id}>
+                  {formatVillageName(village)}
                 </option>
               ))}
             </select>
