@@ -118,7 +118,7 @@ export function RecommendationsList({ recommendations, loading, selectedVillage 
         </div>
       </div>
 
-      <div className="p-6">
+      <div className="p-6  max-h-160 overflow-y-auto">
         {loading ? (
           <div className="space-y-4">
             {[...Array(3)].map((_, i) => (
