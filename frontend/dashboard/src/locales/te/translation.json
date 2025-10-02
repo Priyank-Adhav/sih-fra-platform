@@ -1,0 +1,324 @@
+{
+  "app_title": "FRA అట్లాస్ డాష్బోర్డ్",
+  "app_subtitle": "ఫారెస్ట్ రైట్స్ యాక్ట్ మానిటరింగ్ సిస్టమ్",
+  "dashboard": "డాష్బోర్డ్",
+  "atlas": "అట్లాస్",
+  "dss": "DSS",
+  "documents": "డాక్యుమెంట్స్",
+  "module": "మాడ్యూల్",
+  "loading": "{{module}} లోడ్ అవుతుంది...",
+  "online": "ఆన్లైన్",
+  "profile": "ప్రొఫైల్",
+  "settings": "సెట్టింగ్స్",
+  "logout": "లాగ్అవుట్",
+  "navigation": "నావిగేషన్",
+  "select_module": "ప్రారంభించడానికి ఒక మాడ్యూల్ ఎంచుకోండి",
+  "main_modules": "ప్రధాన మాడ్యూళ్ళు",
+  "interactive_atlas": "ఇంటరాక్టివ్ అట్లాస్",
+  "geospatial_analysis": "జియోస్పేషియల్ విశ్లేషణ",
+  "decision_support": "నిర్ణయ మద్దతు",
+  "ocr_processing": "OCR & ప్రాసెసింగ్",
+  "quick_actions": "త్వరిత చర్యలు",
+  "export_data": "డేటా ఎగుమతి",
+  "export_current_analysis": "ప్రస్తుత విశ్లేషణను ఎగుమతి చేయండి",
+  "new_report": "కొత్త రిపోర్ట్",
+  "create_new_report": "కొత్త రిపోర్ట్ సృష్టించండి",
+  "help_center": "సహాయ కేంద్రం",
+  "get_support": "సహాయం పొందండి",
+  "system_status": "సిస్టమ్ స్థితి",
+  "all_systems": "అన్ని సిస్టమ్లు",
+  "operational": "కార్యాచరణ",
+  "dss_engine": "DSS ఇంజిన్",
+  "map_services": "మ్యాప్ సేవలు",
+  "ocr_processing_status": "OCR ప్రాసెసింగ్",
+  "database": "డేటాబేస్",
+  "fra_platform_version": "FRA ప్లాట్ఫారం v2.1",
+  "atlas_controls": "అట్లాస్ నియంత్రణలు",
+  "location": "స్థానం",
+  "state": "రాష్ట్రం",
+  "district": "జిల్లా",
+  "select_state": "రాష్ట్రం ఎంచుకోండి",
+  "select_district": "జిల్లా ఎంచుకోండి",
+  "map_layers": "మ్యాప్ పొరలు",
+  "base_layer": "బేస్ లేయర్",
+  "openstreetmap": "ఓపెన్స్ట్రీట్మ్యాప్",
+  "satellite": "సాటిలైట్",
+  "overlays": "ఓవర్లేలు",
+  "fra_claims": "FRA క్లెయిమ్లు",
+  "forest_cover": "అటవీ ఆవరణ",
+  "water_bodies": "నీటి వనరులు",
+  "claim_details": "క్లెయిమ్ వివరాలు",
+  "edit": "సవరించు",
+  "id": "ID",
+  "claimant": "దావాదారు",
+  "type": "రకం",
+  "area": "విస్తీర్ణం",
+  "status": "స్థితి",
+  "approved": "ఆమోదించబడిన",
+  "pending": "పెండింగ్",
+  "rejected": "తిరస్కరించబడిన",
+  "select_polygon_to_view": "వివరాలు చూడడానికి పాలిగాన్ ఎంచుకోండి",
+  "document_management": "డాక్యుమెంట్ మేనేజ్మెంట్",
+  "ocr_processing_desc": "FRA డాక్యుమెంట్ల కోసం OCR ప్రాసెసింగ్ మరియు AI ఎంటిటీ వెలికితీత",
+  "api_connected": "API కనెక్ట్ అయ్యింది",
+  "connecting": "కనెక్ట్ అవుతుంది...",
+  "api_disconnected": "API డిస్కనెక్ట్ అయ్యింది",
+  "check_api_status": "API స్థితి తనిఖీ చేయండి",
+  "processing_error": "ప్రాసెసింగ్ లోపం",
+  "supports_formats": "PDF, PNG, JPG, JPEG, TIFF, BMP లను మద్దతు చేస్తుంది • మల్టీ-లాంగ్వేజ్ OCR (ఇంగ్లీష్, హిందీ, ఒడియా) • AI-పవర్డ్ ఎంటిటీ వెలికితీత",
+  "process_document": "డాక్యుమెంట్ ప్రాసెస్ చేయండి",
+  "ocr_ai_extraction": "OCR మరియు AI ఎంటిటీ వెలికితీత",
+  "processing_document": "డాక్యుమెంట్ ప్రాసెసింగ్",
+  "uploading_document": "డాక్యుమెంట్ అప్లోడ్ అవుతుంది...",
+  "extracting_text_ocr": "OCRతో టెక్స్ట్ వెలికితీత...",
+  "extracting_entities_ai": "AIతో ఎంటిటీలు వెలికితీత...",
+  "processing_complete": "ప్రాసెసింగ్ పూర్తయింది!",
+  "text_extraction_complete": "టెక్స్ట్ వెలికితీత పూర్తయింది!",
+  "processing_steps": "ప్రాసెసింగ్ దశలు:",
+  "step_language_detection": "1. స్వయంచాలక భాష గుర్తింపు",
+  "step_ocr_extraction": "2. OCR టెక్స్ట్ వెలికితీత",
+  "step_entity_recognition": "3. AI ఎంటిటీ గుర్తింపు",
+  "step_data_structuring": "4. డేటా నిర్మాణం",
+  "unknown_type": "తెలియని రకం",
+  "no_document_selected": "డాక్యుమెంట్ ఎంచుకోలేదు",
+  "select_document_to_process": "ప్రాసెస్ చేయడానికి దయచేసి ఒక డాక్యుమెంట్ ఎంచుకోండి",
+  "api_connection_required": "API కనెక్షన్ అవసరం",
+  "ensure_backend_running": "బ్యాకెండ్ API నడుస్తున్నది మరియు కనెక్ట్ అయ్యిందని నిర్ధారించండి.",
+  "full_processing": "పూర్తి ప్రాసెసింగ్ (OCR + AI ఎంటిటీలు)",
+  "text_only": "టెక్స్ట్ మాత్రమే (OCR మాత్రమే)",
+  "processing_options": "ప్రాసెసింగ్ ఎంపికలు:",
+  "full_processing_desc": "పూర్తి ప్రాసెసింగ్: OCR టెక్స్ట్ వెలికితీత + AI ఎంటిటీ గుర్తింపు",
+  "text_only_desc": "టెక్స్ట్ మాత్రమే: ఎంటిటీ విశ్లేషణ లేకుండా OCR టెక్స్ట్ వెలికితీత",
+  "document_upload": {
+      "title": "డాక్యుమెంట్ అప్లోడ్",
+      "subtitle": "ప్రాసెస్ చేయడానికి ఫైల్ ఎంచుకోండి లేదా డ్రాగ్ చేయండి",
+      "file_selected": "ఫైల్ ఎంచుకోబడింది మరియు ప్రాసెస్ చేయడానికి సిద్ధంగా ఉంది",
+      "choose_different": "వేరే ఫైల్ ఎంచుకోండి",
+      "drop_here": "మీ ఫైల్ ఇక్కడ డ్రాప్ చేయండి",
+      "or_click": "లేదా బ్రౌజ్ చేయడానికి క్లిక్ చేయండి",
+      "api_not_connected": "API కనెక్ట్ కాలేదు",
+      "check_api": "దయచేసి API కనెక్షన్ తనిఖీ చేయండి",
+      "supported_formats": "మద్దతు ఫార్మాట్లు",
+      "max_file_size": "గరిష్ట ఫైల్ పరిమాణం",
+      "languages": "భాషలు",
+      "languages_list": "ఇంగ్లీష్, హిందీ, ఒడియా (స్వయంచాలకంగా గుర్తించబడుతుంది)",
+      "errors": {
+        "file_too_large": "ఫైల్ పరిమాణం చాలా పెద్దది. గరిష్టంగా అనుమతించబడినది: {{maxSize}}MB",
+        "unsupported_format": "మద్దతు లేని ఫైల్ ఫార్మాట్. మద్దతు ఫార్మాట్లు: {{formats}}"
+      }
+    },
+  "extracted_entities": {
+      "title": "వెలికితీత ఫలితాలు",
+      "processing": {
+      "title": "డాక్యుమెంట్ ప్రాసెసింగ్",
+      "message": "మేము టెక్స్ట్ మరియు ఎంటిటీలను వెలికితీస్తున్నప్పుడు దయచేసి వేచి ఉండండి..."
+      },
+      "no_document": {
+      "title": "డాక్యుమెంట్ ప్రాసెస్ చేయబడలేదు",
+      "message": "వెలికితీత ఎంటిటీలు మరియు టెక్స్ట్ చూడడానికి డాక్యుమెంట్ అప్లోడ్ మరియు ప్రాసెస్ చేయండి."
+      },
+      "tabs": {
+      "entities": "వెలికితీత ఎంటిటీలు",
+      "text": "వెలికితీత టెక్స్ట్"
+      },
+      "actions": {
+      "export": "ఎగుమతి",
+      "clear": "క్లియర్",
+      "copy_text": "టెక్స్ట్ కాపీ చేయండి",
+      "copy_to_clipboard": "క్లిప్బోర్డ్కు కాపీ చేయండి"
+      },
+      "entities": {
+      "not_found": "కనుగొనబడలేదు",
+      "no_entities": {
+          "title": "ఎంటిటీలు అందుబాటులో లేవు",
+          "text_only": "టెక్స్ట్-ఓన్లీ ప్రాసెసింగ్ ఉపయోగించబడింది. ఎంటిటీలను వెలికితీయడానికి పూర్తి ప్రాసెసింగ్ ఉపయోగించండి.",
+          "no_extracted": "ఈ డాక్యుమెంట్ నుండి ఎంటిటీలు వెలికితీయబడలేదు."
+      },
+      "error": {
+          "title": "ఎంటిటీ వెలికితీత లోపం",
+          "show_raw": "కచ్చా అవుట్పుట్ చూపించు"
+      }
+      },
+      "text": {
+      "title": "వెలికితీత టెక్స్ట్",
+      "no_text": "టెక్స్ట్ వెలికితీయబడలేదు"
+      },
+      "footer": {
+      "processed": "ప్రాసెస్ చేయబడింది",
+      "language": "భాష",
+      "provider": "ప్రొవైడర్"
+      }
+  },
+  "processing_history": {
+    "title": "ప్రాసెసింగ్ చరిత్ర",
+    "subtitle": "ఇటీవలి డాక్యుమెంట్ ప్రాసెసింగ్ ఫలితాలు",
+    "no_history": "ఇంకా చరిత్ర లేదు",
+    "no_history_message": "ప్రాసెస్ చేయబడిన డాక్యుమెంట్లు ఇక్కడ కనిపిస్తాయి",
+    "documents_count": "{{count}} ప్రాసెస్ చేయబడిన డాక్యుమెంట్లు",
+    "active": "యాక్టివ్",
+    "text_only": "టెక్స్ట్ మాత్రమే",
+    "entities_count": "{{count}} ఎంటిటీలు",
+    "entities_failed": "ఎంటిటీలు విఫలమయ్యాయి",
+    "entity_extraction_failed": "ఎంటిటీ వెలికితీత విఫలమైంది",
+    "click_to_view": "దాని ఫలితాలను చూడడానికి ఏదైనా డాక్యుమెంట్పై క్లిక్ చేయండి",
+    "time_just_now": "ఇప్పుడే",
+    "time_minutes_ago": "{{count}} నిమి. క్రితం",
+    "time_hours_ago": "{{count}} గం. క్రితం",
+    "time_days_ago": "{{count}} రోజుల క్రితం"
+  },
+  "dss_panel": {
+    "title": "నిర్ణయ మద్దతు వ్యవస్థ",
+    "subtitle": "గ్రామాల కోసం AI-పవర్డ్ స్కీమ్ సిఫారసులు",
+    "last_updated": "చివరిగా నవీకరించబడింది",
+    "error": "లోపం",
+    "api_status": "DSS ఇంజిన్ APIకి కనెక్ట్ అయ్యింది • రియల్-టైమ్ సిఫారసులు",
+    "stats": {
+      "total_schemes": "మొత్తం స్కీమ్లు",
+      "high_priority": "హై ప్రయోరిటీ",
+      "medium_priority": "మీడియం ప్రయోరిటీ",
+      "low_priority": "లో ప్రయోరిటీ",
+      "avg_score": "సగటు స్కోర్"
+    },
+    "recommendations": {
+      "title": "సిఫారసులు",
+      "no_village": "సిఫారసులు చూడడానికి గ్రామాన్ని ఎంచుకోండి",
+      "no_data": "ఈ గ్రామానికి సిఫారసులు అందుబాటులో లేవు",
+      "loading": "సిఫారసులు లోడ్ అవుతున్నాయి...",
+      "scheme": "స్కీమ్",
+      "reason": "కారణం",
+      "score": "స్కోర్",
+      "priority": "ప్రాధాన్యత",
+      "description": "వివరణ",
+      "estimated_cost": "అంచనా ఖర్చు",
+      "duration_months": "కాలావధి",
+      "priority_high": "హై",
+      "priority_medium": "మీడియం",
+      "priority_low": "లో"
+    },
+    "quick_actions": {
+      "title": "త్వరిత చర్యలు",
+      "refresh": "డేటా రిఫ్రెష్",
+      "export": "రిపోర్ట్ ఎగుమతి",
+      "compare": "గ్రామాలను పోల్చండి",
+      "refresh_tooltip": "ఎంచుకున్న గ్రామానికి సిఫారసులు రిఫ్రెష్ చేయండి",
+      "export_tooltip": "PDFగా వివరణాత్మక రిపోర్ట్ డౌన్లోడ్ చేయండి",
+      "compare_tooltip": "ఇతర గ్రామాలతో పోల్చండి",
+      "no_village": "చర్యలను సక్రియం చేయడానికి గ్రామాన్ని ఎంచుకోండి"
+    }
+  },
+  "dss_stats": {
+    "total_schemes": "మొత్తం స్కీమ్లు",
+    "high_priority": "హై ప్రయోరిటీ",
+    "medium_priority": "మీడియం ప్రయోరిటీ",
+    "low_priority": "లో ప్రయోరిటీ",
+    "average_score": "సగటు స్కోర్",
+    "recommended_schemes": "సిఫారసు చేయబడిన స్కీమ్లు",
+    "urgent_recommendations": "అత్యవసర సిఫారసులు",
+    "standard_recommendations": "ప్రామాణిక సిఫారసులు",
+    "optional_schemes": "ఐచ్ఛిక స్కీమ్లు",
+    "match_confidence": "మ్యాచ్ నమ్మకం"
+  },
+  "quick_actions_panel": {
+    "title": "త్వరిత చర్యలు",
+    "subtitle": "సిఫారసులను నిర్వహించండి మరియు ఎగుమతి చేయండి",
+    "refresh_recommendations": "సిఫారసులు రిఫ్రెష్ చేయండి",
+    "refreshing": "రిఫ్రెష్ అవుతుంది...",
+    "export_report": "రిపోర్ట్ ఎగుమతి",
+    "generate_analysis": "విశ్లేషణను రూపొందించండి",
+    "batch_process": "బ్యాచ్ ప్రాసెస్",
+    "help_support": "సహాయం & మద్దతు",
+    "available_schemes": "అందుబాటులో ఉన్న స్కీమ్లు",
+    "view_all_schemes": "అన్ని స్కీమ్లను వీక్షించండి",
+    "hide_schemes": "స్కీమ్లను దాచండి",
+    "api_status": "API స్థితి",
+    "connected_to_dss": "DSS ఇంజిన్కు కనెక్ట్ అయ్యింది",
+    "base_url": "బేస్ URL",
+    "alerts": {
+      "no_data_export": "ఎగుమతి చేయడానికి డేటా లేదు. ముందుగా గ్రామాన్ని ఎంచుకోండి.",
+      "no_data_analysis": "విశ్లేషణ కోసం డేటా లేదు. ముందుగా గ్రామాన్ని ఎంచుకోండి.",
+      "failed_fetch_schemes": "స్కీమ్లను పొందడంలో విఫలమైంది. API సర్వర్ నడుస్తున్నదో లేదో తనిఖీ చేయండి.",
+      "analysis_generation": "విశ్లేషణ జనరేషన్ ఫీచర్ ఇక్కడ అమలు చేయబడుతుంది. ఇది చార్ట్లు మరియు అంతర్దృష్టులతో వివరణాత్మక నివేదికలను సృష్టిస్తుంది.",
+      "batch_processing": "బ్యాచ్ ప్రాసెసింగ్ ఫీచర్ ఒకేసారి బహుళ గ్రామాలను ప్రాసెస్ చేయడానికి అనుమతిస్తుంది. ఇది ప్రీమియం ఫీచర్."
+    },
+    "help_text": {
+      "title": "DSS ఇంజిన్ సహాయం:",
+      "select_village": "1. గ్రామాన్ని ఎంచుకోండి: సిఫారసులు పొందడానికి డ్రాప్డౌన్ నుండి ఎంచుకోండి",
+      "view_recommendations": "2. సిఫారసులు వీక్షించండి: AI-పవర్డ్ స్కీమ్ సూచనలను చూడండి",
+      "export_report": "3. రిపోర్ట్ ఎగుమతి: సిఫారసులను CSVగా డౌన్లోడ్ చేయండి",
+      "refresh": "4. రిఫ్రెష్: తాజా డేటాతో సిఫారసులు నవీకరించండి",
+      "api_endpoints": "API ఎండ్పాయింట్లు:",
+      "get_recommendations": "- GET /api/dss/recommend?village_id=X",
+      "get_villages": "- GET /api/dss/villages",
+      "get_schemes": "- GET /api/dss/schemes",
+      "support_contact": "మద్దతు కోసం, డెవలప్మెంట్ టీమ్ను సంప్రదించండి."
+    }
+  },
+  "recommendations_list": {
+    "title": "స్కీమ్ సిఫారసులు",
+    "for_village": "గ్రామానికి",
+    "select_village": {
+      "title": "గ్రామాన్ని ఎంచుకోండి",
+      "message": "గ్రామం యొక్క లక్షణాలు మరియు అవసరాల ఆధారంగా వ్యక్తిగత స్కీమ్ సిఫారసులు పొందడానికి పైన ఉన్న సెలెక్టర్ నుండి గ్రామాన్ని ఎంచుకోండి."
+    },
+    "no_recommendations": {
+      "title": "సిఫారసులు లేవు",
+      "message": "ప్రస్తుత ప్రమాణాల ఆధారంగా ఈ గ్రామానికి తగిన స్కీమ్లు కనుగొనబడలేదు."
+    },
+    "loading": "సిఫారసులు లోడ్ అవుతున్నాయి...",
+    "reason": "కారణం",
+    "match_score": "మ్యాచ్ స్కోర్",
+    "priority": {
+      "high": "హై",
+      "medium": "మీడియం",
+      "low": "లో"
+    },
+    "scheme_details": {
+      "estimated_cost": "అంచనా ఖర్చు",
+      "duration": "కాలావధి"
+    }
+  },
+  "village_selector": {
+    "title": "గ్రామాన్ని ఎంచుకోండి",
+    "subtitle": "స్కీమ్ సిఫారసులు పొందడానికి గ్రామాన్ని ఎంచుకోండి",
+    "village_id": "గ్రామ ID",
+    "loading_villages": "గ్రామాలు లోడ్ అవుతున్నాయి...",
+    "select_village": "గ్రామాన్ని ఎంచుకోండి",
+    "villages_available": "డేటాబేస్లో {{count}} గ్రామాలు అందుబాటులో ఉన్నాయి",
+    "error": {
+      "loading": "గ్రామాలు లోడ్ చేయడంలో లోపం: {{error}}",
+      "retry": "మళ్లీ ప్రయత్నించండి"
+    }
+  },
+  "atlas_panel": {
+    "interactive_atlas": "ఇంటరాక్టివ్ అట్లాస్",
+    "claims_loaded": "{{count}} క్లెయిమ్లు లోడ్ అయ్యాయి",
+    "loading_polygons": "పాలిగాన్ డేటా లోడ్ అవుతుంది...",
+    "controls": {
+      "drawing_mode": "డ్రాయింగ్ మోడ్",
+      "edit_mode": "ఎడిట్ మోడ్",
+      "draw_claim": "క్లెయిమ్ గీయండి",
+      "exit_drawing": "డ్రాయింగ్ నుండి నిష్క్రమించండి",
+      "edit_claims": "క్లెయిమ్లను సవరించండి",
+      "exit_edit": "ఎడిట్ నుండి నిష్క్రమించండి",
+      "export_png": "PNG ఎగుమతి"
+    },
+    "polygon_types": {
+      "IFR": "వ్యక్తిగత అటవీ హక్కులు",
+      "CFR": "కమ్యూనిటీ అటవీ హక్కులు",
+      "forest": "అటవీ ప్రాంతం",
+      "Community Forest Lands": "కమ్యూనిటీ అటవీ భూములు"
+    },
+    "status": {
+      "pending": "పెండింగ్",
+      "approved": "ఆమోదించబడిన",
+      "rejected": "తిరస్కరించబడిన",
+      "under_review": "సమీక్షలో ఉంది"
+    },
+    "errors": {
+      "api_failed": "API కనెక్షన్ విఫలమైంది, స్థానిక డేటా ఉపయోగిస్తున్నారు",
+      "load_failed": "పాలిగాన్ డేటా లోడ్ చేయడంలో విఫలమైంది",
+      "save_failed": "పాలిగాన్ సేవ్ చేయడంలో విఫలమైంది. దయచేసి మళ్లీ ప్రయత్నించండి.",
+      "update_failed": "పాలిగాన్ నవీకరించడంలో విఫలమైంది. దయచేసి మళ్లీ ప్రయత్నించండి."
+    }
+  }
+}

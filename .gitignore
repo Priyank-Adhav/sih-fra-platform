@@ -6,6 +6,7 @@ build/
 .pnpm-store/
 yarn.lock
 package-lock.json
+.vite
 
 # --- Python / FastAPI ---
 __pycache__/

@@ -1,0 +1,324 @@
+{
+    "app_title": "FRA Atlas Dashboard",
+    "app_subtitle": "Forest Rights Act Monitoring System",
+    "dashboard": "Dashboard",
+    "atlas": "Atlas",
+    "dss": "DSS",
+    "documents": "Documents",
+    "module": "Module",
+    "loading": "Loading {{module}}...",
+    "online": "Online",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "navigation": "Navigation",
+    "select_module": "Select a module to begin",
+    "main_modules": "Main Modules",
+    "interactive_atlas": "Interactive Atlas",
+    "geospatial_analysis": "Geospatial Analysis",
+    "decision_support": "Decision Support",
+    "ocr_processing": "OCR & Processing",
+    "quick_actions": "Quick Actions",
+    "export_data": "Export Data",
+    "export_current_analysis": "Export current analysis",
+    "new_report": "New Report",
+    "create_new_report": "Create new report",
+    "help_center": "Help Center",
+    "get_support": "Get support",
+    "system_status": "System Status",
+    "all_systems": "All Systems",
+    "operational": "Operational",
+    "dss_engine": "DSS Engine",
+    "map_services": "Map Services",
+    "ocr_processing_status": "OCR Processing",
+    "database": "Database",
+    "fra_platform_version": "FRA Platform v2.1",
+    "atlas_controls": "Atlas Controls",
+    "location": "Location",
+    "state": "State",
+    "district": "District",
+    "select_state": "Select State",
+    "select_district": "Select District",
+    "map_layers": "Map Layers",
+    "base_layer": "Base Layer",
+    "openstreetmap": "OpenStreetMap",
+    "satellite": "Satellite",
+    "overlays": "Overlays",
+    "fra_claims": "FRA Claims",
+    "forest_cover": "Forest Cover",
+    "water_bodies": "Water Bodies",
+    "claim_details": "Claim Details",
+    "edit": "Edit",
+    "id": "ID",
+    "claimant": "Claimant",
+    "type": "Type",
+    "area": "Area",
+    "status": "Status",
+    "approved": "Approved",
+    "pending": "Pending",
+    "rejected": "Rejected",
+    "select_polygon_to_view": "Select a polygon to view details",
+    "document_management": "Document Management",
+    "ocr_processing_desc": "OCR processing and AI entity extraction for FRA documents",
+    "api_connected": "API Connected",
+    "connecting": "Connecting...",
+    "api_disconnected": "API Disconnected",
+    "check_api_status": "Check API Status",
+    "processing_error": "Processing Error",
+    "supports_formats": "Supports PDF, PNG, JPG, JPEG, TIFF, BMP • Multi-language OCR (English, Hindi, Oriya) • AI-powered entity extraction",
+    "process_document": "Process Document",
+    "ocr_ai_extraction": "OCR and AI entity extraction",
+    "processing_document": "Processing Document",
+    "uploading_document": "Uploading document...",
+    "extracting_text_ocr": "Extracting text with OCR...",
+    "extracting_entities_ai": "Extracting entities with AI...",
+    "processing_complete": "Processing complete!",
+    "text_extraction_complete": "Text extraction complete!",
+    "processing_steps": "Processing steps:",
+    "step_language_detection": "1. Automatic language detection",
+    "step_ocr_extraction": "2. OCR text extraction",
+    "step_entity_recognition": "3. AI entity recognition",
+    "step_data_structuring": "4. Data structuring",
+    "unknown_type": "Unknown type",
+    "no_document_selected": "No document selected",
+    "select_document_to_process": "Please select a document to process",
+    "api_connection_required": "API Connection Required",
+    "ensure_backend_running": "Please ensure the backend API is running and connected.",
+    "full_processing": "Full Processing (OCR + AI Entities)",
+    "text_only": "Text Only (OCR Only)",
+    "processing_options": "Processing Options:",
+    "full_processing_desc": "Full Processing: OCR text extraction + AI entity recognition",
+    "text_only_desc": "Text Only: OCR text extraction without entity analysis",
+    "document_upload": {
+        "title": "Upload Document",
+        "subtitle": "Select or drag a file to process",
+        "file_selected": "File selected and ready to process",
+        "choose_different": "Choose different file",
+        "drop_here": "Drop your file here",
+        "or_click": "or click to browse",
+        "api_not_connected": "API Not Connected",
+        "check_api": "Please check API connection",
+        "supported_formats": "Supported formats",
+        "max_file_size": "Max file size",
+        "languages": "Languages",
+        "languages_list": "English, Hindi, Oriya (auto-detected)",
+        "errors": {
+          "file_too_large": "File size too large. Maximum allowed: {{maxSize}}MB",
+          "unsupported_format": "Unsupported file format. Supported formats: {{formats}}"
+        }
+      },
+    "extracted_entities": {
+        "title": "Extraction Results",
+        "processing": {
+        "title": "Processing Document",
+        "message": "Please wait while we extract text and entities..."
+        },
+        "no_document": {
+        "title": "No Document Processed",
+        "message": "Upload and process a document to see extracted entities and text here."
+        },
+        "tabs": {
+        "entities": "Extracted Entities",
+        "text": "Extracted Text"
+        },
+        "actions": {
+        "export": "Export",
+        "clear": "Clear",
+        "copy_text": "Copy Text",
+        "copy_to_clipboard": "Copy to clipboard"
+        },
+        "entities": {
+        "not_found": "Not found",
+        "no_entities": {
+            "title": "No Entities Available",
+            "text_only": "Text-only processing was used. Use full processing to extract entities.",
+            "no_extracted": "No entities were extracted from this document."
+        },
+        "error": {
+            "title": "Entity Extraction Error",
+            "show_raw": "Show raw output"
+        }
+        },
+        "text": {
+        "title": "Extracted Text",
+        "no_text": "No text extracted"
+        },
+        "footer": {
+        "processed": "Processed",
+        "language": "Language",
+        "provider": "Provider"
+        }
+    },
+    "processing_history": {
+      "title": "Processing History",
+      "subtitle": "Recent document processing results",
+      "no_history": "No History Yet",
+      "no_history_message": "Processed documents will appear here",
+      "documents_count": "{{count}} processed documents",
+      "active": "Active",
+      "text_only": "Text Only",
+      "entities_count": "{{count}} entities",
+      "entities_failed": "Entities failed",
+      "entity_extraction_failed": "Entity extraction failed",
+      "click_to_view": "Click on any document to view its results",
+      "time_just_now": "Just now",
+      "time_minutes_ago": "{{count}}m ago",
+      "time_hours_ago": "{{count}}h ago",
+      "time_days_ago": "{{count}}d ago"
+    },
+    "dss_panel": {
+      "title": "Decision Support System",
+      "subtitle": "AI-powered scheme recommendations for villages",
+      "last_updated": "Last updated",
+      "error": "Error",
+      "api_status": "Connected to DSS Engine API • Real-time recommendations",
+      "stats": {
+        "total_schemes": "Total Schemes",
+        "high_priority": "High Priority",
+        "medium_priority": "Medium Priority",
+        "low_priority": "Low Priority",
+        "avg_score": "Average Score"
+      },
+      "recommendations": {
+        "title": "Recommendations",
+        "no_village": "Select a village to view recommendations",
+        "no_data": "No recommendations available for this village",
+        "loading": "Loading recommendations...",
+        "scheme": "Scheme",
+        "reason": "Reason",
+        "score": "Score",
+        "priority": "Priority",
+        "description": "Description",
+        "estimated_cost": "Estimated Cost",
+        "duration_months": "Duration",
+        "priority_high": "High",
+        "priority_medium": "Medium",
+        "priority_low": "Low"
+      },
+      "quick_actions": {
+        "title": "Quick Actions",
+        "refresh": "Refresh Data",
+        "export": "Export Report",
+        "compare": "Compare Villages",
+        "refresh_tooltip": "Refresh recommendations for selected village",
+        "export_tooltip": "Download detailed report as PDF",
+        "compare_tooltip": "Compare with other villages",
+        "no_village": "Select a village to enable actions"
+      }
+    },
+    "dss_stats": {
+      "total_schemes": "Total Schemes",
+      "high_priority": "High Priority",
+      "medium_priority": "Medium Priority",
+      "low_priority": "Low Priority",
+      "average_score": "Average Score",
+      "recommended_schemes": "Recommended schemes",
+      "urgent_recommendations": "Urgent recommendations",
+      "standard_recommendations": "Standard recommendations",
+      "optional_schemes": "Optional schemes",
+      "match_confidence": "Match confidence"
+    },
+    "quick_actions_panel": {
+      "title": "Quick Actions",
+      "subtitle": "Manage and export recommendations",
+      "refresh_recommendations": "Refresh Recommendations",
+      "refreshing": "Refreshing...",
+      "export_report": "Export Report",
+      "generate_analysis": "Generate Analysis",
+      "batch_process": "Batch Process",
+      "help_support": "Help & Support",
+      "available_schemes": "Available Schemes",
+      "view_all_schemes": "View All Schemes",
+      "hide_schemes": "Hide Schemes",
+      "api_status": "API Status",
+      "connected_to_dss": "Connected to DSS Engine",
+      "base_url": "Base URL",
+      "alerts": {
+        "no_data_export": "No data available to export. Please select a village first.",
+        "no_data_analysis": "No data available for analysis. Please select a village first.",
+        "failed_fetch_schemes": "Failed to fetch schemes. Please check if the API server is running.",
+        "analysis_generation": "Analysis generation feature would be implemented here. This would create detailed reports with charts and insights.",
+        "batch_processing": "Batch processing feature would allow processing multiple villages at once. This is a premium feature."
+      },
+      "help_text": {
+        "title": "DSS Engine Help:",
+        "select_village": "1. Select a Village: Choose from the dropdown to get recommendations",
+        "view_recommendations": "2. View Recommendations: See AI-powered scheme suggestions",
+        "export_report": "3. Export Report: Download recommendations as CSV",
+        "refresh": "4. Refresh: Update recommendations with latest data",
+        "api_endpoints": "API Endpoints:",
+        "get_recommendations": "- GET /api/dss/recommend?village_id=X",
+        "get_villages": "- GET /api/dss/villages",
+        "get_schemes": "- GET /api/dss/schemes",
+        "support_contact": "For support, contact the development team."
+      }
+    },
+    "recommendations_list": {
+      "title": "Scheme Recommendations",
+      "for_village": "For village",
+      "select_village": {
+        "title": "Select a Village",
+        "message": "Choose a village from the selector above to get personalized scheme recommendations based on the village's characteristics and needs."
+      },
+      "no_recommendations": {
+        "title": "No Recommendations",
+        "message": "No suitable schemes found for this village based on current criteria."
+      },
+      "loading": "Loading recommendations...",
+      "reason": "Reason",
+      "match_score": "Match Score",
+      "priority": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "scheme_details": {
+        "estimated_cost": "Estimated Cost",
+        "duration": "Duration"
+      }
+    },
+    "village_selector": {
+      "title": "Select Village",
+      "subtitle": "Choose a village to get scheme recommendations",
+      "village_id": "Village ID",
+      "loading_villages": "Loading villages...",
+      "select_village": "Select a village",
+      "villages_available": "{{count}} villages available in the database",
+      "error": {
+        "loading": "Error loading villages: {{error}}",
+        "retry": "Retry"
+      }
+    },
+    "atlas_panel": {
+      "interactive_atlas": "Interactive Atlas",
+      "claims_loaded": "{{count}} claims loaded",
+      "loading_polygons": "Loading polygon data...",
+      "controls": {
+        "drawing_mode": "Drawing Mode",
+        "edit_mode": "Edit Mode",
+        "draw_claim": "Draw Claim",
+        "exit_drawing": "Exit Drawing",
+        "edit_claims": "Edit Claims",
+        "exit_edit": "Exit Edit",
+        "export_png": "Export PNG"
+      },
+      "polygon_types": {
+        "IFR": "Individual Forest Rights",
+        "CFR": "Community Forest Rights",
+        "forest": "Forest Area",
+        "Community Forest Lands": "Community Forest Lands"
+      },
+      "status": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "under_review": "Under Review"
+      },
+      "errors": {
+        "api_failed": "API connection failed, using local data",
+        "load_failed": "Failed to load polygon data",
+        "save_failed": "Failed to save polygon. Please try again.",
+        "update_failed": "Failed to update polygon. Please try again."
+      }
+    }
+}
