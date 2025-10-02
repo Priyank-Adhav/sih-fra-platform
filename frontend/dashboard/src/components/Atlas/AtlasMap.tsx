@@ -18,7 +18,7 @@ import { LOCATION_FOCUS } from "./AtlasSidebar";
 import ClaimForm, { type ClaimFormData } from "./ClaimForm";
 
 /* react-leaflet-draw has weak/absent types — silence TS for the import */
- // @ts-ignore
+// @ts-ignore
 import { EditControl } from "react-leaflet-draw";
 
 /**
@@ -38,159 +38,173 @@ function MapInitializer({ onReady }: { onReady: (m: LeafletMap) => void }) {
 /**
  * VectorTileLayer - Component to render polygons as vector tiles
  */
-function VectorTileLayer({ 
-  polygons, 
+function VectorTileLayer({
+  polygons,
   onPolygonClick,
-  activeOverlays 
-}: { 
+  activeOverlays,
+  selectedPolygonId
+}: {
   polygons: PolygonData[];
   onPolygonClick: (polygon: PolygonData) => void;
   activeOverlays: string[];
+  selectedPolygonId: string | null;
 }) {
   const map = useMap();
   const vectorGridRef = useRef<any>(null);
+  const geojsonLayerRef = useRef<any>(null);
 
   useEffect(() => {
-    // Load required scripts if not already loaded
-    const loadScripts = async () => {
-      // Load geojson-vt
-      if (!(window as any).geojsonvt) {
-        await new Promise((resolve, reject) => {
-          const script = document.createElement('script');
-          script.src = 'https://unpkg.com/geojson-vt@3.2.1/geojson-vt.js';
-          script.onload = resolve;
-          script.onerror = reject;
-          document.head.appendChild(script);
-        });
-      }
-
-      // Load leaflet-vector-grid
-      if (!(window as any).L.vectorGrid) {
-        await new Promise((resolve, reject) => {
-          const script = document.createElement('script');
-          script.src = 'https://unpkg.com/leaflet.vectorgrid@1.3.0/dist/Leaflet.VectorGrid.bundled.js';
-          script.onload = resolve;
-          script.onerror = reject;
-          document.head.appendChild(script);
-        });
-      }
-    };
-
-    const initVectorTiles = async () => {
-      if (!map || !activeOverlays.includes("claims") || polygons.length === 0) {
-        // Remove existing vector grid if conditions not met
-        if (vectorGridRef.current) {
-          map.removeLayer(vectorGridRef.current);
-          vectorGridRef.current = null;
-        }
-        return;
-      }
-
-      try {
-        await loadScripts();
-
-        const L = (window as any).L;
-        
-        // Convert polygons to GeoJSON
-        const geojsonData = {
-          type: 'FeatureCollection',
-          features: polygons.map(p => ({
-            type: 'Feature',
-            properties: {
-              id: p.id,
-              type: p.type,
-              ...p.properties
-            },
-            geometry: {
-              type: 'Polygon',
-              coordinates: [p.coords.map(coord => {
-                const [lat, lng] = coord as [number, number];
-                return [lng, lat]; // GeoJSON uses [lng, lat]
-              })]
-            }
-          }))
-        };
-
-        // Remove existing layer
-        if (vectorGridRef.current) {
-          map.removeLayer(vectorGridRef.current);
-        }
-
-        // Create vector tile options
-        const vectorTileOptions = {
-          rendererFactory: L.canvas.tile,
-          vectorTileLayerStyles: {
-            sliced: (properties: any) => {
-              const type = properties.type || 'default';
-              
-              // Color based on type
-              const getStyle = (type: string) => {
-                switch (type) {
-                  case "IFR":
-                  case "forest":
-                  case "Community Forest Lands":
-                    return {
-                      color: "#228B22",
-                      fillColor: "#228B22",
-                    };
-                  case "CFR":
-                    return {
-                      color: "#2b6cb0",
-                      fillColor: "#2b6cb0",
-                    };
-                  default:
-                    return {
-                      color: "#6B7280",
-                      fillColor: "#6B7280",
-                    };
-                }
-              };
-
-              const style = getStyle(type);
-              return {
-                weight: 2,
-                opacity: 0.8,
-                fillOpacity: 0.3,
-                fill: true,
-                ...style
-              };
-            }
-          },
-          interactive: true,
-          getFeatureId: (f: any) => f.properties.id
-        };
-
-        // Create vector grid layer
-        const vectorGrid = L.vectorGrid.slicer(geojsonData, vectorTileOptions);
-        
-        // Add click handler
-        vectorGrid.on('click', (e: any) => {
-          if (e.layer && e.layer.properties) {
-            const polygonId = e.layer.properties.id;
-            const polygon = polygons.find(p => p.id === polygonId);
-            if (polygon) {
-              onPolygonClick(polygon);
-            }
-          }
-        });
-
-        vectorGrid.addTo(map);
-        vectorGridRef.current = vectorGrid;
-
-      } catch (error) {
-        console.error('Error initializing vector tiles:', error);
-      }
-    };
-
-    initVectorTiles();
-
-    return () => {
-      if (vectorGridRef.current && map) {
+    if (!map || !activeOverlays.includes("claims") || polygons.length === 0) {
+      // Remove existing layers if conditions not met
+      if (vectorGridRef.current) {
         map.removeLayer(vectorGridRef.current);
         vectorGridRef.current = null;
       }
+      if (geojsonLayerRef.current) {
+        map.removeLayer(geojsonLayerRef.current);
+        geojsonLayerRef.current = null;
+      }
+      return;
+    }
+
+    // Use regular GeoJSON layer instead of VectorGrid to avoid compatibility issues
+    const L = (window as any).L;
+
+    // Convert polygons to GeoJSON
+    const geojsonData = {
+      type: 'FeatureCollection',
+      features: polygons.map(p => ({
+        type: 'Feature',
+        id: p.id,
+        properties: {
+          id: p.id,
+          type: p.type,
+          ...p.properties
+        },
+        geometry: {
+          type: 'Polygon',
+          coordinates: [p.coords.map(coord => {
+            const [lat, lng] = coord as [number, number];
+            return [lng, lat]; // GeoJSON uses [lng, lat]
+          })]
+        }
+      }))
     };
-  }, [map, polygons, onPolygonClick, activeOverlays]);
+
+    // Remove existing layer
+    if (geojsonLayerRef.current) {
+      map.removeLayer(geojsonLayerRef.current);
+    }
+
+    // Create style function
+    const getStyle = (feature: any) => {
+      const type = feature?.properties?.type || 'default';
+
+      switch (type) {
+        case "IFR":
+        case "forest":
+        case "Community Forest Lands":
+          return {
+            color: "#228B22",
+            fillColor: "#228B22",
+            weight: 2,
+            opacity: 0.8,
+            fillOpacity: 0.3,
+            fill: true
+          };
+        case "CFR":
+          return {
+            color: "#2b6cb0",
+            fillColor: "#2b6cb0",
+            weight: 2,
+            opacity: 0.8,
+            fillOpacity: 0.3,
+            fill: true
+          };
+        default:
+          return {
+            color: "#6B7280",
+            fillColor: "#6B7280",
+            weight: 2,
+            opacity: 0.8,
+            fillOpacity: 0.3,
+            fill: true
+          };
+      }
+    };
+
+    // Create GeoJSON layer with proper event handling
+    const geojsonLayer = L.geoJSON(geojsonData, {
+      style: getStyle,
+      onEachFeature: (feature: any, layer: any) => {
+        // Store the original polygon data on the layer for easy access
+        layer._polygonData = polygons.find(p => p.id === feature.id);
+
+        // Check if this is the selected polygon and apply selected style
+        if (feature.id === selectedPolygonId) {
+          layer.setStyle({
+            weight: 4,
+            opacity: 1,
+            fillOpacity: 0.5
+          });
+          layer.bringToFront();
+        }
+
+        layer.on({
+          click: (e: any) => {
+            const polygonData = e.target._polygonData;
+            if (polygonData) {
+              onPolygonClick(polygonData);
+
+              // Highlight the clicked polygon
+              if (geojsonLayerRef.current) {
+                geojsonLayerRef.current.eachLayer((l: any) => {
+                  l.setStyle(getStyle(l.feature));
+                });
+              }
+
+              // Highlight the clicked feature
+              e.target.setStyle({
+                weight: 4,
+                opacity: 1,
+                fillOpacity: 0.5
+              });
+
+              // Bring to front
+              e.target.bringToFront();
+            }
+          },
+          mouseover: (e: any) => {
+            // Only highlight if not the selected polygon
+            if (e.target._polygonData?.id !== selectedPolygonId) {
+              e.target.setStyle({
+                weight: 3,
+                opacity: 1,
+                fillOpacity: 0.4
+              });
+              e.target.bringToFront();
+            }
+          },
+          mouseout: (e: any) => {
+            // Don't reset style if this is the selected polygon
+            if (e.target._polygonData?.id !== selectedPolygonId) {
+              e.target.setStyle(getStyle(e.target.feature));
+            }
+          }
+        });
+      }
+    });
+
+    geojsonLayer.addTo(map);
+    geojsonLayerRef.current = geojsonLayer;
+
+    return () => {
+      if (geojsonLayerRef.current && map) {
+        map.removeLayer(geojsonLayerRef.current);
+        geojsonLayerRef.current = null;
+      }
+    };
+  }, [map, polygons, onPolygonClick, activeOverlays, selectedPolygonId]);
 
   return null;
 }
@@ -205,7 +219,7 @@ export default function AtlasMap() {
   const [error, setError] = useState<string | null>(null);
   const fgRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  
+
   // Drawing and editing state
   const [isDrawingMode, setIsDrawingMode] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -217,11 +231,11 @@ export default function AtlasMap() {
     const loadPolygons = async () => {
       setLoading(true);
       setError(null);
-      
+
       try {
         const base = (import.meta as any).env?.VITE_API_BASE ?? "";
         console.log("Loading polygons with base URL:", base);
-        
+
         const list = await atlasService.fetchPolygonsFromApi(base);
         console.log("Successfully loaded polygons from API:", list.length);
         setPolygons(list);
@@ -263,7 +277,7 @@ export default function AtlasMap() {
       id: `temp-${Date.now()}`,
       coords: latlngs,
       type: "IFR", // default type
-      properties: { 
+      properties: {
         source: "editor",
         area: area,
         status: "pending"
@@ -273,7 +287,7 @@ export default function AtlasMap() {
     // Store the pending polygon and show form
     setPendingPolygon(newPoly);
     setShowClaimForm(true);
-    
+
     // Remove the temporary polygon from map until form is submitted
     if (fgRef.current) {
       fgRef.current.removeLayer(layer);
@@ -290,14 +304,14 @@ export default function AtlasMap() {
         const existingPolygon = polygons.find(p => p.id === id);
         if (existingPolygon) {
           const area = calculatePolygonArea(latlngs);
-          updated.push({ 
+          updated.push({
             ...existingPolygon,
-            coords: latlngs, 
-            properties: { 
+            coords: latlngs,
+            properties: {
               ...existingPolygon.properties,
-              area, 
-              source: "editor" 
-            } 
+              area,
+              source: "editor"
+            }
           });
         }
       }
@@ -358,20 +372,20 @@ export default function AtlasMap() {
   // Calculate polygon area using the shoelace formula (rough approximation)
   const calculatePolygonArea = (coords: LatLngExpression[]): number => {
     if (coords.length < 3) return 0;
-    
+
     let area = 0;
     const n = coords.length;
-    
+
     for (let i = 0; i < n; i++) {
       const j = (i + 1) % n;
       const lat1 = (coords[i] as [number, number])[0];
       const lng1 = (coords[i] as [number, number])[1];
       const lat2 = (coords[j] as [number, number])[0];
       const lng2 = (coords[j] as [number, number])[1];
-      
+
       area += lng1 * lat2 - lng2 * lat1;
     }
-    
+
     // Convert to hectares (rough approximation)
     return Math.abs(area) * 111000 * 111000 / 10000 / 2;
   };
@@ -608,7 +622,7 @@ export default function AtlasMap() {
             )}
           </div>
           <div className="flex items-center gap-2">
-            <button 
+            <button
               onClick={toggleDrawingMode}
               className={`btn btn-sm ${isDrawingMode ? 'btn-primary' : 'btn-outline btn-primary'}`}
               disabled={loading}
@@ -618,7 +632,7 @@ export default function AtlasMap() {
               </svg>
               {isDrawingMode ? 'Exit Drawing' : 'Draw Claim'}
             </button>
-            <button 
+            <button
               onClick={toggleEditMode}
               className={`btn btn-sm ${isEditMode ? 'btn-secondary' : 'btn-outline btn-secondary'}`}
               disabled={loading || polygons.length === 0}
@@ -628,8 +642,8 @@ export default function AtlasMap() {
               </svg>
               {isEditMode ? 'Exit Edit' : 'Edit Claims'}
             </button>
-            <button 
-              onClick={handleExportPNG} 
+            <button
+              onClick={handleExportPNG}
               className="btn btn-outline btn-primary btn-sm"
               disabled={loading}
             >
@@ -640,7 +654,7 @@ export default function AtlasMap() {
             </button>
           </div>
         </div>
-        
+
         {/* Enhanced Map Container */}
         <div className="card bg-base-100 shadow-lg border border-base-300 flex-1">
           <div className="card-body p-0 h-full">
@@ -661,19 +675,20 @@ export default function AtlasMap() {
               {baseLayer === "satellite" && (
                 <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
               )}
-              
-              {/* Vector Tile Layer for efficient rendering */}
-              <VectorTileLayer 
+
+              <VectorTileLayer
                 polygons={polygons}
                 onPolygonClick={(polygon) => {
+                  console.log('Polygon clicked:', polygon); // Debug log
                   setSelectedPolygon(polygon);
                   if (isEditMode) {
                     handleEditClaim(polygon);
                   }
                 }}
                 activeOverlays={activeOverlays}
+                selectedPolygonId={selectedPolygon?.id || null}
               />
-              
+
               <FeatureGroup ref={fgRef}>
                 <EditControl
                   position="topright"
@@ -698,7 +713,7 @@ export default function AtlasMap() {
           </div>
         </div>
       </div>
-      
+
       {/* Claim Form Modal */}
       <ClaimForm
         isOpen={showClaimForm}
