@@ -221,8 +221,8 @@ export default function AtlasSidebar({
                     <span className="text-sm">{t(o.labelKey)}</span>
                     <div className="ml-auto">
                       <div className={`w-3 h-3 rounded-full ${o.id === 'claims' ? 'bg-primary' :
-                          o.id === 'forest' ? 'bg-success' :
-                            'bg-info'
+                        o.id === 'forest' ? 'bg-success' :
+                          'bg-info'
                         }`}></div>
                     </div>
                   </label>
@@ -242,8 +242,8 @@ export default function AtlasSidebar({
               {t("claim_details")}
             </h3>
             {selectedClaim ? (
-              <div className="space-y-3">
-                <div className="flex justify-between items-center mb-3">
+              <div className="space-y-4">
+                <div className="flex justify-between items-center mb-2">
                   <h3 className="card-title text-sm font-semibold mb-0">{t("claim_details")}</h3>
                   {onEditClaim && (
                     <button
@@ -257,49 +257,90 @@ export default function AtlasSidebar({
                     </button>
                   )}
                 </div>
-                <div className="stats shadow-sm">
-                  <div className="stat py-2 px-3">
-                    <div className="stat-title text-xs">{t("id")}</div>
-                    <div className="stat-value text-sm">{selectedClaim.id}</div>
+
+                {/* Vertical Table Layout */}
+                <div className="space-y-3 bg-base-100 rounded-lg border border-base-300 p-4">
+                  {/* ID Row */}
+                  <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                    <div className="flex-1">
+                      <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                        {t("id")}
+                      </label>
+                      <div className="text-sm font-mono font-semibold text-primary bg-primary/10 px-2 py-1 rounded inline-block">
+                        {selectedClaim.id}
+                      </div>
+                    </div>
                   </div>
 
                   {/* Claimant Row */}
                   {selectedClaim.claimant && (
-                    <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">{t("claimant")}</div>
-                      <div className="stat-value text-sm">{selectedClaim.claimant}</div>
+                    <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                      <div className="flex-1">
+                        <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                          {t("claimant")}
+                        </label>
+                        <div className="text-sm font-medium text-base-content flex items-center gap-2">
+                          <svg className="w-4 h-4 text-base-content/40" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                          </svg>
+                          {selectedClaim.claimant}
+                        </div>
+                      </div>
                     </div>
                   )}
 
                   {/* Type Row */}
                   {selectedClaim.type && (
-                    <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">{t("type")}</div>
-                      <div className="stat-value text-sm">
-                        <div className="badge badge-primary badge-sm">{selectedClaim.type}</div>
+                    <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                      <div className="flex-1">
+                        <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                          {t("type")}
+                        </label>
+                        <div className="text-sm">
+                          <div className="badge badge-primary badge-lg font-semibold px-3 py-7">
+                            {selectedClaim.type}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}
 
                   {/* Area Row */}
                   {selectedClaim.area && (
-                    <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">{t("area")}</div>
-                      <div className="stat-value text-sm">{selectedClaim.area} ha</div>
+                    <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                      <div className="flex-1">
+                        <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                          {t("area")}
+                        </label>
+                        <div className="text-sm font-medium text-base-content flex items-center gap-2">
+                          <svg className="w-4 h-4 text-base-content/40" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
+                          </svg>
+                          <span className="font-bold text-base-content">{selectedClaim.area}</span>
+                          <span className="text-base-content/60">hectares</span>
+                        </div>
+                      </div>
                     </div>
                   )}
 
                   {/* Status Row */}
                   {selectedClaim.status && (
-                    <div className="stat py-2 px-3">
-                      <div className="stat-title text-xs">{t("status")}</div>
-                      <div className="stat-value text-sm">
-                        <div className={`badge badge-sm ${
-                          selectedClaim.status === 'approved' ? 'badge-success' :
-                          selectedClaim.status === 'pending' ? 'badge-warning' :
-                          'badge-error'
-                        }`}>
-                          {selectedClaim.status}
+                    <div className="flex items-start gap-3 py-2 border-b border-base-200 last:border-b-0">
+                      <div className="flex-1">
+                        <label className="text-xs font-semibold text-base-content/60 uppercase tracking-wide block mb-1">
+                          {t("status")}
+                        </label>
+                        <div className="text-sm">
+                          <div className={`badge badge-lg font-semibold px-3 py-2 capitalize ${selectedClaim.status === 'approved' ? 'badge-success text-success-content' :
+                              selectedClaim.status === 'pending' ? 'badge-warning text-warning-content' :
+                                'badge-error text-error-content'
+                            }`}>
+                            <div className={`w-2 h-2 rounded-full mr-2 ${selectedClaim.status === 'approved' ? 'bg-success-content' :
+                                selectedClaim.status === 'pending' ? 'bg-warning-content' :
+                                  'bg-error-content'
+                              }`}></div>
+                            {selectedClaim.status}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -350,11 +391,15 @@ export default function AtlasSidebar({
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center h-32 text-center">
-                <svg className="w-12 h-12 text-base-content/30 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                </svg>
-                <p className="text-base-content/50 text-sm">{t("select_polygon_to_view")}</p>
+              <div className="flex flex-col items-center justify-center h-32 text-center p-6">
+                <div className="relative mb-3">
+                  <div className="w-16 h-16 bg-base-300 rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-base-content/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-base-content/50 text-sm font-medium">{t("select_polygon_to_view")}</p>
               </div>
             )}
           </div>
