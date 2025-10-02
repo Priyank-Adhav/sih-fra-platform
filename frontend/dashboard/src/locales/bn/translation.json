@@ -1,0 +1,324 @@
+{
+    "app_title": "এফআরএ অ্যাটলাস ড্যাশবোর্ড",
+    "app_subtitle": "বন অধিকার আইন মনিটরিং সিস্টেম",
+    "dashboard": "ড্যাশবোর্ড",
+    "atlas": "অ্যাটলাস",
+    "dss": "ডিএসএস",
+    "documents": "নথিপত্র",
+    "module": "মডিউল",
+    "loading": "{{module}} লোড হচ্ছে...",
+    "online": "অনলাইন",
+    "profile": "প্রোফাইল",
+    "settings": "সেটিংস",
+    "logout": "লগআউট",
+    "navigation": "নেভিগেশন",
+    "select_module": "শুরু করতে একটি মডিউল নির্বাচন করুন",
+    "main_modules": "প্রধান মডিউল",
+    "interactive_atlas": "ইন্টারেক্টিভ অ্যাটলাস",
+    "geospatial_analysis": "জিওস্পেশিয়াল বিশ্লেষণ",
+    "decision_support": "সিদ্ধান্ত সহায়তা",
+    "ocr_processing": "ওসিআর ও প্রসেসিং",
+    "quick_actions": "দ্রুত কাজ",
+    "export_data": "ডেটা এক্সপোর্ট",
+    "export_current_analysis": "বর্তমান বিশ্লেষণ এক্সপোর্ট করুন",
+    "new_report": "নতুন রিপোর্ট",
+    "create_new_report": "নতুন রিপোর্ট তৈরি করুন",
+    "help_center": "হেল্প সেন্টার",
+    "get_support": "সাপোর্ট নিন",
+    "system_status": "সিস্টেম স্ট্যাটাস",
+    "all_systems": "সমস্ত সিস্টেম",
+    "operational": "কার্যক্ষম",
+    "dss_engine": "ডিএসএস ইঞ্জিন",
+    "map_services": "ম্যাপ সার্ভিস",
+    "ocr_processing_status": "ওসিআর প্রসেসিং",
+    "database": "ডেটাবেস",
+    "fra_platform_version": "এফআরএ প্ল্যাটফর্ম v2.1",
+    "atlas_controls": "অ্যাটলাস কন্ট্রোল",
+    "location": "লোকেশন",
+    "state": "রাজ্য",
+    "district": "জেলা",
+    "select_state": "রাজ্য নির্বাচন করুন",
+    "select_district": "জেলা নির্বাচন করুন",
+    "map_layers": "ম্যাপ লেয়ার",
+    "base_layer": "বেস লেয়ার",
+    "openstreetmap": "ওপেনস্ট্রিটম্যাপ",
+    "satellite": "স্যাটেলাইট",
+    "overlays": "ওভারলে",
+    "fra_claims": "এফআরএ ক্লেইম",
+    "forest_cover": "বন আচ্ছাদন",
+    "water_bodies": "জলাধার",
+    "claim_details": "ক্লেইম বিস্তারিত",
+    "edit": "এডিট",
+    "id": "আইডি",
+    "claimant": "দাবিদার",
+    "type": "টাইপ",
+    "area": "এলাকা",
+    "status": "স্ট্যাটাস",
+    "approved": "অনুমোদিত",
+    "pending": "বিচারাধীন",
+    "rejected": "প্রত্যাখ্যাত",
+    "select_polygon_to_view": "বিস্তারিত দেখতে একটি পলিগন নির্বাচন করুন",
+    "document_management": "ডকুমেন্ট ম্যানেজমেন্ট",
+    "ocr_processing_desc": "এফআরএ নথিপত্রের জন্য ওসিআর প্রসেসিং এবং এআই এনটিটি এক্সট্রাকশন",
+    "api_connected": "এপিআই সংযুক্ত",
+    "connecting": "সংযোগ হচ্ছে...",
+    "api_disconnected": "এপিআই সংযোগ বিচ্ছিন্ন",
+    "check_api_status": "এপিআই স্ট্যাটাস চেক করুন",
+    "processing_error": "প্রসেসিং ত্রুটি",
+    "supports_formats": "পিডিএফ, পিএনজি, জেপিজি, জেপিইজি, টিআইএফএফ, বিএমপি সাপোর্ট করে • মাল্টি-ল্যাঙ্গুয়েজ ওসিআর (ইংরেজি, হিন্দি, ওড়িয়া) • এআই-পাওয়ার্ড এনটিটি এক্সট্রাকশন",
+    "process_document": "ডকুমেন্ট প্রসেস করুন",
+    "ocr_ai_extraction": "ওসিআর এবং এআই এনটিটি এক্সট্রাকশন",
+    "processing_document": "ডকুমেন্ট প্রসেসিং",
+    "uploading_document": "ডকুমেন্ট আপলোড হচ্ছে...",
+    "extracting_text_ocr": "ওসিআর দিয়ে টেক্সট এক্সট্রাক্ট হচ্ছে...",
+    "extracting_entities_ai": "এআই দিয়ে এনটিটি এক্সট্রাক্ট হচ্ছে...",
+    "processing_complete": "প্রসেসিং সম্পূর্ণ!",
+    "text_extraction_complete": "টেক্সট এক্সট্রাকশন সম্পূর্ণ!",
+    "processing_steps": "প্রসেসিং ধাপ:",
+    "step_language_detection": "১. স্বয়ংক্রিয় ভাষা সনাক্তকরণ",
+    "step_ocr_extraction": "২. ওসিআর টেক্সট এক্সট্রাকশন",
+    "step_entity_recognition": "৩. এআই এনটিটি রিকগনিশন",
+    "step_data_structuring": "৪. ডেটা স্ট্রাকচারিং",
+    "unknown_type": "অজানা টাইপ",
+    "no_document_selected": "কোনো ডকুমেন্ট নির্বাচন করা হয়নি",
+    "select_document_to_process": "প্রসেস করতে একটি ডকুমেন্ট নির্বাচন করুন",
+    "api_connection_required": "এপিআই সংযোগ প্রয়োজন",
+    "ensure_backend_running": "ব্যাকএন্ড এপিআই চলছে এবং সংযুক্ত আছে তা নিশ্চিত করুন।",
+    "full_processing": "ফুল প্রসেসিং (ওসিআর + এআই এনটিটি)",
+    "text_only": "শুধুমাত্র টেক্সট (ওসিআর অনলি)",
+    "processing_options": "প্রসেসিং অপশন:",
+    "full_processing_desc": "ফুল প্রসেসিং: ওসিআর টেক্সট এক্সট্রাকশন + এআই এনটিটি রিকগনিশন",
+    "text_only_desc": "শুধুমাত্র টেক্সট: এনটিটি বিশ্লেষণ ছাড়া ওসিআর টেক্সট এক্সট্রাকশন",
+    "document_upload": {
+        "title": "ডকুমেন্ট আপলোড",
+        "subtitle": "প্রসেস করার জন্য একটি ফাইল নির্বাচন বা ড্র্যাগ করুন",
+        "file_selected": "ফাইল নির্বাচন করা হয়েছে এবং প্রসেস করার জন্য প্রস্তুত",
+        "choose_different": "ভিন্ন ফাইল চয়ন করুন",
+        "drop_here": "আপনার ফাইল এখানে ড্রপ করুন",
+        "or_click": "অথবা ব্রাউজ করতে ক্লিক করুন",
+        "api_not_connected": "এপিআই সংযুক্ত নয়",
+        "check_api": "এপিআই সংযোগ চেক করুন",
+        "supported_formats": "সাপোর্টেড ফরম্যাট",
+        "max_file_size": "সর্বোচ্চ ফাইল সাইজ",
+        "languages": "ভাষাসমূহ",
+        "languages_list": "ইংরেজি, হিন্দি, ওড়িয়া (স্বয়ংক্রিয়ভাবে সনাক্ত)",
+        "errors": {
+          "file_too_large": "ফাইলের আকার খুব বড়। সর্বোচ্চ অনুমোদিত: {{maxSize}}MB",
+          "unsupported_format": "অসাপোর্টেড ফাইল ফরম্যাট। সাপোর্টেড ফরম্যাট: {{formats}}"
+        }
+      },
+    "extracted_entities": {
+        "title": "এক্সট্রাকশন ফলাফল",
+        "processing": {
+        "title": "ডকুমেন্ট প্রসেসিং",
+        "message": "আমরা টেক্সট এবং এনটিটি এক্সট্রাক্ট করার সময় অনুগ্রহ করে অপেক্ষা করুন..."
+        },
+        "no_document": {
+        "title": "কোনো ডকুমেন্ট প্রসেস করা হয়নি",
+        "message": "এক্সট্রাক্টেড এনটিটি এবং টেক্সট দেখতে একটি ডকুমেন্ট আপলোড এবং প্রসেস করুন।"
+        },
+        "tabs": {
+        "entities": "এক্সট্রাক্টেড এনটিটি",
+        "text": "এক্সট্রাক্টেড টেক্সট"
+        },
+        "actions": {
+        "export": "এক্সপোর্ট",
+        "clear": "ক্লিয়ার",
+        "copy_text": "টেক্সট কপি করুন",
+        "copy_to_clipboard": "ক্লিপবোর্ডে কপি করুন"
+        },
+        "entities": {
+        "not_found": "পাওয়া যায়নি",
+        "no_entities": {
+            "title": "কোনো এনটিটি উপলব্ধ নেই",
+            "text_only": "শুধুমাত্র টেক্সট প্রসেসিং ব্যবহার করা হয়েছে। এনটিটি এক্সট্রাক্ট করতে ফুল প্রসেসিং ব্যবহার করুন।",
+            "no_extracted": "এই ডকুমেন্ট থেকে কোনো এনটিটি এক্সট্রাক্ট করা হয়নি।"
+        },
+        "error": {
+            "title": "এনটিটি এক্সট্রাকশন ত্রুটি",
+            "show_raw": "কাঁচা আউটপুট দেখান"
+        }
+        },
+        "text": {
+        "title": "এক্সট্রাক্টেড টেক্সট",
+        "no_text": "কোনো টেক্সট এক্সট্রাক্ট করা হয়নি"
+        },
+        "footer": {
+        "processed": "প্রসেসড",
+        "language": "ভাষা",
+        "provider": "প্রদানকারী"
+        }
+    },
+    "processing_history": {
+      "title": "প্রসেসিং ইতিহাস",
+      "subtitle": "সাম্প্রতিক ডকুমেন্ট প্রসেসিং ফলাফল",
+      "no_history": "এখনও কোনো ইতিহাস নেই",
+      "no_history_message": "প্রসেসড ডকুমেন্ট এখানে দেখা যাবে",
+      "documents_count": "{{count}}টি প্রসেসড ডকুমেন্ট",
+      "active": "সক্রিয়",
+      "text_only": "শুধুমাত্র টেক্সট",
+      "entities_count": "{{count}}টি এনটিটি",
+      "entities_failed": "এনটিটি ব্যর্থ",
+      "entity_extraction_failed": "এনটিটি এক্সট্রাকশন ব্যর্থ হয়েছে",
+      "click_to_view": "ফলাফল দেখতে কোনো ডকুমেন্টে ক্লিক করুন",
+      "time_just_now": "এক্ষুনি",
+      "time_minutes_ago": "{{count}}মি আগে",
+      "time_hours_ago": "{{count}}ঘন্টা আগে",
+      "time_days_ago": "{{count}}দিন আগে"
+    },
+    "dss_panel": {
+      "title": "সিদ্ধান্ত সহায়তা সিস্টেম",
+      "subtitle": "গ্রামের জন্য এআই-পাওয়ার্ড স্কিম সুপারিশ",
+      "last_updated": "সর্বশেষ আপডেট",
+      "error": "ত্রুটি",
+      "api_status": "ডিএসএস ইঞ্জিন এপিআই-তে সংযুক্ত • রিয়েল-টাইম সুপারিশ",
+      "stats": {
+        "total_schemes": "মোট স্কিম",
+        "high_priority": "উচ্চ অগ্রাধিকার",
+        "medium_priority": "মাধ্যম অগ্রাধিকার",
+        "low_priority": "নিম্ন অগ্রাধিকার",
+        "avg_score": "গড় স্কোর"
+      },
+      "recommendations": {
+        "title": "সুপারিশ",
+        "no_village": "সুপারিশ দেখতে একটি গ্রাম নির্বাচন করুন",
+        "no_data": "এই গ্রামের জন্য কোনো সুপারিশ উপলব্ধ নেই",
+        "loading": "সুপারিশ লোড হচ্ছে...",
+        "scheme": "স্কিম",
+        "reason": "কারণ",
+        "score": "স্কোর",
+        "priority": "অগ্রাধিকার",
+        "description": "বর্ণনা",
+        "estimated_cost": "আনুমানিক খরচ",
+        "duration_months": "সময়কাল",
+        "priority_high": "উচ্চ",
+        "priority_medium": "মাধ্যম",
+        "priority_low": "নিম্ন"
+      },
+      "quick_actions": {
+        "title": "দ্রুত কাজ",
+        "refresh": "ডেটা রিফ্রেশ",
+        "export": "রিপোর্ট এক্সপোর্ট",
+        "compare": "গ্রাম তুলনা",
+        "refresh_tooltip": "নির্বাচিত গ্রামের জন্য সুপারিশ রিফ্রেশ করুন",
+        "export_tooltip": "পিডিএফ হিসাবে বিস্তারিত রিপোর্ট ডাউনলোড করুন",
+        "compare_tooltip": "অন্যান্য গ্রামের সাথে তুলনা করুন",
+        "no_village": "কাজ সক্ষম করতে একটি গ্রাম নির্বাচন করুন"
+      }
+    },
+    "dss_stats": {
+      "total_schemes": "মোট স্কিম",
+      "high_priority": "উচ্চ অগ্রাধিকার",
+      "medium_priority": "মাধ্যম অগ্রাধিকার",
+      "low_priority": "নিম্ন অগ্রাধিকার",
+      "average_score": "গড় স্কোর",
+      "recommended_schemes": "সুপারিশকৃত স্কিম",
+      "urgent_recommendations": "জরুরী সুপারিশ",
+      "standard_recommendations": "স্ট্যান্ডার্ড সুপারিশ",
+      "optional_schemes": "ঐচ্ছিক স্কিম",
+      "match_confidence": "ম্যাচ কনফিডেন্স"
+    },
+    "quick_actions_panel": {
+      "title": "দ্রুত কাজ",
+      "subtitle": "সুপারিশ ম্যানেজ এবং এক্সপোর্ট করুন",
+      "refresh_recommendations": "সুপারিশ রিফ্রেশ",
+      "refreshing": "রিফ্রেশ হচ্ছে...",
+      "export_report": "রিপোর্ট এক্সপোর্ট",
+      "generate_analysis": "বিশ্লেষণ জেনারেট করুন",
+      "batch_process": "ব্যাচ প্রসেস",
+      "help_support": "হেল্প ও সাপোর্ট",
+      "available_schemes": "উপলব্ধ স্কিম",
+      "view_all_schemes": "সমস্ত স্কিম দেখুন",
+      "hide_schemes": "স্কিম লুকান",
+      "api_status": "এপিআই স্ট্যাটাস",
+      "connected_to_dss": "ডিএসএস ইঞ্জিনে সংযুক্ত",
+      "base_url": "বেস URL",
+      "alerts": {
+        "no_data_export": "এক্সপোর্ট করার জন্য কোনো ডেটা নেই। প্রথমে একটি গ্রাম নির্বাচন করুন।",
+        "no_data_analysis": "বিশ্লেষণের জন্য কোনো ডেটা নেই। প্রথমে একটি গ্রাম নির্বাচন করুন।",
+        "failed_fetch_schemes": "স্কিম ফেচ করতে ব্যর্থ। এপিআই সার্ভার চলছে কিনা চেক করুন।",
+        "analysis_generation": "বিশ্লেষণ জেনারেশন ফিচার এখানে ইমপ্লিমেন্ট করা হবে। এটি চার্ট এবং ইনসাইট সহ বিস্তারিত রিপোর্ট তৈরি করবে।",
+        "batch_processing": "ব্যাচ প্রসেসিং ফিচার একসাথে একাধিক গ্রাম প্রসেস করার অনুমতি দেবে। এটি একটি প্রিমিয়াম ফিচার।"
+      },
+      "help_text": {
+        "title": "ডিএসএস ইঞ্জিন হেল্প:",
+        "select_village": "১. একটি গ্রাম নির্বাচন করুন: সুপারিশ পেতে ড্রপডাউন থেকে চয়ন করুন",
+        "view_recommendations": "২. সুপারিশ দেখুন: এআই-পাওয়ার্ড স্কিম সুজেশন দেখুন",
+        "export_report": "৩. রিপোর্ট এক্সপোর্ট: সুপারিশ সিএসভি হিসাবে ডাউনলোড করুন",
+        "refresh": "৪. রিফ্রেশ: সর্বশেষ ডেটা দিয়ে সুপারিশ আপডেট করুন",
+        "api_endpoints": "এপিআই এন্ডপয়েন্ট:",
+        "get_recommendations": "- GET /api/dss/recommend?village_id=X",
+        "get_villages": "- GET /api/dss/villages",
+        "get_schemes": "- GET /api/dss/schemes",
+        "support_contact": "সাপোর্টের জন্য, ডেভেলপমেন্ট টিমের সাথে যোগাযোগ করুন।"
+      }
+    },
+    "recommendations_list": {
+      "title": "স্কিম সুপারিশ",
+      "for_village": "গ্রামের জন্য",
+      "select_village": {
+        "title": "একটি গ্রাম নির্বাচন করুন",
+        "message": "গ্রামের বৈশিষ্ট্য এবং প্রয়োজনীয়তার ভিত্তিতে ব্যক্তিগতকৃত স্কিম সুপারিশ পেতে উপরের সিলেক্টর থেকে একটি গ্রাম চয়ন করুন।"
+      },
+      "no_recommendations": {
+        "title": "কোনো সুপারিশ নেই",
+        "message": "বর্তমান মানদণ্ডের ভিত্তিতে এই গ্রামের জন্য উপযুক্ত স্কিম পাওয়া যায়নি।"
+      },
+      "loading": "সুপারিশ লোড হচ্ছে...",
+      "reason": "কারণ",
+      "match_score": "ম্যাচ স্কোর",
+      "priority": {
+        "high": "উচ্চ",
+        "medium": "মাধ্যম",
+        "low": "নিম্ন"
+      },
+      "scheme_details": {
+        "estimated_cost": "আনুমানিক খরচ",
+        "duration": "সময়কাল"
+      }
+    },
+    "village_selector": {
+      "title": "গ্রাম নির্বাচন",
+      "subtitle": "স্কিম সুপারিশ পেতে একটি গ্রাম চয়ন করুন",
+      "village_id": "গ্রাম আইডি",
+      "loading_villages": "গ্রাম লোড হচ্ছে...",
+      "select_village": "একটি গ্রাম নির্বাচন করুন",
+      "villages_available": "ডেটাবেসে {{count}}টি গ্রাম উপলব্ধ",
+      "error": {
+        "loading": "গ্রাম লোড করতে ত্রুটি: {{error}}",
+        "retry": "পুনরায় চেষ্টা করুন"
+      }
+    },
+    "atlas_panel": {
+      "interactive_atlas": "ইন্টারেক্টিভ অ্যাটলাস",
+      "claims_loaded": "{{count}}টি ক্লেইম লোড হয়েছে",
+      "loading_polygons": "পলিগন ডেটা লোড হচ্ছে...",
+      "controls": {
+        "drawing_mode": "ড্রয়িং মোড",
+        "edit_mode": "এডিট মোড",
+        "draw_claim": "ক্লেইম আঁকুন",
+        "exit_drawing": "ড্রয়িং থেকে বের হন",
+        "edit_claims": "ক্লেইম এডিট করুন",
+        "exit_edit": "এডিট থেকে বের হন",
+        "export_png": "পিএনজি এক্সপোর্ট"
+      },
+      "polygon_types": {
+        "IFR": "ব্যক্তিগত বন অধিকার",
+        "CFR": "সম্প্রদায় বন অধিকার",
+        "forest": "বন এলাকা",
+        "Community Forest Lands": "সম্প্রদায় বন ভূমি"
+      },
+      "status": {
+        "pending": "বিচারাধীন",
+        "approved": "অনুমোদিত",
+        "rejected": "প্রত্যাখ্যাত",
+        "under_review": "পর্যালোচনাধীন"
+      },
+      "errors": {
+        "api_failed": "এপিআই সংযোগ ব্যর্থ, লোকাল ডেটা ব্যবহার করা হচ্ছে",
+        "load_failed": "পলিগন ডেটা লোড করতে ব্যর্থ",
+        "save_failed": "পলিগন সেভ করতে ব্যর্থ। অনুগ্রহ করে আবার চেষ্টা করুন।",
+        "update_failed": "পলিগন আপডেট করতে ব্যর্থ। অনুগ্রহ করে আবার চেষ্টা করুন।"
+      }
+    }
+}
