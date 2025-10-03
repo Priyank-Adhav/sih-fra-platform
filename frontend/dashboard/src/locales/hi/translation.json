@@ -320,5 +320,227 @@
       "save_failed": "बहुभुज सहेजने में विफल। कृपया पुनः प्रयास करें।",
       "update_failed": "बहुभुज अपडेट करने में विफल। कृपया पुनः प्रयास करें।"
     }
+  },
+  "claim_tracker": "दावा प्रक्रिया ट्रैकर",
+  "fra_workflow": "एफआरए दावा वर्कफ़्लो प्रबंधन",
+  "claim_tracker_service": "दावा ट्रैकर",
+  
+  "claim_process_tracker": "दावा प्रक्रिया ट्रैकर",
+  "fra_workflow_management": "एफआरए दावा वर्कफ़्लो प्रबंधन",
+  "manage_workflows": "एफआरए दावा वर्कफ़्लो प्रबंधित करें और सभी 8 चरणों में प्रगति ट्रैक करें",
+  "active_claims": "सक्रिय दावे",
+  "no_claim_selected": "कोई दावा चयनित नहीं",
+  "select_claim_to_view": "इसकी प्रगति देखने और वर्कफ़्लो चरण प्रबंधित करने के लिए साइडबार से एक दावा मामला चुनें",
+  "create_first_claim": "आरंभ करने के लिए अपना पहला एफआरए दावा बनाएं",
+  "create_new_claim": "नया दावा बनाएं",
+  "create_claim": "दावा बनाएं",
+  
+  "claim_process_workflow": "दावा प्रक्रिया वर्कफ़्लो",
+  "track_progress": "8-चरणीय एफआरए प्रक्रिया में प्रगति ट्रैक करें",
+  "overall_progress": "समग्र प्रगति",
+  "steps": "चरण",
+  
+  "step_status": {
+    "draft": "मसौदा",
+    "not_started": "शुरू नहीं हुआ",
+    "in_progress": "प्रगति पर", 
+    "awaiting_review": "समीक्षा की प्रतीक्षा",
+    "completed": "पूर्ण"
+  },
+  
+  "step_names": {
+    "gram_sabha_meeting": "ग्राम सभा बैठक",
+    "frc_meeting": "एफआरसी बैठक और योजना",
+    "visual_mapping": "दृश्य मानचित्रण",
+    "noc_process": "एनओसी प्रक्रिया",
+    "verification": "सत्यापन",
+    "gram_sabha_presentation": "ग्राम सभा प्रस्तुति",
+    "sdlc_review": "एसडीएलसी समीक्षा",
+    "dlc_approval": "डीएलसी अनुमोदन"
+  },
+  
+  "step_descriptions": {
+    "gram_sabha_meeting": "सीएफआरआर दावा शुरू करने और वन अधिकार समिति (एफआरसी) गठित करने के लिए ग्राम सभा आयोजित करें",
+    "frc_meeting": "दावा तैयारी पर चर्चा और सदस्यों के बीच जिम्मेदारियां वितरित करने के लिए एफआरसी बैठक",
+    "visual_mapping": "समुदाय की भागीदारी से गांव की सीमाएं निर्धारित करें और दृश्य मानचित्र बनाएं",
+    "noc_process": "पड़ोसी गांवों से कोई आपत्ति प्रमाण पत्र प्राप्त करें और सीमा मानचित्र तैयार करें",
+    "verification": "एसडीएलसी सत्यापन समूह दावों और सहायक साक्ष्यों की जांच करता है",
+    "gram_sabha_presentation": "समुदाय की स्वीकृति के लिए तैयार दावे ग्राम सभा में प्रस्तुत करें",
+    "sdlc_review": "उपखंड स्तरीय समिति दावों की जांच करती है और वैध दावों को डीएलसी को अग्रेषित करती है",
+    "dlc_approval": "जिला स्तरीय समिति वैध वन अधिकार दावों के लिए अधिकार पत्र जारी करती है"
+  },
+  
+  "step_details": {
+    "step_information": "चरण जानकारी",
+    "step_number": "चरण संख्या",
+    "of": "/",
+    "started": "शुरू हुआ",
+    "completed": "पूर्ण हुआ",
+    "meeting_details": "बैठक विवरण",
+    "meeting_date": "बैठक तिथि",
+    "location": "स्थान",
+    "participants": "प्रतिभागी",
+    "decisions_made": "किए गए निर्णय",
+    "verification_notes": "सत्यापन नोट्स"
+  },
+  
+  "tabs": {
+    "details": "विवरण",
+    "documents": "दस्तावेज़",
+    "actions": "कार्रवाइयाँ"
+  },
+
+  "action_guidelines": "कार्रवाई दिशानिर्देश",
+  "guidelines_list": {
+    "documents_uploaded": "चरण पूरा करने से पहले सभी आवश्यक दस्तावेज़ अपलोड सुनिश्चित करें",
+    "verify_attendance": "प्रतिभागी उपस्थिति और बैठक मिनट्स सत्यापित करें",
+    "review_maps": "सीमा मानचित्र और एनओसी प्रमाण पत्र सावधानीपूर्वक समीक्षा करें",
+    "coordinate_officials": "आवश्यकतानुसार संबंधित सरकारी अधिकारियों के साथ समन्वय करें"
+  },
+  
+  "claim_documents": {
+    "upload_supporting_documents": "सहायक दस्तावेज़ अपलोड करें",
+    "supported_formats": "पीडीएफ, जेपीईजी, पीएनजी, वर्ड दस्तावेज़ 10MB तक",
+    "uploading_document": "दस्तावेज़ अपलोड हो रहा है...",
+    "uploaded_documents": "अपलोड किए गए दस्तावेज़",
+    "no_documents_uploaded": "अभी तक कोई दस्तावेज़ अपलोड नहीं किया गया",
+    "upload_meeting_documents": "बैठक मिनट्स, मानचित्र, या अन्य सहायक दस्तावेज़ अपलोड करें",
+    "upload_error": "अपलोड त्रुटि",
+    "upload_success": "दस्तावेज़ सफलतापूर्वक अपलोड हुआ!",
+    "delete_success": "दस्तावेज़ सफलतापूर्वक हटाया गया!",
+    "delete_confirm": "क्या आप वाकई इस दस्तावेज़ को हटाना चाहते हैं?",
+    "view_document": "दस्तावेज़ देखें",
+    "delete_document": "दस्तावेज़ हटाएं"
+  },
+  
+  "document_types": {
+    "meeting_minutes": "बैठक मिनट्स",
+    "attendance_sheet": "उपस्थिति पत्र", 
+    "map": "सीमा मानचित्र",
+    "noc": "कोई आपत्ति प्रमाण पत्र",
+    "application_form": "आवेदन फॉर्म",
+    "photograph": "फोटोग्राफ",
+    "video_recording": "वीडियो रिकॉर्डिंग",
+    "audio_recording": "ऑडियो रिकॉर्डिंग",
+    "other": "अन्य दस्तावेज़"
+  },
+  
+  "new_claim_form": {
+    "create_new_fra_claim": "नया एफआरए दावा बनाएं",
+    "village_name": "गांव का नाम",
+    "district": "जिला",
+    "state": "राज्य",
+    "claim_type": "दावा प्रकार",
+    "applicant_name": "आवेदक का नाम",
+    "applicant_contact": "संपर्क जानकारी",
+    "enter_village_name": "गांव का नाम दर्ज करें",
+    "name_of_applicant": "आवेदक या समुदाय का नाम",
+    "phone_or_email": "फोन नंबर या ईमेल"
+  },
+  
+  "claim_types": {
+    "individual": "व्यक्तिगत वन अधिकार",
+    "community": "सामुदायिक वन अधिकार", 
+    "cfr": "सामुदायिक वन संसाधन अधिकार"
+  },
+  
+  "case_info": {
+    "case_number": "मामला संख्या",
+    "village": "गांव",
+    "district_state": "जिला, राज्य",
+    "status": "स्थिति"
+  },
+  
+  "api_status": {
+    "connected": "एपीआई कनेक्टेड",
+    "connecting": "कनेक्ट हो रहा है...",
+    "disconnected": "एपीआई डिस्कनेक्टेड",
+    "check_status": "एपीआई स्थिति जांचें"
+  },
+  
+  "buttons": {
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "view": "देखें",
+    "download": "डाउनलोड करें",
+    "refresh": "रिफ्रेश करें"
+  },
+  
+  "messages": {
+    "loading_cases": "दावा मामले लोड हो रहे हैं...",
+    "error_loading_cases": "दावा मामले लोड करने में त्रुटि",
+    "no_cases_found": "कोई दावा मामला नहीं मिला",
+    "create_case_success": "दावा मामला सफलतापूर्वक बनाया गया",
+    "update_step_success": "चरण सफलतापूर्वक अद्यतन हुआ",
+    "upload_document_success": "दस्तावेज़ सफलतापूर्वक अपलोड हुआ"
+  },
+  "document_uploader": {
+    "upload_area": {
+      "title": "सहायक दस्तावेज़ अपलोड करें",
+      "description": "पीडीएफ, जेपीईजी, पीएनजी, वर्ड दस्तावेज़ 10MB तक",
+      "uploading": "दस्तावेज़ अपलोड हो रहा है..."
+    },
+    "errors": {
+      "invalid_file_type": "कृपया केवल पीडीएफ, जेपीईजी, पीएनजी, या वर्ड दस्तावेज़ अपलोड करें",
+      "file_too_large": "फ़ाइल आकार 10MB से कम होना चाहिए",
+      "upload_failed": "दस्तावेज़ अपलोड विफल",
+      "delete_failed": "दस्तावेज़ हटाने में विफल"
+    },
+    "success": {
+      "upload": "दस्तावेज़ सफलतापूर्वक अपलोड हुआ!",
+      "delete": "दस्तावेज़ सफलतापूर्वक हटाया गया!"
+    },
+    "documents_list": {
+      "title": "अपलोड किए गए दस्तावेज़",
+      "empty_title": "अभी तक कोई दस्तावेज़ अपलोड नहीं किया गया",
+      "empty_description": "बैठक मिनट्स, मानचित्र, या अन्य सहायक दस्तावेज़ अपलोड करें"
+    },
+    "actions": {
+      "view_document": "दस्तावेज़ देखें",
+      "delete_document": "दस्तावेज़ हटाएं",
+      "delete_confirm": "क्या आप वाकई इस दस्तावेज़ को हटाना चाहते हैं?"
+    }
+  },
+  "step_detail_panel": {
+    "tabs": {
+      "details": "विवरण",
+      "documents": "दस्तावेज़",
+      "actions": "कार्रवाइयाँ"
+    },
+    "step_information": "चरण जानकारी",
+    "step_number": "चरण संख्या",
+    "of": "/",
+    "started": "शुरू हुआ",
+    "completed": "पूर्ण हुआ",
+    "meeting_details": "बैठक विवरण",
+    "meeting_date": "बैठक तिथि",
+    "location": "स्थान",
+    "participants": "प्रतिभागी",
+    "decisions_made": "किए गए निर्णय",
+    "verification_notes": "सत्यापन नोट्स",
+    "step_actions": "चरण कार्रवाइयाँ",
+    "action_guidelines": "कार्रवाई दिशानिर्देश",
+    "guidelines_list": {
+      "documents_uploaded": "चरण पूरा करने से पहले सभी आवश्यक दस्तावेज़ अपलोड सुनिश्चित करें",
+      "verify_attendance": "प्रतिभागी उपस्थिति और बैठक मिनट्स सत्यापित करें",
+      "review_maps": "सीमा मानचित्र और एनओसी प्रमाण पत्र सावधानीपूर्वक समीक्षा करें",
+      "coordinate_officials": "आवश्यकतानुसार संबंधित सरकारी अधिकारियों के साथ समन्वय करें"
+    }
+  },
+  "actions": {
+    "start_this_step": "इस चरण को शुरू करें",
+    "mark_as_completed": "पूर्ण के रूप में चिह्नित करें",
+    "send_for_review": "समीक्षा के लिए भेजें",
+    "approve_and_complete": "अनुमोदित करें और पूरा करें",
+    "return_for_revisions": "संशोधन के लिए वापस करें",
+    "proceed_to_next_step": "अगले चरण पर आगे बढ़ें",
+    "mark_complete": "पूर्ण चिह्नित करें",
+    "need_review": "समीक्षा आवश्यक"
+  },
+  "documents_count": {
+    "count": "{{count}} दस्तावेज़",
+    "count_plural": "{{count}} दस्तावेज़"
   }
 }

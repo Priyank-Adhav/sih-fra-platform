@@ -5,8 +5,8 @@ export default function Sidebar({
   setActive,
   collapsed = false
 }: {
-  active: "atlas" | "dss" | "docs";
-  setActive: (a: "atlas" | "dss" | "docs") => void;
+  active: "atlas" | "dss" | "docs" | "claims";
+  setActive: (a: "atlas" | "dss" | "docs" | "claims") => void;
   collapsed?: boolean;
 }) {
   const { t } = useTranslation();
@@ -44,6 +44,17 @@ export default function Sidebar({
         </svg>
       ),
       color: "from-purple-500 to-pink-500"
+    },
+    {
+      id: "claims",
+      name: t("claim_tracker"),
+      description: t("fra_workflow"),
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        </svg>
+      ),
+      color: "from-orange-500 to-red-500"
     }
   ];
 
@@ -99,7 +110,7 @@ export default function Sidebar({
                           ? `bg-gradient-to-r ${item.color} text-white shadow-lg transform scale-[1.02]`
                           : "hover:bg-base-200/80 text-base-content border border-transparent hover:border-base-300/30"
                         }`}
-                      onClick={() => setActive(item.id as "atlas" | "dss" | "docs")}
+                      onClick={() => setActive(item.id as "atlas" | "dss" | "docs" | "claims")}
                     >
                       {/* Active indicator */}
                       {active === item.id && (
@@ -180,7 +191,7 @@ export default function Sidebar({
                   </div>
                   <div className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    <span>{t("database")}</span>
+                    <span>{t("claim_tracker_service")}</span>
                   </div>
                 </div>
               </div>

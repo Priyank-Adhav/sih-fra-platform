@@ -320,5 +320,227 @@
         "save_failed": "Failed to save polygon. Please try again.",
         "update_failed": "Failed to update polygon. Please try again."
       }
+    },
+    "claim_tracker": "Claim Process Tracker",
+    "fra_workflow": "FRA Claim Workflow Management",
+    "claim_tracker_service": "Claim Tracker",
+    
+    "claim_process_tracker": "Claim Process Tracker",
+    "fra_workflow_management": "FRA Claim Workflow Management",
+    "manage_workflows": "Manage FRA claim workflows and track progress through all 8 steps",
+    "active_claims": "Active Claims",
+    "no_claim_selected": "No Claim Selected",
+    "select_claim_to_view": "Select a claim case from the sidebar to view its progress and manage workflow steps",
+    "create_first_claim": "Create your first FRA claim to get started",
+    "create_new_claim": "Create New Claim",
+    "create_claim": "Create Claim",
+    
+    "claim_process_workflow": "Claim Process Workflow",
+    "track_progress": "Track progress through the 8-step FRA process",
+    "overall_progress": "Overall Progress",
+    "steps": "steps",
+    
+    "step_status": {
+      "draft": "Draft",
+      "not_started": "Not Started",
+      "in_progress": "In Progress", 
+      "awaiting_review": "Awaiting Review",
+      "completed": "Completed"
+    },
+    
+    "step_names": {
+      "gram_sabha_meeting": "Gram Sabha Meeting",
+      "frc_meeting": "FRC Meeting & Planning",
+      "visual_mapping": "Visual Mapping",
+      "noc_process": "NOC Process",
+      "verification": "Verification",
+      "gram_sabha_presentation": "Gram Sabha Presentation",
+      "sdlc_review": "SDLC Review",
+      "dlc_approval": "DLC Approval"
+    },
+    
+    "step_descriptions": {
+      "gram_sabha_meeting": "Convene gram sabha to initiate CFRR claim and establish Forest Rights Committee (FRC)",
+      "frc_meeting": "FRC meeting to discuss claims preparation and distribute responsibilities among members",
+      "visual_mapping": "Determine village boundaries with community participation and create visual maps",
+      "noc_process": "Obtain No Objection Certificates from neighboring villages and prepare boundary maps",
+      "verification": "SDLC verification group examines claims and supporting evidence",
+      "gram_sabha_presentation": "Present prepared claims to gram sabha for community approval",
+      "sdlc_review": "Subdivisional Level Committee investigates claims and forwards valid ones to DLC",
+      "dlc_approval": "District Level Committee issues authorization letters for valid forest rights claims"
+    },
+    
+    "step_details": {
+      "step_information": "Step Information",
+      "step_number": "Step Number",
+      "of": "of",
+      "started": "Started",
+      "completed": "Completed",
+      "meeting_details": "Meeting Details",
+      "meeting_date": "Meeting Date",
+      "location": "Location",
+      "participants": "Participants",
+      "decisions_made": "Decisions Made",
+      "verification_notes": "Verification Notes"
+    },
+    
+    "tabs": {
+      "details": "Details",
+      "documents": "Documents",
+      "actions": "Actions"
+    },
+
+    "action_guidelines": "Action Guidelines",
+    "guidelines_list": {
+      "documents_uploaded": "Ensure all required documents are uploaded before completing a step",
+      "verify_attendance": "Verify participant attendance and meeting minutes",
+      "review_maps": "Review boundary maps and NOC certificates carefully",
+      "coordinate_officials": "Coordinate with relevant government officials as needed"
+    },
+    
+    "claim_documents": {
+      "upload_supporting_documents": "Upload supporting documents",
+      "supported_formats": "PDF, JPEG, PNG, Word documents up to 10MB",
+      "uploading_document": "Uploading document...",
+      "uploaded_documents": "Uploaded Documents",
+      "no_documents_uploaded": "No documents uploaded yet",
+      "upload_meeting_documents": "Upload meeting minutes, maps, or other supporting documents",
+      "upload_error": "Upload Error",
+      "upload_success": "Document uploaded successfully!",
+      "delete_success": "Document deleted successfully!",
+      "delete_confirm": "Are you sure you want to delete this document?",
+      "view_document": "View document",
+      "delete_document": "Delete document"
+    },
+    
+    "document_types": {
+      "meeting_minutes": "Meeting Minutes",
+      "attendance_sheet": "Attendance Sheet", 
+      "map": "Boundary Map",
+      "noc": "No Objection Certificate",
+      "application_form": "Application Form",
+      "photograph": "Photograph",
+      "video_recording": "Video Recording",
+      "audio_recording": "Audio Recording",
+      "other": "Other Document"
+    },
+    
+    "new_claim_form": {
+      "create_new_fra_claim": "Create New FRA Claim",
+      "village_name": "Village Name",
+      "district": "District",
+      "state": "State",
+      "claim_type": "Claim Type",
+      "applicant_name": "Applicant Name",
+      "applicant_contact": "Contact Information",
+      "enter_village_name": "Enter village name",
+      "name_of_applicant": "Name of applicant or community",
+      "phone_or_email": "Phone number or email"
+    },
+    
+    "claim_types": {
+      "individual": "Individual Forest Rights",
+      "community": "Community Forest Rights", 
+      "cfr": "Community Forest Resource Rights"
+    },
+    
+    "case_info": {
+      "case_number": "Case Number",
+      "village": "Village",
+      "district_state": "District, State",
+      "status": "Status"
+    },
+    
+    "api_status": {
+      "connected": "API Connected",
+      "connecting": "Connecting...",
+      "disconnected": "API Disconnected",
+      "check_status": "Check API status"
+    },
+    
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save",
+      "delete": "Delete",
+      "edit": "Edit",
+      "view": "View",
+      "download": "Download",
+      "refresh": "Refresh"
+    },
+    
+    "messages": {
+      "loading_cases": "Loading claim cases...",
+      "error_loading_cases": "Error loading claim cases",
+      "no_cases_found": "No claim cases found",
+      "create_case_success": "Claim case created successfully",
+      "update_step_success": "Step updated successfully",
+      "upload_document_success": "Document uploaded successfully"
+    },
+    "document_uploader": {
+      "upload_area": {
+        "title": "Upload supporting documents",
+        "description": "PDF, JPEG, PNG, Word documents up to 10MB",
+        "uploading": "Uploading document..."
+      },
+      "errors": {
+        "invalid_file_type": "Please upload PDF, JPEG, PNG, or Word documents only",
+        "file_too_large": "File size must be less than 10MB",
+        "upload_failed": "Failed to upload document",
+        "delete_failed": "Failed to delete document"
+      },
+      "success": {
+        "upload": "Document uploaded successfully!",
+        "delete": "Document deleted successfully!"
+      },
+      "documents_list": {
+        "title": "Uploaded Documents",
+        "empty_title": "No documents uploaded yet",
+        "empty_description": "Upload meeting minutes, maps, or other supporting documents"
+      },
+      "actions": {
+        "view_document": "View document",
+        "delete_document": "Delete document",
+        "delete_confirm": "Are you sure you want to delete this document?"
+      }
+    },
+    "step_detail_panel": {
+      "tabs": {
+        "details": "Details",
+        "documents": "Documents",
+        "actions": "Actions"
+      },
+      "step_information": "Step Information",
+      "step_number": "Step Number",
+      "of": "of",
+      "started": "Started",
+      "completed": "Completed",
+      "meeting_details": "Meeting Details",
+      "meeting_date": "Meeting Date",
+      "location": "Location",
+      "participants": "Participants",
+      "decisions_made": "Decisions Made",
+      "verification_notes": "Verification Notes",
+      "step_actions": "Step Actions",
+      "action_guidelines": "Action Guidelines",
+      "guidelines_list": {
+        "documents_uploaded": "Ensure all required documents are uploaded before completing a step",
+        "verify_attendance": "Verify participant attendance and meeting minutes",
+        "review_maps": "Review boundary maps and NOC certificates carefully",
+        "coordinate_officials": "Coordinate with relevant government officials as needed"
+      }
+    },
+    "actions": {
+      "start_this_step": "Start This Step",
+      "mark_as_completed": "Mark as Completed",
+      "send_for_review": "Send for Review",
+      "approve_and_complete": "Approve and Complete",
+      "return_for_revisions": "Return for Revisions",
+      "proceed_to_next_step": "Proceed to Next Step",
+      "mark_complete": "Mark Complete",
+      "need_review": "Needs Review"
+    },
+    "documents_count": {
+      "count": "{{count}} document",
+      "count_plural": "{{count}} documents"
     }
 }
