@@ -50,55 +50,11 @@ if [ "$QUICK_MODE" = false ]; then
     fi
     source .venv/bin/activate
 
-    # === Install dependencies ===
-    echo "Installing backend dependencies..."
-    for service in backend/atlas backend/dss backend/document backend/claim_process; do
-        if [ -f "$service/requirements.txt" ]; then
-            echo "Installing dependencies for $service..."
-            pip install -r "$service/requirements.txt"
-        fi
-    done
-
-    # === Database Setup and Seeding ===
-    echo "Checking database setup..."
-
-    # Check if claim_cases table exists
-    if ! python -c "
-import sys
-sys.path.append('backend/claim_process')
-from database import engine
-from sqlalchemy import inspect
-inspector = inspect(engine)
-tables = inspector.get_table_names()
-print('Existing tables:', tables)
-if 'claim_cases' not in tables:
-    print('FIRST_TIME_SETUP: Database needs initialization')
-    sys.exit(1)
-else:
-    print('DATABASE_OK: Tables already exist')
-    sys.exit(0)
-" 2>/dev/null; then
-        echo "🚀 First-time setup detected! Initializing database..."
-        
-        # Run migrations
-        echo "Creating database tables..."
-        if python -m backend.claim_process.migrations 2>/dev/null; then
-            echo "✅ Database tables created successfully!"
-        else
-            echo "❌ Failed to create database tables"
-            exit 1
-        fi
-        
-        # Seed with mock data
-        echo "Seeding database with sample data..."
-        if python -m backend.claim_process.mock_data 2>/dev/null; then
-            echo "✅ Sample data seeded successfully!"
-            echo "📊 Created sample FRA claims for testing"
-        else
-            echo "⚠️  Could not seed sample data (database might already have data)"
-        fi
-    else
-        echo "✅ Database already set up"
+# === Install dependencies ===
+echo "Installing backend dependencies..."
+  for service in backend/atlas backend/dss backend/document backend/claim_process backend/analytics; do
+    if [ -f "$service/requirements.txt" ]; then
+        pip install -r "$service/requirements.txt"
     fi
 else
     # Quick mode - just activate venv and continue
@@ -114,17 +70,21 @@ PIDS=()
 echo "Starting Atlas service on port 5000..."
 (cd backend/atlas && python run.py) & PIDS+=($!)
 
-# DSS Service (Port 8000) 
-echo "Starting DSS service on port 8000..."
-(cd backend/dss && python start_server.py) & PIDS+=($!)
-
 # Document Service (Port 5001)
 echo "Starting Document service on port 5001..."
 (cd backend/document && python app.py) & PIDS+=($!)
 
+# DSS Service (Port 8000) 
+echo "Starting DSS service on port 8000..."
+(cd backend/dss && python start_server.py) & PIDS+=($!)
+
 # Claim Process Service (Port 8001)
 echo "Starting Claim Process service on port 8001..."
 (uvicorn backend.claim_process.app:app --host 0.0.0.0 --port 8001 --reload) & PIDS+=($!)
+
+# Analytics Service (Port 8002)
+echo "Starting Analytics service on port 8002..."
+(cd backend/analytics && python app.py) & PIDS+=($!)
 
 # Wait a moment for backend services to initialize
 sleep 3
@@ -132,6 +92,8 @@ sleep 3
 # === Start frontend and store PID ===
 echo "Starting frontend..."
 (cd frontend/dashboard && npm run dev) & PIDS+=($!)
+
+sleep 2
 
 echo ""
 echo "===================================================================="
@@ -147,6 +109,7 @@ echo "   - Atlas API:        http://localhost:5000/docs"
 echo "   - Document API:     http://localhost:5001/docs"
 echo "   - DSS API:          http://localhost:8000/docs"
 echo "   - Claim Process:    http://localhost:8001/docs"
+echo "   - Analytics API:    http://localhost:8002/docs"
 echo ""
 echo "Press Ctrl+C to stop all services"
 echo "===================================================================="
