@@ -6,9 +6,10 @@ import { useTranslation } from "react-i18next";
 const Atlas = React.lazy(() => import("../Atlas/AtlasMap"));
 const DSS = React.lazy(() => import("../DSS/DSSPanel"));
 const Documents = React.lazy(() => import("../Doc-Management/DocManagementPanel.tsx"));
+const ClaimProcess = React.lazy(() => import("../ClaimProcessTracker/ClaimProcessTracker.tsx"));
 
 export default function DashboardShell() {
-  const [active, setActive] = useState<"atlas" | "dss" | "docs">("atlas");
+  const [active, setActive] = useState<"atlas" | "dss" | "docs" | "claims">("atlas");
   const { t, i18n } = useTranslation();
 
   const getActiveModuleName = () => {
@@ -19,6 +20,8 @@ export default function DashboardShell() {
         return t("dss");
       case "docs":
         return t("documents");
+      case "claims":
+        return t("claim_tracker");
       default:
         return t("module");
     }
@@ -93,6 +96,7 @@ export default function DashboardShell() {
             {active === "atlas" && <Atlas />}
             {active === "dss" && <DSS />}
             {active === "docs" && <Documents />}
+            {active === "claims" && <ClaimProcess />}
           </Suspense>
         </main>
       </div>
