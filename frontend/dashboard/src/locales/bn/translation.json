@@ -320,5 +320,231 @@
         "save_failed": "পলিগন সেভ করতে ব্যর্থ। অনুগ্রহ করে আবার চেষ্টা করুন।",
         "update_failed": "পলিগন আপডেট করতে ব্যর্থ। অনুগ্রহ করে আবার চেষ্টা করুন।"
       }
+    },
+    "claim_tracker": "ক্লেইম প্রসেস ট্র্যাকার",
+    "fra_workflow": "এফআরএ ক্লেইম ওয়ার্কফ্লো ম্যানেজমেন্ট",
+    "claim_tracker_service": "ক্লেইম ট্র্যাকার",
+    
+    "claim_process_tracker": "ক্লেইম প্রসেস ট্র্যাকার",
+    "fra_workflow_management": "এফআরএ ক্লেইম ওয়ার্কফ্লো ম্যানেজমেন্ট",
+    "manage_workflows": "সমস্ত ৮টি ধাপের মাধ্যমে এফআরএ ক্লেইম ওয়ার্কফ্লো পরিচালনা করুন এবং অগ্রগতি ট্র্যাক করুন",
+    "active_claims": "সক্রিয় ক্লেইম",
+    "no_claim_selected": "কোনো ক্লেইম নির্বাচন করা হয়নি",
+    "select_claim_to_view": "এর অগ্রগতি দেখতে এবং ওয়ার্কফ্লো ধাপগুলি পরিচালনা করতে সাইডবার থেকে একটি ক্লেইম কেস নির্বাচন করুন",
+    "create_first_claim": "শুরু করতে আপনার প্রথম এফআরএ ক্লেইম তৈরি করুন",
+    "create_new_claim": "নতুন ক্লেইম তৈরি করুন",
+    "create_claim": "ক্লেইম তৈরি করুন",
+    
+    "claim_process_workflow": "ক্লেইম প্রসেস ওয়ার্কফ্লো",
+    "track_progress": "৮-ধাপের এফআরএ প্রক্রিয়ার মাধ্যমে অগ্রগতি ট্র্যাক করুন",
+    "overall_progress": "সামগ্রিক অগ্রগতি",
+    "steps": "ধাপ",
+    
+    "step_status": {
+      "draft": "খসড়া",
+      "not_started": "শুরু হয়নি",
+      "in_progress": "চলমান", 
+      "awaiting_review": "পর্যালোচনার জন্য অপেক্ষমান",
+      "completed": "সম্পন্ন"
+    },
+    
+    "step_names": {
+      "gram_sabha_meeting": "গ্রাম সভা সভা",
+      "frc_meeting": "এফআরসি সভা ও পরিকল্পনা",
+      "visual_mapping": "ভিজুয়াল ম্যাপিং",
+      "noc_process": "এনওসি প্রক্রিয়া",
+      "verification": "যাচাইকরণ",
+      "gram_sabha_presentation": "গ্রাম সভা উপস্থাপনা",
+      "sdlc_review": "এসডিএলসি পর্যালোচনা",
+      "dlc_approval": "ডিএলসি অনুমোদন"
+    },
+    
+    "step_descriptions": {
+      "gram_sabha_meeting": "সিএফআরআর ক্লেইম শুরু করতে গ্রাম সভা আহ্বান করুন এবং বন অধিকার কমিটি (এফআরসি) গঠন করুন",
+      "frc_meeting": "ক্লেইম প্রস্তুতি নিয়ে আলোচনা এবং সদস্যদের মধ্যে দায়িত্ব বণ্টন করতে এফআরসি সভা",
+      "visual_mapping": "সম্প্রদায়ের অংশগ্রহণে গ্রামের সীমানা নির্ধারণ করুন এবং ভিজুয়াল মানচিত্র তৈরি করুন",
+      "noc_process": "প্রতিবেশী গ্রামগুলি থেকে কোন আপত্তি সার্টিফিকেট সংগ্রহ করুন এবং সীমানা মানচিত্র প্রস্তুত করুন",
+      "verification": "এসডিএলসি যাচাইকরণ গ্রুপ ক্লেইম এবং সহায়ক প্রমাণ পরীক্ষা করে",
+      "gram_sabha_presentation": "সম্প্রদায়ের অনুমোদনের জন্য প্রস্তুত ক্লেইমগুলি গ্রাম সভায় উপস্থাপন করুন",
+      "sdlc_review": "উপবিভাগীয় স্তরের কমিটি ক্লেইম তদন্ত করে এবং বৈধগুলি ডিএলসিতে প্রেরণ করে",
+      "dlc_approval": "জেলা স্তরের কমিটি বৈধ বন অধিকার ক্লেইমগুলির জন্য অনুমোদন পত্র জারি করে"
+    },
+    
+    "step_details": {
+      "step_information": "ধাপের তথ্য",
+      "step_number": "ধাপ নম্বর",
+      "of": "/",
+      "started": "শুরু হয়েছে",
+      "completed": "সম্পন্ন হয়েছে",
+      "meeting_details": "সভার বিবরণ",
+      "meeting_date": "সভার তারিখ",
+      "location": "অবস্থান",
+      "participants": "অংশগ্রহণকারী",
+      "decisions_made": "গৃহীত সিদ্ধান্ত",
+      "verification_notes": "যাচাইকরণ নোট"
+    },
+    
+    "tabs": {
+      "details": "বিস্তারিত",
+      "documents": "নথিপত্র",
+      "actions": "কাজ"
+    },
+
+    "action_guidelines": "কাজের নির্দেশিকা",
+    "guidelines_list": {
+      "documents_uploaded": "একটি ধাপ সম্পূর্ণ করার আগে সমস্ত প্রয়োজনীয় নথি আপলোড করা হয়েছে তা নিশ্চিত করুন",
+      "verify_attendance": "অংশগ্রহণকারীর উপস্থিতি এবং সভার মিনিট যাচাই করুন",
+      "review_maps": "সীমানা মানচিত্র এবং এনওসি সার্টিফিকেট সাবধানে পর্যালোচনা করুন",
+      "coordinate_officials": "প্রয়োজন অনুযায়ী সংশ্লিষ্ট সরকারী কর্মকর্তাদের সাথে সমন্বয় করুন"
+    },
+    
+    "claim_documents": {
+      "upload_supporting_documents": "সহায়ক নথি আপলোড করুন",
+      "supported_formats": "পিডিএফ, জেপিইজি, পিএনজি, ওয়ার্ড ডকুমেন্ট ১০এমবি পর্যন্ত",
+      "uploading_document": "নথি আপলোড হচ্ছে...",
+      "uploaded_documents": "আপলোড করা নথিপত্র",
+      "no_documents_uploaded": "এখনও কোনো নথি আপলোড করা হয়নি",
+      "upload_meeting_documents": "সভার মিনিট, মানচিত্র বা অন্যান্য সহায়ক নথি আপলোড করুন",
+      "upload_error": "আপলোড ত্রুটি",
+      "upload_success": "নথি সফলভাবে আপলোড হয়েছে!",
+      "delete_success": "নথি সফলভাবে মুছে ফেলা হয়েছে!",
+      "delete_confirm": "আপনি কি এই নথিটি মুছে ফেলতে নিশ্চিত?",
+      "view_document": "নথি দেখুন",
+      "delete_document": "নথি মুছুন"
+    },
+    
+    "document_types": {
+      "meeting_minutes": "সভার মিনিট",
+      "attendance_sheet": "উপস্থিতি শীট", 
+      "map": "সীমানা মানচিত্র",
+      "noc": "নো অবজেকশন সার্টিফিকেট",
+      "application_form": "আবেদন ফর্ম",
+      "photograph": "ফটোগ্রাফ",
+      "video_recording": "ভিডিও রেকর্ডিং",
+      "audio_recording": "অডিও রেকর্ডিং",
+      "other": "অন্যান্য নথি"
+    },
+    
+    "new_claim_form": {
+      "create_new_fra_claim": "নতুন এফআরএ ক্লেইম তৈরি করুন",
+      "village_name": "গ্রামের নাম",
+      "district": "জেলা",
+      "state": "রাজ্য",
+      "claim_type": "ক্লেইমের ধরন",
+      "applicant_name": "আবেদনকারীর নাম",
+      "applicant_contact": "যোগাযোগের তথ্য",
+      "enter_village_name": "গ্রামের নাম লিখুন",
+      "name_of_applicant": "আবেদনকারী বা সম্প্রদায়ের নাম",
+      "phone_or_email": "ফোন নম্বর বা ইমেল"
+    },
+    
+    "claim_types": {
+      "individual": "ব্যক্তিগত বন অধিকার",
+      "community": "সম্প্রদায় বন অধিকার", 
+      "cfr": "সম্প্রদায় বন সম্পদ অধিকার"
+    },
+    
+    "case_info": {
+      "case_number": "কেস নম্বর",
+      "village": "গ্রাম",
+      "district_state": "জেলা, রাজ্য",
+      "status": "স্ট্যাটাস"
+    },
+    
+    "api_status": {
+      "connected": "এপিআই সংযুক্ত",
+      "connecting": "সংযোগ হচ্ছে...",
+      "disconnected": "এপিআই সংযোগ বিচ্ছিন্ন",
+      "check_status": "এপিআই স্ট্যাটাস চেক করুন"
+    },
+    
+    "buttons": {
+      "cancel": "বাতিল",
+      "save": "সংরক্ষণ",
+      "delete": "মুছুন",
+      "edit": "সম্পাদনা",
+      "view": "দেখুন",
+      "download": "ডাউনলোড",
+      "refresh": "রিফ্রেশ"
+    },
+    
+    "messages": {
+      "loading_cases": "ক্লেইম কেস লোড হচ্ছে...",
+      "error_loading_cases": "ক্লেইম কেস লোড করতে ত্রুটি",
+      "no_cases_found": "কোনো ক্লেইম কেস পাওয়া যায়নি",
+      "create_case_success": "ক্লেইম কেস সফলভাবে তৈরি হয়েছে",
+      "update_step_success": "ধাপ সফলভাবে আপডেট হয়েছে",
+      "upload_document_success": "নথি সফলভাবে আপলোড হয়েছে"
+    },
+    
+    "document_uploader": {
+      "upload_area": {
+        "title": "সহায়ক নথি আপলোড করুন",
+        "description": "পিডিএফ, জেপিইজি, পিএনজি, ওয়ার্ড ডকুমেন্ট ১০এমবি পর্যন্ত",
+        "uploading": "নথি আপলোড হচ্ছে..."
+      },
+      "errors": {
+        "invalid_file_type": "দয়া করে শুধুমাত্র পিডিএফ, জেপিইজি, পিএনজি বা ওয়ার্ড ডকুমেন্ট আপলোড করুন",
+        "file_too_large": "ফাইলের আকার ১০এমবির কম হতে হবে",
+        "upload_failed": "নথি আপলোড করতে ব্যর্থ",
+        "delete_failed": "নথি মুছতে ব্যর্থ"
+      },
+      "success": {
+        "upload": "নথি সফলভাবে আপলোড হয়েছে!",
+        "delete": "নথি সফলভাবে মুছে ফেলা হয়েছে!"
+      },
+      "documents_list": {
+        "title": "আপলোড করা নথিপত্র",
+        "empty_title": "এখনও কোনো নথি আপলোড করা হয়নি",
+        "empty_description": "সভার মিনিট, মানচিত্র বা অন্যান্য সহায়ক নথি আপলোড করুন"
+      },
+      "actions": {
+        "view_document": "নথি দেখুন",
+        "delete_document": "নথি মুছুন",
+        "delete_confirm": "আপনি কি এই নথিটি মুছে ফেলতে নিশ্চিত?"
+      }
+    },
+    
+    "step_detail_panel": {
+      "tabs": {
+        "details": "বিস্তারিত",
+        "documents": "নথিপত্র",
+        "actions": "কাজ"
+      },
+      "step_information": "ধাপের তথ্য",
+      "step_number": "ধাপ নম্বর",
+      "of": "/",
+      "started": "শুরু হয়েছে",
+      "completed": "সম্পন্ন হয়েছে",
+      "meeting_details": "সভার বিবরণ",
+      "meeting_date": "সভার তারিখ",
+      "location": "অবস্থান",
+      "participants": "অংশগ্রহণকারী",
+      "decisions_made": "গৃহীত সিদ্ধান্ত",
+      "verification_notes": "যাচাইকরণ নোট",
+      "step_actions": "ধাপের কাজ",
+      "action_guidelines": "কাজের নির্দেশিকা",
+      "guidelines_list": {
+        "documents_uploaded": "একটি ধাপ সম্পূর্ণ করার আগে সমস্ত প্রয়োজনীয় নথি আপলোড করা হয়েছে তা নিশ্চিত করুন",
+        "verify_attendance": "অংশগ্রহণকারীর উপস্থিতি এবং সভার মিনিট যাচাই করুন",
+        "review_maps": "সীমানা মানচিত্র এবং এনওসি সার্টিফিকেট সাবধানে পর্যালোচনা করুন",
+        "coordinate_officials": "প্রয়োজন অনুযায়ী সংশ্লিষ্ট সরকারী কর্মকর্তাদের সাথে সমন্বয় করুন"
+      }
+    },
+    
+    "actions": {
+      "start_this_step": "এই ধাপ শুরু করুন",
+      "mark_as_completed": "সম্পন্ন হিসাবে চিহ্নিত করুন",
+      "send_for_review": "পর্যালোচনার জন্য পাঠান",
+      "approve_and_complete": "অনুমোদন করুন এবং সম্পন্ন করুন",
+      "return_for_revisions": "সংশোধনের জন্য ফেরত দিন",
+      "proceed_to_next_step": "পরবর্তী ধাপে এগিয়ে যান",
+      "mark_complete": "সম্পূর্ণ চিহ্নিত করুন",
+      "need_review": "পর্যালোচনা প্রয়োজন"
+    },
+    
+    "documents_count": {
+      "count": "{{count}}টি নথি",
+      "count_plural": "{{count}}টি নথি"
     }
 }
