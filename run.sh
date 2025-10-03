@@ -50,11 +50,55 @@ if [ "$QUICK_MODE" = false ]; then
     fi
     source .venv/bin/activate
 
-# === Install dependencies ===
-echo "Installing backend dependencies..."
-  for service in backend/atlas backend/dss backend/document backend/claim_process backend/analytics; do
-    if [ -f "$service/requirements.txt" ]; then
-        pip install -r "$service/requirements.txt"
+    # === Install dependencies ===
+    echo "Installing backend dependencies..."
+    for service in backend/atlas backend/dss backend/document backend/claim_process backend/analytics; do
+        if [ -f "$service/requirements.txt" ]; then
+            echo "Installing dependencies for $service..."
+            pip install -r "$service/requirements.txt"
+        fi
+    done
+
+    # === Database Setup and Seeding ===
+    echo "Checking database setup..."
+
+    # Check if claim_cases table exists
+    if ! python -c "
+import sys
+sys.path.append('backend/claim_process')
+from database import engine
+from sqlalchemy import inspect
+inspector = inspect(engine)
+tables = inspector.get_table_names()
+print('Existing tables:', tables)
+if 'claim_cases' not in tables:
+    print('FIRST_TIME_SETUP: Database needs initialization')
+    sys.exit(1)
+else:
+    print('DATABASE_OK: Tables already exist')
+    sys.exit(0)
+" 2>/dev/null; then
+        echo "🚀 First-time setup detected! Initializing database..."
+        
+        # Run migrations
+        echo "Creating database tables..."
+        if python -m backend.claim_process.migrations 2>/dev/null; then
+            echo "✅ Database tables created successfully!"
+        else
+            echo "❌ Failed to create database tables"
+            exit 1
+        fi
+        
+        # Seed with mock data
+        echo "Seeding database with sample data..."
+        if python -m backend.claim_process.mock_data 2>/dev/null; then
+            echo "✅ Sample data seeded successfully!"
+            echo "📊 Created sample FRA claims for testing"
+        else
+            echo "⚠️  Could not seed sample data (database might already have data)"
+        fi
+    else
+        echo "✅ Database already set up"
     fi
 else
     # Quick mode - just activate venv and continue
