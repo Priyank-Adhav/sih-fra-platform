@@ -37,7 +37,7 @@ source .venv/bin/activate
 
 # === Install dependencies ===
 echo "Installing backend dependencies..."
-for service in backend/atlas backend/dss backend/document; do
+for service in backend/atlas backend/dss backend/document backend/analytics; do
     if [ -f "$service/requirements.txt" ]; then
         pip install -r "$service/requirements.txt"
     fi
@@ -49,6 +49,7 @@ PIDS=()
 (cd backend/atlas && python run.py) & PIDS+=($!)
 (cd backend/dss && python start_server.py) & PIDS+=($!)
 (cd backend/document && python app.py) & PIDS+=($!)
+(cd backend/analytics && python app.py) & PIDS+=($!)
 
 # === Start frontend and store PID ===
 echo "Starting frontend..."
