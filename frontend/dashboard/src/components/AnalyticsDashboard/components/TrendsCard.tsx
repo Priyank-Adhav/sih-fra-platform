@@ -53,9 +53,6 @@ export const TrendsCard: React.FC<TrendsCardProps> = ({ filters: _filters }) => 
     const minValue = Math.min(...values);
     const range = maxValue - minValue;
     
-    // Calculate percentage change for display
-    const percentageChange = minValue > 0 ? ((maxValue - minValue) / minValue * 100).toFixed(2) : 0;
-    
     // Gradient colors for bars
     const colors = [
       'from-blue-400 to-blue-600',
