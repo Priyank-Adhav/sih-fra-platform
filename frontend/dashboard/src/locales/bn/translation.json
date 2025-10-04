@@ -451,23 +451,6 @@
       "status": "স্ট্যাটাস"
     },
     
-    "api_status": {
-      "connected": "এপিআই সংযুক্ত",
-      "connecting": "সংযোগ হচ্ছে...",
-      "disconnected": "এপিআই সংযোগ বিচ্ছিন্ন",
-      "check_status": "এপিআই স্ট্যাটাস চেক করুন"
-    },
-    
-    "buttons": {
-      "cancel": "বাতিল",
-      "save": "সংরক্ষণ",
-      "delete": "মুছুন",
-      "edit": "সম্পাদনা",
-      "view": "দেখুন",
-      "download": "ডাউনলোড",
-      "refresh": "রিফ্রেশ"
-    },
-    
     "messages": {
       "loading_cases": "ক্লেইম কেস লোড হচ্ছে...",
       "error_loading_cases": "ক্লেইম কেস লোড করতে ত্রুটি",
@@ -546,5 +529,99 @@
     "documents_count": {
       "count": "{{count}}টি নথি",
       "count_plural": "{{count}}টি নথি"
+    },
+    "analytics_dashboard": "এফআরএ অ্যানালিটিক্স ড্যাশবোর্ড",
+    "fra_implementation_insights": "বন অধিকার আইন বাস্তবায়নের অন্তর্দৃষ্টি",
+    "loading_analytics": "অ্যানালিটিক্স ডেটা লোড হচ্ছে...",
+    "error_loading_analytics": "অ্যানালিটিক্স ডেটা লোড করতে ত্রুটি",
+    
+    "filter_by_state": "রাজ্য দ্বারা ফিল্টার করুন",
+    "all_states": "সমস্ত রাজ্য",
+    "snapshot_date": "স্ন্যাপশট তারিখ",
+    "primary_metric": "প্রাথমিক মেট্রিক",
+    "show_target_states": "লক্ষ্য রাজ্য দেখান",
+    "last_updated": "সর্বশেষ আপডেট",
+    "data_source": "ডেটা সোর্স",
+    
+    "kpi": {
+      "total_claims": "মোট দাবি",
+      "titles_distributed": "বিতরণকৃত টাইটেল",
+      "forest_land": "বনভূমি",
+      "vs_previous": "পূর্ববর্তী সময়ের তুলনায়"
+    },
+    
+    "claims_overview": "দাবি সংক্ষিপ্ত বিবরণ",
+    "individual_vs_community_claims": "ব্যক্তিগত বনাম সম্প্রদায়ের দাবি",
+    "individual": "ব্যক্তিগত",
+    "community": "সম্প্রদায়",
+    "disposal_rate": "নিষ্পত্তি হার",
+    "claims_rejected": "প্রত্যাখ্যাত দাবি",
+    "total_claims_across": "মোট দাবি",
+    "states": "রাজ্য",
+    
+    "titles_overview": "টাইটেল সংক্ষিপ্ত বিবরণ",
+    "claims_to_titles_conversion": "দাবি থেকে টাইটেল রূপান্তর",
+    "success_rate": "সাফল্যের হার",
+    "total_claims": "মোট দাবি",
+    "titles_issued": "জারিকৃত টাইটেল",
+    "claims_pending": "দাবি মুলতুবি",
+    
+    "forest_land": "বনভূমি",
+    "land_distribution_acres": "জমি বন্টন (একর)",
+    "total_forest_land": "মোট বনভূমি",
+    "individual_rights": "ব্যক্তিগত অধিকার",
+    "community_rights": "সম্প্রদায়ের অধিকার",
+    "top_states_by_land": "জমির ক্ষেত্রফল অনুযায়ী শীর্ষ রাজ্য",
+    
+    "state_comparison": "রাজ্য তুলনা",
+    "month_over_month_changes": "মাস-ওভার-মাস পরিবর্তন",
+    "individual_claims": "ব্যক্তি. দাবি",
+    "individual_titles": "ব্যক্তি. টাইটেল",
+    "no_comparison_data": "কোনো তুলনামূলক ডেটা উপলব্ধ নেই",
+    
+    "trends_analysis": "ট্রেন্ড বিশ্লেষণ",
+    "performance_over_time": "সময়ের সাথে কর্মক্ষমতা",
+    "data_points": "ডেটা পয়েন্ট",
+    "time_period": "সময়কাল",
+    
+    "top_states": "শীর্ষ রাজ্য",
+    "leading_performers": "অগ্রণী পারফর্মার",
+    "no_ranking_data": "কোনো র্যাঙ্কিং ডেটা উপলব্ধ নেই",
+    
+    "rejection_analysis": "প্রত্যাখ্যান বিশ্লেষণ",
+    "claim_rejection_rates": "দাবি প্রত্যাখ্যানের হার",
+    "overall_rejection_rate": "সামগ্রিক প্রত্যাখ্যান হার",
+    "of": "/",
+    "claims_rejected_lower": "দাবি প্রত্যাখ্যাত",
+    "states_with_high_rejection": "উচ্চ প্রত্যাখ্যান হার সহ রাজ্য",
+    "states_with_rejection_above_20_percent": "২০% এর উপরে প্রত্যাখ্যান সহ রাজ্য",
+    
+    "target_states_focus": "লক্ষ্য রাজ্যের ফোকাস",
+    "mp_tripura_odisha_telangana": "এমপি, ত্রিপুরা, ওড়িশা, তেলেঙ্গানা",
+    "success": "সাফল্য",
+    "claims": "দাবি",
+    "titles": "টাইটেল",
+    "priority_intervention": "অগ্রাধিকার হস্তক্ষেপ",
+    "focus_on_improving_success_rates": "লক্ষ্য রাজ্যগুলিতে সাফল্যের হার উন্নত করার উপর ফোকাস করুন",
+    "analytics_services": "অ্যানালিটিক্স পরিষেবা",
+    
+    "api_status": {
+      "connected": "এপিআই সংযুক্ত",
+      "connecting": "সংযোগ হচ্ছে...",
+      "disconnected": "এপিআই সংযোগ বিচ্ছিন্ন",
+      "check_status": "এপিআই স্ট্যাটাস চেক করুন",
+      "retry": "সংযোগ পুনরায় চেষ্টা করুন"
+    },
+    
+    "buttons": {
+      "cancel": "বাতিল করুন",
+      "save": "সংরক্ষণ করুন",
+      "delete": "মুছুন",
+      "edit": "সম্পাদনা করুন",
+      "view": "দেখুন",
+      "download": "ডাউনলোড করুন",
+      "refresh": "রিফ্রেশ করুন",
+      "clear": "ক্লিয়ার করুন",
+      "retry": "পুনরায় চেষ্টা করুন"
     }
 }

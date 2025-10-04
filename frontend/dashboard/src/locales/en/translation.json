@@ -450,24 +450,7 @@
       "district_state": "District, State",
       "status": "Status"
     },
-    
-    "api_status": {
-      "connected": "API Connected",
-      "connecting": "Connecting...",
-      "disconnected": "API Disconnected",
-      "check_status": "Check API status"
-    },
-    
-    "buttons": {
-      "cancel": "Cancel",
-      "save": "Save",
-      "delete": "Delete",
-      "edit": "Edit",
-      "view": "View",
-      "download": "Download",
-      "refresh": "Refresh"
-    },
-    
+
     "messages": {
       "loading_cases": "Loading claim cases...",
       "error_loading_cases": "Error loading claim cases",
@@ -542,5 +525,99 @@
     "documents_count": {
       "count": "{{count}} document",
       "count_plural": "{{count}} documents"
+    },
+    "analytics_dashboard": "FRA Analytics",
+    "fra_implementation_insights": "FRA Implementation Insights",
+    "loading_analytics": "Loading analytics data...",
+    "error_loading_analytics": "Error loading analytics data",
+    
+    "filter_by_state": "Filter by State",
+    "all_states": "All States",
+    "snapshot_date": "Snapshot Date",
+    "primary_metric": "Primary Metric",
+    "show_target_states": "Show Target States",
+    "last_updated": "Last updated",
+    "data_source": "Data Source",
+    
+    "kpi": {
+      "total_claims": "Total Claims",
+      "titles_distributed": "Titles Distributed",
+      "forest_land": "Forest Land",
+      "vs_previous": "vs previous period"
+    },
+    
+    "claims_overview": "Claims Overview",
+    "individual_vs_community_claims": "Individual vs Community Claims",
+    "individual": "Individual",
+    "community": "Community",
+    "disposal_rate": "Disposal Rate",
+    "claims_rejected": "Claims Rejected",
+    "total_claims_across": "Total claims across",
+    "states": "states",
+    
+    "titles_overview": "Titles Overview",
+    "claims_to_titles_conversion": "Claims to Titles Conversion",
+    "success_rate": "Success Rate",
+    "total_claims": "Total Claims",
+    "titles_issued": "Titles Issued",
+    "claims_pending": "claims pending",
+    
+    "forest_land": "Forest Land",
+    "land_distribution_acres": "Land Distribution (acres)",
+    "total_forest_land": "Total Forest Land",
+    "individual_rights": "Individual Rights",
+    "community_rights": "Community Rights",
+    "top_states_by_land": "Top States by Land Area",
+    
+    "state_comparison": "State Comparison",
+    "month_over_month_changes": "Month-over-month changes",
+    "individual_claims": "Ind. Claims",
+    "individual_titles": "Ind. Titles",
+    "no_comparison_data": "No comparison data available",
+    
+    "trends_analysis": "Trends Analysis",
+    "performance_over_time": "Performance over time",
+    "data_points": "Data Points",
+    "time_period": "Time Period",
+    
+    "top_states": "Top States",
+    "leading_performers": "Leading Performers",
+    "no_ranking_data": "No ranking data available",
+    
+    "rejection_analysis": "Rejection Analysis",
+    "claim_rejection_rates": "Claim Rejection Rates",
+    "overall_rejection_rate": "Overall Rejection Rate",
+    "of": "of",
+    "claims_rejected_lower": "claims rejected",
+    "states_with_high_rejection": "States with High Rejection Rates",
+    "states_with_rejection_above_20_percent": "states with rejection above 20%",
+    
+    "target_states_focus": "Target States Focus",
+    "mp_tripura_odisha_telangana": "MP, Tripura, Odisha, Telangana",
+    "success": "Success",
+    "claims": "Claims",
+    "titles": "Titles",
+    "priority_intervention": "Priority Intervention",
+    "focus_on_improving_success_rates": "Focus on improving success rates in target states",
+    "analytics_services": "Analytics Services",
+    
+    "api_status": {
+      "connected": "API Connected",
+      "connecting": "Connecting...",
+      "disconnected": "API Disconnected",
+      "check_status": "Check API status",
+      "retry": "Retry connection"
+    },
+    
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save",
+      "delete": "Delete",
+      "edit": "Edit",
+      "view": "View",
+      "download": "Download",
+      "refresh": "Refresh",
+      "clear": "Clear",
+      "retry": "Retry"
     }
 }
