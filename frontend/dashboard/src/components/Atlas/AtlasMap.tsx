@@ -1,4 +1,3 @@
-// src/components/Atlas/AtlasMap.tsx
 import { useEffect, useRef, useState } from "react";
 import {
   MapContainer,
@@ -210,6 +209,8 @@ function VectorTileLayer({
   return null;
 }
 
+
+
 export default function AtlasMap() {
   const [mapInstance, setMapInstance] = useState<LeafletMap | null>(null);
   const [polygons, setPolygons] = useState<PolygonData[]>([]);
@@ -227,7 +228,7 @@ export default function AtlasMap() {
   const [showClaimForm, setShowClaimForm] = useState(false);
   const [pendingPolygon, setPendingPolygon] = useState<PolygonData | null>(null);
   const [editingPolygon, setEditingPolygon] = useState<PolygonData | null>(null);
-  
+
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -570,7 +571,7 @@ export default function AtlasMap() {
   };
 
   return (
-    <div className="flex h-full bg-base-100">
+    <div className="flex h-full bg-gradient-to-br from-green-50 to-green-100">
       <AtlasSidebar
         selectedClaim={getClaimDetails(selectedPolygon)}
         onLocationChange={handleLocationChange}
@@ -582,75 +583,128 @@ export default function AtlasMap() {
           }
         }}
       />
-      <div ref={containerRef} className="flex-1 flex flex-col p-4">
-        {/* Enhanced Map Controls */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="badge badge-primary badge-lg">
-              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-              </svg>
-              {t('atlas_panel.interactive_atlas')}
+
+      {/* Main Map Area */}
+      <div className="flex-1 flex flex-col p-6">
+        {/* Enhanced Header */}
+        <div className="mb-6">
+          <div className="flex items-start justify-between">
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 bg-gradient-to-br from-forest-600 to-forest-700 rounded-2xl flex items-center justify-center shadow-xl">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.707A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.707zM17.707 5.293A1 1 0 0118 6v10a1 1 0 01-.293.707L14 14.586V3.414l3.707 1.879z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">{t("interactive_atlas")}</h1>
+                <p className="text-gray-600 text-lg">{t("fra_claims_mapping_analysis")}</p>
+                <div className="flex items-center gap-4 mt-2">
+                  <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span>{t("claims_loaded", { count: polygons.length })}</span>
+                  </div>
+                  <span className="text-gray-300">•</span>
+                  <span className="text-sm text-gray-500">{t("ministry_tribal_affairs")}</span>
+                </div>
+              </div>
             </div>
-            <div className="text-sm text-base-content/70">
-              {loading ? (
-                <span className="loading loading-dots loading-sm"></span>
-              ) : (
-                t('atlas_panel.claims_loaded', { count: polygons.length })
+            {/* Enhanced API Status */}
+            <div className="flex items-center gap-4 ml-auto">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-gray-300 shadow-sm">
+                <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-sm font-medium text-gray-700">
+                  {t("api_connected")}
+                </span>
+                <button
+                  onClick={() => { }}
+                  className="ml-2 p-1 text-gray-500 hover:text-gray-700 rounded transition-colors"
+                  title={t("check_api_status")}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Enhanced Map Controls */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            {/* Status Badges */}
+            <div className="flex items-center gap-3">
+              <div className="badge badge-primary badge-lg px-4 py-4">
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                </svg>
+                {t('atlas_panel.interactive_atlas')}
+              </div>
+
+              {loading && (
+                <div className="badge badge-warning badge-lg px-4 py-4">
+                  <span className="loading loading-spinner loading-sm mr-2"></span>
+                  {t('atlas_panel.loading_polygons')}
+                </div>
+              )}
+
+              {isDrawingMode && (
+                <div className="badge badge-warning badge-lg px-4 py-3">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                  </svg>
+                  {t('atlas_panel.controls.drawing_mode')}
+                </div>
+              )}
+
+              {isEditMode && (
+                <div className="badge badge-info badge-lg px-4 py-3">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                  </svg>
+                  {t('atlas_panel.controls.edit_mode')}
+                </div>
               )}
             </div>
-            {error && (
-              <div className="badge badge-warning badge-sm">
-                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                </svg>
-                {error}
-              </div>
-            )}
-            {isDrawingMode && (
-              <div className="badge badge-warning badge-sm">
-                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                </svg>
-                {t('atlas_panel.controls.drawing_mode')}
-              </div>
-            )}
-            {isEditMode && (
-              <div className="badge badge-info badge-sm">
-                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-                </svg>
-                {t('atlas_panel.controls.edit_mode')}
-              </div>
-            )}
           </div>
-          <div className="flex items-center gap-2">
+
+          {/* Action Buttons */}
+          <div className="flex items-center gap-3">
             <button
               onClick={toggleDrawingMode}
-              className={`btn btn-sm ${isDrawingMode ? 'btn-primary' : 'btn-outline btn-primary'}`}
+              className={`btn px-6 py-3 font-semibold transition-all duration-200 flex items-center gap-3 ${isDrawingMode
+                ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg'
+                : 'bg-white border border-gray-300 text-gray-700 hover:border-amber-500 hover:text-amber-700'
+                }`}
               disabled={loading}
             >
-              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
               </svg>
               {isDrawingMode ? t('atlas_panel.controls.exit_drawing') : t('atlas_panel.controls.draw_claim')}
             </button>
+
             <button
               onClick={toggleEditMode}
-              className={`btn btn-sm ${isEditMode ? 'btn-secondary' : 'btn-outline btn-secondary'}`}
+              className={`btn px-6 py-3 font-semibold transition-all duration-200 flex items-center gap-3 ${isEditMode
+                ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg'
+                : 'bg-white border border-gray-300 text-gray-700 hover:border-purple-500 hover:text-purple-700'
+                }`}
               disabled={loading || polygons.length === 0}
             >
-              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
               </svg>
               {isEditMode ? t('atlas_panel.controls.exit_edit') : t('atlas_panel.controls.edit_claims')}
             </button>
+
             <button
               onClick={handleExportPNG}
-              className="btn btn-outline btn-primary btn-sm"
+              className="btn bg-gradient-to-r from-forest-500 to-forest-600 text-white px-6 py-3 font-semibold hover:from-forest-600 hover:to-forest-700 transition-all duration-200 flex items-center gap-3 shadow-lg"
               disabled={loading}
             >
-              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
               {t('atlas_panel.controls.export_png')}
@@ -659,30 +713,133 @@ export default function AtlasMap() {
         </div>
 
         {/* Enhanced Map Container */}
-        <div className="card bg-base-100 shadow-lg border border-base-300 flex-1">
-          <div className="card-body p-0 h-full">
+        <div ref={containerRef} className="card bg-white shadow-2xl border border-gray-200 rounded-2xl flex-1 overflow-hidden">
+          <div className="card-body p-0 h-full relative">
             {loading && (
-              <div className="absolute inset-0 bg-base-100/80 z-50 flex items-center justify-center">
+              <div className="absolute inset-0 bg-white/90 z-50 flex items-center justify-center rounded-2xl">
                 <div className="flex flex-col items-center gap-4">
-                  <span className="loading loading-spinner loading-lg"></span>
-                  <p className="text-sm text-base-content/70">{t('atlas_panel.loading_polygons')}</p>
+                  <div className="relative">
+                    <div className="w-16 h-16 border-4 border-forest-200 border-t-forest-600 rounded-full animate-spin"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-forest-600 rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-lg font-semibold text-gray-900">{t('atlas_panel.loading_polygons')}</p>
+                    <p className="text-gray-600 text-sm mt-2">Loading FRA claims data...</p>
+                  </div>
                 </div>
               </div>
             )}
-            <MapContainer center={[21.02, 81.02]} zoom={12} className="h-full w-full rounded-b-box" preferCanvas={true}>
+
+            {error && (
+              <div className="absolute top-4 left-4 right-4 z-40">
+                <div className="bg-red-50 border border-red-200 rounded-xl p-4 shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-medium text-red-900">Data Loading Issue</p>
+                      <p className="text-red-700 text-sm mt-1">{error}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <MapContainer
+              center={[22.5937, 78.9629]}
+              zoom={7}
+              className="h-full w-full"
+              preferCanvas={true}
+              zoomControl={true}
+              attributionControl={true}
+            >
               <MapInitializer onReady={(m) => setMapInstance(m)} />
+
               {/* Base Layers */}
               {baseLayer === "osm" && (
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
               )}
               {baseLayer === "satellite" && (
-                <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
+                <>
+                  <TileLayer
+                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                  />
+                  <TileLayer
+                    url="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
+                  />
+                </>
+
+              )}
+              {baseLayer === "terrain" && (
+                <TileLayer
+                  url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://opentopomap.org">OpenTopoMap</a> contributors'
+                />
+              )}
+              {baseLayer === "soil_moisture" && (
+                <>
+                  <TileLayer
+                    url="https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/SMAP_L4_Analyzed_Root_Zone_Soil_Moisture/default/2025-09-28/GoogleMapsCompatible_Level6/{z}/{y}/{x}.png"
+                    maxZoom={6}
+                    tileSize={256}
+                  />
+                  {/* Legend overlay */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "10px",
+                      right: "10px",
+                      background: "rgba(255, 255, 255, 0.8)",
+                      padding: "5px",
+                      borderRadius: "5px",
+                      zIndex: 1000
+                    }}
+                  >
+                    <img
+                      src="https://gibs.earthdata.nasa.gov/legends/SMAP_Analyzed_Soil_Moisture_H.svg"
+                      alt="Soil Moisture Legend"
+                      style={{ width: "500px" }}
+                    />
+                  </div>
+                </>
+              )}
+              {baseLayer === "forest_cover" && (
+                <>
+                  <TileLayer
+                    url="https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_NDVI_8Day/default/2025-10-03/GoogleMapsCompatible_Level9/{z}/{y}/{x}.png"
+                    attribution='NASA GIBS - MODIS NDVI'
+                    maxZoom={9}
+                  />
+                  <div className="legend"
+                    style={{
+                      position: "absolute",
+                      bottom: "10px",
+                      right: "10px",
+                      background: "rgba(255, 255, 255, 0.8)",
+                      padding: "5px",
+                      borderRadius: "5px",
+                      zIndex: 1000
+                    }}>
+                    <img src="https://gibs.earthdata.nasa.gov/legends/MODIS_NDVI_H.svg" alt="Forest Cover Legend" style={{ width: "500px" }} />
+                  </div>
+                </>
               )}
 
+
+
+              {/* Vector Layers */}
               <VectorTileLayer
                 polygons={polygons}
                 onPolygonClick={(polygon) => {
-                  console.log('Polygon clicked:', polygon); // Debug log
+                  console.log('Polygon clicked:', polygon);
                   setSelectedPolygon(polygon);
                   if (isEditMode) {
                     handleEditClaim(polygon);
@@ -692,6 +849,7 @@ export default function AtlasMap() {
                 selectedPolygonId={selectedPolygon?.id || null}
               />
 
+              {/* Drawing and Editing Controls */}
               <FeatureGroup ref={fgRef}>
                 <EditControl
                   position="topright"

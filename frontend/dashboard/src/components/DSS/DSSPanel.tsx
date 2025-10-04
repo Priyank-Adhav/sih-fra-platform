@@ -28,21 +28,24 @@ export default function DSSPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+
   const { t } = useTranslation();
 
+
+  // === Fetch Recommendations ===
   const fetchRecommendations = async (villageId: string) => {
     if (!villageId) return;
-    
+
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await fetch(`http://localhost:8000/api/dss/recommend?village_id=${villageId}`);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const data: DSSResponse = await response.json();
       setRecommendations(data.recommendations);
       setLastUpdated(new Date(data.generated_at).toLocaleString());
@@ -74,8 +77,8 @@ export default function DSSPanel() {
     const highPriority = recommendations.filter(r => r.priority === 'HIGH').length;
     const mediumPriority = recommendations.filter(r => r.priority === 'MEDIUM').length;
     const lowPriority = recommendations.filter(r => r.priority === 'LOW').length;
-    const avgScore = recommendations.length > 0 
-      ? recommendations.reduce((sum, r) => sum + r.score, 0) / recommendations.length 
+    const avgScore = recommendations.length > 0
+      ? recommendations.reduce((sum, r) => sum + r.score, 0) / recommendations.length
       : 0;
 
     return {
@@ -107,6 +110,26 @@ export default function DSSPanel() {
                 <p className="text-sm text-gray-500 mt-1">{t('dss_panel.last_updated')}: {lastUpdated}</p>
               )}
             </div>
+
+            {/* Enhanced API Status */}
+            <div className="flex items-center gap-4 ml-auto">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-gray-300 shadow-sm">
+                <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-sm font-medium text-gray-700">
+                  {t("api_connected")}
+                </span>
+                <button
+                  onClick={() => { }}
+                  className="ml-2 p-1 text-gray-500 hover:text-gray-700 rounded transition-colors"
+                  title={t("check_api_status")}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
 

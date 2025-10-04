@@ -94,7 +94,7 @@ export const DocumentUploader: React.FC<DocumentUploaderProps> = ({
   return (
     <div className="space-y-6">
       {/* Upload Area */}
-      <div className="bg-white rounded-lg border-2 border-dashed border-gray-300 p-6 text-center">
+      <div className="bg-white rounded-xl border-2 border-dashed border-gray-300 p-8 text-center transition-all duration-300 hover:border-forest-400 hover:bg-forest-50/30">
         <input
           type="file"
           id="document-upload"
@@ -107,23 +107,31 @@ export const DocumentUploader: React.FC<DocumentUploaderProps> = ({
         <label
           htmlFor="document-upload"
           className={`cursor-pointer block ${
-            uploading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'
+            uploading ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105 transition-transform'
           }`}
         >
-          <svg className="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-          </svg>
+          <div className="w-16 h-16 bg-gradient-to-br from-forest-100 to-forest-200 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-forest-200">
+            <svg className="w-8 h-8 text-forest-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+          </div>
           
           <div className="text-sm text-gray-600">
             {uploading ? (
-              <div className="flex items-center justify-center gap-2">
-                <div className="animate-spin h-4 w-4 border-2 border-gray-300 border-t-blue-600 rounded-full"></div>
-                {t('document_uploader.upload_area.uploading')}
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-5 h-5 border-2 border-forest-200 border-t-forest-600 rounded-full animate-spin"></div>
+                <span className="font-medium text-gray-700">{t('document_uploader.upload_area.uploading')}</span>
               </div>
             ) : (
               <>
-                <p className="font-medium text-gray-900">{t('document_uploader.upload_area.title')}</p>
-                <p className="mt-1">{t('document_uploader.upload_area.description')}</p>
+                <p className="font-semibold text-gray-900">{t('document_uploader.upload_area.title')}</p>
+                <p className="mt-2 text-gray-500">{t('document_uploader.upload_area.description')}</p>
+                <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 bg-forest-50 text-forest-700 rounded-full text-xs font-medium border border-forest-200">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  PDF, JPG, PNG, DOC up to 10MB
+                </div>
               </>
             )}
           </div>
@@ -132,18 +140,20 @@ export const DocumentUploader: React.FC<DocumentUploaderProps> = ({
 
       {/* Messages */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+        <div className="bg-red-50 border border-red-200 rounded-xl p-4">
           <div className="flex items-center gap-3">
-            <svg className="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-            </svg>
-            <div>
+            <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg className="w-3 h-3 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="flex-1">
               <p className="text-sm font-medium text-red-900">{t('claim_documents.upload_error')}</p>
               <p className="text-sm text-red-700 mt-1">{error}</p>
             </div>
             <button
               onClick={() => setError(null)}
-              className="ml-auto text-red-600 hover:text-red-800"
+              className="text-red-600 hover:text-red-800 transition-colors p-1 rounded hover:bg-red-100"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -154,14 +164,16 @@ export const DocumentUploader: React.FC<DocumentUploaderProps> = ({
       )}
 
       {success && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
           <div className="flex items-center gap-3">
-            <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
+            <div className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg className="w-3 h-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
             <div>
-              <p className="text-sm font-medium text-green-900">{t('messages.upload_document_success')}</p>
-              <p className="text-sm text-green-700 mt-1">{success}</p>
+              <p className="text-sm font-medium text-emerald-900">{t('messages.upload_document_success')}</p>
+              <p className="text-sm text-emerald-700 mt-1">{success}</p>
             </div>
           </div>
         </div>
@@ -170,27 +182,38 @@ export const DocumentUploader: React.FC<DocumentUploaderProps> = ({
       {/* Existing Documents */}
       {existingDocuments.length > 0 && (
         <div>
-          <h3 className="text-lg font-medium text-gray-900 mb-4">{t('document_uploader.documents_list.title')}</h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900">{t('document_uploader.documents_list.title')}</h3>
+            <span className="text-sm bg-gray-100 text-gray-700 px-2 py-1 rounded-full font-medium">
+              {existingDocuments.length} documents
+            </span>
+          </div>
           <div className="space-y-3">
             {existingDocuments.map((doc) => (
-              <div key={doc.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{getFileIcon(doc.mime_type)}</span>
+              <div key={doc.id} className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-200">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-forest-50 to-forest-100 rounded-xl flex items-center justify-center border border-forest-200">
+                    <span className="text-xl">{getFileIcon(doc.mime_type)}</span>
+                  </div>
                   <div>
                     <div className="font-medium text-gray-900">{doc.filename}</div>
-                    <div className="text-sm text-gray-500">
-                      {getDocumentTypeDisplay(doc.document_type)} • 
-                      {(doc.file_size / 1024).toFixed(1)} KB • 
-                      {new Date(doc.uploaded_at).toLocaleDateString()}
+                    <div className="text-sm text-gray-500 flex items-center gap-2 mt-1">
+                      <span className="bg-forest-50 text-forest-700 px-2 py-0.5 rounded text-xs font-medium border border-forest-200">
+                        {getDocumentTypeDisplay(doc.document_type)}
+                      </span>
+                      <span>•</span>
+                      <span>{(doc.file_size / 1024).toFixed(1)} KB</span>
+                      <span>•</span>
+                      <span>{new Date(doc.uploaded_at).toLocaleDateString()}</span>
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
                   <a
                     href={`http://localhost:8001${doc.file_path}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 p-2 rounded hover:bg-blue-50 transition-colors"
+                    className="p-2 text-forest-600 hover:text-forest-800 rounded-lg hover:bg-forest-50 transition-all duration-200 border border-transparent hover:border-forest-200"
                     title={t('document_uploader.actions.view_document')}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -200,7 +223,7 @@ export const DocumentUploader: React.FC<DocumentUploaderProps> = ({
                   </a>
                   <button
                     onClick={() => handleDeleteDocument(doc.id)}
-                    className="text-red-600 hover:text-red-800 p-2 rounded hover:bg-red-50 transition-colors"
+                    className="p-2 text-red-600 hover:text-red-800 rounded-lg hover:bg-red-50 transition-all duration-200 border border-transparent hover:border-red-200"
                     title={t('document_uploader.actions.delete_document')}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -215,12 +238,14 @@ export const DocumentUploader: React.FC<DocumentUploaderProps> = ({
       )}
 
       {existingDocuments.length === 0 && (
-        <div className="text-center py-8 text-gray-500">
-          <svg className="w-12 h-12 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          <p>{t('document_uploader.documents_list.empty_title')}</p>
-          <p className="text-sm mt-1">{t('document_uploader.documents_list.empty_description')}</p>
+        <div className="text-center py-12 text-gray-500 bg-white rounded-xl border border-gray-200">
+          <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <p className="font-medium text-gray-900 mb-2">{t('document_uploader.documents_list.empty_title')}</p>
+          <p className="text-sm text-gray-600">{t('document_uploader.documents_list.empty_description')}</p>
         </div>
       )}
     </div>
