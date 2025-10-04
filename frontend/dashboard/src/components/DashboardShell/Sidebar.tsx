@@ -1,52 +1,33 @@
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 export default function Sidebar({
   active,
   setActive,
   collapsed = false
 }: {
-  active: "atlas" | "dss" | "docs" | "claims";
-  setActive: (a: "atlas" | "dss" | "docs" | "claims") => void;
+  active: "atlas" | "dss" | "docs" | "claims" | "analytics";
+  setActive: (a: "atlas" | "dss" | "docs" | "claims" | "analytics") => void;
   collapsed?: boolean;
 }) {
   const { t } = useTranslation();
 
+  // Save active panel when it changes
+  useEffect(() => {
+    sessionStorage.setItem('activePanel', active);
+  }, [active]);
+
+  // Load saved panel on mount
+  useEffect(() => {
+    const saved = sessionStorage.getItem('activePanel');
+    if (saved && ['atlas', 'dss', 'docs', 'claims', 'analytics'].includes(saved)) {
+      setActive(saved as "atlas" | "dss" | "docs" | "claims" | "analytics");
+    }
+  }, [setActive]);
+
   const menuItems = [
     {
-      id: "atlas",
-      name: t("interactive_atlas"),
-      description: t("geospatial_analysis"),
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447-2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m0 13V7m0 0L9 4" />
-        </svg>
-      ),
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      id: "dss",
-      name: t("dss"),
-      description: t("decision_support"),
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      id: "docs",
-      name: t("documents"),
-      description: t("ocr_processing"),
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      id: "claims",
+      id: "claims" as const,
       name: t("claim_tracker"),
       description: t("fra_workflow"),
       icon: (
@@ -54,7 +35,51 @@ export default function Sidebar({
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
         </svg>
       ),
+      color: "from-yellow-500 to-amber-500"
+    },
+    {
+      id: "atlas" as const,
+      name: t("interactive_atlas"),
+      description: t("geospatial_analysis"),
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447-2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m0 13V7m0 0L9 4" />
+        </svg>
+      ),
+      color: "from-green-500 to-emerald-500"
+    },
+    {
+      id: "dss" as const,
+      name: t("dss"),
+      description: t("decision_support"),
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      id: "docs" as const,
+      name: t("documents"),
+      description: t("ocr_processing"),
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      ),
       color: "from-orange-500 to-red-500"
+    },
+    {
+      id: "analytics" as const,
+      name: t("analytics_dashboard"),
+      description: t("fra_implementation_insights"),
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+      color: "from-blue-500 to-cyan-500"
     }
   ];
 
@@ -91,7 +116,6 @@ export default function Sidebar({
           {/* Sidebar Header */}
           <div className="p-6 border-b border-base-300/20">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-pulse"></div>
               <h2 className="text-lg font-bold text-base-content">{t("navigation")}</h2>
             </div>
             <p className="text-sm text-base-content/60">{t("select_module")}</p>
@@ -110,7 +134,7 @@ export default function Sidebar({
                           ? `bg-gradient-to-r ${item.color} text-white shadow-lg transform scale-[1.02]`
                           : "hover:bg-base-200/80 text-base-content border border-transparent hover:border-base-300/30"
                         }`}
-                      onClick={() => setActive(item.id as "atlas" | "dss" | "docs" | "claims")}
+                      onClick={() => setActive(item.id)}
                     >
                       {/* Active indicator */}
                       {active === item.id && (
@@ -177,6 +201,10 @@ export default function Sidebar({
                 </div>
                 
                 <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                    <span>{t("analytics_services")}</span>
+                  </div>
                   <div className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                     <span>{t("dss_engine")}</span>

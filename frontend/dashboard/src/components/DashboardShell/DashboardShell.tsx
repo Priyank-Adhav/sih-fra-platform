@@ -7,9 +7,18 @@ const Atlas = React.lazy(() => import("../Atlas/AtlasMap"));
 const DSS = React.lazy(() => import("../DSS/DSSPanel"));
 const Documents = React.lazy(() => import("../Doc-Management/DocManagementPanel.tsx"));
 const ClaimProcess = React.lazy(() => import("../ClaimProcessTracker/ClaimProcessTracker.tsx"));
+const AnalyticsDashboard = React.lazy(() => import("../AnalyticsDashboard/AnalyticsDashboard.tsx"));
 
 export default function DashboardShell() {
-  const [active, setActive] = useState<"atlas" | "dss" | "docs" | "claims">("atlas");
+  // Initialize state from sessionStorage or default to 'claims' (now at top)
+  const [active, setActive] = useState<"atlas" | "dss" | "docs" | "claims" | "analytics">(() => {
+    const saved = sessionStorage.getItem('activePanel');
+    if (saved && ['atlas', 'dss', 'docs', 'claims', 'analytics'].includes(saved)) {
+      return saved as "atlas" | "dss" | "docs" | "claims" | "analytics";
+    }
+    return 'claims'; // Default to claims (now at top of sidebar)
+  });
+  
   const { t, i18n } = useTranslation();
 
   const getActiveModuleName = () => {
@@ -22,6 +31,8 @@ export default function DashboardShell() {
         return t("documents");
       case "claims":
         return t("claim_tracker");
+      case "analytics":
+        return t("analytics_dashboard");
       default:
         return t("module");
     }
@@ -97,6 +108,7 @@ export default function DashboardShell() {
             {active === "dss" && <DSS />}
             {active === "docs" && <Documents />}
             {active === "claims" && <ClaimProcess />}
+            {active === "analytics" && <AnalyticsDashboard />}
           </Suspense>
         </main>
       </div>
