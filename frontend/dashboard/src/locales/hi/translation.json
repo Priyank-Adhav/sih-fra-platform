@@ -451,23 +451,6 @@
     "status": "स्थिति"
   },
   
-  "api_status": {
-    "connected": "एपीआई कनेक्टेड",
-    "connecting": "कनेक्ट हो रहा है...",
-    "disconnected": "एपीआई डिस्कनेक्टेड",
-    "check_status": "एपीआई स्थिति जांचें"
-  },
-  
-  "buttons": {
-    "cancel": "रद्द करें",
-    "save": "सहेजें",
-    "delete": "हटाएं",
-    "edit": "संपादित करें",
-    "view": "देखें",
-    "download": "डाउनलोड करें",
-    "refresh": "रिफ्रेश करें"
-  },
-  
   "messages": {
     "loading_cases": "दावा मामले लोड हो रहे हैं...",
     "error_loading_cases": "दावा मामले लोड करने में त्रुटि",
@@ -542,5 +525,99 @@
   "documents_count": {
     "count": "{{count}} दस्तावेज़",
     "count_plural": "{{count}} दस्तावेज़"
+  },
+  "analytics_dashboard": "एफआरए एनालिटिक्स डैशबोर्ड",
+  "fra_implementation_insights": "वन अधिकार अधिनियम कार्यान्वयन अंतर्दृष्टि",
+  "loading_analytics": "एनालिटिक्स डेटा लोड हो रहा है...",
+  "error_loading_analytics": "एनालिटिक्स डेटा लोड करने में त्रुटि",
+  
+  "filter_by_state": "राज्य द्वारा फिल्टर करें",
+  "all_states": "सभी राज्य",
+  "snapshot_date": "स्नैपशॉट तिथि",
+  "primary_metric": "प्राथमिक मीट्रिक",
+  "show_target_states": "लक्ष्य राज्य दिखाएं",
+  "last_updated": "अंतिम अपडेट",
+  "data_source": "डेटा स्रोत",
+  
+  "kpi": {
+    "total_claims": "कुल दावे",
+    "titles_distributed": "वितरित शीर्षक",
+    "forest_land": "वन भूमि",
+    "vs_previous": "पिछली अवधि की तुलना में"
+  },
+  
+  "claims_overview": "दावों का अवलोकन",
+  "individual_vs_community_claims": "व्यक्तिगत बनाम सामुदायिक दावे",
+  "individual": "व्यक्तिगत",
+  "community": "सामुदायिक",
+  "disposal_rate": "निपटान दर",
+  "claims_rejected": "दावे अस्वीकृत",
+  "total_claims_across": "कुल दावे",
+  "states": "राज्यों में",
+  
+  "titles_overview": "शीर्षक अवलोकन",
+  "claims_to_titles_conversion": "दावों से शीर्षक रूपांतरण",
+  "success_rate": "सफलता दर",
+  "total_claims": "कुल दावे",
+  "titles_issued": "जारी शीर्षक",
+  "claims_pending": "दावे लंबित",
+  
+  "forest_land": "वन भूमि",
+  "land_distribution_acres": "भूमि वितरण (एकड़)",
+  "total_forest_land": "कुल वन भूमि",
+  "individual_rights": "व्यक्तिगत अधिकार",
+  "community_rights": "सामुदायिक अधिकार",
+  "top_states_by_land": "भूमि क्षेत्र के अनुसार शीर्ष राज्य",
+  
+  "state_comparison": "राज्य तुलना",
+  "month_over_month_changes": "माह-दर-माह परिवर्तन",
+  "individual_claims": "व्य. दावे",
+  "individual_titles": "व्य. शीर्षक",
+  "no_comparison_data": "कोई तुलना डेटा उपलब्ध नहीं",
+  
+  "trends_analysis": "रुझान विश्लेषण",
+  "performance_over_time": "समय के साथ प्रदर्शन",
+  "data_points": "डेटा पॉइंट",
+  "time_period": "समय अवधि",
+  
+  "top_states": "शीर्ष राज्य",
+  "leading_performers": "अग्रणी प्रदर्शनकर्ता",
+  "no_ranking_data": "कोई रैंकिंग डेटा उपलब्ध नहीं",
+  
+  "rejection_analysis": "अस्वीकृति विश्लेषण",
+  "claim_rejection_rates": "दावा अस्वीकृति दर",
+  "overall_rejection_rate": "समग्र अस्वीकृति दर",
+  "of": "का",
+  "claims_rejected_lower": "दावे अस्वीकृत",
+  "states_with_high_rejection": "उच्च अस्वीकृति दर वाले राज्य",
+  "states_with_rejection_above_20_percent": "20% से अधिक अस्वीकृति वाले राज्य",
+  
+  "target_states_focus": "लक्ष्य राज्य फोकस",
+  "mp_tripura_odisha_telangana": "एमपी, त्रिपुरा, ओडिशा, तेलंगाना",
+  "success": "सफलता",
+  "claims": "दावे",
+  "titles": "शीर्षक",
+  "priority_intervention": "प्राथमिकता हस्तक्षेप",
+  "focus_on_improving_success_rates": "लक्ष्य राज्यों में सफलता दर में सुधार पर ध्यान केंद्रित करें",
+  "analytics_services": "एनालिटिक्स सेवाएं",
+  
+  "api_status": {
+    "connected": "एपीआई कनेक्टेड",
+    "connecting": "कनेक्ट हो रहा है...",
+    "disconnected": "एपीआई डिस्कनेक्टेड",
+    "check_status": "एपीआई स्थिति जांचें",
+    "retry": "कनेक्शन पुनः प्रयास करें"
+  },
+  
+  "buttons": {
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "view": "देखें",
+    "download": "डाउनलोड करें",
+    "refresh": "रिफ्रेश करें",
+    "clear": "साफ करें",
+    "retry": "पुनः प्रयास करें"
   }
 }

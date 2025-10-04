@@ -451,23 +451,6 @@
     "status": "ସ୍ଥିତି"
   },
   
-  "api_status": {
-    "connected": "ଏପିଆଇ ସଂଯୁକ୍ତ",
-    "connecting": "ସଂଯୋଗ ହେଉଛି...",
-    "disconnected": "ଏପିଆଇ ବିଚ୍ଛିନ୍ନ",
-    "check_status": "ଏପିଆଇ ସ୍ଥିତି ଯାଞ୍ଚ କରନ୍ତୁ"
-  },
-  
-  "buttons": {
-    "cancel": "ବାତିଲ୍ କରନ୍ତୁ",
-    "save": "ସଂରକ୍ଷଣ କରନ୍ତୁ",
-    "delete": "ବିଲୋପ କରନ୍ତୁ",
-    "edit": "ସମ୍ପାଦନ କରନ୍ତୁ",
-    "view": "ଦେଖନ୍ତୁ",
-    "download": "ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
-    "refresh": "ରିଫ୍ରେସ୍ କରନ୍ତୁ"
-  },
-  
   "messages": {
     "loading_cases": "ଦାବି ମାମଲା ଲୋଡ୍ ହେଉଛି...",
     "error_loading_cases": "ଦାବି ମାମଲା ଲୋଡ୍ କରିବାରେ ତ୍ରୁଟି",
@@ -542,5 +525,100 @@
   "documents_count": {
     "count": "{{count}} ଦଲିଲପତ୍ର",
     "count_plural": "{{count}} ଦଲିଲପତ୍ର"
+  },
+  "analytics_dashboard": "ଏଫ୍‌ଆର୍‌ଏ ଆନାଲିଟିକ୍ସ ଡ୍ୟାସବୋର୍ଡ",
+  "fra_implementation_insights": "ବନ ଅଧିକାର ଆଇନ କାର୍ଯ୍ୟକାରୀ ଅନ୍ତର୍ଦୃଷ୍ଟି",
+  "loading_analytics": "ଆନାଲିଟିକ୍ସ ଡାଟା ଲୋଡ୍ ହୋଇଛି...",
+  "error_loading_analytics": "ଆନାଲିଟିକ୍ସ ଡାଟା ଲୋଡ୍ କରିବାରେ ତ୍ରୁଟି",
+  
+  "filter_by_state": "ରାଜ୍ୟ ଅନୁସାରେ ଫିଲ୍ଟର୍ କରନ୍ତୁ",
+  "all_states": "ସମସ୍ତ ରାଜ୍ୟ",
+  "snapshot_date": "ସ୍ନାପସଟ୍ ତାରିଖ",
+  "primary_metric": "ପ୍ରାଥମିକ ମେଟ୍ରିକ୍",
+  "show_target_states": "ଟାର୍ଗେଟ୍ ରାଜ୍ୟ ଦେଖାନ୍ତୁ",
+  "last_updated": "ଶେଷ ଅପଡେଟ୍",
+  "data_source": "ଡାଟା ସ୍ରୋତ",
+  
+  "kpi": {
+    "total_claims": "ମୋଟ ଦାବି",
+    "titles_distributed": "ବଣ୍ଟିତ ଟାଇଟଲ୍",
+    "forest_land": "ବନ ଜମି",
+    "vs_previous": "ପୂର୍ବବର୍ତ୍ତୀ ଅବଧି ସହିତ ତୁଳନା"
+  },
+  
+  "claims_overview": "ଦାବି ସମୀକ୍ଷା",
+  "individual_vs_community_claims": "ବ୍ୟକ୍ତିଗତ ବନାମ ସାମୁଦାୟିକ ଦାବି",
+  "individual": "ବ୍ୟକ୍ତିଗତ",
+  "community": "ସାମୁଦାୟିକ",
+  "disposal_rate": "ଡିସ୍ପୋଜାଲ୍ ହାର",
+  "claims_rejected": "ଦାବି ପ୍ରତ୍ୟାଖ୍ୟାତ",
+  "total_claims_across": "ମୋଟ ଦାବି",
+  "states": "ରାଜ୍ୟଗୁଡିକରେ",
+  
+  "titles_overview": "ଟାଇଟଲ୍ ସମୀକ୍ଷା",
+  "claims_to_titles_conversion": "ଦାବିରୁ ଟାଇଟଲ୍ ରୂପାନ୍ତରଣ",
+  "success_rate": "ସଫଳତା ହାର",
+  "total_claims": "ମୋଟ ଦାବି",
+  "titles_issued": "ଜାରୀ ଟାଇଟଲ୍",
+  "claims_pending": "ଦାବି ବିଚାରାଧୀନ",
+  
+  "forest_land": "ବନ ଜମି",
+  "land_distribution_acres": "ଜମି ବିତରଣ (ଏକର)",
+  "total_forest_land": "ମୋଟ ବନ ଜମି",
+  "individual_rights": "ବ୍ୟକ୍ତିଗତ ଅଧିକାର",
+  "community_rights": "ସାମୁଦାୟିକ ଅଧିକାର",
+  "top_states_by_land": "ଜମି କ୍ଷେତ୍ରଫଳ ଅନୁସାରେ ଶୀର୍ଷ ରାଜ୍ୟ",
+  
+  "state_comparison": "ରାଜ୍ୟ ତୁଳନା",
+  "month_over_month_changes": "ମାସିକ ପରିବର୍ତ୍ତନ",
+  "individual_claims": "ବ୍ୟ. ଦାବି",
+  "individual_titles": "ବ୍ୟ. ଟାଇଟଲ୍",
+  "no_comparison_data": "କୌଣସି ତୁଳନା ଡାଟା ଉପଲବ୍ଧ ନାହିଁ",
+  
+  "trends_analysis": "ଟ୍ରେଣ୍ଡ୍ ବିଶ୍ଳେଷଣ",
+  "performance_over_time": "ସମୟାନୁସାରେ ପ୍ରଦର୍ଶନ",
+  "data_points": "ଡାଟା ପଏଣ୍ଟ୍",
+  "time_period": "ସମୟ ସୀମା",
+  
+  "top_states": "ଶୀର୍ଷ ରାଜ୍ୟ",
+  "leading_performers": "ଅଗ୍ରଣୀ ପ୍ରଦର୍ଶନକାରୀ",
+  "no_ranking_data": "କୌଣସି ର୍ୟାଙ୍କିଂ ଡାଟା ଉପଲବ୍ଧ ନାହିଁ",
+  
+  "rejection_analysis": "ପ୍ରତ୍ୟାଖ୍ୟାନ ବିଶ୍ଳେଷଣ",
+  "claim_rejection_rates": "ଦାବି ପ୍ରତ୍ୟାଖ୍ୟାନ ହାର",
+  "overall_rejection_rate": "ସର୍ବମୋଟ ପ୍ରତ୍ୟାଖ୍ୟାନ ହାର",
+  "of": "ର",
+  "claims_rejected_lower": "ଦାବି ପ୍ରତ୍ୟାଖ୍ୟାତ",
+  "states_with_high_rejection": "ଉଚ୍ଚ ପ୍ରତ୍ୟାଖ୍ୟାନ ହାର ଥିବା ରାଜ୍ୟ",
+  "states_with_rejection_above_20_percent": "20% ରୁ ଅଧିକ ପ୍ରତ୍ୟାଖ୍ୟାନ ଥିବା ରାଜ୍ୟ",
+  
+  "target_states_focus": "ଲକ୍ଷ୍ୟ ରାଜ୍ୟ ଫୋକସ୍",
+  "mp_tripura_odisha_telangana": "ଏମପି, ତ୍ରିପୁରା, ଓଡିଶା, ତେଲେଙ୍ଗାନା",
+  "success": "ସଫଳତା",
+  "claims": "ଦାବି",
+  "titles": "ଟାଇଟଲ୍",
+  "priority_intervention": "ପ୍ରାଥମିକତା ହସ୍ତକ୍ଷେପ",
+  "focus_on_improving_success_rates": "ଲକ୍ଷ୍ୟ ରାଜ୍ୟଗୁଡିକରେ ସଫଳତା ହାର ଉନ୍ନତି ଉପରେ ଧ୍ୟାନ ଦିଅନ୍ତୁ",
+  "analytics_services": "ଆନାଲିଟିକ୍ସ ସେବା",
+  
+  "api_status": {
+    "connected": "ଏପିଆଇ ସଂଯୁକ୍ତ",
+    "connecting": "ସଂଯୋଗ ହୋଇଛି...",
+    "disconnected": "ଏପିଆଇ ସଂଯୋଗ ବିଚ୍ଛିନ୍ନ",
+    "check_status": "ଏପିଆଇ ସ୍ଥିତି ଯାଞ୍ଚ କରନ୍ତୁ",
+    "retry": "ସଂଯୋଗ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ"
+  },
+  
+  "buttons": {
+    "cancel": "ବାତିଲ୍ କରନ୍ତୁ",
+    "save": "ସଂରକ୍ଷଣ କରନ୍ତୁ",
+    "delete": "ମୂଚ୍ଛନ କରନ୍ତୁ",
+    "edit": "ସମ୍ପାଦନ କରନ୍ତୁ",
+    "view": "ଦର୍ଶନ କରନ୍ତୁ",
+    "download": "ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
+    "refresh": "ରିଫ୍ରେସ୍ କରନ୍ତୁ",
+    "clear": "ପରିଷ୍କାର କରନ୍ତୁ",
+    "retry": "ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ"
   }
+
 }

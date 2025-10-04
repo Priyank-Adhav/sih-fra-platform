@@ -451,23 +451,6 @@
     "status": "స్థితి"
   },
   
-  "api_status": {
-    "connected": "API కనెక్ట్ అయ్యింది",
-    "connecting": "కనెక్ట్ అవుతుంది...",
-    "disconnected": "API డిస్కనెక్ట్ అయ్యింది",
-    "check_status": "API స్థితి తనిఖీ చేయండి"
-  },
-  
-  "buttons": {
-    "cancel": "రద్దు చేయండి",
-    "save": "సేవ్ చేయండి",
-    "delete": "తొలగించండి",
-    "edit": "సవరించు",
-    "view": "చూడండి",
-    "download": "డౌన్లోడ్ చేయండి",
-    "refresh": "రిఫ్రెష్ చేయండి"
-  },
-  
   "messages": {
     "loading_cases": "క్లెయిం కేస్లు లోడ్ అవుతున్నాయి...",
     "error_loading_cases": "క్లెయిం కేస్లు లోడ్ చేయడంలో లోపం",
@@ -546,5 +529,99 @@
   "documents_count": {
     "count": "{{count}} డాక్యుమెంట్",
     "count_plural": "{{count}} డాక్యుమెంట్లు"
+  },
+  "analytics_dashboard": "FRA విశ్లేషణ డాష్బోర్డ్",
+  "fra_implementation_insights": "వన అధికారాల చట్టం అమలు అంతర్దృష్టులు",
+  "loading_analytics": "విశ్లేషణ డేటా లోడ్ అవుతుంది...",
+  "error_loading_analytics": "విశ్లేషణ డేటా లోడ్ చేయడంలో లోపం",
+  
+  "filter_by_state": "రాష్ట్రం ద్వారా ఫిల్టర్ చేయండి",
+  "all_states": "అన్ని రాష్ట్రాలు",
+  "snapshot_date": "స్నాప్షాట్ తేదీ",
+  "primary_metric": "ప్రాథమిక మెట్రిక్",
+  "show_target_states": "లక్ష్య రాష్ట్రాలను చూపించు",
+  "last_updated": "చివరిగా నవీకరించబడినది",
+  "data_source": "డేటా మూలం",
+  
+  "kpi": {
+    "total_claims": "మొత్తం దావాలు",
+    "titles_distributed": "పంపిణీ చేయబడిన టైటిల్స్",
+    "forest_land": "వన భూమి",
+    "vs_previous": "గత కాలంతో పోలిస్తే"
+  },
+  
+  "claims_overview": "దావాలు అవలోకనం",
+  "individual_vs_community_claims": "వ్యక్తిగత vs సామూహిక దావాలు",
+  "individual": "వ్యక్తిగత",
+  "community": "సామూహిక",
+  "disposal_rate": "డిస్పోజల్ రేట్",
+  "claims_rejected": "తిరస్కరించబడిన దావాలు",
+  "total_claims_across": "మొత్తం దావాలు",
+  "states": "రాష్ట్రాలు",
+  
+  "titles_overview": "టైటిల్స్ అవలోకనం",
+  "claims_to_titles_conversion": "దావాలు నుండి టైటిల్స్ మార్పిడి",
+  "success_rate": "విజయం రేట్",
+  "total_claims": "మొత్తం దావాలు",
+  "titles_issued": "జారీ చేయబడిన టైటిల్స్",
+  "claims_pending": "దావాలు పెండింగ్‌లో ఉన్నాయి",
+  
+  "forest_land": "వన భూమి",
+  "land_distribution_acres": "భూమి పంపిణీ (ఎకరాలు)",
+  "total_forest_land": "మొత్తం వన భూమి",
+  "individual_rights": "వ్యక్తిగత హక్కులు",
+  "community_rights": "సామూహిక హక్కులు",
+  "top_states_by_land": "భూమి వైశాల్యం ప్రకారం అగ్ర రాష్ట్రాలు",
+  
+  "state_comparison": "రాష్ట్రాల పోలిక",
+  "month_over_month_changes": "నెల-దర-నెల మార్పులు",
+  "individual_claims": "వ్య. దావాలు",
+  "individual_titles": "వ్య. టైటిల్స్",
+  "no_comparison_data": "పోలిక డేటా అందుబాటులో లేదు",
+  
+  "trends_analysis": "ప్రవృత్తుల విశ్లేషణ",
+  "performance_over_time": "కాలం తరబడి పనితీరు",
+  "data_points": "డేటా పాయింట్లు",
+  "time_period": "సమయ వ్యవధి",
+  
+  "top_states": "అగ్ర రాష్ట్రాలు",
+  "leading_performers": "ముందంజలో ఉన్న ప్రదర్శనలు",
+  "no_ranking_data": "ర్యాంకింగ్ డేటా అందుబాటులో లేదు",
+  
+  "rejection_analysis": "తిరస్కరణ విశ్లేషణ",
+  "claim_rejection_rates": "దావా తిరస్కరణ రేట్లు",
+  "overall_rejection_rate": "మొత్తం తిరస్కరణ రేట్",
+  "of": "/",
+  "claims_rejected_lower": "దావాలు తిరస్కరించబడ్డాయి",
+  "states_with_high_rejection": "అధిక తిరస్కరణ రేట్లు కలిగిన రాష్ట్రాలు",
+  "states_with_rejection_above_20_percent": "20% కంటే ఎక్కువ తిరస్కరణ కలిగిన రాష్ట్రాలు",
+  
+  "target_states_focus": "లక్ష్య రాష్ట్రాల దృష్టి",
+  "mp_tripura_odisha_telangana": "MP, త్రిపుర, ఒడిశా, తెలంగాణ",
+  "success": "విజయం",
+  "claims": "దావాలు",
+  "titles": "టైటిల్స్",
+  "priority_intervention": "ప్రాధాన్యత జోక్యం",
+  "focus_on_improving_success_rates": "లక్ష్య రాష్ట్రాలలో విజయం రేట్లను మెరుగుపరచడంపై దృష్టి కేంద్రీకరించండి",
+  "analytics_services": "విశ్లేషణ సేవలు",
+  
+  "api_status": {
+    "connected": "API కనెక్ట్ అయ్యింది",
+    "connecting": "కనెక్ట్ అవుతోంది...",
+    "disconnected": "API డిస్కనెక్ట్ అయ్యింది",
+    "check_status": "API స్థితిని తనిఖీ చేయండి",
+    "retry": "కనెక్షన్ మళ్లీ ప్రయత్నించండి"
+  },
+  
+  "buttons": {
+    "cancel": "రద్దు చేయండి",
+    "save": "సేవ్ చేయండి",
+    "delete": "డిలీట్ చేయండి",
+    "edit": "ఎడిట్ చేయండి",
+    "view": "వీక్షించండి",
+    "download": "డౌన్‌లోడ్ చేయండి",
+    "refresh": "రిఫ్రెష్ చేయండి",
+    "clear": "క్లియర్ చేయండి",
+    "retry": "మళ్లీ ప్రయత్నించండి"
   }
 }
