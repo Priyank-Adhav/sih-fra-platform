@@ -444,13 +444,6 @@
     "cfr": "सामुदायिक वन संसाधन अधिकार"
   },
   
-  "case_info": {
-    "case_number": "मामला संख्या",
-    "village": "गांव",
-    "district_state": "जिला, राज्य",
-    "status": "स्थिति"
-  },
-  
   "messages": {
     "loading_cases": "दावा मामले लोड हो रहे हैं...",
     "error_loading_cases": "दावा मामले लोड करने में त्रुटि",
@@ -619,5 +612,125 @@
     "refresh": "रिफ्रेश करें",
     "clear": "साफ करें",
     "retry": "पुनः प्रयास करें"
-  }
+  },
+  "preparing_dashboard": "आपका एफआरए वर्कफ्लो डैशबोर्ड तैयार किया जा रहा है...",
+  "retry_loading": "पुनः लोड करें",
+  "ministry_tribal_affairs": "जनजातीय कार्य मंत्रालय",
+  "search_placeholder": "गाँव, केस नंबर या जिले से दावे खोजें...",
+  "filter_all_status": "सभी स्थिति",
+  "no_matching_claims": "आपकी खोज मानदंड से कोई दावा मेल नहीं खाता। कृपया अपने फिल्टर समायोजित करें या नया दावा बनाएं।",
+  
+  "view_mode": {
+    "overview": "अवलोकन",
+    "detailed": "विस्तृत"
+  },
+  
+  "dashboard_stats": {
+    "total_claims": "कुल दावे",
+    "in_progress": "प्रगति पर",
+    "completed": "पूर्ण",
+    "avg_progress": "औसत प्रगति"
+  },
+  
+  "status1": {
+    "ready_to_start": "शुरू करने के लिए तैयार",
+    "working_on": "कार्य कर रहे हैं: {{stepName}}"
+  },
+  
+  "case_info": {
+    "progress": "प्रगति",
+    "case_number": "मामला संख्या",
+    "village": "गाँव",
+    "district_state": "जिला, राज्य",
+    "district_state1": "{{district}}, {{state}}",
+    "status": "स्थिति"
+  },
+  
+  "ai_powered_processing": "एआई-संचालित दस्तावेज़ प्रसंस्करण",
+  "api_connection_failed": "एपीआई से कनेक्ट करने में विफल",
+  
+  "doc_dashboard_stats": {
+    "total_processed": "कुल संसाधित",
+    "current_file": "वर्तमान फ़ाइल",
+    "api_status": "एपीआई स्थिति",
+    "active_processing": "सक्रिय प्रसंस्करण"
+  },
+  
+  "status_online": "ऑनलाइन",
+  "status_offline": "ऑफलाइन",
+
+  "doc_tabs": {
+    "upload": "अपलोड",
+    "history": "इतिहास"
+  },
+  
+  "ocr_engine": "ओसीआर इंजन",
+  "ai_ocr_ner": "एआई-संचालित ओसीआर और एनईआर",
+  "multi_language_support": "बहु-भाषा समर्थन",
+  "interactive_fra_mapping": "इंटरएक्टिव एफआरए मैपिंग",
+  
+  "atlas_tabs": {
+    "navigation": "नेविगेशन",
+    "layers": "परतें",
+    "details": "विवरण"
+  },
+  
+  "navigate_to_regions": "विशिष्ट क्षेत्रों पर नेविगेट करें",
+  "district_count": "{{count}} जिले",
+  
+  "view_analytics": "एनालिटिक्स देखें",
+  "generate_report": "रिपोर्ट जनरेट करें",
+  
+  "choose_map_style": "अपनी मैप शैली चुनें",
+  "terrain": "इलाका",
+  "soil_moisture": "मिट्टी की नमी",
+  
+  "base_layer_osm_desc": "मानक मानचित्र दृश्य",
+  "base_layer_satellite_desc": "उपग्रह इमेजरी",
+  "base_layer_terrain_desc": "टोपोग्राफिक दृश्य",
+  "base_layer_soil_desc": "रूट ज़ोन मिट्टी नमी",
+  "base_layer_forest_desc": "वन आवरण / एनडीवीआई",
+  
+  "toggle_data_layers": "डेटा परतें टॉगल करें",
+  "infrastructure": "अवसंरचना",
+  
+  "overlay_claims_desc": "एफआरए दावा सीमाएँ दिखाएं",
+  "overlay_forest_desc": "वन आवरण घनत्व",
+  "overlay_water_desc": "नदियाँ, झीलें और जल निकाय",
+  "overlay_infrastructure_desc": "सड़कें और अवसंरचना",
+  
+  "selected_claim_info": "चयनित दावा जानकारी",
+  "claim_id": "दावा आईडी",
+  "claim_type": "दावा प्रकार",
+  "hectares": "हेक्टेयर",
+  "village_district": "गाँव, जिला",
+  "view_on_map": "मानचित्र पर देखें",
+  "click_polygon_instructions": "विवरण देखने के लिए दावा पॉलीगॉन पर क्लिक करें",
+  "fra_claims_mapping_analysis": "एफआरए दावा मैपिंग और विश्लेषण",
+  "claims_loaded": "{{count}} दावे लोड हुए",
+  "mota_fra_platform": "मोटा एफआरए प्लेटफॉर्म",
+  "active_module": "सक्रिय मॉड्यूल",
+  "processing_rate": "प्रसंस्करण दर",
+  "focus_states": "फोकस राज्य",
+  
+  "recent_activities": {
+    "title": "हाल की गतिविधियाँ",
+    "claim_approved": "दावा स्वीकृत",
+    "document_processed": "दस्तावेज़ संसाधित",
+    "new_recommendation": "नई सिफारिश"
+  },
+  
+  "time_ago": {
+    "minutes": "{{count}} मिनट पहले",
+    "hours": "{{count}} घंटे पहले",
+    "days": "{{count}} दिन पहले"
+  },
+  
+  "view_all_activities": "सभी गतिविधियाँ देखें",
+  "admin_user": "व्यवस्थापक उपयोगकर्ता",
+  "mota_official": "मोटा अधिकारी",
+  
+  "system_operational": "सिस्टम संचालन योग्य",
+  "last_sync": "अंतिम सिंक",
+  "fra_platform_mota": "एफआरए प्लेटफॉर्म • जनजातीय कार्य मंत्रालय"
 }

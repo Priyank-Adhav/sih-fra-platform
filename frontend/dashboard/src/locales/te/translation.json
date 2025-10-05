@@ -444,13 +444,6 @@
     "cfr": "సంఘం అటవీ వనరుల హక్కులు"
   },
   
-  "case_info": {
-    "case_number": "కేస్ నంబర్",
-    "village": "గ్రామం",
-    "district_state": "జిల్లా, రాష్ట్రం",
-    "status": "స్థితి"
-  },
-  
   "messages": {
     "loading_cases": "క్లెయిం కేస్లు లోడ్ అవుతున్నాయి...",
     "error_loading_cases": "క్లెయిం కేస్లు లోడ్ చేయడంలో లోపం",
@@ -623,5 +616,125 @@
     "refresh": "రిఫ్రెష్ చేయండి",
     "clear": "క్లియర్ చేయండి",
     "retry": "మళ్లీ ప్రయత్నించండి"
-  }
+  },
+  "preparing_dashboard": "మీ FRA వర్క్ఫ్లో డాష్బోర్డ్ తయారు చేయబడుతోంది...",
+  "retry_loading": "మళ్లీ లోడ్ చేయండి",
+  "ministry_tribal_affairs": "ఆదివాసీ వ్యవహారాల మంత్రిత్వ శాఖ",
+  "search_placeholder": "గ్రామం, కేస్ నంబర్ లేదా జిల్లా ద్వారా క్లెయిమ్లు శోధించండి...",
+  "filter_all_status": "అన్ని స్థితి",
+  "no_matching_claims": "మీ శోధన ప్రమాణాలతో ఏ క్లెయిమ్లు కనుగొనబడలేదు. దయచేసి మీ ఫిల్టర్లను సర్దుబాటు చేయండి లేదా కొత్త క్లెయిం సృష్టించండి.",
+  
+  "view_mode": {
+    "overview": "అవలోకనం",
+    "detailed": "వివరణాత్మక"
+  },
+  
+  "dashboard_stats": {
+    "total_claims": "మొత్తం క్లెయిమ్లు",
+    "in_progress": "పురోగతిలో",
+    "completed": "పూర్తయింది",
+    "avg_progress": "సగటు పురోగతి"
+  },
+  
+  "status1": {
+    "ready_to_start": "ప్రారంభించడానికి సిద్ధంగా ఉంది",
+    "working_on": "పని చేస్తున్నారు: {{stepName}}"
+  },
+  
+  "case_info": {
+    "progress": "పురోగతి",
+    "case_number": "కేస్ నంబర్",
+    "village": "గ్రామం",
+    "district_state": "జిల్లా, రాష్ట్రం",
+    "district_state1": "{{district}}, {{state}}",
+    "status": "స్థితి"
+  },
+  
+  "ai_powered_processing": "AI-పవర్డ్ డాక్యుమెంట్ ప్రాసెసింగ్",
+  "api_connection_failed": "APIకి కనెక్ట్ చేయడంలో విఫలమైంది",
+  
+  "doc_dashboard_stats": {
+    "total_processed": "మొత్తం ప్రాసెస్ చేయబడినవి",
+    "current_file": "ప్రస్తుత ఫైల్",
+    "api_status": "API స్థితి",
+    "active_processing": "యాక్టివ్ ప్రాసెసింగ్"
+  },
+  
+  "status_online": "ఆన్లైన్",
+  "status_offline": "ఆఫ్లైన్",
+
+  "doc_tabs": {
+    "upload": "అప్లోడ్",
+    "history": "చరిత్ర"
+  },
+  
+  "ocr_engine": "OCR ఇంజిన్",
+  "ai_ocr_ner": "AI-పవర్డ్ OCR & NER",
+  "multi_language_support": "మల్టీ-లాంగ్వేజ్ సపోర్ట్",
+  "interactive_fra_mapping": "ఇంటరాక్టివ్ FRA మ్యాపింగ్",
+  
+  "atlas_tabs": {
+    "navigation": "నావిగేషన్",
+    "layers": "లేయర్లు",
+    "details": "వివరాలు"
+  },
+  
+  "navigate_to_regions": "నిర్దిష్ట ప్రాంతాలకు నావిగేట్ చేయండి",
+  "district_count": "{{count}} జిల్లాలు",
+  
+  "view_analytics": "అనాలిటిక్స్ చూడండి",
+  "generate_report": "రిపోర్ట్ జనరేట్ చేయండి",
+  
+  "choose_map_style": "మీ మ్యాప్ స్టైల్ ఎంచుకోండి",
+  "terrain": "టెరైన్",
+  "soil_moisture": "నేల తేమ",
+  
+  "base_layer_osm_desc": "స్టాండర్డ్ మ్యాప్ వ్యూ",
+  "base_layer_satellite_desc": "సాటెలైట్ ఇమేజరీ",
+  "base_layer_terrain_desc": "టోపోగ్రాఫిక్ వ్యూ",
+  "base_layer_soil_desc": "రూట్ జోన్ నేల తేమ",
+  "base_layer_forest_desc": "అటవీ ఆవరణ / NDVI",
+  
+  "toggle_data_layers": "డేటా లేయర్లను టోగుల్ చేయండి",
+  "infrastructure": "ఇన్ఫ్రాస్ట్రక్చర్",
+  
+  "overlay_claims_desc": "FRA క్లెయిం సరిహద్దులను చూపించు",
+  "overlay_forest_desc": "అటవీ ఆవరణ సాంద్రత",
+  "overlay_water_desc": "నదులు, సరస్సులు మరియు నీటి వనరులు",
+  "overlay_infrastructure_desc": "రోడ్లు మరియు మౌలిక సదుపాయాలు",
+  
+  "selected_claim_info": "ఎంచుకున్న క్లెయిం సమాచారం",
+  "claim_id": "క్లెయిం ID",
+  "claim_type": "క్లెయిం రకం",
+  "hectares": "హెక్టార్లు",
+  "village_district": "గ్రామం, జిల్లా",
+  "view_on_map": "మ్యాప్‌లో చూడండి",
+  "click_polygon_instructions": "వివరాలు చూడడానికి క్లెయిం పాలిగాన్‌పై క్లిక్ చేయండి",
+  "fra_claims_mapping_analysis": "FRA క్లెయిం మ్యాపింగ్ & విశ్లేషణ",
+  "claims_loaded": "{{count}} క్లెయిమ్లు లోడ్ అయ్యాయి",
+  "mota_fra_platform": "మోటా FRA ప్లాట్ఫార్మ్",
+  "active_module": "యాక్టివ్ మాడ్యూల్",
+  "processing_rate": "ప్రాసెసింగ్ రేట్",
+  "focus_states": "ఫోకస్ రాష్ట్రాలు",
+  
+  "recent_activities": {
+    "title": "ఇటీవలి కార్యకలాపాలు",
+    "claim_approved": "క్లెయిం ఆమోదించబడింది",
+    "document_processed": "డాక్యుమెంట్ ప్రాసెస్ చేయబడింది",
+    "new_recommendation": "కొత్త సిఫారసు"
+  },
+  
+  "time_ago": {
+    "minutes": "{{count}} నిమి. క్రితం",
+    "hours": "{{count}} గం. క్రితం",
+    "days": "{{count}} రోజుల క్రితం"
+  },
+  
+  "view_all_activities": "అన్ని కార్యకలాపాలు చూడండి",
+  "admin_user": "అడ్మిన్ యూజర్",
+  "mota_official": "మోటా అధికారి",
+  
+  "system_operational": "సిస్టమ్ ఆపరేషనల్",
+  "last_sync": "చివరి సింక్",
+  "fra_platform_mota": "FRA ప్లాట్ఫార్మ్ • ఆదివాసీ వ్యవహారాల మంత్రిత్వ శాఖ"
 }

@@ -4,7 +4,7 @@ import type { AnalyticsFilters, StateComparison } from '../types/analytics';
 import { analyticsService } from '../../../services/analyticsService';
 import { AnalyticsCard } from './AnalyticsCard';
 import { getChangeColor, getChangeIcon } from '../utils/formatters';
-import { CARD_COLORS, METRIC_OPTIONS } from '../utils/constants';
+import { CARD_COLORS, METRIC_OPTIONS, SNAPSHOT_DATES } from '../utils/constants';
 
 interface StateComparisonCardProps {
   filters: AnalyticsFilters;
@@ -16,6 +16,8 @@ export const StateComparisonCard: React.FC<StateComparisonCardProps> = ({ filter
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<StateComparison[]>([]);
   const [comparisonMetric, setComparisonMetric] = useState('claims_individual');
+  // const [date1, setDate1] = useState(filters.snapshotDate || '2025-07-31');
+  const [date2, setDate2] = useState('2025-06-30');
 
   const fetchData = async () => {
     try {
@@ -23,8 +25,10 @@ export const StateComparisonCard: React.FC<StateComparisonCardProps> = ({ filter
       setError(null);
       
       // Use last two available dates for comparison
-      const date2 = filters.snapshotDate || '2025-07-31';
-      const date1 = '2025-06-30'; // The previous snapshot
+      // const date1 = '2025-07-31'; // The previous snapshot
+      // const date2 = filters.snapshotDate || '2025-06-30';
+
+      const date1 = filters.snapshotDate || '2025-07-31';
       
       const comparison = await analyticsService.compareSnapshots(date1, date2);
       setData(comparison);
@@ -37,7 +41,7 @@ export const StateComparisonCard: React.FC<StateComparisonCardProps> = ({ filter
 
   useEffect(() => {
     fetchData();
-  }, [filters.snapshotDate]);
+  }, [filters.snapshotDate , date2]);
 
   const icon = (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,8 +69,15 @@ export const StateComparisonCard: React.FC<StateComparisonCardProps> = ({ filter
   };
 
   const filteredData = filters.state.length > 0 
-    ? data.filter(item => filters.state.includes(item.state))
-    : data.slice(0, 5); // Show top 5 by default
+  ? data.filter(item => filters.state.includes(item.state))
+  : data
+      .sort((a, b) => {
+        const diffA = getMetricDiff(a, comparisonMetric) || 0;
+        const diffB = getMetricDiff(b, comparisonMetric) || 0;
+        // Sort by absolute value to show largest changes first
+        return Math.abs(diffB) - Math.abs(diffA);
+      })
+      .slice(0, 5); // Show top 5 by magnitude of change
 
   return (
     <AnalyticsCard
@@ -78,8 +89,9 @@ export const StateComparisonCard: React.FC<StateComparisonCardProps> = ({ filter
       error={error}
       onRetry={fetchData}
       actions={
+        <div className="flex flex-col gap-2 w-full">
         <select 
-          className="h-15 select select-bordered select-xs"
+          className="h-12 select select-bordered select-sm w-full"
           value={comparisonMetric}
           onChange={(e) => setComparisonMetric(e.target.value)}
         >
@@ -89,6 +101,19 @@ export const StateComparisonCard: React.FC<StateComparisonCardProps> = ({ filter
             </option>
           ))}
         </select>
+
+        <select
+          className="h-12 select select-bordered select-sm w-full"
+          value={date2}
+          onChange={(e) => setDate2(e.target.value)}
+        >
+          {SNAPSHOT_DATES.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        </div>
       }
     >
       {filteredData.length > 0 && (

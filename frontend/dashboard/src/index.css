@@ -1,8 +1,21 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
 @import "leaflet/dist/leaflet.css";
 @import "leaflet-draw/dist/leaflet.draw.css";
-@import "tailwindcss";
-@plugin "daisyui" {
-  themes: corporate --default;
+
+/* Define custom colors using @theme for Tailwind v4 */
+@theme {
+  --color-forest-50: #f0f9f4;
+  --color-forest-100: #dcf2e3;
+  --color-forest-200: #bce5c9;
+  --color-forest-300: #8bd2a6;
+  --color-forest-400: #53b880;
+  --color-forest-500: #2d9d66;
+  --color-forest-600: #1f7d4f;
+  --color-forest-700: #1b4332;
+  --color-forest-800: #17382a;
+  --color-forest-900: #0f291e;
 }
 
 html, body, #root {
@@ -32,4 +45,33 @@ html, body, #root {
 /* Fix any potential z-index issues with map layers */
 .leaflet-map-pane {
   z-index: 1 !important;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
 }

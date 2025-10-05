@@ -444,13 +444,6 @@
       "cfr": "সম্প্রদায় বন সম্পদ অধিকার"
     },
     
-    "case_info": {
-      "case_number": "কেস নম্বর",
-      "village": "গ্রাম",
-      "district_state": "জেলা, রাজ্য",
-      "status": "স্ট্যাটাস"
-    },
-    
     "messages": {
       "loading_cases": "ক্লেইম কেস লোড হচ্ছে...",
       "error_loading_cases": "ক্লেইম কেস লোড করতে ত্রুটি",
@@ -623,5 +616,125 @@
       "refresh": "রিফ্রেশ করুন",
       "clear": "ক্লিয়ার করুন",
       "retry": "পুনরায় চেষ্টা করুন"
-    }
+    },
+    "preparing_dashboard": "আপনার এফআরএ ওয়ার্কফ্লো ড্যাশবোর্ড প্রস্তুত করা হচ্ছে...",
+    "retry_loading": "পুনরায় লোড করুন",
+    "ministry_tribal_affairs": "আদিবাসী বিষয়ক মন্ত্রণালয়",
+    "search_placeholder": "গ্রাম, কেস নম্বর বা জেলা দিয়ে ক্লেইম খুঁজুন...",
+    "filter_all_status": "সমস্ত স্ট্যাটাস",
+    "no_matching_claims": "আপনার অনুসন্ধানের মানদণ্ডের সাথে কোনো ক্লেইম মেলে না। দয়া করে আপনার ফিল্টার সামঞ্জস্য করুন বা একটি নতুন ক্লেইম তৈরি করুন।",
+    
+    "view_mode": {
+      "overview": "ওভারভিউ",
+      "detailed": "বিস্তারিত"
+    },
+    
+    "dashboard_stats": {
+      "total_claims": "মোট ক্লেইম",
+      "in_progress": "চলমান",
+      "completed": "সম্পন্ন",
+      "avg_progress": "গড় অগ্রগতি"
+    },
+    
+    "status1": {
+      "ready_to_start": "শুরু করার জন্য প্রস্তুত",
+      "working_on": "কাজ করছেন: {{stepName}}"
+    },
+    
+    "case_info": {
+      "progress": "অগ্রগতি",
+      "case_number": "কেস নম্বর",
+      "village": "গ্রাম",
+      "district_state": "জেলা, রাজ্য",
+      "district_state1": "{{district}}, {{state}}",
+      "status": "স্ট্যাটাস"
+    },
+    
+    "ai_powered_processing": "এআই-চালিত ডকুমেন্ট প্রসেসিং",
+    "api_connection_failed": "এপিআই-তে সংযোগ করতে ব্যর্থ",
+    
+    "doc_dashboard_stats": {
+      "total_processed": "মোট প্রসেসড",
+      "current_file": "বর্তমান ফাইল",
+      "api_status": "এপিআই স্ট্যাটাস",
+      "active_processing": "সক্রিয় প্রসেসিং"
+    },
+    
+    "status_online": "অনলাইন",
+    "status_offline": "অফলাইন",
+
+    "doc_tabs": {
+      "upload": "আপলোড",
+      "history": "ইতিহাস"
+    },
+    
+    "ocr_engine": "ওসিআর ইঞ্জিন",
+    "ai_ocr_ner": "এআই-চালিত ওসিআর এবং এনইআর",
+    "multi_language_support": "মাল্টি-ল্যাঙ্গুয়েজ সাপোর্ট",
+    "interactive_fra_mapping": "ইন্টারেক্টিভ এফআরএ ম্যাপিং",
+    
+    "atlas_tabs": {
+      "navigation": "নেভিগেশন",
+      "layers": "লেয়ার",
+      "details": "বিস্তারিত"
+    },
+    
+    "navigate_to_regions": "নির্দিষ্ট অঞ্চলে নেভিগেট করুন",
+    "district_count": "{{count}}টি জেলা",
+    
+    "view_analytics": "এনালিটিক্স দেখুন",
+    "generate_report": "রিপোর্ট জেনারেট করুন",
+    
+    "choose_map_style": "আপনার ম্যাপ স্টাইল চয়ন করুন",
+    "terrain": "টেরেইন",
+    "soil_moisture": "মাটির আর্দ্রতা",
+    
+    "base_layer_osm_desc": "স্ট্যান্ডার্ড ম্যাপ ভিউ",
+    "base_layer_satellite_desc": "স্যাটেলাইট ইমেজারি",
+    "base_layer_terrain_desc": "টপোগ্রাফিক ভিউ",
+    "base_layer_soil_desc": "রুট জোন মাটির আর্দ্রতা",
+    "base_layer_forest_desc": "বন আচ্ছাদন / এনডিভিআই",
+    
+    "toggle_data_layers": "ডেটা লেয়ার টগল করুন",
+    "infrastructure": "ইনফ্রাস্ট্রাকচার",
+    
+    "overlay_claims_desc": "এফআরএ ক্লেইম সীমানা দেখান",
+    "overlay_forest_desc": "বন আচ্ছাদন ঘনত্ব",
+    "overlay_water_desc": "নদী, হ্রদ এবং জলাধার",
+    "overlay_infrastructure_desc": "রাস্তা এবং অবকাঠামো",
+    
+    "selected_claim_info": "নির্বাচিত ক্লেইম তথ্য",
+    "claim_id": "ক্লেইম আইডি",
+    "claim_type": "ক্লেইমের ধরন",
+    "hectares": "হেক্টর",
+    "village_district": "গ্রাম, জেলা",
+    "view_on_map": "ম্যাপে দেখুন",
+    "click_polygon_instructions": "বিস্তারিত দেখতে একটি ক্লেইম পলিগন ক্লিক করুন",
+    "fra_claims_mapping_analysis": "এফআরএ ক্লেইম ম্যাপিং এবং বিশ্লেষণ",
+    "claims_loaded": "{{count}}টি ক্লেইম লোড হয়েছে",
+    "mota_fra_platform": "মোটা এফআরএ প্ল্যাটফর্ম",
+    "active_module": "সক্রিয় মডিউল",
+    "processing_rate": "প্রসেসিং রেট",
+    "focus_states": "ফোকাস রাজ্য",
+    
+    "recent_activities": {
+      "title": "সাম্প্রতিক কার্যক্রম",
+      "claim_approved": "ক্লেইম অনুমোদিত",
+      "document_processed": "ডকুমেন্ট প্রসেসড",
+      "new_recommendation": "নতুন সুপারিশ"
+    },
+    
+    "time_ago": {
+      "minutes": "{{count}} মিনিট আগে",
+      "hours": "{{count}} ঘন্টা আগে",
+      "days": "{{count}} দিন আগে"
+    },
+    
+    "view_all_activities": "সমস্ত কার্যক্রম দেখুন",
+    "admin_user": "অ্যাডমিন ব্যবহারকারী",
+    "mota_official": "মোটা অফিসার",
+    
+    "system_operational": "সিস্টেম অপারেশনাল",
+    "last_sync": "শেষ সিঙ্ক",
+    "fra_platform_mota": "এফআরএ প্ল্যাটফর্ম • আদিবাসী বিষয়ক মন্ত্রণালয়"
 }

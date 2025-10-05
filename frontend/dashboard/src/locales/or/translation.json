@@ -444,13 +444,6 @@
     "cfr": "ସାମୁଦାୟିକ ବନ ସମ୍ବଳ ଅଧିକାର"
   },
   
-  "case_info": {
-    "case_number": "ମାମଲା ନମ୍ବର",
-    "village": "ଗାଁ",
-    "district_state": "ଜିଲ୍ଲା, ରାଜ୍ୟ",
-    "status": "ସ୍ଥିତି"
-  },
-  
   "messages": {
     "loading_cases": "ଦାବି ମାମଲା ଲୋଡ୍ ହେଉଛି...",
     "error_loading_cases": "ଦାବି ମାମଲା ଲୋଡ୍ କରିବାରେ ତ୍ରୁଟି",
@@ -619,6 +612,125 @@
     "refresh": "ରିଫ୍ରେସ୍ କରନ୍ତୁ",
     "clear": "ପରିଷ୍କାର କରନ୍ତୁ",
     "retry": "ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ"
-  }
+  },
+  "preparing_dashboard": "ଆପଣଙ୍କର FRA ୱର୍କଫ୍ଲୋ ଡ୍ୟାସବୋର୍ଡ ପ୍ରସ୍ତୁତ କରାଯାଉଛି...",
+  "retry_loading": "ପୁନର୍ବାର ଲୋଡ୍ କରନ୍ତୁ",
+  "ministry_tribal_affairs": "ଆଦିବାସୀ କାର୍ଯ୍ୟ ମନ୍ତ୍ରଣାଳୟ",
+  "search_placeholder": "ଗ୍ରାମ, କେସ୍ ନମ୍ବର କିମ୍ବା ଜିଲ୍ଲା ଦ୍ୱାରା ଦାବି ଖୋଜନ୍ତୁ...",
+  "filter_all_status": "ସମସ୍ତ ସ୍ଥିତି",
+  "no_matching_claims": "ଆପଣଙ୍କର ସନ୍ଧାନ ମାନଦଣ୍ଡ ସହିତ କୌଣସି ଦାବି ମେଳ ଖାଉନାହିଁ। ଦୟାକରି ଆପଣଙ୍କର ଫିଲ୍ଟରଗୁଡିକ ସମାୟୋଜିତ କରନ୍ତୁ କିମ୍ବା ଏକ ନୂତନ ଦାବି ସୃଷ୍ଟି କରନ୍ତୁ।",
+  
+  "view_mode": {
+    "overview": "ସମୀକ୍ଷା",
+    "detailed": "ବିସ୍ତୃତ"
+  },
+  
+  "dashboard_stats": {
+    "total_claims": "ମୋଟ ଦାବି",
+    "in_progress": "ପ୍ରଗତିରେ",
+    "completed": "ସମ୍ପୂର୍ଣ୍ଣ",
+    "avg_progress": "ହାରାହାରି ପ୍ରଗତି"
+  },
+  
+  "status1": {
+    "ready_to_start": "ଆରମ୍ଭ କରିବା ପାଇଁ ପ୍ରସ୍ତୁତ",
+    "working_on": "କାର୍ଯ୍ୟ କରୁଛନ୍ତି: {{stepName}}"
+  },
+  
+  "case_info": {
+    "progress": "ପ୍ରଗତି",
+    "case_number": "କେସ୍ ନମ୍ବର",
+    "village": "ଗ୍ରାମ",
+    "district_state": "ଜିଲ୍ଲା, ରାଜ୍ୟ",
+    "district_state1": "{{district}}, {{state}}",
+    "status": "ସ୍ଥିତି"
+  },
+  
+  "ai_powered_processing": "AI-ଚାଳିତ ଡକ୍ୟୁମେଣ୍ଟ ପ୍ରୋସେସିଂ",
+  "api_connection_failed": "API ସହିତ ସଂଯୋଗ କରିବାରେ ବିଫଳ",
+  
+  "doc_dashboard_stats": {
+    "total_processed": "ମୋଟ ପ୍ରୋସେସ୍ଡ",
+    "current_file": "ବର୍ତ୍ତମାନର ଫାଇଲ୍",
+    "api_status": "API ସ୍ଥିତି",
+    "active_processing": "ସକ୍ରିୟ ପ୍ରୋସେସିଂ"
+  },
+  
+  "status_online": "ଅନଲାଇନ୍",
+  "status_offline": "ଅଫଲାଇନ୍",
 
+  "doc_tabs": {
+    "upload": "ଅପଲୋଡ୍",
+    "history": "ଇତିହାସ"
+  },
+  
+  "ocr_engine": "OCR ଇଞ୍ଜିନ୍",
+  "ai_ocr_ner": "AI-ଚାଳିତ OCR ଏବଂ NER",
+  "multi_language_support": "ବହୁ-ଭାଷା ସମର୍ଥନ",
+  "interactive_fra_mapping": "ଇଣ୍ଟରାକ୍ଟିଭ୍ FRA ମ୍ୟାପିଂ",
+  
+  "atlas_tabs": {
+    "navigation": "ନେଭିଗେସନ୍",
+    "layers": "ସ୍ତରଗୁଡିକ",
+    "details": "ବିବରଣୀ"
+  },
+  
+  "navigate_to_regions": "ନିର୍ଦ୍ଦିଷ୍ଟ ଅଞ୍ଚଳଗୁଡିକୁ ନେଭିଗେଟ୍ କରନ୍ତୁ",
+  "district_count": "{{count}} ଜିଲ୍ଲା",
+  
+  "view_analytics": "ଆନାଲିଟିକ୍ସ ଦେଖନ୍ତୁ",
+  "generate_report": "ରିପୋର୍ଟ ଜେନେରେଟ୍ କରନ୍ତୁ",
+  
+  "choose_map_style": "ଆପଣଙ୍କର ମ୍ୟାପ୍ ଶୈଳୀ ବାଛନ୍ତୁ",
+  "terrain": "ଭୂପୃଷ୍ଠ",
+  "soil_moisture": "ମୃତ୍ତିକା ଆର୍ଦ୍ରତା",
+  
+  "base_layer_osm_desc": "ସ୍ଟାଣ୍ଡାର୍ଡ ମ୍ୟାପ୍ ଦୃଶ୍ୟ",
+  "base_layer_satellite_desc": "ସାଟେଲାଇଟ୍ ଇମେଜରୀ",
+  "base_layer_terrain_desc": "ଟୋପୋଗ୍ରାଫିକ୍ ଦୃଶ୍ୟ",
+  "base_layer_soil_desc": "ରୁଟ୍ ଜୋନ୍ ମୃତ୍ତିକା ଆର୍ଦ୍ରତା",
+  "base_layer_forest_desc": "ବନ ଆଚ୍ଛାଦନ / NDVI",
+  
+  "toggle_data_layers": "ଡାଟା ସ୍ତରଗୁଡିକୁ ଟୋଗଲ୍ କରନ୍ତୁ",
+  "infrastructure": "ଅবକୌଶଳ",
+  
+  "overlay_claims_desc": "FRA ଦାବି ସୀମା ଦେଖାନ୍ତୁ",
+  "overlay_forest_desc": "ବନ ଆଚ୍ଛାଦନ ଘନତା",
+  "overlay_water_desc": "ନଦୀ, ହ୍ରଦ ଏବଂ ଜଳାଶୟ",
+  "overlay_infrastructure_desc": "ରାସ୍ତା ଏବଂ ଅବକୌଶଳ",
+  
+  "selected_claim_info": "ଚୟନିତ ଦାବି ସୂଚନା",
+  "claim_id": "ଦାବି ID",
+  "claim_type": "ଦାବି ପ୍ରକାର",
+  "hectares": "ହେକ୍ଟର୍",
+  "village_district": "ଗ୍ରାମ, ଜିଲ୍ଲା",
+  "view_on_map": "ମ୍ୟାପ୍ ଉପରେ ଦେଖନ୍ତୁ",
+  "click_polygon_instructions": "ବିବରଣୀ ଦେଖିବା ପାଇଁ ଏକ ଦାବି ପଲିଗନ୍ ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ",
+  "fra_claims_mapping_analysis": "FRA ଦାବି ମ୍ୟାପିଂ ଏବଂ ବିଶ୍ଳେଷଣ",
+  "claims_loaded": "{{count}} ଦାବି ଲୋଡ୍ ହୋଇଛି",
+  "mota_fra_platform": "ମୋଟା FRA ପ୍ଲାଟଫର୍ମ",
+  "active_module": "ସକ୍ରିୟ ମଡ୍ୟୁଲ୍",
+  "processing_rate": "ପ୍ରୋସେସିଂ ହାର",
+  "focus_states": "ଫୋକସ୍ ରାଜ୍ୟ",
+  
+  "recent_activities": {
+    "title": "ସାମ୍ପ୍ରତିକ କାର୍ଯ୍ୟକଳାପ",
+    "claim_approved": "ଦାବି ଅନୁମୋଦିତ",
+    "document_processed": "ଡକ୍ୟୁମେଣ୍ଟ୍ ପ୍ରୋସେସ୍ଡ୍",
+    "new_recommendation": "ନୂତନ ପରାମର୍ଶ"
+  },
+  
+  "time_ago": {
+    "minutes": "{{count}} ମିନିଟ୍ ପୂର୍ବେ",
+    "hours": "{{count}} ଘଣ୍ଟା ପୂର୍ବେ",
+    "days": "{{count}} ଦିନ ପୂର୍ବେ"
+  },
+  
+  "view_all_activities": "ସମସ୍ତ କାର୍ଯ୍ୟକଳାପ ଦେଖନ୍ତୁ",
+  "admin_user": "ଆଡମିନ୍ ବ୍ୟବହାରକାରୀ",
+  "mota_official": "ମୋଟା ଅଧିକାରୀ",
+  
+  "system_operational": "ସିଷ୍ଟମ୍ କାର୍ଯ୍ୟକାରୀ",
+  "last_sync": "ଶେଷ ସିଙ୍କ୍",
+  "fra_platform_mota": "FRA ପ୍ଲାଟଫର୍ମ • ଆଦିବାସୀ କାର୍ଯ୍ୟ ମନ୍ତ୍ରଣାଳୟ"
 }

@@ -12,6 +12,12 @@ export const METRIC_OPTIONS = [
   { value: 'forest_land_community_acres', label: 'Forest Land Community (acres)' }
 ];
 
+// Available snapshot dates from your data
+export const SNAPSHOT_DATES = [
+  { value: '2025-06-30', label: '30/06/2025' },
+  { value: '2025-07-31', label: '31/07/2025' }
+];
+
 export const CARD_COLORS = {
   claims: 'blue',
   titles: 'green', 

@@ -14,7 +14,6 @@ import { useApiHealth } from './hooks/useApiHealth';
 import { useFilters } from './hooks/useFilters';
 import { useAnalyticsData } from './hooks/useAnalyticsData';
 import { LoadingSpinner } from '../Common/LoadingSpinner';
-import { ApiStatusIndicator } from '../Common/ApiStatusIndicator';
 
 export const AnalyticsDashboard: React.FC = () => {
   const { t } = useTranslation();
@@ -47,14 +46,14 @@ export const AnalyticsDashboard: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100 p-4 lg:p-6 overflow-y-auto">
-      <div className="max-w-7xl mx-auto">
+<div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6 overflow-y-auto">
+<div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-14 h-14 bg-gradient-to-br from-forest-600 to-forest-700 rounded-xl flex items-center justify-center shadow-lg">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
@@ -64,23 +63,29 @@ export const AnalyticsDashboard: React.FC = () => {
               </div>
             </div>
             
+            {/* Enhanced API Status */}
             <div className="flex items-center gap-4">
-              <ApiStatusIndicator status={apiStatus} onRetry={checkApiHealth} />
-              
-              <button
-                onClick={refreshData}
-                className="btn btn-primary btn-sm"
-                disabled={loading}
-              >
-                {loading ? (
-                  <span className="loading loading-spinner loading-xs"></span>
-                ) : (
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-gray-300 shadow-sm">
+                <div className={`w-3 h-3 rounded-full ${
+                  apiStatus === 'connected' ? 'bg-emerald-500 animate-pulse' :
+                  apiStatus === 'checking' ? 'bg-amber-500 animate-ping' :
+                  'bg-red-500'
+                }`} />
+                <span className="text-sm font-medium text-gray-700">
+                  {apiStatus === 'connected' ? t("api_connected") :
+                   apiStatus === 'checking' ? t("connecting") :
+                   t("api_disconnected")}
+                </span>
+                <button
+                  onClick={checkApiHealth}
+                  className="ml-2 p-1 text-gray-500 hover:text-gray-700 rounded transition-colors"
+                  title={t("check_api_status")}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
                   </svg>
-                )}
-                {t("buttons.refresh")}
-              </button>
+                </button>
+              </div>
             </div>
           </div>
 

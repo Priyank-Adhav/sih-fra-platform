@@ -224,7 +224,6 @@ export async function fetchPolygonsFromApi(baseUrl?: string): Promise<PolygonDat
     for (const f of features) {
       const p = featureToPolygonData(f);
       if (p) {
-        console.log("Converted polygon:", p.id, p.type, p.coords.length, "coordinates");
         out.push(p);
       } else {
         console.warn("Failed to convert feature:", f);

@@ -1,6 +1,9 @@
 export const formatNumber = (num: number): string => {
-  if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + 'M';
+  if (num >= 10000000) {
+    return (num / 10000000).toFixed(1) + 'Cr';
+  }
+  if (num >= 100000) {
+    return (num / 100000).toFixed(1) + 'L';
   }
   if (num >= 1000) {
     return (num / 1000).toFixed(1) + 'K';
@@ -8,9 +11,9 @@ export const formatNumber = (num: number): string => {
   return num.toString();
 };
 
-// New function for displaying exact numbers with commas
+// New function for displaying exact numbers with commas (Indian numbering system)
 export const formatExactNumber = (num: number): string => {
-  return num.toLocaleString();
+  return num.toLocaleString('en-IN');
 };
 
 export const formatPercentage = (value: number): string => {
@@ -18,8 +21,11 @@ export const formatPercentage = (value: number): string => {
 };
 
 export const formatArea = (acres: number): string => {
-  if (acres >= 1000000) {
-    return (acres / 1000000).toFixed(1) + 'M acres';
+  if (acres >= 10000000) {
+    return (acres / 10000000).toFixed(1) + 'Cr acres';
+  }
+  if (acres >= 100000) {
+    return (acres / 100000).toFixed(1) + 'L acres';
   }
   if (acres >= 1000) {
     return (acres / 1000).toFixed(1) + 'K acres';

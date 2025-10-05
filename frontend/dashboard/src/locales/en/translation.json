@@ -327,7 +327,7 @@
     
     "claim_process_tracker": "Claim Process Tracker",
     "fra_workflow_management": "FRA Claim Workflow Management",
-    "manage_workflows": "Manage FRA claim workflows and track progress through all 8 steps",
+    "manage_workflows": "Manage FRA claim workflows",
     "active_claims": "Active Claims",
     "no_claim_selected": "No Claim Selected",
     "select_claim_to_view": "Select a claim case from the sidebar to view its progress and manage workflow steps",
@@ -442,13 +442,6 @@
       "individual": "Individual Forest Rights",
       "community": "Community Forest Rights", 
       "cfr": "Community Forest Resource Rights"
-    },
-    
-    "case_info": {
-      "case_number": "Case Number",
-      "village": "Village",
-      "district_state": "District, State",
-      "status": "Status"
     },
 
     "messages": {
@@ -619,5 +612,124 @@
       "refresh": "Refresh",
       "clear": "Clear",
       "retry": "Retry"
-    }
+    },
+    "preparing_dashboard": "Preparing your FRA workflow dashboard...",
+    "retry_loading": "Retry Loading",
+    "ministry_tribal_affairs": "Ministry of Tribal Affairs",
+    "search_placeholder": "Search claims by village, case number, or district...",
+    "filter_all_status": "All Status",
+    "no_matching_claims": "No claims match your search criteria. Try adjusting your filters or create a new claim.",
+    
+    "view_mode": {
+      "overview": "Overview",
+      "detailed": "Detailed"
+    },
+    
+    "dashboard_stats": {
+      "total_claims": "Total Claims",
+      "in_progress": "In Progress",
+      "completed": "Completed",
+      "avg_progress": "Avg Progress"
+    },
+    
+    "status1": {
+      "ready_to_start": "Ready to start",
+      "working_on": "Working on: {{stepName}}"
+    },
+    
+    "case_info": {
+      "progress": "Progress",
+      "case_number": "Case Number",
+      "village": "Village",
+      "district_state": "District, State",
+      "district_state1": "{{district}}, {{state}}",
+      "status": "Status"
+    },
+    "ai_powered_processing": "AI-Powered Document Processing",
+    "api_connection_failed": "Failed to connect to API",
+    
+    "doc_dashboard_stats": {
+      "total_processed": "Total Processed",
+      "current_file": "Current File",
+      "api_status": "API Status",
+      "active_processing": "Active Processing"
+    },
+    
+    "status_online": "Online",
+    "status_offline": "Offline",
+
+    "doc_tabs": {
+      "upload": "Upload",
+      "history": "History"
+    },
+    
+    "ocr_engine": "OCR Engine",
+    "ai_ocr_ner": "AI-Powered OCR & NER",
+    "multi_language_support": "Multi-language Support",
+    "interactive_fra_mapping": "Interactive FRA Mapping",
+    
+    "atlas_tabs": {
+      "navigation": "Navigation",
+      "layers": "Layers",
+      "details": "Details"
+    },
+    
+    "navigate_to_regions": "Navigate to specific regions",
+    "district_count": "{{count}} districts",
+    
+    "view_analytics": "View Analytics",
+    "generate_report": "Generate Report",
+    
+    "choose_map_style": "Choose your map style",
+    "terrain": "Terrain",
+    "soil_moisture": "Soil Moisture",
+    
+    "base_layer_osm_desc": "Standard map view",
+    "base_layer_satellite_desc": "Satellite imagery",
+    "base_layer_terrain_desc": "Topographic view",
+    "base_layer_soil_desc": "Root zone soil moisture",
+    "base_layer_forest_desc": "Forest cover / NDVI",
+    
+    "toggle_data_layers": "Toggle data layers",
+    "infrastructure": "Infrastructure",
+    
+    "overlay_claims_desc": "Show FRA claim boundaries",
+    "overlay_forest_desc": "Forest cover density",
+    "overlay_water_desc": "Rivers, lakes, and water bodies",
+    "overlay_infrastructure_desc": "Roads and infrastructure",
+    
+    "selected_claim_info": "Selected claim information",
+    "claim_id": "Claim ID",
+    "claim_type": "Claim Type",
+    "hectares": "hectares",
+    "village_district": "Village, District",
+    "view_on_map": "View on Map",
+    "click_polygon_instructions": "Click on a claim polygon to view details" ,
+    "fra_claims_mapping_analysis": "FRA Claims Mapping & Analysis",
+    "claims_loaded": "{{count}} claims loaded",
+    "mota_fra_platform": "MoTA FRA Platform",
+    "active_module": "Active Module",
+    "processing_rate": "Processing Rate",
+    "focus_states": "Focus States",
+    
+    "recent_activities": {
+      "title": "Recent Activities",
+      "claim_approved": "Claim approved",
+      "document_processed": "Document processed",
+      "new_recommendation": "New recommendation"
+    },
+    
+    "time_ago": {
+      "minutes": "{{count}} min ago",
+      "hours": "{{count}}h ago",
+      "days": "{{count}}d ago"
+    },
+    
+    "view_all_activities": "View All Activities",
+    "admin_user": "Admin User",
+    "mota_official": "MoTA Official",
+    
+    "system_operational": "System Operational",
+    "last_sync": "Last sync",
+    "fra_platform_mota": "FRA Platform • Ministry of Tribal Affairs"
 }
