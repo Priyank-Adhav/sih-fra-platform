@@ -65,8 +65,15 @@ export const StateComparisonCard: React.FC<StateComparisonCardProps> = ({ filter
   };
 
   const filteredData = filters.state.length > 0 
-    ? data.filter(item => filters.state.includes(item.state))
-    : data.slice(0, 5); // Show top 5 by default
+  ? data.filter(item => filters.state.includes(item.state))
+  : data
+      .sort((a, b) => {
+        const diffA = getMetricDiff(a, comparisonMetric) || 0;
+        const diffB = getMetricDiff(b, comparisonMetric) || 0;
+        // Sort by absolute value to show largest changes first
+        return Math.abs(diffB) - Math.abs(diffA);
+      })
+      .slice(0, 5); // Show top 5 by magnitude of change
 
   return (
     <AnalyticsCard
