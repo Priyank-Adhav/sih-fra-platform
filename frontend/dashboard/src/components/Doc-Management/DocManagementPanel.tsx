@@ -109,13 +109,13 @@ export default function DocManagementPanel() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 p-6 overflow-y-auto">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6 overflow-y-auto">
       <div className="max-w-7xl mx-auto">
         {/* Enhanced Header */}
         <div className="mb-8">
           <div className="flex items-start justify-between mb-6">
             <div className="flex items-start gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl flex items-center justify-center shadow-xl">
+              <div className="w-14 h-14 bg-gradient-to-br from-forest-600 to-forest-700 rounded-xl flex items-center justify-center shadow-lg">
                 <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
                 </svg>
@@ -123,14 +123,6 @@ export default function DocManagementPanel() {
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">{t("document_management")}</h1>
                 <p className="text-gray-600 text-lg">{t("ocr_processing_desc")}</p>
-                <div className="flex items-center gap-4 mt-2">
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                    <span>{t("ai_powered_processing")}</span>
-                  </div>
-                  <span className="text-gray-300">•</span>
-                  <span className="text-sm text-gray-500">{t("ministry_tribal_affairs")}</span>
-                </div>
               </div>
             </div>
 
