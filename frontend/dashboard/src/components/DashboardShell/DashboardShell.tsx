@@ -2,7 +2,7 @@ import React, { Suspense, useState } from "react";
 import Sidebar from "./Sidebar";
 import { useTranslation } from "react-i18next";
 
-// Lazy load components
+// Lazy load components (your existing imports remain the same)
 const Atlas = React.lazy(() => import("../Atlas/AtlasMap"));
 const DSS = React.lazy(() => import("../DSS/DSSPanel"));
 const Documents = React.lazy(() => import("../Doc-Management/DocManagementPanel.tsx"));
@@ -10,7 +10,6 @@ const ClaimProcess = React.lazy(() => import("../ClaimProcessTracker/ClaimProces
 const AnalyticsDashboard = React.lazy(() => import("../AnalyticsDashboard/AnalyticsDashboard.tsx"));
 
 export default function DashboardShell() {
-  // Initialize state from sessionStorage or default to 'claims'
   const [active, setActive] = useState<"atlas" | "dss" | "docs" | "claims" | "analytics">(() => {
     const saved = sessionStorage.getItem('activePanel');
     if (saved && ['atlas', 'dss', 'docs', 'claims', 'analytics'].includes(saved)) {
@@ -18,9 +17,12 @@ export default function DashboardShell() {
     }
     return 'claims';
   });
-  
+
+  // Add sidebar collapse state
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
   const { t, i18n } = useTranslation();
-  const [notifications] = useState(3); // Mock notification count
+  const [notifications] = useState(3);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const getActiveModuleName = () => {
@@ -44,36 +46,36 @@ export default function DashboardShell() {
     const icons = {
       claims: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" 
-                stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M14 2v6h6" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+            stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M14 2v6h6" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
         </svg>
       ),
       atlas: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" 
-                stroke="currentColor" strokeWidth="1.5"/>
-          <circle cx="12" cy="12" r="2" fill="currentColor" className="opacity-70"/>
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+            stroke="currentColor" strokeWidth="1.5" />
+          <circle cx="12" cy="12" r="2" fill="currentColor" className="opacity-70" />
         </svg>
       ),
       dss: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" 
-                stroke="currentColor" strokeWidth="1.5"/>
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+            stroke="currentColor" strokeWidth="1.5" />
         </svg>
       ),
       docs: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" 
-                stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-          <path d="M14 2v6h6" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+            stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+          <path d="M14 2v6h6" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
         </svg>
       ),
       analytics: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-          <path d="M18 20V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M12 20V4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M6 20v-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M18 20V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M12 20V4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M6 20v-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       )
     };
@@ -91,7 +93,7 @@ export default function DashboardShell() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="px-6 py-4">
+        <div className="px-6 py-4 bg-gradient-to-br from-forest-00 to-forest-200">
           <div className="flex items-center justify-between">
             {/* Left Section - Branding */}
             <div className="flex items-center gap-4">
@@ -99,9 +101,9 @@ export default function DashboardShell() {
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-gradient-to-br from-forest-700 to-forest-800 rounded-xl flex items-center justify-center shadow-lg">
                   <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <path d="M2 17l10 5 10-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-                    <path d="M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                    <path d="M2 17l10 5 10-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                    <path d="M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <div className="hidden sm:block">
@@ -135,23 +137,50 @@ export default function DashboardShell() {
             </div>
 
             {/* Center Section - Quick Stats */}
-            <div className="hidden xl:flex items-center gap-6">
-              <div className="text-center">
-                <div className="text-sm font-semibold text-gray-900">1,247</div>
-                <div className="text-xs text-gray-500">{t("active_claims")}</div>
+            <div className="hidden xl:flex items-center gap-3">
+              {/* Active Claims */}
+              <div className="flex items-center gap-2 px-3 py-2 bg-forest-50 rounded-lg border border-forest-200">
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-forest-900">1,247</div>
+                  <div className="text-xs text-forest-600">{t("active_claims")}</div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-sm font-semibold text-gray-900">89%</div>
-                <div className="text-xs text-gray-500">{t("processing_rate")}</div>
+
+              {/* Processing Rate */}
+              <div className="flex items-center gap-2 px-3 py-2 bg-forest-50 rounded-lg border border-forest-200">
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-forest-900">89%</div>
+                  <div className="text-xs text-forest-600">{t("processing_rate")}</div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-sm font-semibold text-gray-900">4</div>
-                <div className="text-xs text-gray-500">{t("focus_states")}</div>
+
+              {/* Focus States */}
+              <div className="flex items-center gap-2 px-3 py-2 bg-forest-50 rounded-lg border border-forest-200">
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-forest-900">4</div>
+                  <div className="text-xs text-forest-600">{t("focus_states")}</div>
+                </div>
               </div>
             </div>
 
             {/* Right Section - User Controls */}
             <div className="flex items-center gap-4">
+              {/* Sidebar Toggle Button for Desktop */}
+              <button
+                onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                className="hidden lg:flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-colors shadow-sm"
+                title={isSidebarCollapsed ? t("expand_sidebar") : t("collapse_sidebar")}
+              >
+                <svg
+                  className={`w-5 h-5 text-gray-600 transition-transform ${isSidebarCollapsed ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                </svg>
+              </button>
+
               {/* Language Selector */}
               <div className="hidden sm:block">
                 <select
@@ -206,9 +235,9 @@ export default function DashboardShell() {
 
               {/* User Profile */}
               <div className="dropdown dropdown-end">
-                <div 
-                  tabIndex={0} 
-                  role="button" 
+                <div
+                  tabIndex={0}
+                  role="button"
                   className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 hover:border-gray-400 transition-colors cursor-pointer bg-white"
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                 >
@@ -219,8 +248,8 @@ export default function DashboardShell() {
                     <div className="text-sm font-medium text-gray-900">{t("admin_user")}</div>
                     <div className="text-xs text-gray-500">{t("mota_official")}</div>
                   </div>
-                  <svg className={`w-4 h-4 text-gray-500 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} 
-                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-4 h-4 text-gray-500 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`}
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -278,10 +307,16 @@ export default function DashboardShell() {
 
       {/* Main Content Area */}
       <div className="flex h-[calc(100vh-112px)]">
-        <Sidebar active={active} setActive={setActive} />
-        
+        <Sidebar
+          active={active}
+          setActive={setActive}
+          collapsed={isSidebarCollapsed}
+          onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+        />
+
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto bg-white">
+        <main className={`flex-1 overflow-y-auto bg-white transition-all duration-300 
+        }`}>
           <Suspense fallback={
             <div className="flex justify-center items-center h-full bg-gradient-to-br from-gray-50 to-gray-100">
               <div className="text-center">
