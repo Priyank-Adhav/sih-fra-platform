@@ -100,13 +100,13 @@ export const ClaimProcessTracker: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50/80 to-orange-100/90 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6">
       <div className="max-w-7xl mx-auto p-6">
         {/* Enhanced Header with Dashboard */}
         <div className="mb-8">
           <div className="flex items-start justify-between mb-6">
             <div className="flex items-start gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center shadow-xl">
+              <div className="w-14 h-14 bg-gradient-to-br from-forest-600 to-forest-700 rounded-xl flex items-center justify-center shadow-lg">
                 <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
                     stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -114,7 +114,7 @@ export const ClaimProcessTracker: React.FC = () => {
                 </svg>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">{t("claim_process_tracker")}</h1>
+                <h1 className="text-3xl font-bold text-gray-900">{t("claim_process_tracker")}</h1>
                 <p className="max-w-100 text-gray-600 text-lg">{t("manage_workflows")}</p>
                 <div className="flex items-center gap-4 mt-2">
                   <div className="flex items-center gap-2 text-sm text-gray-500">
