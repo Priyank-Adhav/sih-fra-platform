@@ -635,22 +635,27 @@ export default function AtlasMap() {
           <div className="flex items-center gap-4">
             {/* Status Badges */}
             <div className="flex items-center gap-3">
-              <div className="badge badge-primary badge-lg px-4 py-4">
-                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              <div className="bg-gradient-to-br from-forest-600 to-forest-700 rounded-lg px-4 py-3 text-white flex items-center gap-2">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" strokeLinecap="round" />
+                  <path d="M2 12h20" strokeLinecap="round" strokeDasharray="2 2" className="opacity-60" />
+                  <path d="M12 2v20" strokeLinecap="round" strokeDasharray="2 2" className="opacity-60" />
+                  <circle cx="12" cy="12" r="2" fill="currentColor" className="opacity-80" />
+                  <path d="M16 8l2-2-2-2" strokeLinecap="round" className="opacity-70" />
+                  <path d="M8 16l-2 2 2 2" strokeLinecap="round" className="opacity-70" />
                 </svg>
-                {t('atlas_panel.interactive_atlas')}
+                <span className="font-medium">{t('atlas_panel.interactive_atlas')}</span>
               </div>
 
               {loading && (
-                <div className="badge badge-warning badge-lg px-4 py-4">
+                <div className="badge badge-warning badge-lg px-4 py-6">
                   <span className="loading loading-spinner loading-sm mr-2"></span>
                   {t('atlas_panel.loading_polygons')}
                 </div>
               )}
 
               {isDrawingMode && (
-                <div className="badge badge-warning badge-lg px-4 py-3">
+                <div className="badge badge-warning badge-lg px-4 py-6">
                   <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                   </svg>
@@ -659,7 +664,7 @@ export default function AtlasMap() {
               )}
 
               {isEditMode && (
-                <div className="badge badge-info badge-lg px-4 py-3">
+                <div className="badge badge-info badge-lg px-4 py-6">
                   <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
                   </svg>

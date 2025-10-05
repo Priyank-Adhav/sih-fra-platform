@@ -115,9 +115,9 @@ export const LOCATION_FOCUS: { [state: string]: StateFocus } = {
       Nagpur: { bbox: [78.8, 20.8, 79.5, 21.5], centroid: [21.15, 79.1], claims: 529 },
       Aurangabad: { bbox: [75.0, 19.3, 76.1, 20.2], centroid: [19.9, 75.3], claims: 388 },
       Solapur: { bbox: [74.3, 17.0, 76.0, 18.3], centroid: [17.68, 75.9], claims: 301 },
-      Yavatmal: { bbox: [77.0, 19.4, 79.2, 20.8], centroid: [20.1, 78.3], claims: 295 }, 
+      Yavatmal: { bbox: [77.0, 19.4, 79.2, 20.8], centroid: [20.1, 78.3], claims: 295 },
     },
-  },  
+  },
   Odisha: {
     bbox: [81.5, 18.5, 87.5, 22.5],
     centroid: [20.5, 84.5],
@@ -139,7 +139,7 @@ export const LOCATION_FOCUS: { [state: string]: StateFocus } = {
       Mahabubnagar: { bbox: [77.2, 16.1, 78.8, 17.5], centroid: [16.8, 78.0], claims: 355 },
       Khammam: { bbox: [79.1, 16.5, 80.4, 17.8], centroid: [17.2, 80.0], claims: 289 },
     },
-  }  
+  }
 };
 
 export type ClaimDetails = {
@@ -218,35 +218,49 @@ export default function AtlasSidebar({
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex bg-white rounded-lg border border-gray-300 p-1 shadow-sm">
-          <button
-            onClick={() => setActiveTab("navigation")}
-            className={`flex-1 py-2 px-3 text-sm font-medium rounded-md transition-all duration-200 ${activeTab === "navigation"
-                ? 'bg-gradient-to-r from-forest-500 to-forest-600 text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-              }`}
-          >
-            {t("atlas_tabs.navigation")}
-          </button>
-          <button
-            onClick={() => setActiveTab("layers")}
-            className={`flex-1 py-2 px-3 text-sm font-medium rounded-md transition-all duration-200 ${activeTab === "layers"
-                ? 'bg-gradient-to-r from-forest-500 to-forest-600 text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-              }`}
-          >
-            {t("atlas_tabs.layers")}
-          </button>
-          <button
-            onClick={() => setActiveTab("details")}
-            className={`flex-1 py-2 px-3 text-sm font-medium rounded-md transition-all duration-200 ${activeTab === "details"
-                ? 'bg-gradient-to-r from-forest-500 to-forest-600 text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-              }`}
-          >
-            {t("atlas_tabs.details")}
-          </button>
-        </div>
+        <div className="flex bg-white rounded-lg border border-gray-300 p-1 shadow-sm relative">
+  {/* Sliding indicator */}
+  <div
+    className={`absolute top-1 bottom-1 bg-gradient-to-r from-forest-500 to-forest-600 rounded-md shadow-sm transition-all duration-200 ease-in-out ${
+      activeTab === "navigation" 
+        ? "left-1 right-2/3" 
+        : activeTab === "layers" 
+        ? "left-1/3 right-1/3" 
+        : "left-2/3 right-1"
+    }`}
+  />
+  
+  <button
+    onClick={() => setActiveTab("navigation")}
+    className={`flex-1 py-2 px-3 text-sm font-medium rounded-md relative z-10 transition-colors duration-200 ${
+      activeTab === "navigation" 
+        ? "text-white" 
+        : "text-gray-600 hover:text-gray-900"
+    }`}
+  >
+    {t("atlas_tabs.navigation")}
+  </button>
+  <button
+    onClick={() => setActiveTab("layers")}
+    className={`flex-1 py-2 px-3 text-sm font-medium rounded-md relative z-10 transition-colors duration-200 ${
+      activeTab === "layers" 
+        ? "text-white" 
+        : "text-gray-600 hover:text-gray-900"
+    }`}
+  >
+    {t("atlas_tabs.layers")}
+  </button>
+  <button
+    onClick={() => setActiveTab("details")}
+    className={`flex-1 py-2 px-3 text-sm font-medium rounded-md relative z-10 transition-colors duration-200 ${
+      activeTab === "details" 
+        ? "text-white" 
+        : "text-gray-600 hover:text-gray-900"
+    }`}
+  >
+    {t("atlas_tabs.details")}
+  </button>
+</div>
       </div>
 
       <div className="flex-1 overflow-auto p-6 space-y-6 border-b border-gray-200 bg-gradient-to-r from-forest-50 to-emerald-50">
@@ -365,8 +379,8 @@ export default function AtlasSidebar({
                     key={layer.id}
                     onClick={() => handleBaseLayerChange(layer.id)}
                     className={`w-full p-4 rounded-xl border-2 transition-all duration-200 text-left ${baseLayer === layer.id
-                        ? 'border-purple-500 bg-purple-50 shadow-sm'
-                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                      ? 'border-purple-500 bg-purple-50 shadow-sm'
+                      : 'border-gray-200 hover:border-gray-300 bg-white'
                       }`}
                   >
                     <div className="flex items-center gap-3">
@@ -407,8 +421,8 @@ export default function AtlasSidebar({
                     key={overlay.id}
                     onClick={() => handleOverlayToggle(overlay.id)}
                     className={`w-full p-4 rounded-xl border-2 transition-all duration-200 text-left ${activeOverlays.includes(overlay.id)
-                        ? 'border-green-500 bg-green-50 shadow-sm'
-                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                      ? 'border-green-500 bg-green-50 shadow-sm'
+                      : 'border-gray-200 hover:border-gray-300 bg-white'
                       }`}
                   >
                     <div className="flex items-center gap-3">
@@ -423,8 +437,8 @@ export default function AtlasSidebar({
                       <div className="flex items-center gap-3">
                         <div className={`w-3 h-3 rounded-full ${overlay.color}`}></div>
                         <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${activeOverlays.includes(overlay.id)
-                            ? 'bg-green-500 border-green-500'
-                            : 'bg-white border-gray-300'
+                          ? 'bg-green-500 border-green-500'
+                          : 'bg-white border-gray-300'
                           }`}>
                           {activeOverlays.includes(overlay.id) && (
                             <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -527,21 +541,21 @@ export default function AtlasSidebar({
                         <div className="text-sm font-medium text-gray-500 mb-2">{t("status")}</div>
                         <div
                           className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold ${selectedClaim.status === "approved"
-                              ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
-                              : selectedClaim.status === "pending"
-                                ? "bg-amber-100 text-amber-800 border border-amber-200"
-                                : "bg-red-100 text-red-800 border border-red-200"
+                            ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
+                            : selectedClaim.status === "pending"
+                              ? "bg-amber-100 text-amber-800 border border-amber-200"
+                              : "bg-red-100 text-red-800 border border-red-200"
                             }`}
                         >
                           <div
                             className={`w-2 h-2 rounded-full ${selectedClaim.status === "approved"
-                                ? "bg-emerald-500"
-                                : selectedClaim.status === "pending"
-                                  ? "bg-amber-500"
-                                  : "bg-red-500"
+                              ? "bg-emerald-500"
+                              : selectedClaim.status === "pending"
+                                ? "bg-amber-500"
+                                : "bg-red-500"
                               }`}
                           ></div>
-                          {t(`step_status.${selectedClaim.status}`)}
+                          {t(`${selectedClaim.status}`)}
                         </div>
                       </div>
                     )}
@@ -596,15 +610,18 @@ export default function AtlasSidebar({
 
                   {/* Quick Actions */}
                   <div className="flex gap-3">
-                    <button className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 flex items-center justify-center gap-2">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button className="flex-1 bg-white border border-forest-200 text-forest-700 py-2.5 rounded-lg font-medium hover:bg-forest-50 hover:border-forest-300 transition-all duration-200 flex items-center justify-center gap-2">
+                      <svg className="w-4 h-4 text-forest-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
                       {t("view_on_map")}
                     </button>
-                    <button className="flex-1 bg-gradient-to-r from-gray-500 to-gray-600 text-white py-3 rounded-xl font-medium hover:from-gray-600 hover:to-gray-700 transition-all duration-200 flex items-center justify-center gap-2">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  </div>
+
+                  <div className="flex gap-3">
+                    <button className="flex-1 bg-white border border-forest-200 text-forest-700 py-2.5 rounded-lg font-medium hover:bg-forest-50 hover:border-forest-300 transition-all duration-200 flex items-center justify-center gap-2">
+                      <svg className="w-4 h-4 text-forest-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                       {t("generate_report")}
