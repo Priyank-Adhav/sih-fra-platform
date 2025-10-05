@@ -327,7 +327,7 @@
     
     "claim_process_tracker": "Claim Process Tracker",
     "fra_workflow_management": "FRA Claim Workflow Management",
-    "manage_workflows": "Manage FRA claim workflows and track progress through all 8 steps",
+    "manage_workflows": "Manage FRA claim workflows",
     "active_claims": "Active Claims",
     "no_claim_selected": "No Claim Selected",
     "select_claim_to_view": "Select a claim case from the sidebar to view its progress and manage workflow steps",
