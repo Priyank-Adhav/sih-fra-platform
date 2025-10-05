@@ -238,10 +238,8 @@ export default function AtlasMap() {
 
       try {
         const base = (import.meta as any).env?.VITE_API_BASE ?? "";
-        console.log("Loading polygons with base URL:", base);
 
         const list = await atlasService.fetchPolygonsFromApi(base);
-        console.log("Successfully loaded polygons from API:", list.length);
         setPolygons(list);
       } catch (err) {
         console.warn("Fetching polygons from API failed, falling back to mock:", err);
