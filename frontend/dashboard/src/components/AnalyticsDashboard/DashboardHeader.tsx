@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import type { AnalyticsFilters } from './types/analytics';
-import { METRIC_OPTIONS, TARGET_STATES } from './utils/constants';
+import { METRIC_OPTIONS, SNAPSHOT_DATES, TARGET_STATES } from './utils/constants';
 
 interface DashboardHeaderProps {
   filters: AnalyticsFilters;
@@ -17,12 +17,6 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
   lastUpdated
 }) => {
   const { t } = useTranslation();
-
-  // Available snapshot dates from your data
-  const snapshotDates = [
-    { value: '2025-06-30', label: '30/06/2025' },
-    { value: '2025-07-31', label: '31/07/2025' }
-  ];
 
   // Set default to 31/07/2025 if no snapshot date is selected
   React.useEffect(() => {
@@ -64,7 +58,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
               value={filters.snapshotDate || '2025-07-31'}
               onChange={(e) => onFiltersChange({ snapshotDate: e.target.value })}
             >
-              {snapshotDates.map(date => (
+              {SNAPSHOT_DATES.map(date => (
                 <option key={date.value} value={date.value}>
                   {date.label}
                 </option>
