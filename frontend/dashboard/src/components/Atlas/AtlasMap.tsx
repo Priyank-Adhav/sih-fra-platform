@@ -38,16 +38,21 @@ function MapInitializer({ onReady }: { onReady: (m: LeafletMap) => void }) {
 /**
  * VectorTileLayer - Component to render polygons as vector tiles
  */
+/**
+ * VectorTileLayer - Component to render polygons as vector tiles
+ */
 function VectorTileLayer({
   polygons,
   onPolygonClick,
   activeOverlays,
-  selectedPolygonId
+  selectedPolygonId,
+  baseLayer // Add baseLayer prop
 }: {
   polygons: PolygonData[];
   onPolygonClick: (polygon: PolygonData) => void;
   activeOverlays: string[];
   selectedPolygonId: string | null;
+  baseLayer: string; // Add baseLayer prop
 }) {
   const map = useMap();
   const vectorGridRef = useRef<any>(null);
@@ -96,40 +101,113 @@ function VectorTileLayer({
       map.removeLayer(geojsonLayerRef.current);
     }
 
-    // Create style function
+    // Create style function based on base layer
     const getStyle = (feature: any) => {
       const type = feature?.properties?.type || 'default';
 
-      switch (type) {
-        case "IFR":
-        case "forest":
-        case "Community Forest Lands":
-          return {
-            color: "#228B22",
-            fillColor: "#228B22",
-            weight: 2,
-            opacity: 0.8,
-            fillOpacity: 0.3,
-            fill: true
-          };
-        case "CFR":
-          return {
-            color: "#2b6cb0",
-            fillColor: "#2b6cb0",
-            weight: 2,
-            opacity: 0.8,
-            fillOpacity: 0.3,
-            fill: true
-          };
+      // Different color schemes for different base layers
+      switch (baseLayer) {
+        case "soil_moisture":
+          // Brown/orange color scheme for soil moisture layer
+          switch (type) {
+            case "IFR":
+            case "forest":
+            case "Community Forest Lands":
+              return {
+                color: "#D2691E", // Chocolate brown
+                fillColor: "#D2691E",
+                weight: 2,
+                opacity: 0.9,
+                fillOpacity: 0.4,
+                fill: true
+              };
+            case "CFR":
+              return {
+                color: "#8B4513", // Saddle brown
+                fillColor: "#8B4513",
+                weight: 2,
+                opacity: 0.9,
+                fillOpacity: 0.4,
+                fill: true
+              };
+            default:
+              return {
+                color: "#A0522D", // Sienna
+                fillColor: "#A0522D",
+                weight: 2,
+                opacity: 0.9,
+                fillOpacity: 0.4,
+                fill: true
+              };
+          }
+
+        case "forest_cover":
+          // Blue/purple color scheme for forest cover layer
+          switch (type) {
+            case "IFR":
+            case "forest":
+            case "Community Forest Lands":
+              return {
+                color: "#1E40AF", // Royal blue
+                fillColor: "#1E40AF",
+                weight: 2,
+                opacity: 0.8,
+                fillOpacity: 0.3,
+                fill: true
+              };
+            case "CFR":
+              return {
+                color: "#6B21A8", // Purple
+                fillColor: "#6B21A8",
+                weight: 2,
+                opacity: 0.8,
+                fillOpacity: 0.3,
+                fill: true
+              };
+            default:
+              return {
+                color: "#3730A3", // Indigo
+                fillColor: "#3730A3",
+                weight: 2,
+                opacity: 0.8,
+                fillOpacity: 0.3,
+                fill: true
+              };
+          }
+
         default:
-          return {
-            color: "#6B7280",
-            fillColor: "#6B7280",
-            weight: 2,
-            opacity: 0.8,
-            fillOpacity: 0.3,
-            fill: true
-          };
+          // Original green color scheme for all other layers
+          switch (type) {
+            case "IFR":
+            case "forest":
+            case "Community Forest Lands":
+              return {
+                color: "#228B22", // Forest green
+                fillColor: "#228B22",
+                weight: 2,
+                opacity: 0.8,
+                fillOpacity: 0.3,
+                fill: true
+              };
+            case "CFR":
+              return {
+                color: "#2b6cb0", // Blue
+                fillColor: "#2b6cb0",
+                weight: 2,
+                opacity: 0.8,
+                fillOpacity: 0.3,
+                fill: true
+              };
+            default:
+              return {
+                color: "#6B7280", // Gray
+                fillColor: "#6B7280",
+                weight: 2,
+                opacity: 0.8,
+                fillOpacity: 0.3,
+                fill: true
+              };
+          }
       }
     };
 
@@ -142,10 +220,13 @@ function VectorTileLayer({
 
         // Check if this is the selected polygon and apply selected style
         if (feature.id === selectedPolygonId) {
+          // Enhanced selection style that works with all color schemes
           layer.setStyle({
             weight: 4,
             opacity: 1,
-            fillOpacity: 0.5
+            fillOpacity: 0.6,
+            color: "#FFD700", // Gold border for selected polygon
+            fillColor: layer.options.fillColor // Keep original fill color
           });
           layer.bringToFront();
         }
@@ -163,11 +244,13 @@ function VectorTileLayer({
                 });
               }
 
-              // Highlight the clicked feature
+              // Highlight the clicked feature with gold border
               e.target.setStyle({
                 weight: 4,
                 opacity: 1,
-                fillOpacity: 0.5
+                fillOpacity: 0.6,
+                color: "#FFD700", // Gold border
+                fillColor: e.target.options.fillColor // Keep original fill
               });
 
               // Bring to front
@@ -180,7 +263,9 @@ function VectorTileLayer({
               e.target.setStyle({
                 weight: 3,
                 opacity: 1,
-                fillOpacity: 0.4
+                fillOpacity: 0.5,
+                color: e.target.options.color, // Keep original color
+                fillColor: e.target.options.fillColor // Keep original fill
               });
               e.target.bringToFront();
             }
@@ -204,7 +289,7 @@ function VectorTileLayer({
         geojsonLayerRef.current = null;
       }
     };
-  }, [map, polygons, onPolygonClick, activeOverlays, selectedPolygonId]);
+  }, [map, polygons, onPolygonClick, activeOverlays, selectedPolygonId, baseLayer]); // Add baseLayer to dependencies
 
   return null;
 }
@@ -839,6 +924,7 @@ export default function AtlasMap() {
 
 
               {/* Vector Layers */}
+              {/* Vector Layers */}
               <VectorTileLayer
                 polygons={polygons}
                 onPolygonClick={(polygon) => {
@@ -850,6 +936,7 @@ export default function AtlasMap() {
                 }}
                 activeOverlays={activeOverlays}
                 selectedPolygonId={selectedPolygon?.id || null}
+                baseLayer={baseLayer} // Add this prop
               />
 
               {/* Drawing and Editing Controls */}
