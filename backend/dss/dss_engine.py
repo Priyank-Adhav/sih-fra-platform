@@ -32,6 +32,22 @@ class DSSEngine:
     def get_available_villages(self) -> List[str]:
         """Get list of available village IDs"""
         return list(self.villages.keys())
+
+    def get_village_names_with_details(self) -> List[Dict[str, str]]:
+        """Get village names with ID, state, and district details"""
+        villages = []
+        for village_id, village_data in self.villages.items():
+            villages.append({
+                "village_id": village_id,
+                "village_name": village_data.village_name,
+                "state": village_data.state,
+                "district": village_data.district
+            })
+        return villages
+
+    def get_village_names_only(self) -> List[str]:
+        """Get list of village names only"""
+        return [village_data.village_name for village_data in self.villages.values()]
     
     def get_available_schemes(self) -> List[Dict[str, str]]:
         """Get list of available schemes with basic info"""

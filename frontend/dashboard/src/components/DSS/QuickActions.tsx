@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from "react-i18next";
 
 interface QuickActionsProps {
   onRefresh: () => void;
@@ -8,13 +9,14 @@ interface QuickActionsProps {
 }
 
 export function QuickActions({ onRefresh, hasData, selectedVillage, loading }: QuickActionsProps) {
+  const { t } = useTranslation();
   const [schemes, setSchemes] = useState<any[]>([]);
   const [loadingSchemes, setLoadingSchemes] = useState(false);
   const [showSchemes, setShowSchemes] = useState(false);
 
   const handleExportReport = () => {
     if (!hasData) {
-      alert('No data available to export. Please select a village first.');
+      alert(t("quick_actions_panel.alerts.no_data_export"));
       return;
     }
 
@@ -49,7 +51,7 @@ export function QuickActions({ onRefresh, hasData, selectedVillage, loading }: Q
       setSchemes(data);
       setShowSchemes(true);
     } catch (error) {
-      alert('Failed to fetch schemes. Please check if the API server is running.');
+      alert(t("quick_actions_panel.alerts.failed_fetch_schemes"));
     } finally {
       setLoadingSchemes(false);
     }
@@ -57,31 +59,31 @@ export function QuickActions({ onRefresh, hasData, selectedVillage, loading }: Q
 
   const handleGenerateAnalysis = () => {
     if (!hasData) {
-      alert('No data available for analysis. Please select a village first.');
+      alert(t("quick_actions_panel.alerts.no_data_analysis"));
       return;
     }
-    alert('Analysis generation feature would be implemented here. This would create detailed reports with charts and insights.');
+    alert(t("quick_actions_panel.alerts.analysis_generation"));
   };
 
   const handleBatchProcess = () => {
-    alert('Batch processing feature would allow processing multiple villages at once. This is a premium feature.');
+    alert(t("quick_actions_panel.alerts.batch_processing"));
   };
 
   const handleHelp = () => {
     const helpText = `
-DSS Engine Help:
+${t("quick_actions_panel.help_text.title")}
 
-1. Select a Village: Choose from the dropdown to get recommendations
-2. View Recommendations: See AI-powered scheme suggestions
-3. Export Report: Download recommendations as CSV
-4. Refresh: Update recommendations with latest data
+${t("quick_actions_panel.help_text.select_village")}
+${t("quick_actions_panel.help_text.view_recommendations")}
+${t("quick_actions_panel.help_text.export_report")}
+${t("quick_actions_panel.help_text.refresh")}
 
-API Endpoints:
-- GET /api/dss/recommend?village_id=X
-- GET /api/dss/villages
-- GET /api/dss/schemes
+${t("quick_actions_panel.help_text.api_endpoints")}
+${t("quick_actions_panel.help_text.get_recommendations")}
+${t("quick_actions_panel.help_text.get_villages")}
+${t("quick_actions_panel.help_text.get_schemes")}
 
-For support, contact the development team.
+${t("quick_actions_panel.help_text.support_contact")}
     `;
     alert(helpText);
   };
@@ -97,8 +99,8 @@ For support, contact the development team.
             </svg>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-gray-900">Quick Actions</h2>
-            <p className="text-gray-600">Manage and export recommendations</p>
+            <h2 className="text-xl font-semibold text-gray-900">{t("quick_actions_panel.title")}</h2>
+            <p className="text-gray-600">{t("quick_actions_panel.subtitle")}</p>
           </div>
         </div>
 
@@ -120,7 +122,7 @@ For support, contact the development team.
                 <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
               </svg>
             )}
-            {loading ? 'Refreshing...' : 'Refresh Recommendations'}
+            {loading ? t("quick_actions_panel.refreshing") : t("quick_actions_panel.refresh_recommendations")}
           </button>
 
           <button
@@ -131,7 +133,7 @@ For support, contact the development team.
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
-            Export Report
+            {t("quick_actions_panel.export_report")}
           </button>
 
           <button
@@ -142,7 +144,7 @@ For support, contact the development team.
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
             </svg>
-            Generate Analysis
+            {t("quick_actions_panel.generate_analysis")}
           </button>
 
           <button
@@ -152,7 +154,7 @@ For support, contact the development team.
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
             </svg>
-            Batch Process
+            {t("quick_actions_panel.batch_process")}
           </button>
 
           <button
@@ -162,7 +164,7 @@ For support, contact the development team.
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
             </svg>
-            Help & Support
+            {t("quick_actions_panel.help_support")}
           </button>
         </div>
       </div>
@@ -177,8 +179,8 @@ For support, contact the development team.
               </svg>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Available Schemes</h3>
-              <p className="text-gray-600">View all schemes in database</p>
+              <h3 className="text-lg font-semibold text-gray-900">{t("quick_actions_panel.available_schemes")}</h3>
+              <p className="text-gray-600">{t("quick_actions_panel.subtitle")}</p>
             </div>
           </div>
         </div>
@@ -200,7 +202,7 @@ For support, contact the development team.
               <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
             </svg>
           )}
-          {showSchemes ? 'Hide Schemes' : 'View All Schemes'}
+          {showSchemes ? t("quick_actions_panel.hide_schemes") : t("quick_actions_panel.view_all_schemes")}
         </button>
 
         {showSchemes && schemes.length > 0 && (
@@ -226,12 +228,12 @@ For support, contact the development team.
             <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">API Status</h3>
-            <p className="text-xs text-gray-600">Connected to DSS Engine</p>
+            <h3 className="text-sm font-semibold text-gray-900">{t("quick_actions_panel.api_status")}</h3>
+            <p className="text-xs text-gray-600">{t("quick_actions_panel.connected_to_dss")}</p>
           </div>
         </div>
         <div className="text-xs text-gray-500">
-          Base URL: http://localhost:8000
+          {t("quick_actions_panel.base_url")}: http://localhost:8000
         </div>
       </div>
     </div>

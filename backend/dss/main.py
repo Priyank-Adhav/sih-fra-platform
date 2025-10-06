@@ -57,6 +57,26 @@ async def get_available_villages():
     """
     return dss_engine.get_available_villages()
 
+@app.get("/api/dss/villages/names")
+async def get_village_names():
+    """
+    Get list of village names with their IDs.
+    """
+    try:
+        return dss_engine.get_village_names_with_details()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching village names: {str(e)}")
+
+@app.get("/api/dss/villages/names-only")
+async def get_village_names_only():
+    """
+    Get list of village names only.
+    """
+    try:
+        return dss_engine.get_village_names_only()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching village names: {str(e)}")
+
 @app.get("/api/dss/schemes")
 async def get_available_schemes():
     """

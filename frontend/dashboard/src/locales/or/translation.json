@@ -1,0 +1,736 @@
+{
+  "app_title": "ଏଫ୍‌ଆର୍‌ଏ ଆଟଲାସ୍ ଡ୍ୟାସବୋର୍ଡ",
+  "app_subtitle": "ବନ ଅଧିକାର ଆଇନ ମନିଟରିଂ ସିଷ୍ଟମ୍",
+  "dashboard": "ଡ୍ୟାସବୋର୍ଡ",
+  "atlas": "ଆଟଲାସ୍",
+  "dss": "ଡି.ଏସ୍.ଏସ୍",
+  "documents": "ଡକ୍ୟୁମେଣ୍ଟସ୍",
+  "module": "ମଡ୍ୟୁଲ୍",
+  "loading": "{{module}} ଲୋଡ୍ ହୋଇଛି...",
+  "online": "ଅନଲାଇନ୍",
+  "profile": "ପ୍ରୋଫାଇଲ୍",
+  "settings": "ସେଟିଂସ୍",
+  "logout": "ଲଗଆଉଟ୍",
+  "navigation": "ନେଭିଗେସନ୍",
+  "select_module": "ଆରମ୍ଭ କରିବା ପାଇଁ ଏକ ମଡ୍ୟୁଲ୍ ବାଛନ୍ତୁ",
+  "main_modules": "ମୁଖ୍ୟ ମଡ୍ୟୁଲ୍",
+  "interactive_atlas": "ଇଣ୍ଟରାକ୍ଟିଭ୍ ଆଟଲାସ୍",
+  "geospatial_analysis": "ଜିଓସ୍ପେସିଆଲ୍ ବିଶ୍ଳେଷଣ",
+  "decision_support": "ସିଦ୍ଧାନ୍ତ ସହାୟତା",
+  "ocr_processing": "ଓ.ସି.ଆର୍ ଓ ପ୍ରୋସେସିଂ",
+  "quick_actions": "ଦ୍ରୁତ କାର୍ଯ୍ୟ",
+  "export_data": "ଡେଟା ଏକ୍ସପୋର୍ଟ",
+  "export_current_analysis": "ବର୍ତ୍ତମାନର ବିଶ୍ଳେଷଣ ଏକ୍ସପୋର୍ଟ କରନ୍ତୁ",
+  "new_report": "ନୂତନ ରିପୋର୍ଟ",
+  "create_new_report": "ନୂତନ ରିପୋର୍ଟ ସୃଷ୍ଟି କରନ୍ତୁ",
+  "help_center": "ସହାୟତା କେନ୍ଦ୍ର",
+  "get_support": "ସହାୟତା ପାଆନ୍ତୁ",
+  "system_status": "ସିଷ୍ଟମ୍ ସ୍ଥିତି",
+  "all_systems": "ସମସ୍ତ ସିଷ୍ଟମ୍",
+  "operational": "କାର୍ଯ୍ୟକ୍ଷମ",
+  "dss_engine": "ଡି.ଏସ୍.ଏସ୍ ଇଞ୍ଜିନ୍",
+  "map_services": "ମ୍ୟାପ୍ ସର୍ଭିସ୍",
+  "ocr_processing_status": "ଓ.ସି.ଆର୍ ପ୍ରୋସେସିଂ",
+  "database": "ଡାଟାବେସ୍",
+  "fra_platform_version": "ଏଫ୍‌ଆର୍‌ଏ ପ୍ଲାଟଫର୍ମ v2.1",
+  "atlas_controls": "ଆଟଲାସ୍ କଣ୍ଟ୍ରୋଲ୍",
+  "location": "ଅବସ୍ଥାନ",
+  "state": "ରାଜ୍ୟ",
+  "district": "ଜିଲ୍ଲା",
+  "select_state": "ରାଜ୍ୟ ବାଛନ୍ତୁ",
+  "select_district": "ଜିଲ୍ଲା ବାଛନ୍ତୁ",
+  "map_layers": "ମ୍ୟାପ୍ ଲେୟର୍",
+  "base_layer": "ବେସ୍ ଲେୟର୍",
+  "openstreetmap": "ଓପେନ୍ସ୍ଟ୍ରିଟ୍‌ମ୍ୟାପ୍",
+  "satellite": "ସାଟେଲାଇଟ୍",
+  "overlays": "ଓଭରଲେ",
+  "fra_claims": "ଏଫ୍‌ଆର୍‌ଏ ଦାବି",
+  "forest_cover": "ବନ ଆଚ୍ଛାଦନ",
+  "water_bodies": "ଜଳାଶୟ",
+  "claim_details": "ଦାବି ବିବରଣୀ",
+  "edit": "ସମ୍ପାଦନ କରନ୍ତୁ",
+  "id": "ଆଇ.ଡି.",
+  "claimant": "ଦାବିଦାର",
+  "type": "ପ୍ରକାର",
+  "area": "କ୍ଷେତ୍ରଫଳ",
+  "status": "ସ୍ଥିତି",
+  "approved": "ଅନୁମୋଦିତ",
+  "pending": "ବିଚାରାଧୀନ",
+  "rejected": "ପ୍ରତ୍ୟାଖ୍ୟାତ",
+  "select_polygon_to_view": "ବିବରଣୀ ଦେଖିବା ପାଇଁ ଏକ ପଲିଗନ୍ ବାଛନ୍ତୁ",
+  "document_management": "ଡକ୍ୟୁମେଣ୍ଟ୍ ମ୍ୟାନେଜମେଣ୍ଟ",
+  "ocr_processing_desc": "ଏଫ୍‌ଆର୍‌ଏ ଡକ୍ୟୁମେଣ୍ଟ୍ ପାଇଁ ଓ.ସି.ଆର୍ ପ୍ରୋସେସିଂ ଏବଂ ଏ.ଆଇ. ଏଣ୍ଟିଟି ଏକ୍ସଟ୍ରାକ୍ସନ୍",
+  "api_connected": "ଏ.ପି.ଆଇ. ସଂଯୁକ୍ତ",
+  "connecting": "ସଂଯୋଗ ହୋଇଛି...",
+  "api_disconnected": "ଏ.ପି.ଆଇ. ସଂଯୋଗ ବିଚ୍ଛିନ୍ନ",
+  "check_api_status": "ଏ.ପି.ଆଇ. ସ୍ଥିତି ଯାଞ୍ଚ କରନ୍ତୁ",
+  "processing_error": "ପ୍ରୋସେସିଂ ତ୍ରୁଟି",
+  "supports_formats": "ପି.ଡି.ଏଫ୍., ପି.ଏନ୍.ଜି., ଜେ.ପି.ଜି., ଜେ.ପି.ଇ.ଜି., ଟି.ଆଇ.ଏଫ୍.ଏଫ୍., ବି.ଏମ୍.ପି. ସମର୍ଥନ କରେ • ମଲ୍ଟି-ଲାଙ୍ଗୁଏଜ୍ ଓ.ସି.ଆର୍ (ଇଂରାଜୀ, ହିନ୍ଦୀ, ଓଡ଼ିଆ) • ଏ.ଆଇ.-ପାୱାର୍ଡ ଏଣ୍ଟିଟି ଏକ୍ସଟ୍ରାକ୍ସନ୍",
+  "process_document": "ଡକ୍ୟୁମେଣ୍ଟ୍ ପ୍ରୋସେସ୍ କରନ୍ତୁ",
+  "ocr_ai_extraction": "ଓ.ସି.ଆର୍ ଏବଂ ଏ.ଆଇ. ଏଣ୍ଟିଟି ଏକ୍ସଟ୍ରାକ୍ସନ୍",
+  "processing_document": "ଡକ୍ୟୁମେଣ୍ଟ୍ ପ୍ରୋସେସିଂ",
+  "uploading_document": "ଡକ୍ୟୁମେଣ୍ଟ୍ ଅପଲୋଡ୍ ହୋଇଛି...",
+  "extracting_text_ocr": "ଓ.ସି.ଆର୍ ସହିତ ଟେକ୍ସଟ୍ ଏକ୍ସଟ୍ରାକ୍ଟ୍ ହୋଇଛି...",
+  "extracting_entities_ai": "ଏ.ଆଇ. ସହିତ ଏଣ୍ଟିଟି ଏକ୍ସଟ୍ରାକ୍ଟ୍ ହୋଇଛି...",
+  "processing_complete": "ପ୍ରୋସେସିଂ ସମ୍ପୂର୍ଣ୍ଣ!",
+  "text_extraction_complete": "ଟେକ୍ସଟ୍ ଏକ୍ସଟ୍ରାକ୍ସନ୍ ସମ୍ପୂର୍ଣ୍ଣ!",
+  "processing_steps": "ପ୍ରୋସେସିଂ ପଦକ୍ଷେପ:",
+  "step_language_detection": "୧. ସ୍ୱୟଂଚାଳିତ ଭାଷା ସନାକ୍କନ",
+  "step_ocr_extraction": "୨. ଓ.ସି.ଆର୍ ଟେକ୍ସଟ୍ ଏକ୍ସଟ୍ରାକ୍ସନ୍",
+  "step_entity_recognition": "୩. ଏ.ଆଇ. ଏଣ୍ଟିଟି ଚିହ୍ନଟ",
+  "step_data_structuring": "୪. ଡେଟା ସ୍ଟ୍ରକ୍ଚରିଂ",
+  "unknown_type": "ଅଜ୍ଞାତ ପ୍ରକାର",
+  "no_document_selected": "କୌଣସି ଡକ୍ୟୁମେଣ୍ଟ୍ ବଛା ହୋଇନାହିଁ",
+  "select_document_to_process": "ଦୟାକରି ପ୍ରୋସେସ୍ କରିବା ପାଇଁ ଏକ ଡକ୍ୟୁମେଣ୍ଟ୍ ବାଛନ୍ତୁ",
+  "api_connection_required": "ଏ.ପି.ଆଇ. ସଂଯୋଗ ଆବଶ୍ୟକ",
+  "ensure_backend_running": "ଦୟାକରି ନିଶ୍ଚିତ କରନ୍ତୁ ଯେ ବ୍ୟାକେଣ୍ଡ୍ ଏ.ପି.ଆଇ. ଚାଲୁଛି ଏବଂ ସଂଯୁକ୍ତ ଅଛି।",
+  "full_processing": "ପୂର୍ଣ୍ଣ ପ୍ରୋସେସିଂ (ଓ.ସି.ଆର୍ + ଏ.ଆଇ. ଏଣ୍ଟିଟି)",
+  "text_only": "କେବଳ ଟେକ୍ସଟ୍ (କେବଳ ଓ.ସି.ଆର୍)",
+  "processing_options": "ପ୍ରୋସେସିଂ ବିକଳ୍ପ:",
+  "full_processing_desc": "ପୂର୍ଣ୍ଣ ପ୍ରୋସେସିଂ: ଓ.ସି.ଆର୍ ଟେକ୍ସଟ୍ ଏକ୍ସଟ୍ରାକ୍ସନ୍ + ଏ.ଆଇ. ଏଣ୍ଟିଟି ଚିହ୍ନଟ",
+  "text_only_desc": "କେବଳ ଟେକ୍ସଟ୍: ଏଣ୍ଟିଟି ବିଶ୍ଳେଷଣ ବିନା ଓ.ସି.ଆର୍ ଟେକ୍ସଟ୍ ଏକ୍ସଟ୍ରାକ୍ସନ୍",
+  "document_upload": {
+      "title": "ଡକ୍ୟୁମେଣ୍ଟ୍ ଅପଲୋଡ୍",
+      "subtitle": "ପ୍ରୋସେସ୍ କରିବା ପାଇଁ ଏକ ଫାଇଲ୍ ବାଛନ୍ତୁ କିମ୍ବା ଡ୍ରାଗ୍ କରନ୍ତୁ",
+      "file_selected": "ଫାଇଲ୍ ବଛା ହୋଇଛି ଏବଂ ପ୍ରୋସେସ୍ କରିବା ପାଇଁ ପ୍ରସ୍ତୁତ",
+      "choose_different": "ଭିନ୍ନ ଫାଇଲ୍ ବାଛନ୍ତୁ",
+      "drop_here": "ଆପଣଙ୍କର ଫାଇଲ୍ ଏଠାରେ ଡ୍ରପ୍ କରନ୍ତୁ",
+      "or_click": "କିମ୍ବା ବ୍ରାଉଜ୍ କରିବା ପାଇଁ କ୍ଲିକ୍ କରନ୍ତୁ",
+      "api_not_connected": "ଏ.ପି.ଆଇ. ସଂଯୁକ୍ତ ନୁହେଁ",
+      "check_api": "ଦୟାକରି ଏ.ପି.ଆଇ. ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ",
+      "supported_formats": "ସମର୍ଥିତ ଫର୍ମାଟ୍",
+      "max_file_size": "ସର୍ବାଧିକ ଫାଇଲ୍ ସାଇଜ୍",
+      "languages": "ଭାଷାସମୂହ",
+      "languages_list": "ଇଂରାଜୀ, ହିନ୍ଦୀ, ଓଡ଼ିଆ (ସ୍ୱୟଂଚାଳିତ ଭାବରେ ସନାକ୍କନ)",
+      "errors": {
+        "file_too_large": "ଫାଇଲ୍ ସାଇଜ୍ ବହୁତ ବଡ଼। ସର୍ବାଧିକ ଅନୁମୋଦିତ: {{maxSize}}ଏମ୍.ବି.",
+        "unsupported_format": "ଅସମର୍ଥିତ ଫାଇଲ୍ ଫର୍ମାଟ୍। ସମର୍ଥିତ ଫର୍ମାଟ୍: {{formats}}"
+      }
+    },
+  "extracted_entities": {
+      "title": "ଏକ୍ସଟ୍ରାକ୍ସନ୍ ଫଳାଫଳ",
+      "processing": {
+      "title": "ଡକ୍ୟୁମେଣ୍ଟ୍ ପ୍ରୋସେସିଂ",
+      "message": "ଆମେ ଟେକ୍ସଟ୍ ଏବଂ ଏଣ୍ଟିଟି ଏକ୍ସଟ୍ରାକ୍ଟ୍ କରୁଥିବା ବେଳେ ଦୟାକରି ଅପେକ୍ଷା କରନ୍ତୁ..."
+      },
+      "no_document": {
+      "title": "କୌଣସି ଡକ୍ୟୁମେଣ୍ଟ୍ ପ୍ରୋସେସ୍ ହୋଇନାହିଁ",
+      "message": "ଏକ୍ସଟ୍ରାକ୍ଟେଡ୍ ଏଣ୍ଟିଟି ଏବଂ ଟେକ୍ସଟ୍ ଦେଖିବା ପାଇଁ ଏକ ଡକ୍ୟୁମେଣ୍ଟ୍ ଅପଲୋଡ୍ ଏବଂ ପ୍ରୋସେସ୍ କରନ୍ତୁ।"
+      },
+      "tabs": {
+      "entities": "ଏକ୍ସଟ୍ରାକ୍ଟେଡ୍ ଏଣ୍ଟିଟି",
+      "text": "ଏକ୍ସଟ୍ରାକ୍ଟେଡ୍ ଟେକ୍ସଟ୍"
+      },
+      "actions": {
+      "export": "ଏକ୍ସପୋର୍ଟ୍",
+      "clear": "କ୍ଲିଅର୍",
+      "copy_text": "ଟେକ୍ସଟ୍ କପି କରନ୍ତୁ",
+      "copy_to_clipboard": "କ୍ଲିପବୋର୍ଡକୁ କପି କରନ୍ତୁ"
+      },
+      "entities": {
+      "not_found": "ମିଳିଲା ନାହିଁ",
+      "no_entities": {
+          "title": "କୌଣସି ଏଣ୍ଟିଟି ଉପଲବ୍ଧ ନାହିଁ",
+          "text_only": "ଟେକ୍ସଟ୍-ଓନ୍ଲି ପ୍ରୋସେସିଂ ବ୍ୟବହୃତ ହୋଇଛି। ଏଣ୍ଟିଟି ଏକ୍ସଟ୍ରାକ୍ଟ୍ କରିବା ପାଇଁ ପୂର୍ଣ୍ଣ ପ୍ରୋସେସିଂ ବ୍ୟବହାର କରନ୍ତୁ।",
+          "no_extracted": "ଏହି ଡକ୍ୟୁମେଣ୍ଟରୁ କୌଣସି ଏଣ୍ଟିଟି ଏକ୍ସଟ୍ରାକ୍ଟ୍ ହୋଇନାହିଁ।"
+      },
+      "error": {
+          "title": "ଏଣ୍ଟିଟି ଏକ୍ସଟ୍ରାକ୍ସନ୍ ତ୍ରୁଟି",
+          "show_raw": "କଞ୍ଚା ଆଉଟପୁଟ୍ ଦେଖାନ୍ତୁ"
+      }
+      },
+      "text": {
+      "title": "ଏକ୍ସଟ୍ରାକ୍ଟେଡ୍ ଟେକ୍ସଟ୍",
+      "no_text": "କୌଣସି ଟେକ୍ସଟ୍ ଏକ୍ସଟ୍ରାକ୍ଟ୍ ହୋଇନାହିଁ"
+      },
+      "footer": {
+      "processed": "ପ୍ରୋସେସ୍ଡ୍",
+      "language": "ଭାଷା",
+      "provider": "ପ୍ରୋଭାଇଡର୍"
+      }
+  },
+  "processing_history": {
+    "title": "ପ୍ରୋସେସିଂ ଇତିହାସ",
+    "subtitle": "ସାମ୍ପ୍ରତିକ ଡକ୍ୟୁମେଣ୍ଟ୍ ପ୍ରୋସେସିଂ ଫଳାଫଳ",
+    "no_history": "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଇତିହାସ ନାହିଁ",
+    "no_history_message": "ପ୍ରୋସେସ୍ଡ୍ ଡକ୍ୟୁମେଣ୍ଟ୍ ଏଠାରେ ଦେଖାଯିବ",
+    "documents_count": "{{count}}ଟି ପ୍ରୋସେସ୍ଡ୍ ଡକ୍ୟୁମେଣ୍ଟ୍",
+    "active": "ସକ୍ରିୟ",
+    "text_only": "କେବଳ ଟେକ୍ସଟ୍",
+    "entities_count": "{{count}}ଟି ଏଣ୍ଟିଟି",
+    "entities_failed": "ଏଣ୍ଟିଟି ବିଫଳ",
+    "entity_extraction_failed": "ଏଣ୍ଟିଟି ଏକ୍ସଟ୍ରାକ୍ସନ୍ ବିଫଳ ହେଲା",
+    "click_to_view": "ଏହାର ଫଳାଫଳ ଦେଖିବା ପାଇଁ କୌଣସି ଡକ୍ୟୁମେଣ୍ଟ୍ ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ",
+    "time_just_now": "ବର୍ତ୍ତମାନ",
+    "time_minutes_ago": "{{count}}ମି. ପୂର୍ବେ",
+    "time_hours_ago": "{{count}}ଘଣ୍ଟା ପୂର୍ବେ",
+    "time_days_ago": "{{count}}ଦିନ ପୂର୍ବେ"
+  },
+  "dss_panel": {
+    "title": "ସିଦ୍ଧାନ୍ତ ସହାୟତା ପ୍ରଣାଳୀ",
+    "subtitle": "ଗ୍ରାମଗୁଡିକ ପାଇଁ ଏ.ଆଇ.-ପାୱାର୍ଡ ସ୍କିମ୍ ପରାମର୍ଶ",
+    "last_updated": "ଶେଷ ଅପଡେଟ୍",
+    "error": "ତ୍ରୁଟି",
+    "api_status": "ଡି.ଏସ୍.ଏସ୍ ଇଞ୍ଜିନ୍ ଏ.ପି.ଆଇ. ସହିତ ସଂଯୁକ୍ତ • ରିଆଲ୍-ଟାଇମ୍ ପରାମର୍ଶ",
+    "stats": {
+      "total_schemes": "ମୋଟ ସ୍କିମ୍",
+      "high_priority": "ଉଚ୍ଚ ପ୍ରାଥମିକତା",
+      "medium_priority": "ମଧ୍ୟମ ପ୍ରାଥମିକତା",
+      "low_priority": "ନିମ୍ନ ପ୍ରାଥମିକତା",
+      "avg_score": "ହାରାହାରି ସ୍କୋର୍"
+    },
+    "recommendations": {
+      "title": "ପରାମର୍ଶ",
+      "no_village": "ପରାମର୍ଶ ଦେଖିବା ପାଇଁ ଏକ ଗ୍ରାମ ବାଛନ୍ତୁ",
+      "no_data": "ଏହି ଗ୍ରାମ ପାଇଁ କୌଣସି ପରାମର୍ଶ ଉପଲବ୍ଧ ନାହିଁ",
+      "loading": "ପରାମର୍ଶ ଲୋଡ୍ ହୋଇଛି...",
+      "scheme": "ସ୍କିମ୍",
+      "reason": "କାରଣ",
+      "score": "ସ୍କୋର୍",
+      "priority": "ପ୍ରାଥମିକତା",
+      "description": "ବର୍ଣ୍ଣନା",
+      "estimated_cost": "ଆନୁମାନିକ ଖର୍ଚ୍ଚ",
+      "duration_months": "ଅବଧି",
+      "priority_high": "ଉଚ୍ଚ",
+      "priority_medium": "ମଧ୍ୟମ",
+      "priority_low": "ନିମ୍ନ"
+    },
+    "quick_actions": {
+      "title": "ଦ୍ରୁତ କାର୍ଯ୍ୟ",
+      "refresh": "ଡେଟା ରିଫ୍ରେସ୍",
+      "export": "ରିପୋର୍ଟ୍ ଏକ୍ସପୋର୍ଟ୍",
+      "compare": "ଗ୍ରାମଗୁଡିକୁ ତୁଳନା କରନ୍ତୁ",
+      "refresh_tooltip": "ବଛାଯାଇଥିବା ଗ୍ରାମ ପାଇଁ ପରାମର୍ଶ ରିଫ୍ରେସ୍ କରନ୍ତୁ",
+      "export_tooltip": "ପି.ଡି.ଏଫ୍. ଭାବରେ ବିସ୍ତୃତ ରିପୋର୍ଟ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
+      "compare_tooltip": "ଅନ୍ୟ ଗ୍ରାମଗୁଡ଼ିକ ସହିତ ତୁଳନା କରନ୍ତୁ",
+      "no_village": "କାର୍ଯ୍ୟ ସକ୍ଷମ କରିବା ପାଇଁ ଏକ ଗ୍ରାମ ବାଛନ୍ତୁ"
+    }
+  },
+  "dss_stats": {
+    "total_schemes": "ମୋଟ ସ୍କିମ୍",
+    "high_priority": "ଉଚ୍ଚ ପ୍ରାଥମିକତା",
+    "medium_priority": "ମଧ୍ୟମ ପ୍ରାଥମିକତା",
+    "low_priority": "ନିମ୍ନ ପ୍ରାଥମିକତା",
+    "average_score": "ହାରାହାରି ସ୍କୋର୍",
+    "recommended_schemes": "ପରାମର୍ଶିତ ସ୍କିମ୍",
+    "urgent_recommendations": "ଜରୁରୀ ପରାମର୍ଶ",
+    "standard_recommendations": "ମାନକ ପରାମର୍ଶ",
+    "optional_schemes": "ବैକଳ୍ପିକ ସ୍କିମ୍",
+    "match_confidence": "ମ୍ୟାଚ୍ ଆତ୍ମବିଶ୍ୱାସ"
+  },
+  "quick_actions_panel": {
+    "title": "ଦ୍ରୁତ କାର୍ଯ୍ୟ",
+    "subtitle": "ପରାମର୍ଶ ପରିଚାଳନା ଏବଂ ଏକ୍ସପୋର୍ଟ୍ କରନ୍ତୁ",
+    "refresh_recommendations": "ପରାମର୍ଶ ରିଫ୍ରେସ୍ କରନ୍ତୁ",
+    "refreshing": "ରିଫ୍ରେସ୍ ହୋଇଛି...",
+    "export_report": "ରିପୋର୍ଟ୍ ଏକ୍ସପୋର୍ଟ୍",
+    "generate_analysis": "ବିଶ୍ଳେଷଣ ଜେନେରେଟ୍ କରନ୍ତୁ",
+    "batch_process": "ବ୍ୟାଚ୍ ପ୍ରୋସେସ୍",
+    "help_support": "ସହାୟତା ଓ ସମର୍ଥନ",
+    "available_schemes": "ଉପଲବ୍ଧ ସ୍କିମ୍",
+    "view_all_schemes": "ସମସ୍ତ ସ୍କିମ୍ ଦେଖନ୍ତୁ",
+    "hide_schemes": "ସ୍କିମ୍ ଲୁଚାନ୍ତୁ",
+    "api_status": "ଏ.ପି.ଆଇ. ସ୍ଥିତି",
+    "connected_to_dss": "ଡି.ଏସ୍.ଏସ୍ ଇଞ୍ଜିନ୍ ସହିତ ସଂଯୁକ୍ତ",
+    "base_url": "ବେସ୍ ୟୁ.ଆର୍.ଏଲ୍.",
+    "alerts": {
+      "no_data_export": "ଏକ୍ସପୋର୍ଟ୍ କରିବା ପାଇଁ କୌଣସି ଡେଟା ଉପଲବ୍ଧ ନାହିଁ। ଦୟାକରି ପ୍ରଥମେ ଏକ ଗ୍ରାମ ବାଛନ୍ତୁ।",
+      "no_data_analysis": "ବିଶ୍ଳେଷଣ ପାଇଁ କୌଣସି ଡେଟା ଉପଲବ୍ଧ ନାହିଁ। ଦୟାକରି ପ୍ରଥମେ ଏକ ଗ୍ରାମ ବାଛନ୍ତୁ।",
+      "failed_fetch_schemes": "ସ୍କିମ୍ ଫେଚ୍ କରିବାରେ ବିଫଳ ହେଲା। ଦୟାକରି ଯାଞ୍ଚ କରନ୍ତୁ ଯେ ଏ.ପି.ଆଇ. ସର୍ଭର୍ ଚାଲୁଛି କି ନାହିଁ।",
+      "analysis_generation": "ବିଶ୍ଳେଷଣ ଜେନେରେସନ୍ ଫିଚର୍ ଏଠାରେ କାର୍ଯ୍ୟକାରୀ କରାଯିବ। ଏହା ଚାର୍ଟ୍ ଏବଂ ଅନ୍ତର୍ଦୃଷ୍ଟି ସହିତ ବିସ୍ତୃତ ରିପୋର୍ଟ୍ ସୃଷ୍ଟି କରିବ।",
+      "batch_processing": "ବ୍ୟାଚ୍ ପ୍ରୋସେସିଂ ଫିଚର୍ ଏକାସାଙ୍ଗରେ ଏକାଧିକ ଗ୍ରାମଗୁଡିକୁ ପ୍ରୋସେସ୍ କରିବାର ଅନୁମତି ଦେବ। ଏହା ଏକ ପ୍ରିମିୟମ୍ ଫିଚର୍।"
+    },
+    "help_text": {
+      "title": "ଡି.ଏସ୍.ଏସ୍ ଇଞ୍ଜିନ୍ ସହାୟତା:",
+      "select_village": "୧. ଏକ ଗ୍ରାମ ବାଛନ୍ତୁ: ପରାମର୍ଶ ପାଇବା ପାଇଁ ଡ୍ରପଡାଉନରୁ ବାଛନ୍ତୁ",
+      "view_recommendations": "୨. ପରାମର୍ଶ ଦେଖନ୍ତୁ: ଏ.ଆଇ.-ପାୱାର୍ଡ ସ୍କିମ୍ ସୁଝାଣି ଦେଖନ୍ତୁ",
+      "export_report": "୩. ରିପୋର୍ଟ୍ ଏକ୍ସପୋର୍ଟ୍: ପରାମର୍ଶଗୁଡିକୁ ସି.ଏସ୍.ଭି. ଭାବରେ ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
+      "refresh": "୪. ରିଫ୍ରେସ୍: ସଦ୍ୟତମ ଡେଟା ସହିତ ପରାମର୍ଶ ଅପଡେଟ୍ କରନ୍ତୁ",
+      "api_endpoints": "ଏ.ପି.ଆଇ. ଏଣ୍ଡପଏଣ୍ଟ୍:",
+      "get_recommendations": "- GET /api/dss/recommend?village_id=X",
+      "get_villages": "- GET /api/dss/villages",
+      "get_schemes": "- GET /api/dss/schemes",
+      "support_contact": "ସମର୍ଥନ ପାଇଁ, ବିକାଶ ଦଳକୁ ଯୋଗାଯୋଗ କରନ୍ତୁ।"
+    }
+  },
+  "recommendations_list": {
+    "title": "ସ୍କିମ୍ ପରାମର୍ଶ",
+    "for_village": "ଗ୍ରାମ ପାଇଁ",
+    "select_village": {
+      "title": "ଏକ ଗ୍ରାମ ବାଛନ୍ତୁ",
+      "message": "ଗ୍ରାମର ବୈଶିଷ୍ଟ୍ୟ ଏବଂ ଆବଶ୍ୟକତା ଉପରେ ଆଧାରିତ ବ୍ୟକ୍ତିଗତ ସ୍କିମ୍ ପରାମର୍ଶ ପାଇବା ପାଇଁ ଉପରୋକ୍ତ ସିଲେକ୍ଟରରୁ ଏକ ଗ୍ରାମ ବାଛନ୍ତୁ।"
+    },
+    "no_recommendations": {
+      "title": "କୌଣସି ପରାମର୍ଶ ନାହିଁ",
+      "message": "ବର୍ତ୍ତମାନର ମାନଦଣ୍ଡ ଉପରେ ଆଧାରିତ ଏହି ଗ୍ରାମ ପାଇଁ ଉପଯୁକ୍ତ ସ୍କିମ୍ ମିଳିଲା ନାହିଁ।"
+    },
+    "loading": "ପରାମର୍ଶ ଲୋଡ୍ ହୋଇଛି...",
+    "reason": "କାରଣ",
+    "match_score": "ମ୍ୟାଚ୍ ସ୍କୋର୍",
+    "priority": {
+      "high": "ଉଚ୍ଚ",
+      "medium": "ମଧ୍ୟମ",
+      "low": "ନିମ୍ନ"
+    },
+    "scheme_details": {
+      "estimated_cost": "ଆନୁମାନିକ ଖର୍ଚ୍ଚ",
+      "duration": "ଅବଧି"
+    }
+  },
+  "village_selector": {
+    "title": "ଗ୍ରାମ ବାଛନ୍ତୁ",
+    "subtitle": "ସ୍କିମ୍ ପରାମର୍ଶ ପାଇବା ପାଇଁ ଏକ ଗ୍ରାମ ବାଛନ୍ତୁ",
+    "village_id": "ଗ୍ରାମ ଆଇ.ଡି.",
+    "loading_villages": "ଗ୍ରାମଗୁଡିକ ଲୋଡ୍ ହୋଇଛି...",
+    "select_village": "ଏକ ଗ୍ରାମ ବାଛନ୍ତୁ",
+    "villages_available": "ଡାଟାବେସ୍ରେ {{count}}ଟି ଗ୍ରାମ ଉପଲବ୍ଧ",
+    "error": {
+      "loading": "ଗ୍ରାମଗୁଡିକ ଲୋଡ୍ କରିବାରେ ତ୍ରୁଟି: {{error}}",
+      "retry": "ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ"
+    }
+  },
+  "atlas_panel": {
+    "interactive_atlas": "ଇଣ୍ଟରାକ୍ଟିଭ୍ ଆଟଲାସ୍",
+    "claims_loaded": "{{count}}ଟି ଦାବି ଲୋଡ୍ ହୋଇଛି",
+    "loading_polygons": "ପଲିଗନ୍ ଡେଟା ଲୋଡ୍ ହୋଇଛି...",
+    "controls": {
+      "drawing_mode": "ଡ୍ରଇଂ ମୋଡ୍",
+      "edit_mode": "ଏଡିଟ୍ ମୋଡ୍",
+      "draw_claim": "ଦାବି ଅଙ୍କନ କରନ୍ତୁ",
+      "exit_drawing": "ଡ୍ରଇଂରୁ ବାହାରକୁ ଯାଆନ୍ତୁ",
+      "edit_claims": "ଦାବିଗୁଡିକୁ ସମ୍ପାଦନ କରନ୍ତୁ",
+      "exit_edit": "ଏଡିଟ୍ ରୁ ବାହାରକୁ ଯାଆନ୍ତୁ",
+      "export_png": "ପି.ଏନ୍.ଜି. ଏକ୍ସପୋର୍ଟ୍"
+    },
+    "polygon_types": {
+      "IFR": "ବ୍ୟକ୍ତିଗତ ବନ ଅଧିକାର",
+      "CFR": "ସମ୍ପ୍ରଦାୟ ବନ ଅଧିକାର",
+      "forest": "ବନ କ୍ଷେତ୍ର",
+      "Community Forest Lands": "ସମ୍ପ୍ରଦାୟ ବନ ଜମି"
+    },
+    "status": {
+      "pending": "ବିଚାରାଧୀନ",
+      "approved": "ଅନୁମୋଦିତ",
+      "rejected": "ପ୍ରତ୍ୟାଖ୍ୟାତ",
+      "under_review": "ସମୀକ୍ଷାଧୀନ"
+    },
+    "errors": {
+      "api_failed": "ଏ.ପି.ଆଇ. ସଂଯୋଗ ବିଫଳ ହେଲା, ସ୍ଥାନୀୟ ଡେଟା ବ୍ୟବହାର କରୁଛି",
+      "load_failed": "ପଲିଗନ୍ ଡେଟା ଲୋଡ୍ କରିବାରେ ବିଫଳ ହେଲା",
+      "save_failed": "ପଲିଗନ୍ ସେଭ୍ କରିବାରେ ବିଫଳ ହେଲା। ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।",
+      "update_failed": "ପଲିଗନ୍ ଅପଡେଟ୍ କରିବାରେ ବିଫଳ ହେଲା। ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।"
+    }
+  },
+  "claim_tracker": "ଦାବି ପ୍ରକ୍ରିୟା ଟ୍ରାକର୍",
+  "fra_workflow": "ଏଫ୍.ଆର୍.ଏ. ଦାବି ୱର୍କଫ୍ଲୋ ପରିଚାଳନା",
+  "claim_tracker_service": "ଦାବି ଟ୍ରାକର୍",
+  
+  "claim_process_tracker": "ଦାବି ପ୍ରକ୍ରିୟା ଟ୍ରାକର୍",
+  "fra_workflow_management": "ଏଫ୍.ଆର୍.ଏ. ଦାବି ୱର୍କଫ୍ଲୋ ପରିଚାଳନା",
+  "manage_workflows": "ସମସ୍ତ ୮ଟି ପଦକ୍ଷେପ ମାଧ୍ୟମରେ ଏଫ୍.ଆର୍.ଏ. ଦାବି ୱର୍କଫ୍ଲୋ ପରିଚାଳନା କରନ୍ତୁ ଏବଂ ପ୍ରଗତି ଟ୍ରାକ୍ କରନ୍ତୁ",
+  "active_claims": "ସକ୍ରିୟ ଦାବିସମୂହ",
+  "no_claim_selected": "କୌଣସି ଦାବି ଚୟନ କରାଯାଇନାହିଁ",
+  "select_claim_to_view": "ଏହାର ପ୍ରଗତି ଦେଖିବା ଏବଂ ୱର୍କଫ୍ଲୋ ପଦକ୍ଷେପ ପରିଚାଳନା କରିବା ପାଇଁ ସାଇଡବାରରୁ ଏକ ଦାବି ମାମଲା ଚୟନ କରନ୍ତୁ",
+  "create_first_claim": "ଆରମ୍ଭ କରିବା ପାଇଁ ଆପଣଙ୍କର ପ୍ରଥମ ଏଫ୍.ଆର୍.ଏ. ଦାବି ସୃଷ୍ଟି କରନ୍ତୁ",
+  "create_new_claim": "ନୂତନ ଦାବି ସୃଷ୍ଟି କରନ୍ତୁ",
+  "create_claim": "ଦାବି ସୃଷ୍ଟି କରନ୍ତୁ",
+  
+  "claim_process_workflow": "ଦାବି ପ୍ରକ୍ରିୟା ୱର୍କଫ୍ଲୋ",
+  "track_progress": "୮-ପଦକ୍ଷେପୀୟ ଏଫ୍.ଆର୍.ଏ. ପ୍ରକ୍ରିୟା ମାଧ୍ୟମରେ ପ୍ରଗତି ଟ୍ରାକ୍ କରନ୍ତୁ",
+  "overall_progress": "ସର୍ବମୋଟ ପ୍ରଗତି",
+  "steps": "ପଦକ୍ଷେପ",
+  
+  "step_status": {
+    "draft": "ମୂଳାଧାର",
+    "not_started": "ଆରମ୍ଭ ହୋଇନାହିଁ",
+    "in_progress": "ଚାଲିଛି", 
+    "awaiting_review": "ସମୀକ୍ଷା ପାଇଁ ଅପେକ୍ଷାରତ",
+    "completed": "ସମ୍ପୂର୍ଣ୍ଣ"
+  },
+  
+  "step_names": {
+    "gram_sabha_meeting": "ଗ୍ରାମ ସଭା ବୈଠକ",
+    "frc_meeting": "ଏଫ୍.ଆର୍.ସି. ବୈଠକ ଏବଂ ଯୋଜନା",
+    "visual_mapping": "ଭିଜୁଆଲ୍ ମ୍ୟାପିଂ",
+    "noc_process": "ଏନ୍.ଓ.ସି. ପ୍ରକ୍ରିୟା",
+    "verification": "ଯାଞ୍ଚ",
+    "gram_sabha_presentation": "ଗ୍ରାମ ସଭା ଉପସ୍ଥାପନ",
+    "sdlc_review": "ଏସ୍.ଡି.ଏଲ୍.ସି. ସମୀକ୍ଷା",
+    "dlc_approval": "ଡି.ଏଲ୍.ସି. ଅନୁମୋଦନ"
+  },
+  
+  "step_descriptions": {
+    "gram_sabha_meeting": "ସିଏଫ୍.ଆର୍.ଆର୍. ଦାବି ଆରମ୍ଭ କରିବା ଏବଂ ବନ ଅଧିକାର ସମିତି (ଏଫ୍.ଆର୍.ସି.) ଗଠନ କରିବା ପାଇଁ ଗ୍ରାମ ସଭା ଅନୁଷ୍ଠିତ କରନ୍ତୁ",
+    "frc_meeting": "ଦାବି ପ୍ରସ୍ତୁତି ଉପରେ ଆଲୋଚନା ଏବଂ ସଦସ୍ୟମାନଙ୍କ ମଧ୍ୟରେ ଦାୟିତ୍ୱ ବଣ୍ଟନ ପାଇଁ ଏଫ୍.ଆର୍.ସି. ବୈଠକ",
+    "visual_mapping": "ସମୁଦାୟର ଅଂଶଗ୍ରହଣ ସହିତ ଗାଁର ସୀମା ନିର୍ଧାରଣ କରନ୍ତୁ ଏବଂ ଭିଜୁଆଲ୍ ମ୍ୟାପ୍ ସୃଷ୍ଟି କରନ୍ତୁ",
+    "noc_process": "ସନ୍ନିକଟବର୍ତ୍ତୀ ଗାଁମାନଙ୍କଠାରୁ କୌଣସି ଆପତ୍ତି ପ୍ରମାଣପତ୍ର ପ୍ରାପ୍ତ କରନ୍ତୁ ଏବଂ ସୀମା ମ୍ୟାପ୍ ପ୍ରସ୍ତୁତ କରନ୍ତୁ",
+    "verification": "ଏସ୍.ଡି.ଏଲ୍.ସି. ଯାଞ୍ଚ ଗୋଷ୍ଠୀ ଦାବି ଏବଂ ସାହାଯ୍ୟକାରୀ ପ୍ରମାଣଗୁଡିକୁ ପରୀକ୍ଷା କରେ",
+    "gram_sabha_presentation": "ସମୁଦାୟର ଅନୁମୋଦନ ପାଇଁ ପ୍ରସ୍ତୁତ ଦାବିଗୁଡିକୁ ଗ୍ରାମ ସଭାରେ ଉପସ୍ଥାପନ କରନ୍ତୁ",
+    "sdlc_review": "ଉପବିଭାଗ ସ୍ତରୀୟ ସମିତି ଦାବିଗୁଡିକୁ ତଦାରଖ କରେ ଏବଂ ବୈଧ ଦାବିଗୁଡିକୁ ଡି.ଏଲ୍.ସି. ପାଖକୁ ପଠାଏ",
+    "dlc_approval": "ଜିଲ୍ଲା ସ୍ତରୀୟ ସମିତି ବୈଧ ବନ ଅଧିକାର ଦାବିଗୁଡିକ ପାଇଁ ଅଧିକାର ପତ୍ର ଜାରି କରେ"
+  },
+  
+  "step_details": {
+    "step_information": "ପଦକ୍ଷେପ ସୂଚନା",
+    "step_number": "ପଦକ୍ଷେପ ସଂଖ୍ୟା",
+    "of": "/",
+    "started": "ଆରମ୍ଭ ହେଲା",
+    "completed": "ସମ୍ପୂର୍ଣ୍ଣ ହେଲା",
+    "meeting_details": "ବୈଠକ ବିବରଣୀ",
+    "meeting_date": "ବୈଠକ ତାରିଖ",
+    "location": "ଅବସ୍ଥାନ",
+    "participants": "ଅଂଶଗ୍ରହଣକାରୀ",
+    "decisions_made": "ନିଆଯାଇଥିବା ସିଦ୍ଧାନ୍ତ",
+    "verification_notes": "ଯାଞ୍ଚ ନୋଟ୍ସ"
+  },
+  
+  "tabs": {
+    "details": "ବିବରଣୀ",
+    "documents": "ଦଲିଲପତ୍ର",
+    "actions": "କାର୍ଯ୍ୟ"
+  },
+
+  "action_guidelines": "କାର୍ଯ୍ୟ ଦିଗନିର୍ଦ୍ଦେଶ",
+  "guidelines_list": {
+    "documents_uploaded": "ଏକ ପଦକ୍ଷେପ ସମ୍ପୂର୍ଣ୍ଣ କରିବା ପୂର୍ବରୁ ସମସ୍ତ ଆବଶ୍ୟକୀୟ ଦଲିଲପତ୍ର ଅପଲୋଡ୍ କରାଯାଇଛି ନିଶ୍ଚିତ କରନ୍ତୁ",
+    "verify_attendance": "ଅଂଶଗ୍ରହଣକାରୀ ଉପସ୍ଥିତି ଏବଂ ବୈଠକ ମିନିଟ୍ସ ଯାଞ୍ଚ କରନ୍ତୁ",
+    "review_maps": "ସୀମା ମ୍ୟାପ୍ ଏବଂ ଏନ୍.ଓ.ସି. ପ୍ରମାଣପତ୍ର ସତର୍କତାର ସହିତ ସମୀକ୍ଷା କରନ୍ତୁ",
+    "coordinate_officials": "ଆବଶ୍ୟକତା ଅନୁଯାୟୀ ସମ୍ବନ୍ଧିତ ସରକାରୀ କର୍ମଚାରୀଙ୍କ ସହିତ ସମନ୍ୱୟ କରନ୍ତୁ"
+  },
+  
+  "claim_documents": {
+    "upload_supporting_documents": "ସାହାଯ୍ୟକାରୀ ଦଲିଲପତ୍ର ଅପଲୋଡ୍ କରନ୍ତୁ",
+    "supported_formats": "ପିଡିଏଫ୍, ଜେପିଇଜି, ପିଏନଜି, ୱାର୍ଡ ଦଲିଲପତ୍ର ୧୦ଏମ୍ବି ପର୍ଯ୍ୟନ୍ତ",
+    "uploading_document": "ଦଲିଲପତ୍ର ଅପଲୋଡ୍ ହେଉଛି...",
+    "uploaded_documents": "ଅପଲୋଡ୍ କରାଯାଇଥିବା ଦଲିଲପତ୍ର",
+    "no_documents_uploaded": "ଏଯାଏଁ କୌଣସି ଦଲିଲପତ୍ର ଅପଲୋଡ୍ ହୋଇନାହିଁ",
+    "upload_meeting_documents": "ବୈଠକ ମିନିଟ୍ସ, ମ୍ୟାପ୍, କିମ୍ବା ଅନ୍ୟ ସାହାଯ୍ୟକାରୀ ଦଲିଲପତ୍ର ଅପଲୋଡ୍ କରନ୍ତୁ",
+    "upload_error": "ଅପଲୋଡ୍ ତ୍ରୁଟି",
+    "upload_success": "ଦଲିଲପତ୍ର ସଫଳତାର ସହିତ ଅପଲୋଡ୍ ହେଲା!",
+    "delete_success": "ଦଲିଲପତ୍ର ସଫଳତାର ସହିତ ବିଲୋପ ହେଲା!",
+    "delete_confirm": "ଆପଣ ନିଶ୍ଚିତ କି ଏହି ଦଲିଲପତ୍ର ବିଲୋପ କରିବାକୁ ଚାହୁଁଛନ୍ତି?",
+    "view_document": "ଦଲିଲପତ୍ର ଦେଖନ୍ତୁ",
+    "delete_document": "ଦଲିଲପତ୍ର ବିଲୋପ କରନ୍ତୁ"
+  },
+  
+  "document_types": {
+    "meeting_minutes": "ବୈଠକ ମିନିଟ୍ସ",
+    "attendance_sheet": "ଉପସ୍ଥିତି ପତ୍ର", 
+    "map": "ସୀମା ମ୍ୟାପ୍",
+    "noc": "କୌଣସି ଆପତ୍ତି ପ୍ରମାଣପତ୍ର",
+    "application_form": "ଆବେଦନ ଫର୍ମ",
+    "photograph": "ଫଟୋଗ୍ରାଫ୍",
+    "video_recording": "ଭିଡିଓ ରେକର୍ଡିଂ",
+    "audio_recording": "ଅଡିଓ ରେକର୍ଡିଂ",
+    "other": "ଅନ୍ୟ ଦଲିଲପତ୍ର"
+  },
+  
+  "new_claim_form": {
+    "create_new_fra_claim": "ନୂତନ ଏଫ୍.ଆର୍.ଏ. ଦାବି ସୃଷ୍ଟି କରନ୍ତୁ",
+    "village_name": "ଗାଁର ନାମ",
+    "district": "ଜିଲ୍ଲା",
+    "state": "ରାଜ୍ୟ",
+    "claim_type": "ଦାବି ପ୍ରକାର",
+    "applicant_name": "ଆବେଦନକାରୀର ନାମ",
+    "applicant_contact": "ଯୋଗାଯୋଗ ସୂଚନା",
+    "enter_village_name": "ଗାଁର ନାମ ପ୍ରବେଶ କରନ୍ତୁ",
+    "name_of_applicant": "ଆବେଦନକାରୀ କିମ୍ବା ସମୁଦାୟର ନାମ",
+    "phone_or_email": "ଫୋନ୍ ନମ୍ବର କିମ୍ବା ଇମେଲ୍"
+  },
+  
+  "claim_types": {
+    "individual": "ବ୍ୟକ୍ତିଗତ ବନ ଅଧିକାର",
+    "community": "ସାମୁଦାୟିକ ବନ ଅଧିକାର", 
+    "cfr": "ସାମୁଦାୟିକ ବନ ସମ୍ବଳ ଅଧିକାର"
+  },
+  
+  "messages": {
+    "loading_cases": "ଦାବି ମାମଲା ଲୋଡ୍ ହେଉଛି...",
+    "error_loading_cases": "ଦାବି ମାମଲା ଲୋଡ୍ କରିବାରେ ତ୍ରୁଟି",
+    "no_cases_found": "କୌଣସି ଦାବି ମାମଲା ମିଳିଲା ନାହିଁ",
+    "create_case_success": "ଦାବି ମାମଲା ସଫଳତାର ସହିତ ସୃଷ୍ଟି ହେଲା",
+    "update_step_success": "ପଦକ୍ଷେପ ସଫଳତାର ସହିତ ଅଦ୍ୟତନ ହେଲା",
+    "upload_document_success": "ଦଲିଲପତ୍ର ସଫଳତାର ସହିତ ଅପଲୋଡ୍ ହେଲା"
+  },
+  "document_uploader": {
+    "upload_area": {
+      "title": "ସାହାଯ୍ୟକାରୀ ଦଲିଲପତ୍ର ଅପଲୋଡ୍ କରନ୍ତୁ",
+      "description": "ପିଡିଏଫ୍, ଜେପିଇଜି, ପିଏନଜି, ୱାର୍ଡ ଦଲିଲପତ୍ର ୧୦ଏମ୍ବି ପର୍ଯ୍ୟନ୍ତ",
+      "uploading": "ଦଲିଲପତ୍ର ଅପଲୋଡ୍ ହେଉଛି..."
+    },
+    "errors": {
+      "invalid_file_type": "ଦୟାକରି କେବଳ ପିଡିଏଫ୍, ଜେପିଇଜି, ପିଏନଜି, କିମ୍ବା ୱାର୍ଡ ଦଲିଲପତ୍ର ଅପଲୋଡ୍ କରନ୍ତୁ",
+      "file_too_large": "ଫାଇଲ୍ ସାଇଜ୍ ୧୦ଏମ୍ବିରୁ କମ୍ ହେବା ଆବଶ୍ୟକ",
+      "upload_failed": "ଦଲିଲପତ୍ର ଅପଲୋଡ୍ ବିଫଳ ହେଲା",
+      "delete_failed": "ଦଲିଲପତ୍ର ବିଲୋପ ବିଫଳ ହେଲା"
+    },
+    "success": {
+      "upload": "ଦଲିଲପତ୍ର ସଫଳତାର ସହିତ ଅପଲୋଡ୍ ହେଲା!",
+      "delete": "ଦଲିଲପତ୍ର ସଫଳତାର ସହିତ ବିଲୋପ ହେଲା!"
+    },
+    "documents_list": {
+      "title": "ଅପଲୋଡ୍ କରାଯାଇଥିବା ଦଲିଲପତ୍ର",
+      "empty_title": "ଏଯାଏଁ କୌଣସି ଦଲିଲପତ୍ର ଅପଲୋଡ୍ ହୋଇନାହିଁ",
+      "empty_description": "ବୈଠକ ମିନିଟ୍ସ, ମ୍ୟାପ୍, କିମ୍ବା ଅନ୍ୟ ସାହାଯ୍ୟକାରୀ ଦଲିଲପତ୍ର ଅପଲୋଡ୍ କରନ୍ତୁ"
+    },
+    "actions": {
+      "view_document": "ଦଲିଲପତ୍ର ଦେଖନ୍ତୁ",
+      "delete_document": "ଦଲିଲପତ୍ର ବିଲୋପ କରନ୍ତୁ",
+      "delete_confirm": "ଆପଣ ନିଶ୍ଚିତ କି ଏହି ଦଲିଲପତ୍ର ବିଲୋପ କରିବାକୁ ଚାହୁଁଛନ୍ତି?"
+    }
+  },
+  "step_detail_panel": {
+    "tabs": {
+      "details": "ବିବରଣୀ",
+      "documents": "ଦଲିଲପତ୍ର",
+      "actions": "କାର୍ଯ୍ୟ"
+    },
+    "step_information": "ପଦକ୍ଷେପ ସୂଚନା",
+    "step_number": "ପଦକ୍ଷେପ ସଂଖ୍ୟା",
+    "of": "/",
+    "started": "ଆରମ୍ଭ ହେଲା",
+    "completed": "ସମ୍ପୂର୍ଣ୍ଣ ହେଲା",
+    "meeting_details": "ବୈଠକ ବିବରଣୀ",
+    "meeting_date": "ବୈଠକ ତାରିଖ",
+    "location": "ଅବସ୍ଥାନ",
+    "participants": "ଅଂଶଗ୍ରହଣକାରୀ",
+    "decisions_made": "ନିଆଯାଇଥିବା ସିଦ୍ଧାନ୍ତ",
+    "verification_notes": "ଯାଞ୍ଚ ନୋଟ୍ସ",
+    "step_actions": "ପଦକ୍ଷେପ କାର୍ଯ୍ୟ",
+    "action_guidelines": "କାର୍ଯ୍ୟ ଦିଗନିର୍ଦ୍ଦେଶ",
+    "guidelines_list": {
+      "documents_uploaded": "ଏକ ପଦକ୍ଷେପ ସମ୍ପୂର୍ଣ୍ଣ କରିବା ପୂର୍ବରୁ ସମସ୍ତ ଆବଶ୍ୟକୀୟ ଦଲିଲପତ୍ର ଅପଲୋଡ୍ କରାଯାଇଛି ନିଶ୍ଚିତ କରନ୍ତୁ",
+      "verify_attendance": "ଅଂଶଗ୍ରହଣକାରୀ ଉପସ୍ଥିତି ଏବଂ ବୈଠକ ମିନିଟ୍ସ ଯାଞ୍ଚ କରନ୍ତୁ",
+      "review_maps": "ସୀମା ମ୍ୟାପ୍ ଏବଂ ଏନ୍.ଓ.ସି. ପ୍ରମାଣପତ୍ର ସତର୍କତାର ସହିତ ସମୀକ୍ଷା କରନ୍ତୁ",
+      "coordinate_officials": "ଆବଶ୍ୟକତା ଅନୁଯାୟୀ ସମ୍ବନ୍ଧିତ ସରକାରୀ କର୍ମଚାରୀଙ୍କ ସହିତ ସମନ୍ୱୟ କରନ୍ତୁ"
+    }
+  },
+  "actions": {
+    "start_this_step": "ଏହି ପଦକ୍ଷେପ ଆରମ୍ଭ କରନ୍ତୁ",
+    "mark_as_completed": "ସମ୍ପୂର୍ଣ୍ଣ ଭାବରେ ଚିହ୍ନିତ କରନ୍ତୁ",
+    "send_for_review": "ସମୀକ୍ଷା ପାଇଁ ପଠାନ୍ତୁ",
+    "approve_and_complete": "ଅନୁମୋଦନ କରନ୍ତୁ ଏବଂ ପୂର୍ଣ୍ଣ କରନ୍ତୁ",
+    "return_for_revisions": "ସଂଶୋଧନ ପାଇଁ ଫେରାନ୍ତୁ",
+    "proceed_to_next_step": "ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପକୁ ଅଗ୍ରସର ହୁଅନ୍ତୁ",
+    "mark_complete": "ସମ୍ପୂର୍ଣ୍ଣ ଚିହ୍ନିତ କରନ୍ତୁ",
+    "need_review": "ସମୀକ୍ଷା ଆବଶ୍ୟକ"
+  },
+  "documents_count": {
+    "count": "{{count}} ଦଲିଲପତ୍ର",
+    "count_plural": "{{count}} ଦଲିଲପତ୍ର"
+  },
+  "analytics_dashboard": "ଏଫ୍‌ଆର୍‌ଏ ଆନାଲିଟିକ୍ସ ଡ୍ୟାସବୋର୍ଡ",
+  "fra_implementation_insights": "ବନ ଅଧିକାର ଆଇନ କାର୍ଯ୍ୟକାରୀ ଅନ୍ତର୍ଦୃଷ୍ଟି",
+  "loading_analytics": "ଆନାଲିଟିକ୍ସ ଡାଟା ଲୋଡ୍ ହୋଇଛି...",
+  "error_loading_analytics": "ଆନାଲିଟିକ୍ସ ଡାଟା ଲୋଡ୍ କରିବାରେ ତ୍ରୁଟି",
+  
+  "filter_by_state": "ରାଜ୍ୟ ଅନୁସାରେ ଫିଲ୍ଟର୍ କରନ୍ତୁ",
+  "all_states": "ସମସ୍ତ ରାଜ୍ୟ",
+  "snapshot_date": "ସ୍ନାପସଟ୍ ତାରିଖ",
+  "primary_metric": "ପ୍ରାଥମିକ ମେଟ୍ରିକ୍",
+  "show_target_states": "ଟାର୍ଗେଟ୍ ରାଜ୍ୟ ଦେଖାନ୍ତୁ",
+  "last_updated": "ଶେଷ ଅପଡେଟ୍",
+  "data_source": "ଡାଟା ସ୍ରୋତ",
+  
+  "kpi": {
+    "total_claims": "ମୋଟ ଦାବି",
+    "titles_distributed": "ବଣ୍ଟିତ ଟାଇଟଲ୍",
+    "forest_land": "ବନ ଜମି",
+    "vs_previous": "ପୂର୍ବବର୍ତ୍ତୀ ଅବଧି ସହିତ ତୁଳନା"
+  },
+  
+  "claims_overview": "ଦାବି ସମୀକ୍ଷା",
+  "individual_vs_community_claims": "ବ୍ୟକ୍ତିଗତ ବନାମ ସାମୁଦାୟିକ ଦାବି",
+  "individual": "ବ୍ୟକ୍ତିଗତ",
+  "community": "ସାମୁଦାୟିକ",
+  "disposal_rate": "ଡିସ୍ପୋଜାଲ୍ ହାର",
+  "claims_rejected": "ଦାବି ପ୍ରତ୍ୟାଖ୍ୟାତ",
+  "total_claims_across": "ମୋଟ ଦାବି",
+  "states": "ରାଜ୍ୟଗୁଡିକରେ",
+  
+  "titles_overview": "ଟାଇଟଲ୍ ସମୀକ୍ଷା",
+  "claims_to_titles_conversion": "ଦାବିରୁ ଟାଇଟଲ୍ ରୂପାନ୍ତରଣ",
+  "success_rate": "ସଫଳତା ହାର",
+  "total_claims": "ମୋଟ ଦାବି",
+  "titles_issued": "ଜାରୀ ଟାଇଟଲ୍",
+  "claims_pending": "ଦାବି ବିଚାରାଧୀନ",
+  
+  "forest_land": "ବନ ଜମି",
+  "land_distribution_acres": "ଜମି ବିତରଣ (ଏକର)",
+  "total_forest_land": "ମୋଟ ବନ ଜମି",
+  "individual_rights": "ବ୍ୟକ୍ତିଗତ ଅଧିକାର",
+  "community_rights": "ସାମୁଦାୟିକ ଅଧିକାର",
+  "top_states_by_land": "ଜମି କ୍ଷେତ୍ରଫଳ ଅନୁସାରେ ଶୀର୍ଷ ରାଜ୍ୟ",
+  
+  "state_comparison": "ରାଜ୍ୟ ତୁଳନା",
+  "month_over_month_changes": "ମାସିକ ପରିବର୍ତ୍ତନ",
+  "individual_claims": "ବ୍ୟ. ଦାବି",
+  "individual_titles": "ବ୍ୟ. ଟାଇଟଲ୍",
+  "no_comparison_data": "କୌଣସି ତୁଳନା ଡାଟା ଉପଲବ୍ଧ ନାହିଁ",
+  
+  "trends_analysis": "ଟ୍ରେଣ୍ଡ୍ ବିଶ୍ଳେଷଣ",
+  "performance_over_time": "ସମୟାନୁସାରେ ପ୍ରଦର୍ଶନ",
+  "data_points": "ଡାଟା ପଏଣ୍ଟ୍",
+  "time_period": "ସମୟ ସୀମା",
+  
+  "top_states": "ଶୀର୍ଷ ରାଜ୍ୟ",
+  "leading_performers": "ଅଗ୍ରଣୀ ପ୍ରଦର୍ଶନକାରୀ",
+  "no_ranking_data": "କୌଣସି ର୍ୟାଙ୍କିଂ ଡାଟା ଉପଲବ୍ଧ ନାହିଁ",
+  
+  "rejection_analysis": "ପ୍ରତ୍ୟାଖ୍ୟାନ ବିଶ୍ଳେଷଣ",
+  "claim_rejection_rates": "ଦାବି ପ୍ରତ୍ୟାଖ୍ୟାନ ହାର",
+  "overall_rejection_rate": "ସର୍ବମୋଟ ପ୍ରତ୍ୟାଖ୍ୟାନ ହାର",
+  "of": "ର",
+  "claims_rejected_lower": "ଦାବି ପ୍ରତ୍ୟାଖ୍ୟାତ",
+  "states_with_high_rejection": "ଉଚ୍ଚ ପ୍ରତ୍ୟାଖ୍ୟାନ ହାର ଥିବା ରାଜ୍ୟ",
+  "states_with_rejection_above_20_percent": "20% ରୁ ଅଧିକ ପ୍ରତ୍ୟାଖ୍ୟାନ ଥିବା ରାଜ୍ୟ",
+  
+  "target_states_focus": "ଲକ୍ଷ୍ୟ ରାଜ୍ୟ ଫୋକସ୍",
+  "mp_tripura_odisha_telangana": "ଏମପି, ତ୍ରିପୁରା, ଓଡିଶା, ତେଲେଙ୍ଗାନା",
+  "success": "ସଫଳତା",
+  "claims": "ଦାବି",
+  "titles": "ଟାଇଟଲ୍",
+  "priority_intervention": "ପ୍ରାଥମିକତା ହସ୍ତକ୍ଷେପ",
+  "focus_on_improving_success_rates": "ଲକ୍ଷ୍ୟ ରାଜ୍ୟଗୁଡିକରେ ସଫଳତା ହାର ଉନ୍ନତି ଉପରେ ଧ୍ୟାନ ଦିଅନ୍ତୁ",
+  "analytics_services": "ଆନାଲିଟିକ୍ସ ସେବା",
+  
+  "api_status": {
+    "connected": "ଏପିଆଇ ସଂଯୁକ୍ତ",
+    "connecting": "ସଂଯୋଗ ହୋଇଛି...",
+    "disconnected": "ଏପିଆଇ ସଂଯୋଗ ବିଚ୍ଛିନ୍ନ",
+    "check_status": "ଏପିଆଇ ସ୍ଥିତି ଯାଞ୍ଚ କରନ୍ତୁ",
+    "retry": "ସଂଯୋଗ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ"
+  },
+  
+  "buttons": {
+    "cancel": "ବାତିଲ୍ କରନ୍ତୁ",
+    "save": "ସଂରକ୍ଷଣ କରନ୍ତୁ",
+    "delete": "ମୂଚ୍ଛନ କରନ୍ତୁ",
+    "edit": "ସମ୍ପାଦନ କରନ୍ତୁ",
+    "view": "ଦର୍ଶନ କରନ୍ତୁ",
+    "download": "ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
+    "refresh": "ରିଫ୍ରେସ୍ କରନ୍ତୁ",
+    "clear": "ପରିଷ୍କାର କରନ୍ତୁ",
+    "retry": "ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ"
+  },
+  "preparing_dashboard": "ଆପଣଙ୍କର FRA ୱର୍କଫ୍ଲୋ ଡ୍ୟାସବୋର୍ଡ ପ୍ରସ୍ତୁତ କରାଯାଉଛି...",
+  "retry_loading": "ପୁନର୍ବାର ଲୋଡ୍ କରନ୍ତୁ",
+  "ministry_tribal_affairs": "ଆଦିବାସୀ କାର୍ଯ୍ୟ ମନ୍ତ୍ରଣାଳୟ",
+  "search_placeholder": "ଗ୍ରାମ, କେସ୍ ନମ୍ବର କିମ୍ବା ଜିଲ୍ଲା ଦ୍ୱାରା ଦାବି ଖୋଜନ୍ତୁ...",
+  "filter_all_status": "ସମସ୍ତ ସ୍ଥିତି",
+  "no_matching_claims": "ଆପଣଙ୍କର ସନ୍ଧାନ ମାନଦଣ୍ଡ ସହିତ କୌଣସି ଦାବି ମେଳ ଖାଉନାହିଁ। ଦୟାକରି ଆପଣଙ୍କର ଫିଲ୍ଟରଗୁଡିକ ସମାୟୋଜିତ କରନ୍ତୁ କିମ୍ବା ଏକ ନୂତନ ଦାବି ସୃଷ୍ଟି କରନ୍ତୁ।",
+  
+  "view_mode": {
+    "overview": "ସମୀକ୍ଷା",
+    "detailed": "ବିସ୍ତୃତ"
+  },
+  
+  "dashboard_stats": {
+    "total_claims": "ମୋଟ ଦାବି",
+    "in_progress": "ପ୍ରଗତିରେ",
+    "completed": "ସମ୍ପୂର୍ଣ୍ଣ",
+    "avg_progress": "ହାରାହାରି ପ୍ରଗତି"
+  },
+  
+  "status1": {
+    "ready_to_start": "ଆରମ୍ଭ କରିବା ପାଇଁ ପ୍ରସ୍ତୁତ",
+    "working_on": "କାର୍ଯ୍ୟ କରୁଛନ୍ତି: {{stepName}}"
+  },
+  
+  "case_info": {
+    "progress": "ପ୍ରଗତି",
+    "case_number": "କେସ୍ ନମ୍ବର",
+    "village": "ଗ୍ରାମ",
+    "district_state": "ଜିଲ୍ଲା, ରାଜ୍ୟ",
+    "district_state1": "{{district}}, {{state}}",
+    "status": "ସ୍ଥିତି"
+  },
+  
+  "ai_powered_processing": "AI-ଚାଳିତ ଡକ୍ୟୁମେଣ୍ଟ ପ୍ରୋସେସିଂ",
+  "api_connection_failed": "API ସହିତ ସଂଯୋଗ କରିବାରେ ବିଫଳ",
+  
+  "doc_dashboard_stats": {
+    "total_processed": "ମୋଟ ପ୍ରୋସେସ୍ଡ",
+    "current_file": "ବର୍ତ୍ତମାନର ଫାଇଲ୍",
+    "api_status": "API ସ୍ଥିତି",
+    "active_processing": "ସକ୍ରିୟ ପ୍ରୋସେସିଂ"
+  },
+  
+  "status_online": "ଅନଲାଇନ୍",
+  "status_offline": "ଅଫଲାଇନ୍",
+
+  "doc_tabs": {
+    "upload": "ଅପଲୋଡ୍",
+    "history": "ଇତିହାସ"
+  },
+  
+  "ocr_engine": "OCR ଇଞ୍ଜିନ୍",
+  "ai_ocr_ner": "AI-ଚାଳିତ OCR ଏବଂ NER",
+  "multi_language_support": "ବହୁ-ଭାଷା ସମର୍ଥନ",
+  "interactive_fra_mapping": "ଇଣ୍ଟରାକ୍ଟିଭ୍ FRA ମ୍ୟାପିଂ",
+  
+  "atlas_tabs": {
+    "navigation": "ନେଭିଗେସନ୍",
+    "layers": "ସ୍ତରଗୁଡିକ",
+    "details": "ବିବରଣୀ"
+  },
+  
+  "navigate_to_regions": "ନିର୍ଦ୍ଦିଷ୍ଟ ଅଞ୍ଚଳଗୁଡିକୁ ନେଭିଗେଟ୍ କରନ୍ତୁ",
+  "district_count": "{{count}} ଜିଲ୍ଲା",
+  
+  "view_analytics": "ଆନାଲିଟିକ୍ସ ଦେଖନ୍ତୁ",
+  "generate_report": "ରିପୋର୍ଟ ଜେନେରେଟ୍ କରନ୍ତୁ",
+  
+  "choose_map_style": "ଆପଣଙ୍କର ମ୍ୟାପ୍ ଶୈଳୀ ବାଛନ୍ତୁ",
+  "terrain": "ଭୂପୃଷ୍ଠ",
+  "soil_moisture": "ମୃତ୍ତିକା ଆର୍ଦ୍ରତା",
+  
+  "base_layer_osm_desc": "ସ୍ଟାଣ୍ଡାର୍ଡ ମ୍ୟାପ୍ ଦୃଶ୍ୟ",
+  "base_layer_satellite_desc": "ସାଟେଲାଇଟ୍ ଇମେଜରୀ",
+  "base_layer_terrain_desc": "ଟୋପୋଗ୍ରାଫିକ୍ ଦୃଶ୍ୟ",
+  "base_layer_soil_desc": "ରୁଟ୍ ଜୋନ୍ ମୃତ୍ତିକା ଆର୍ଦ୍ରତା",
+  "base_layer_forest_desc": "ବନ ଆଚ୍ଛାଦନ / NDVI",
+  
+  "toggle_data_layers": "ଡାଟା ସ୍ତରଗୁଡିକୁ ଟୋଗଲ୍ କରନ୍ତୁ",
+  "infrastructure": "ଅবକୌଶଳ",
+  
+  "overlay_claims_desc": "FRA ଦାବି ସୀମା ଦେଖାନ୍ତୁ",
+  "overlay_forest_desc": "ବନ ଆଚ୍ଛାଦନ ଘନତା",
+  "overlay_water_desc": "ନଦୀ, ହ୍ରଦ ଏବଂ ଜଳାଶୟ",
+  "overlay_infrastructure_desc": "ରାସ୍ତା ଏବଂ ଅବକୌଶଳ",
+  
+  "selected_claim_info": "ଚୟନିତ ଦାବି ସୂଚନା",
+  "claim_id": "ଦାବି ID",
+  "claim_type": "ଦାବି ପ୍ରକାର",
+  "hectares": "ହେକ୍ଟର୍",
+  "village_district": "ଗ୍ରାମ, ଜିଲ୍ଲା",
+  "view_on_map": "ମ୍ୟାପ୍ ଉପରେ ଦେଖନ୍ତୁ",
+  "click_polygon_instructions": "ବିବରଣୀ ଦେଖିବା ପାଇଁ ଏକ ଦାବି ପଲିଗନ୍ ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ",
+  "fra_claims_mapping_analysis": "FRA ଦାବି ମ୍ୟାପିଂ ଏବଂ ବିଶ୍ଳେଷଣ",
+  "claims_loaded": "{{count}} ଦାବି ଲୋଡ୍ ହୋଇଛି",
+  "mota_fra_platform": "ମୋଟା FRA ପ୍ଲାଟଫର୍ମ",
+  "active_module": "ସକ୍ରିୟ ମଡ୍ୟୁଲ୍",
+  "processing_rate": "ପ୍ରୋସେସିଂ ହାର",
+  "focus_states": "ଫୋକସ୍ ରାଜ୍ୟ",
+  
+  "recent_activities": {
+    "title": "ସାମ୍ପ୍ରତିକ କାର୍ଯ୍ୟକଳାପ",
+    "claim_approved": "ଦାବି ଅନୁମୋଦିତ",
+    "document_processed": "ଡକ୍ୟୁମେଣ୍ଟ୍ ପ୍ରୋସେସ୍ଡ୍",
+    "new_recommendation": "ନୂତନ ପରାମର୍ଶ"
+  },
+  
+  "time_ago": {
+    "minutes": "{{count}} ମିନିଟ୍ ପୂର୍ବେ",
+    "hours": "{{count}} ଘଣ୍ଟା ପୂର୍ବେ",
+    "days": "{{count}} ଦିନ ପୂର୍ବେ"
+  },
+  
+  "view_all_activities": "ସମସ୍ତ କାର୍ଯ୍ୟକଳାପ ଦେଖନ୍ତୁ",
+  "admin_user": "ଆଡମିନ୍ ବ୍ୟବହାରକାରୀ",
+  "mota_official": "ମୋଟା ଅଧିକାରୀ",
+  
+  "system_operational": "ସିଷ୍ଟମ୍ କାର୍ଯ୍ୟକାରୀ",
+  "last_sync": "ଶେଷ ସିଙ୍କ୍",
+  "fra_platform_mota": "FRA ପ୍ଲାଟଫର୍ମ • ଆଦିବାସୀ କାର୍ଯ୍ୟ ମନ୍ତ୍ରଣାଳୟ"
+}

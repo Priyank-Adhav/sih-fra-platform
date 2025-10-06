@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useTranslation } from "react-i18next";
 
 interface DocumentUploadProps {
   onFileSelect: (file: File) => void;
@@ -13,17 +14,18 @@ export function DocumentUpload({ onFileSelect, selectedFile, disabled }: Documen
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [dragActive, setDragActive] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const validateFile = (file: File): string | null => {
     // Check file size
     if (file.size > MAX_FILE_SIZE) {
-      return `File size too large. Maximum allowed: ${MAX_FILE_SIZE / (1024 * 1024)}MB`;
+      return t('document_upload.errors.file_too_large', { maxSize: MAX_FILE_SIZE / (1024 * 1024) });
     }
 
     // Check file format
     const fileExtension = file.name.split('.').pop()?.toLowerCase();
     if (!fileExtension || !SUPPORTED_FORMATS.includes(fileExtension)) {
-      return `Unsupported file format. Supported formats: ${SUPPORTED_FORMATS.join(', ').toUpperCase()}`;
+      return t('document_upload.errors.unsupported_format', { formats: SUPPORTED_FORMATS.join(', ').toUpperCase() });
     }
 
     return null;
@@ -106,8 +108,8 @@ export function DocumentUpload({ onFileSelect, selectedFile, disabled }: Documen
           </svg>
         </div>
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">Upload Document</h2>
-          <p className="text-gray-600">Select or drag a file to process</p>
+          <h2 className="text-xl font-semibold text-gray-900">{t('document_upload.title')}</h2>
+          <p className="text-gray-600">{t('document_upload.subtitle')}</p>
         </div>
       </div>
 
@@ -153,7 +155,7 @@ export function DocumentUpload({ onFileSelect, selectedFile, disabled }: Documen
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              File selected and ready to process
+              {t('document_upload.file_selected')}
             </div>
 
             {!disabled && (
@@ -168,7 +170,7 @@ export function DocumentUpload({ onFileSelect, selectedFile, disabled }: Documen
                 }}
                 className="text-sm text-gray-500 hover:text-gray-700 underline"
               >
-                Choose different file
+                {t('document_upload.choose_different')}
               </button>
             )}
           </div>
@@ -182,10 +184,10 @@ export function DocumentUpload({ onFileSelect, selectedFile, disabled }: Documen
             
             <div>
               <p className={`text-lg font-medium ${disabled ? 'text-gray-400' : 'text-gray-900'}`}>
-                {disabled ? 'API Not Connected' : 'Drop your file here'}
+                {disabled ? t('document_upload.api_not_connected') : t('document_upload.drop_here')}
               </p>
               <p className={`text-sm mt-1 ${disabled ? 'text-gray-400' : 'text-gray-600'}`}>
-                {disabled ? 'Please check API connection' : 'or click to browse'}
+                {disabled ? t('document_upload.check_api') : t('document_upload.or_click')}
               </p>
             </div>
           </div>
@@ -207,9 +209,9 @@ export function DocumentUpload({ onFileSelect, selectedFile, disabled }: Documen
       {/* Format Info */}
       <div className="mt-6 pt-4 border-t border-gray-100">
         <div className="text-xs text-gray-500 space-y-1">
-          <p><strong>Supported formats:</strong> {SUPPORTED_FORMATS.join(', ').toUpperCase()}</p>
-          <p><strong>Max file size:</strong> {MAX_FILE_SIZE / (1024 * 1024)}MB</p>
-          <p><strong>Languages:</strong> English, Hindi, Oriya (auto-detected)</p>
+          <p><strong>{t('document_upload.supported_formats')}:</strong> {SUPPORTED_FORMATS.join(', ').toUpperCase()}</p>
+          <p><strong>{t('document_upload.max_file_size')}:</strong> {MAX_FILE_SIZE / (1024 * 1024)}MB</p>
+          <p><strong>{t('document_upload.languages')}:</strong> {t('document_upload.languages_list')}</p>
         </div>
       </div>
     </div>

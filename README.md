@@ -1,4 +1,4 @@
-# SIH-FRA Platform
+# SIH FRA Platform
 
 **AI-powered FRA Atlas and WebGIS-based Decision Support System (DSS) for Integrated Monitoring of Forest Rights Act (FRA) Implementation**
 
@@ -71,11 +71,18 @@ chmod +x run.sh
 ./run.sh
 ```
 
+For faster subsequent runs (skips dependency installation and DB setup):
+
+```bash
+./run.sh --quick
+```
+
 **Services and ports:**
 
 * Atlas backend: `http://localhost:5000`
 * Document Processing API: `http://localhost:5001`
 * DSS Engine: `http://localhost:8000`
+* Claim Process Tracker: `http://localhost:8001`
 * Frontend dashboard: `http://localhost:5173`
 * PostgreSQL: `5432`
 
@@ -92,6 +99,12 @@ To populate initial FRA data:
 ./backend/atlas/seed.sh
 ```
 
+The Claim Process Tracker database is automatically seeded with sample FRA claims on first run. For manual reseeding:
+
+```bash
+python -m backend.claim_process.migrations
+python -m backend.claim_process.mock_data
+```
 ---
 
 ## 7. Testing

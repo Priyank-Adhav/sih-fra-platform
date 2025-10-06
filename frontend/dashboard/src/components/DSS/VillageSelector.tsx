@@ -1,4 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from "react-i18next";
+
+interface Village {
+  village_id: string;
+  village_name: string;
+  state: string;
+  district: string;
+}
 
 interface VillageSelectorProps {
   selectedVillage: string;
@@ -7,7 +15,8 @@ interface VillageSelectorProps {
 }
 
 export function VillageSelector({ selectedVillage, onVillageChange, loading }: VillageSelectorProps) {
-  const [villages, setVillages] = useState<string[]>([]);
+  const { t } = useTranslation();
+  const [villages, setVillages] = useState<Village[]>([]);
   const [loadingVillages, setLoadingVillages] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -18,7 +27,7 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
   const fetchVillages = async () => {
     try {
       setLoadingVillages(true);
-      const response = await fetch('http://localhost:8000/api/dss/villages');
+      const response = await fetch('http://localhost:8000/api/dss/villages/names');
       
       if (!response.ok) {
         throw new Error('Failed to fetch villages');
@@ -33,6 +42,11 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
     }
   };
 
+  // Helper function to format village display name
+  const formatVillageName = (village: Village) => {
+    return `${village.village_name}, ${village.district}, ${village.state}`;
+  };
+
   if (error) {
     return (
       <div className="bg-white rounded-xl shadow-lg p-6">
@@ -40,12 +54,12 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
           </svg>
-          <span>Error loading villages: {error}</span>
+          <span>{t("village_selector.error.loading", { error })}</span>
           <button
             onClick={fetchVillages}
             className="ml-2 px-3 py-1 text-sm bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
           >
-            Retry
+            {t("village_selector.error.retry")}
           </button>
         </div>
       </div>
@@ -61,16 +75,14 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
           </svg>
         </div>
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">Select Village</h2>
-          <p className="text-gray-600">Choose a village to get scheme recommendations</p>
+          <h2 className="text-xl font-semibold text-gray-900">{t("village_selector.title")}</h2>
+          <p className="text-gray-600">{t("village_selector.subtitle")}</p>
         </div>
       </div>
 
       <div className="space-y-4">
-        <div>
-          <label htmlFor="village-select" className="block text-sm font-medium text-gray-700 mb-2">
-            Village ID
-          </label>
+        <div> 
+
           <div className="relative">
             <select
               id="village-select"
@@ -80,11 +92,11 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed appearance-none bg-white"
             >
               <option value="">
-                {loadingVillages ? 'Loading villages...' : 'Select a village'}
+                {loadingVillages ? t("village_selector.loading_villages") : t("village_selector.select_village")}
               </option>
-              {villages.map((villageId) => (
-                <option key={villageId} value={villageId}>
-                  {villageId}
+              {villages.map((village) => (
+                <option key={village.village_id} value={village.village_id}>
+                  {formatVillageName(village)}
                 </option>
               ))}
             </select>
@@ -107,7 +119,7 @@ export function VillageSelector({ selectedVillage, onVillageChange, loading }: V
 
         {villages.length > 0 && (
           <div className="text-sm text-gray-500">
-            {villages.length} villages available in the database
+            {t("village_selector.villages_available", { count: villages.length })}
           </div>
         )}
       </div>

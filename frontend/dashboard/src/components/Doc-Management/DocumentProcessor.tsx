@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface DocumentProcessorProps {
   selectedFile: File | null;
@@ -17,6 +18,7 @@ export function DocumentProcessor({
   processing,
   apiConnected
 }: DocumentProcessorProps) {
+  const { t } = useTranslation();
   const [processingStep, setProcessingStep] = useState<string>('');
 
   const processDocument = async () => {
@@ -26,13 +28,13 @@ export function DocumentProcessor({
     }
 
     onProcessingStart();
-    setProcessingStep('Uploading document...');
+    setProcessingStep(t("uploading_document"));
 
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      setProcessingStep('Extracting text with OCR...');
+      setProcessingStep(t("extracting_text_ocr"));
       
       const response = await fetch('http://localhost:5001/process-document', {
         method: 'POST',
@@ -49,12 +51,12 @@ export function DocumentProcessor({
         throw new Error(result.message || result.error);
       }
 
-      setProcessingStep('Extracting entities with AI...');
+      setProcessingStep(t("extracting_entities_ai"));
       
       // Simulate AI processing delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      setProcessingStep('Processing complete!');
+      setProcessingStep(t("processing_complete"));
       
       setTimeout(() => {
         setProcessingStep('');
@@ -74,13 +76,13 @@ export function DocumentProcessor({
     }
 
     onProcessingStart();
-    setProcessingStep('Uploading document...');
+    setProcessingStep(t("uploading_document"));
 
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      setProcessingStep('Extracting text with OCR...');
+      setProcessingStep(t("extracting_text_ocr"));
       
       const response = await fetch('http://localhost:5001/extract-text-only', {
         method: 'POST',
@@ -97,7 +99,7 @@ export function DocumentProcessor({
         throw new Error(result.message || result.error);
       }
 
-      setProcessingStep('Text extraction complete!');
+      setProcessingStep(t("text_extraction_complete"));
       
       setTimeout(() => {
         setProcessingStep('');
@@ -120,8 +122,8 @@ export function DocumentProcessor({
           </svg>
         </div>
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">Process Document</h2>
-          <p className="text-gray-600">OCR and AI entity extraction</p>
+          <h2 className="text-xl font-semibold text-gray-900">{t("process_document")}</h2>
+          <p className="text-gray-600">{t("ocr_ai_extraction")}</p>
         </div>
       </div>
 
@@ -130,7 +132,7 @@ export function DocumentProcessor({
           <div className="flex items-center justify-center p-8">
             <div className="text-center">
               <div className="animate-spin h-12 w-12 border-4 border-purple-200 border-t-purple-600 rounded-full mx-auto mb-4"></div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Processing Document</h3>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">{t("processing_document")}</h3>
               <p className="text-gray-600">{processingStep}</p>
             </div>
           </div>
@@ -141,12 +143,12 @@ export function DocumentProcessor({
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
               </svg>
               <div className="text-sm text-purple-800">
-                <p className="font-medium mb-1">Processing steps:</p>
+                <p className="font-medium mb-1">{t("processing_steps")}</p>
                 <ul className="space-y-1">
-                  <li>1. Automatic language detection</li>
-                  <li>2. OCR text extraction</li>
-                  <li>3. AI entity recognition</li>
-                  <li>4. Data structuring</li>
+                  <li>{t("step_language_detection")}</li>
+                  <li>{t("step_ocr_extraction")}</li>
+                  <li>{t("step_entity_recognition")}</li>
+                  <li>{t("step_data_structuring")}</li>
                 </ul>
               </div>
             </div>
@@ -165,7 +167,7 @@ export function DocumentProcessor({
                 <div className="flex-1 min-w-0">
                   <h3 className="font-medium text-gray-900 truncate">{selectedFile.name}</h3>
                   <p className="text-sm text-gray-500">
-                    {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB • {selectedFile.type || 'Unknown type'}
+                    {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB • {selectedFile.type || t("unknown_type")}
                   </p>
                 </div>
               </div>
@@ -175,8 +177,8 @@ export function DocumentProcessor({
               <svg className="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
               </svg>
-              <p className="text-gray-500">No document selected</p>
-              <p className="text-sm text-gray-400 mt-1">Please select a document to process</p>
+              <p className="text-gray-500">{t("no_document_selected")}</p>
+              <p className="text-sm text-gray-400 mt-1">{t("select_document_to_process")}</p>
             </div>
           )}
 
@@ -187,8 +189,8 @@ export function DocumentProcessor({
                   <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                 </svg>
                 <div>
-                  <p className="font-medium text-yellow-800">API Connection Required</p>
-                  <p className="text-sm text-yellow-700">Please ensure the backend API is running and connected.</p>
+                  <p className="font-medium text-yellow-800">{t("api_connection_required")}</p>
+                  <p className="text-sm text-yellow-700">{t("ensure_backend_running")}</p>
                 </div>
               </div>
             </div>
@@ -203,7 +205,7 @@ export function DocumentProcessor({
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              Full Processing (OCR + AI Entities)
+              {t("full_processing")}
             </button>
 
             <button
@@ -214,7 +216,7 @@ export function DocumentProcessor({
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
-              Text Only (OCR Only)
+              {t("text_only")}
             </button>
           </div>
 
@@ -224,10 +226,10 @@ export function DocumentProcessor({
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
               </svg>
               <div className="text-sm text-blue-800">
-                <p className="font-medium mb-1">Processing Options:</p>
+                <p className="font-medium mb-1">{t("processing_options")}</p>
                 <ul className="space-y-1">
-                  <li><strong>Full Processing:</strong> OCR text extraction + AI entity recognition</li>
-                  <li><strong>Text Only:</strong> OCR text extraction without entity analysis</li>
+                  <li><strong>{t("full_processing_desc")}</strong></li>
+                  <li><strong>{t("text_only_desc")}</strong></li>
                 </ul>
               </div>
             </div>
