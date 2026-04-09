@@ -53,7 +53,7 @@ Respond with ONLY the JSON object, no additional text or explanations.
         client = genai.Client(api_key=GEMINI_API_KEY)
         
         # Create a chat session
-        chat = client.chats.create(model="gemini-2.0-flash-exp")
+        chat = client.chats.create(model="gemini-2.0-flash-lite")
         
         # Send the prompt
         response = chat.send_message_stream(prompt)
